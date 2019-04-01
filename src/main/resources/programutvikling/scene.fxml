@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="programutvikling.kontrollere.MainController">
+    <children>
+        <Button layoutX="100" layoutY="40" onAction="#editPersonBtnClicked" text="Endre person"/>
+        <VBox layoutX="100" layoutY="70">
+            <Label text="Navn og alder til vår person:"/>
+            <Label fx:id="lblName"/>
+            <Label fx:id="lblAge"/>
+        </VBox>
+        <Button layoutX="100" layoutY="130" onAction="#savePersonBtnClicked" text="Lagre person til fil"/>
+    </children>
+</AnchorPane>

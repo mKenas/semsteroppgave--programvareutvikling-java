@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar"
+      stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <BorderPane.margin>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0"/>
+    </BorderPane.margin>
+
+    <HBox prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <children>
+            <Label prefHeight="93.0" prefWidth="176.0" text="Raske handlinger">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets left="15.0"/>
+                </HBox.margin>
+            </Label>
+        </children>
+    </HBox>
+    <HBox alignment="CENTER" prefHeight="504.0" prefWidth="930.0">
+        <children>
+            <VBox prefHeight="230.0" prefWidth="420.0">
+                <children>
+                    <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp"
+                            text="Registrer ny kunde">
+                        <VBox.margin>
+                            <Insets bottom="10.0" left="10.0" top="10.0"/>
+                        </VBox.margin>
+                        <font>
+                            <Font size="36.0"/>
+                        </font>
+                    </Button>
+                    <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp"
+                            text="Ubetal erstatning">
+                        <VBox.margin>
+                            <Insets bottom="10.0" left="10.0" top="10.0"/>
+                        </VBox.margin>
+                        <font>
+                            <Font size="36.0"/>
+                        </font>
+                    </Button>
+                </children>
+            </VBox>
+            <VBox prefHeight="504.0" prefWidth="420.0">
+                <children>
+                    <Button id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0"
+                            styleClass="dashbord-knapp" text="Opprett ny forsikring">
+                        <VBox.margin>
+                            <Insets bottom="10.0" left="10.0" top="10.0"/>
+                        </VBox.margin>
+                        <font>
+                            <Font size="36.0"/>
+                        </font>
+                    </Button>
+                    <Button id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0"
+                            styleClass="dashbord-knapp" text="Registrer skade">
+                        <VBox.margin>
+                            <Insets bottom="10.0" left="10.0" top="10.0"/>
+                        </VBox.margin>
+                        <font>
+                            <Font size="36.0"/>
+                        </font>
+                    </Button>
+                </children>
+            </VBox>
+        </children>
+        <VBox.margin>
+            <Insets top="15.0"/>
+        </VBox.margin>
+    </HBox>
+
+
+</VBox>

@@ -1,0 +1,101 @@
+.button {
+    -fx-font-weight: bold;
+}
+
+.parent {
+    -fx-background-color: #F2F2F2;
+}
+
+.header {
+    -fx-background-color: #024253;
+
+}
+
+.sidebar {
+
+    -fx-background-color: #FFF;
+    -fx-background-radius: 12;
+}
+
+.mainbar {
+
+    -fx-background-color: #FFF;
+    -fx-background-radius: 12;
+}
+
+.button, .menu-button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+}
+
+/*sidebar-button*/
+
+.sidebar-button {
+
+    -fx-font-size: 20;
+
+}
+
+.sidebar-button:hover {
+
+    -fx-background-color: #F7F7F7;
+    -fx-border-width: 0 0 0 3;
+
+}
+
+.sidebar-button:focused {
+
+    -fx-background-color: #F7F7F7;
+    -fx-border-width: 0 0 0 3;
+    -fx-border-color: #0B374A;
+
+}
+
+/* */
+.dashbord-knapp {
+    -fx-font-size: 36;
+    -fx-text-fill: #609691;
+    -fx-border-width: 0 0 3 0;
+    -fx-border-color: #609691;
+    -fx-background-color: #F7F7F7;
+
+}
+
+.dashbord-knapp:hover {
+
+    -fx-background-color: #E5E5E5;
+
+}
+
+.dashbord-knapp:pressed {
+
+    -fx-background-color: #024253;
+    -fx-opacity: 0.9;
+    -fx-text-fill: #FFF;
+
+}
+
+/*menu-button*/
+
+.menu-button:pressed {
+    -fx-background-color: black;
+
+}
+
+.menu-button > .arrow-button {
+    -fx-padding: 0;
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-padding: 0;
+}
+
+.menu-item {
+
+}
+
+.context-menu {
+    -fx-pref-width: 100px;
+}
