@@ -1,9 +1,16 @@
 package programutvikling.base;
 
+import javafx.fxml.FXML;
+import programutvikling.kontrollere.uihelpers.FileExceptionHandler;
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Kunde implements Observable {
+public class Kunde implements Serializable, Observable {
+
+  private static final long serialVersionUID = 2;
 
   private ObservableHelper observersHandler = new ObservableHelper();
   private String navn;
@@ -22,11 +29,11 @@ public class Kunde implements Observable {
     observersHandler.add(o);
   }
 
-  public String hentNavn() {
+  public String getNavn() {
     return navn;
   }
 
-  public String hentFakturaAdresse() {
+  public String getFakturaAdresse() {
     return fakturaAdresse;
   }
 
@@ -48,3 +55,6 @@ public class Kunde implements Observable {
   }
 
 }
+
+
+

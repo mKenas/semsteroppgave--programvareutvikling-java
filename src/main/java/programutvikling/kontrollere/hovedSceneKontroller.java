@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class hovedSceneKontroller {
 
+  KunderSceneKontroller ksc = new KunderSceneKontroller();
 
   public void initialize() {
 
@@ -57,6 +58,19 @@ public class hovedSceneKontroller {
       e.printStackTrace();
     }
 
+  }
+
+@FXML
+  protected void handleLagreKnapp(){
+
+  ksc.lagreKunde();
+}
+
+
+  @FXML
+  protected void handApneKnapp(){
+
+    ksc.lasteKunde();
   }
 
 

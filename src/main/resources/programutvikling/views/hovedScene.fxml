@@ -11,7 +11,31 @@
 
     <top>
 
-        <fx:include source="/programutvikling/views/header.fxml"/>
+        <!--<fx:include source="/programutvikling/views/header.fxml"/>-->
+
+        <BorderPane prefHeight="70.0" styleClass="header" BorderPane.alignment="CENTER">
+
+            <left>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="197.0" text="Expert Forsikring"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Label>
+            </left>
+            <right>
+                <MenuButton mnemonicParsing="false" prefHeight="70.0" prefWidth="109.0" text="" textFill="WHITE"
+                            BorderPane.alignment="CENTER">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Åpne" onAction="#handApneKnapp"/>
+                        <MenuItem mnemonicParsing="false" text="Lagre" onAction="#handleLagreKnapp"/>
+                    </items>
+                    <font>
+                        <Font name="Font Awesome 5 Free Solid" size="30.0"/>
+                    </font>
+                </MenuButton>
+            </right>
+        </BorderPane>
 
     </top>
 
