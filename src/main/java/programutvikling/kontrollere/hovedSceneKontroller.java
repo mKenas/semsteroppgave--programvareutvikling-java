@@ -1,35 +1,52 @@
 package programutvikling.kontrollere;
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.Navigator;
+import programutvikling.base.*;
+import programutvikling.database.DataSourceObject;
+import programutvikling.kontrollere.uihelpers.FileExceptionHandler;
 
 import java.io.IOException;
 
 public class hovedSceneKontroller {
 
-  KunderSceneKontroller ksc = new KunderSceneKontroller();
-
-  public void initialize() {
-
-
-    Platform.runLater(() -> mainSceneKnapp.requestFocus());
-
-  }
-
+  private static final String KUNDE_FIL_LOKASJON = "kunder.jobj";
   @FXML
   protected Button mainSceneKnapp;
   @FXML
-  BorderPane borderPane;
+  protected BorderPane borderPane;
+  HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
+  //private Kunde kunde;
+  DataSourceObject dso = DataSourceObject.getInstance();
+  private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
+
+  public void initialize() {
+    kunderliste = dso.getKunder();
+
+    hsk.setBorderPane(borderPane);
+    Platform.runLater(() -> mainSceneKnapp.requestFocus());
+
+    try {
+      Navigator.visScene(borderPane, new Navigator().getDashbordScene());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+
+  }
 
   @FXML
   protected void handleNavigeringTilDashbord() {
 
 
     try {
-      Navigator.visScene(borderPane, new Navigator().hentDashbordScene());
+      Navigator.visScene(borderPane, new Navigator().getDashbordScene());
+      //DashbordKontroller dbc = new DashbordKontroller();
+      //dbc.setBorderPane(borderPane);
+      //System.out.println(borderPane.getCenter());
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -41,7 +58,7 @@ public class hovedSceneKontroller {
 
 
     try {
-      Navigator.visScene(borderPane, new Navigator().hentForsikringScene());
+      Navigator.visScene(borderPane, new Navigator().getForsikringScene());
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -53,24 +70,91 @@ public class hovedSceneKontroller {
 
 
     try {
-      Navigator.visScene(borderPane, new Navigator().hentKunderScene());
+      Navigator.visScene(borderPane, new Navigator().getKunderScene());
     } catch (IOException e) {
       e.printStackTrace();
     }
 
   }
 
-@FXML
-  protected void handleLagreKnapp(){
+  @FXML
+  protected void handleNavigeringTilSkaderScene() {
 
-  ksc.lagreKunde();
-}
+
+    try {
+      Navigator.visScene(borderPane, new Navigator().getSKADER_SCENE());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+  }
+
+  @FXML
+  protected void handleNavigeringTilErstatningerScene() {
+
+
+    try {
+      Navigator.visScene(borderPane, new Navigator().getERSTATNINGER_SCENE());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+  }
+
+  @FXML
+  protected void handleLagreKnapp() {
+
+
+    try {
+      KundeObjektSkriver.write(kunderliste, KUNDE_FIL_LOKASJON);
+      System.out.println("Kundene lagret");
+    } catch (IOException e) {
+      FileExceptionHandler.generateIOExceptionMsg(e);
+    }
+
+
+  }
 
 
   @FXML
-  protected void handApneKnapp(){
+  protected void handleApneKnapp() {
 
-    ksc.lasteKunde();
+
+    try {
+
+
+      kunderlisteFraFil = KundeObjektLeser.read(KUNDE_FIL_LOKASJON);
+
+
+      dso.nullstillKunder();
+      dso.getKunder().addAll(kunderlisteFraFil);
+
+
+    } catch (IOException e) {
+      FileExceptionHandler.generateIOExceptionMsg(e);
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+
+  }
+
+
+  @FXML
+  protected void handleRegistrerKundeKnapp() {
+
+
+   /* try {
+      Navigator.visScene(borderPane, new Navigator().getRegistrerKundeScene());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+*/
+  }
+
+  @FXML
+  protected void handleAvsluttKnapp() {
+
+    Platform.exit();
   }
 
 

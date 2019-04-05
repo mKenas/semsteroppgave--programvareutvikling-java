@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
+      styleClass="mainbar" stylesheets="@../styles/styles.css"
+      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="programutvikling.kontrollere.RegistrerKundeSceneKontroller">
+    <BorderPane.margin>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0"/>
+    </BorderPane.margin>
+
+    <HBox prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <children>
+            <Label prefHeight="60.0" prefWidth="277.0" text="Kunde &gt; Registrer ny kunde">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets left="15.0"/>
+                </HBox.margin>
+            </Label>
+        </children>
+    </HBox>
+    <HBox alignment="CENTER" prefHeight="504.0" prefWidth="930.0">
+        <children>
+            <VBox prefHeight="100.0" prefWidth="420.0">
+                <children>
+                    <Label text="Personnummer"/>
+                    <TextField layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
+                        <VBox.margin>
+                            <Insets bottom="15.0" right="10.0"/>
+                        </VBox.margin>
+                    </TextField>
+                    <Label layoutX="10.0" layoutY="10.0" text="Navn"/>
+                    <TextField layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0" fx:id="navn">
+                        <VBox.margin>
+                            <Insets bottom="15.0" right="10.0"/>
+                        </VBox.margin>
+                    </TextField>
+                    <Label layoutX="10.0" layoutY="54.0" text="Fakturaadresse"/>
+                    <TextField prefHeight="48.0" prefWidth="400.0" fx:id="fakturaadresse">
+                        <VBox.margin>
+                            <Insets right="10.0"/>
+                        </VBox.margin>
+                    </TextField>
+                </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="420.0">
+                <children>
+                    <Label text="Epost">
+                        <VBox.margin>
+                            <Insets left="10.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <TextField prefHeight="48.0" prefWidth="400.0">
+                        <VBox.margin>
+                            <Insets bottom="15.0" left="10.0"/>
+                        </VBox.margin>
+                    </TextField>
+                    <Label layoutX="10.0" layoutY="10.0" text="Telefon">
+                        <VBox.margin>
+                            <Insets left="10.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <TextField layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
+                        <VBox.margin>
+                            <Insets bottom="15.0" left="10.0"/>
+                        </VBox.margin>
+                    </TextField>
+                    <Label layoutX="10.0" layoutY="54.0" text="Forsikringsnummer">
+                        <VBox.margin>
+                            <Insets left="10.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <TextField layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
+                        <VBox.margin>
+                            <Insets left="10.0"/>
+                        </VBox.margin>
+                    </TextField>
+                </children>
+            </VBox>
+        </children>
+        <VBox.margin>
+            <Insets top="20.0"/>
+        </VBox.margin>
+    </HBox>
+    <BorderPane prefHeight="200.0" prefWidth="200.0">
+        <right>
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="64.0"
+                    prefWidth="320.0" styleClass="sub-scene-knapp" text="Registrer kunde" BorderPane.alignment="CENTER"
+                    onAction="#handleRegistrerKundeKnapp">
+                <BorderPane.margin>
+                    <Insets right="15.0"/>
+                </BorderPane.margin>
+            </Button>
+        </right>
+    </BorderPane>
+
+
+</VBox>

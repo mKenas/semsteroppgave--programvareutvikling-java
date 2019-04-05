@@ -13,7 +13,7 @@
 
     <HBox prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
-            <Label prefHeight="93.0" prefWidth="176.0" text="Forsikringer">
+            <Label prefHeight="93.0" prefWidth="176.0" text="Erstatninger">
                 <font>
                     <Font size="20.0"/>
                 </font>

@@ -1,31 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.KunderSceneKontroller">
+<VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
+      styleClass="mainbar" stylesheets="@../styles/styles.css"
+      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="programutvikling.kontrollere.KunderSceneKontroller">
     <BorderPane.margin>
-        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0"/>
     </BorderPane.margin>
 
     <HBox prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
             <Label prefHeight="93.0" prefWidth="176.0" text="Kunder">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
                 <HBox.margin>
-                    <Insets left="15.0" />
+                    <Insets left="15.0"/>
                 </HBox.margin>
             </Label>
         </children>
     </HBox>
-   <TableView fx:id="tableview" prefHeight="372.0" prefWidth="930.0" />
+    <TableView fx:id="tableview" prefHeight="372.0" prefWidth="930.0">
+        <columns>
+            <TableColumn prefWidth="75.0" text="Navn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Navn"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn prefWidth="111.0" text="FakturaAdresse">
+                <cellValueFactory>
+                    <PropertyValueFactory property="FakturaAdresse"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn prefWidth="111.0" text="Rediger" fx:id="redigerKolonne">
+
+            </TableColumn>
+
+            <TableColumn prefWidth="111.0" text="Slett" fx:id="slettKolonne">
+
+            </TableColumn>
+
+
+        </columns>
+    </TableView>
 
 
 </VBox>
