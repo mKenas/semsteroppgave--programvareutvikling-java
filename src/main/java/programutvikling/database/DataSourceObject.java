@@ -2,7 +2,7 @@ package programutvikling.database;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import programutvikling.Erstatning;
+import programutvikling.base.Erstatning;
 import programutvikling.base.*;
 
 import java.util.ArrayList;

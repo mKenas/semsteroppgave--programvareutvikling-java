@@ -83,6 +83,9 @@
     -fx-font-size: 13;
     -fx-text-fill: #FFF;
     -fx-background-color: #609691;
+    -fx-background-radius: 5;
+
+
 
 }
 
@@ -93,14 +96,23 @@
 }
 
 /*tabell knapp*/
-.rediger-knapp {
+.rediger-knapp,.vis-kunde-knapp {
 
     -fx-background-color: #8DC0BC;
+    -fx-font-family: "Font Awesome 5 Free";
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 5;
 }
 
 .slett-knapp {
 
     -fx-background-color: #c02f3b;
+    -fx-font-family: "Font Awesome 5 Free";
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 5;
+
+
+
 }
 
 /*menu-button*/
@@ -121,9 +133,19 @@
 .menu-item {
 
 }
+.menu-item .label{
+    -fx-text-fill: #609691;
 
+}
+
+
+
+.menu-item:focused {
+    -fx-background-color: #F7F7F7;
+}
 .context-menu {
     -fx-pref-width: 100px;
+
 }
 
 /* */

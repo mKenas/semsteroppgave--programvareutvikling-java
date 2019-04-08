@@ -5,13 +5,8 @@ import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import programutvikling.base.*;
@@ -30,6 +25,9 @@ public class KunderSceneKontroller {
   TableColumn<Kunde, Void> redigerKolonne;
   @FXML
   TableColumn<Kunde, Void> slettKolonne;
+  @FXML
+  TableColumn<Kunde, Void> visKundeKolonne;
+
   private Kunde kunde;
   private BorderPane borderPane = hsk.getBorderPane();
   private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
@@ -52,13 +50,17 @@ public class KunderSceneKontroller {
 
     kunderliste = dso.getKunder();
 
+    if (kunderliste.size() ==0) {
+      tableview.setPlaceholder(new Label("Ingen kunder er registrert ennå!"));
 
+    }
     if (kunderliste.size() >= 1) {
 
 
       tableview.getItems().setAll(kunderliste);
       leggTilRedigerKnapp();
       leggTilSlettKnapp();
+      leggTilVisKundeKnapp();
 
     }
 
@@ -89,7 +91,7 @@ public class KunderSceneKontroller {
 
   public void lagreKunde() {
     try {
-      KundeObjektSkriver.write(kunderliste, KUNDE_FIL_LOKASJON);
+      ObjektFilSkriver.write(kunderliste, KUNDE_FIL_LOKASJON);
       System.out.println("Kundene lagret");
     } catch (IOException e) {
       FileExceptionHandler.generateIOExceptionMsg(e);
@@ -99,7 +101,7 @@ public class KunderSceneKontroller {
 
   public void lasteKunde() {
     try {
-      kunderlisteFraFil = KundeObjektLeser.read(KUNDE_FIL_LOKASJON);
+      kunderlisteFraFil = ObjektFilLeser.read(KUNDE_FIL_LOKASJON);
       System.out.println("Kundene lastet");
       dso.setKunder(kunderlisteFraFil);
       kunderliste = kunderlisteFraFil;
@@ -125,7 +127,7 @@ public class KunderSceneKontroller {
       public TableCell<Kunde, Void> call(final TableColumn<Kunde, Void> param) {
         final TableCell<Kunde, Void> cell = new TableCell<Kunde, Void>() {
 
-          private final Button knapp = new Button("Slett");
+          private final Button knapp = new Button("\uf00d");
 
           {
             knapp.getStyleClass().add("slett-knapp");
@@ -157,7 +159,7 @@ public class KunderSceneKontroller {
 
     slettKolonne.setCellFactory(cellFactory);
 
-    //tableview.getColumns().add(kolonne);
+
 
   }
 
@@ -170,8 +172,7 @@ public class KunderSceneKontroller {
       public TableCell<Kunde, Void> call(final TableColumn<Kunde, Void> param) {
         final TableCell<Kunde, Void> cell = new TableCell<Kunde, Void>() {
 
-          private final Button knapp = new Button("Rediger");
-
+          private final Button knapp = new Button("\uF044");
 
           {
             knapp.getStyleClass().add("rediger-knapp");
@@ -202,30 +203,89 @@ public class KunderSceneKontroller {
 
     redigerKolonne.setCellFactory(cellFactory);
 
-    //tableview.getColumns().add(kolonne);
-    //tableview.getColumns().setAll(kolonne);
 
   }
+
+  private void leggTilVisKundeKnapp() {
+//    TableColumn<Kunde, Void> kolonne = new TableColumn("Rediger");
+
+
+    Callback<TableColumn<Kunde, Void>, TableCell<Kunde, Void>> cellFactory = new Callback<TableColumn<Kunde, Void>, TableCell<Kunde, Void>>() {
+      @Override
+      public TableCell<Kunde, Void> call(final TableColumn<Kunde, Void> param) {
+        final TableCell<Kunde, Void> cell = new TableCell<Kunde, Void>() {
+
+          private final Button knapp = new Button("\uf2c2");
+
+          {
+            knapp.getStyleClass().add("vis-kunde-knapp");
+            knapp.setCursor(Cursor.HAND);
+            knapp.setOnAction((ActionEvent event) -> {
+              kunde = getTableView().getItems().get(getIndex());
+              System.out.println("Kunde: " + kunde);
+
+
+              NavigeringTilVisKundeScene();
+
+            });
+          }
+
+          @Override
+          public void updateItem(Void item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+              setGraphic(null);
+            } else {
+              setGraphic(knapp);
+            }
+          }
+        };
+        return cell;
+      }
+    };
+
+    visKundeKolonne.setCellFactory(cellFactory);
+
+
+  }
+
 
 
   protected void NavigeringTilRedigerKundeScene() {
 
-    Parent root = null;
+    try {
+      Navigator.visSceneMedKundeInfo(borderPane, new Navigator().getREDIGER_KUNDE_SCENE(),kunde);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  protected void NavigeringTilVisKundeScene() {
 
     try {
+      Navigator.visSceneMedKundeInfo(borderPane, new Navigator().getVIS_KUNDE_SCENE(),kunde);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  protected void handleRegistrerKundeKnapp() {
+
+    this.NavigeringTilRegistrerKundeScene();
 
 
-      FXMLLoader loader = new FXMLLoader(getClass().getResource(new Navigator().getREDIGER_KUNDE_SCENE()));
-      root = loader.load();
-      RedigerKundeSceneKontroller rkk = loader.getController();
-      rkk.setKunde(kunde);
+  }
 
+
+  protected void NavigeringTilRegistrerKundeScene() {
+
+    try {
+      Navigator.visScene(borderPane, new Navigator().getRegistrerKundeScene());
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    borderPane.setCenter(root);
   }
-
 
 }

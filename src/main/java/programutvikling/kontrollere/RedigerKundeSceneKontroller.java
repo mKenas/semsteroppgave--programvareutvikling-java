@@ -19,9 +19,22 @@ public class RedigerKundeSceneKontroller {
   private Kunde kunde = null;
 
   @FXML
-  private TextField navn;
+  private TextField kundeNrTekstFelt;
   @FXML
-  private TextField fakturaadresse;
+  private TextField navnTekstFelt;
+  @FXML
+  private TextField etternavnTekstFelt;
+  @FXML
+  private TextField epostTekstFelt;
+  @FXML
+  private TextField mobilTekstFelt;
+  @FXML
+  private TextField fakturaadresseTekstFelt;
+  @FXML
+  private TextField postnummerTekstFelt;
+  @FXML
+  private TextField poststedTekstFelt;
+
 
 
   public void initialize() {
@@ -29,20 +42,18 @@ public class RedigerKundeSceneKontroller {
 
   }
 
-  public void setNavn(String navn) {
-
-    this.navn.setText(navn);
-  }
-
-  public void setFakturaadresse(String fakturaadresse) {
-
-    this.fakturaadresse.setText(fakturaadresse);
-  }
-
   public void setKunde(Kunde k) {
     this.kunde = k;
-    setNavn(kunde.getNavn());
-    setFakturaadresse(kunde.getFakturaAdresse());
+    kundeNrTekstFelt.setText(k.getKundeNr());
+    navnTekstFelt.setText(k.getNavn());
+    etternavnTekstFelt.setText(k.getEtternavn());
+    epostTekstFelt.setText(k.getEpost());
+    mobilTekstFelt.setText(k.getMobil());
+    fakturaadresseTekstFelt.setText(k.getFakturaAdresse());
+    postnummerTekstFelt.setText(k.getPostnummer());
+    poststedTekstFelt.setText(k.getPoststed());
+
+
   }
 
   @FXML
@@ -53,8 +64,14 @@ public class RedigerKundeSceneKontroller {
 
 
   protected void NavigeringTilRegistrerKundeScene() {
-    kunde.setNavn(navn.getText());
-    kunde.setFakturaAdresse(fakturaadresse.getText());
+    kunde.setKundeNr(kundeNrTekstFelt.getText());
+    kunde.setNavn(navnTekstFelt.getText());
+    kunde.setEtternavn(etternavnTekstFelt.getText());
+    kunde.setEpost(epostTekstFelt.getText());
+    kunde.setMobil(mobilTekstFelt.getText());
+    kunde.setFakturaAdresse(fakturaadresseTekstFelt.getText());
+    kunde.setPostnummer(postnummerTekstFelt.getText());
+    kunde.setPoststed(poststedTekstFelt.getText());
 
 
     try {

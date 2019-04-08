@@ -4,6 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.Button?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
       styleClass="mainbar" stylesheets="@../styles/styles.css"
       xmlns="http://javafx.com/javafx/8.0.172-ea">
@@ -23,6 +27,72 @@
             </Label>
         </children>
     </HBox>
+
+    <TableView fx:id="tableview" prefHeight="383.0" prefWidth="930.0">
+        <columns>
+            <TableColumn prefWidth="150.0" text="SkadeNr">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Skadenummer" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn prefWidth="200.0" text="Type">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Type" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn prefWidth="150.0" text="Beskrivelse">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Beskrivelse" />
+                </cellValueFactory>
+            </TableColumn>
+
+
+
+            <TableColumn prefWidth="220.0" text="Vitner">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Vitner" />
+                </cellValueFactory>
+            </TableColumn>
+
+
+            <TableColumn prefWidth="220.0" text="Kunde">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Kunde" />
+                </cellValueFactory>
+            </TableColumn>
+
+
+
+            <TableColumn fx:id="visKundeKolonne" prefWidth="60.0" text="">
+
+            </TableColumn>
+
+            <TableColumn fx:id="redigerKolonne" prefWidth="60.0" text="">
+
+            </TableColumn>
+
+            <TableColumn fx:id="slettKolonne" prefWidth="60.0" text="">
+
+            </TableColumn>
+
+
+        </columns>
+        <VBox.margin>
+            <Insets bottom="100.0" />
+        </VBox.margin>
+    </TableView>
+
+    <BorderPane prefHeight="128.0" prefWidth="930.0">
+        <right>
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false"  prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Registrer Skade" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets right="15.0" />
+                </BorderPane.margin>
+            </Button>
+        </right>
+    </BorderPane>
 
 
 </VBox>

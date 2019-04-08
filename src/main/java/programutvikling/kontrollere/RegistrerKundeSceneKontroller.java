@@ -18,14 +18,35 @@ public class RegistrerKundeSceneKontroller {
   private BorderPane borderPane = hsk.getBorderPane();
 
   @FXML
-  private TextField navn;
+  private TextField kundeNrTekstFelt;
   @FXML
-  private TextField fakturaadresse;
+  private TextField navnTekstFelt;
+  @FXML
+  private TextField etternavnTekstFelt;
+  @FXML
+  private TextField fakturaadresseTekstFelt;
+  @FXML
+  private TextField postnummerTekstFelt;
+  @FXML
+  private TextField poststedTekstFelt;
+  @FXML
+  private TextField epostTekstFelt;
+  @FXML
+  private TextField mobilTekstFelt;
 
 
   @FXML
   private void handleRegistrerKundeKnapp() {
-    Kunde kunde = new Kunde(navn.getText(), fakturaadresse.getText());
+    String personnummer = kundeNrTekstFelt.getText();
+    String navn = navnTekstFelt.getText();
+    String etternavn = etternavnTekstFelt.getText();
+    String fakturaadresse = fakturaadresseTekstFelt.getText();
+    String postnummer = postnummerTekstFelt.getText();
+    String poststed = poststedTekstFelt.getText();
+    String epost = epostTekstFelt.getText();
+    String mobil = mobilTekstFelt.getText();
+
+    Kunde kunde = new Kunde(personnummer, navn,etternavn, epost,mobil,fakturaadresse,postnummer,poststed);
     dso.leggTilKunde(kunde);
     navigeringTilKunederScene();
   }

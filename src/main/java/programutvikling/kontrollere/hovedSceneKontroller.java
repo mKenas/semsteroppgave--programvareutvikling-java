@@ -44,9 +44,7 @@ public class hovedSceneKontroller {
 
     try {
       Navigator.visScene(borderPane, new Navigator().getDashbordScene());
-      //DashbordKontroller dbc = new DashbordKontroller();
-      //dbc.setBorderPane(borderPane);
-      //System.out.println(borderPane.getCenter());
+
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -106,7 +104,7 @@ public class hovedSceneKontroller {
 
 
     try {
-      KundeObjektSkriver.write(kunderliste, KUNDE_FIL_LOKASJON);
+      ObjektFilSkriver.write(kunderliste, KUNDE_FIL_LOKASJON);
       System.out.println("Kundene lagret");
     } catch (IOException e) {
       FileExceptionHandler.generateIOExceptionMsg(e);
@@ -123,7 +121,7 @@ public class hovedSceneKontroller {
     try {
 
 
-      kunderlisteFraFil = KundeObjektLeser.read(KUNDE_FIL_LOKASJON);
+      kunderlisteFraFil = ObjektFilLeser.read(KUNDE_FIL_LOKASJON);
 
 
       dso.nullstillKunder();
@@ -139,17 +137,7 @@ public class hovedSceneKontroller {
   }
 
 
-  @FXML
-  protected void handleRegistrerKundeKnapp() {
 
-
-   /* try {
-      Navigator.visScene(borderPane, new Navigator().getRegistrerKundeScene());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-*/
-  }
 
   @FXML
   protected void handleAvsluttKnapp() {
