@@ -37,7 +37,7 @@ public class RegistrerKundeSceneKontroller {
 
   @FXML
   private void handleRegistrerKundeKnapp() {
-    String personnummer = kundeNrTekstFelt.getText();
+    String kundeNr = kundeNrTekstFelt.getText();
     String navn = navnTekstFelt.getText();
     String etternavn = etternavnTekstFelt.getText();
     String fakturaadresse = fakturaadresseTekstFelt.getText();
@@ -46,7 +46,7 @@ public class RegistrerKundeSceneKontroller {
     String epost = epostTekstFelt.getText();
     String mobil = mobilTekstFelt.getText();
 
-    Kunde kunde = new Kunde(personnummer, navn,etternavn, epost,mobil,fakturaadresse,postnummer,poststed);
+    Kunde kunde = new Kunde(kundeNr, navn,etternavn, epost,mobil,fakturaadresse,postnummer,poststed);
     dso.leggTilKunde(kunde);
     navigeringTilKunederScene();
   }

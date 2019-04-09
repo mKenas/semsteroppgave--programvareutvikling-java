@@ -89,32 +89,6 @@ public class KunderSceneKontroller {
   }
 
 
-  public void lagreKunde() {
-    try {
-      ObjektFilSkriver.write(kunderliste, KUNDE_FIL_LOKASJON);
-      System.out.println("Kundene lagret");
-    } catch (IOException e) {
-      FileExceptionHandler.generateIOExceptionMsg(e);
-    }
-  }
-
-
-  public void lasteKunde() {
-    try {
-      kunderlisteFraFil = ObjektFilLeser.read(KUNDE_FIL_LOKASJON);
-      System.out.println("Kundene lastet");
-      dso.setKunder(kunderlisteFraFil);
-      kunderliste = kunderlisteFraFil;
-      tableview.setItems(kunderliste);
-      leggTilRedigerKnapp();
-      leggTilSlettKnapp();
-
-    } catch (IOException e) {
-      FileExceptionHandler.generateIOExceptionMsg(e);
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-    }
-  }
 
 
   private void leggTilSlettKnapp() {

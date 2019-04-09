@@ -3,6 +3,7 @@ package programutvikling.base;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import programutvikling.kontrollere.KontrollerMedData;
 import programutvikling.kontrollere.RedigerKundeSceneKontroller;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class Navigator {
   private final String ERSTATNINGER_SCENE;
   private final String SKADER_SCENE;
   private final String VIS_KUNDE_SCENE;
+  private final String OPPRETT_FORSIKRING_SCENE;
 
   public Navigator() throws IOException {
     this.DASHBORD_SCENE = "/programutvikling/views/dashbordScene.fxml";
@@ -28,6 +30,7 @@ public class Navigator {
     this.ERSTATNINGER_SCENE = "/programutvikling/views/erstatningerScene.fxml";
     this.SKADER_SCENE = "/programutvikling/views/skaderScene.fxml";
     this.VIS_KUNDE_SCENE = "/programutvikling/views/visKundeScene.fxml";
+    this.OPPRETT_FORSIKRING_SCENE = "/programutvikling/views/opprettForsikringScene.fxml";
   }
 
   public static void visScene(BorderPane borderPane, String fxml) {
@@ -44,6 +47,8 @@ public class Navigator {
     borderPane.setCenter(root);
   }
 
+
+
   public static void visSceneMedKundeInfo(BorderPane borderPane, String fxml, Kunde kunde) {
 
     Parent root = null;
@@ -51,8 +56,8 @@ public class Navigator {
     try {
       FXMLLoader loader = new FXMLLoader(Navigator.class.getResource(fxml));
       root = loader.load();
-      RedigerKundeSceneKontroller rkk = loader.getController();
-      rkk.setKunde(kunde);
+      KontrollerMedData kontroller = loader.getController();
+      kontroller.setKunde(kunde);
 
     } catch (IOException e) {
       e.printStackTrace();
@@ -91,6 +96,10 @@ public class Navigator {
 
   public String getVIS_KUNDE_SCENE() {
     return VIS_KUNDE_SCENE;
+  }
+
+  public String getOPPRETT_FORSIKRING_SCENE() {
+    return OPPRETT_FORSIKRING_SCENE;
   }
 }
 

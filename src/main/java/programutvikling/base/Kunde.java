@@ -2,6 +2,7 @@ package programutvikling.base;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,8 +21,7 @@ public class Kunde implements Serializable, Observable {
   private String fakturaAdresse;
   private String postnummer;
   private String poststed;
-  private DateFormat datoFormat;
-  private Date registreringsDato;
+  private String opprettelsesDato;
 
   private ArrayList<Forsikring> forsikringer;
 
@@ -33,7 +33,10 @@ public class Kunde implements Serializable, Observable {
 
   }
 
-  public Kunde(String personnummer, String navn, String etternavn,String epost, String mobil, String fakturaAdresse, String postnummer, String poststed) {
+  public Kunde(String personnummer, String navn, String etternavn,String epost, String mobil, String fakturaAdresse, String postnummer, String poststed)  {
+    String dato;
+    SimpleDateFormat datoFormat;
+
     this.kundeNr = personnummer;
     this.navn = navn;
     this.etternavn = etternavn;
@@ -42,8 +45,10 @@ public class Kunde implements Serializable, Observable {
     this.fakturaAdresse = fakturaAdresse;
     this.postnummer = postnummer;
     this.poststed = poststed;
-    this.datoFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-    this.registreringsDato = new Date();
+    datoFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+    dato = datoFormat.format(new Date());
+    this.opprettelsesDato = dato;
+
   }
 
   @Override
@@ -109,8 +114,8 @@ public class Kunde implements Serializable, Observable {
     this.poststed = poststed;
   }
 
-  public Date getRegistreringsDato() {
-    return registreringsDato;
+  public String getOpprettelsesDato() {
+    return this.opprettelsesDato;
   }
 
 
@@ -141,13 +146,13 @@ public class Kunde implements Serializable, Observable {
             Objects.equals(fakturaAdresse, kunde.fakturaAdresse) &&
             Objects.equals(postnummer, kunde.postnummer) &&
             Objects.equals(poststed, kunde.poststed) &&
-            Objects.equals(registreringsDato, kunde.registreringsDato);
+            Objects.equals(opprettelsesDato, kunde.opprettelsesDato);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(kundeNr, navn, etternavn, fakturaAdresse, postnummer, poststed, registreringsDato);
+    return Objects.hash(kundeNr, navn, etternavn, fakturaAdresse, postnummer, poststed, opprettelsesDato);
   }
 }
 

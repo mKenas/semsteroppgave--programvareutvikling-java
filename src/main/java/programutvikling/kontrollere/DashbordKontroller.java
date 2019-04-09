@@ -19,15 +19,8 @@ public class DashbordKontroller {
 
   }
 
+
   @FXML
-  protected void handleRegistrerKundeKnapp() {
-
-    this.NavigeringTilRegistrerKundeScene();
-
-
-  }
-
-
   protected void NavigeringTilRegistrerKundeScene() {
 
     try {
@@ -37,7 +30,16 @@ public class DashbordKontroller {
     }
 
   }
+  @FXML
+  protected void NavigeringTilOpprettForsikringScene() {
 
+    try {
+      Navigator.visScene(borderPane, new Navigator().getOPPRETT_FORSIKRING_SCENE());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+  }
 
 }
 

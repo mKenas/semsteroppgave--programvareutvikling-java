@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class hovedSceneKontroller {
 
-  private static final String KUNDE_FIL_LOKASJON = "kunder.jobj";
+  private static final String KUNDE_FIL_LOKASJON="";
   @FXML
   protected Button mainSceneKnapp;
   @FXML

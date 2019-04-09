@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RedigerKundeSceneKontroller">
+<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisKundeSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
@@ -26,96 +25,182 @@
             </Label>
         </children>
     </HBox>
-    <HBox alignment="CENTER" prefHeight="504.0" prefWidth="930.0">
-        <children>
-            <VBox prefHeight="100.0" prefWidth="420.0">
-                <children>
-                    <Label text="KundeNr" />
-                    <TextField fx:id="kundeNrTekstFelt" editable="false" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
-                        <VBox.margin>
-                            <Insets bottom="15.0" right="10.0" />
-                        </VBox.margin>
-                    </TextField>
-                    <Label layoutX="10.0" layoutY="10.0" text="Navn" />
-                    <TextField fx:id="navnTekstFelt" editable="false" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
-                        <VBox.margin>
-                            <Insets bottom="15.0" right="10.0" />
-                        </VBox.margin>
-                    </TextField>
-                    <Label layoutX="10.0" layoutY="54.0" text="Etternavn" />
-                    <TextField fx:id="etternavnTekstFelt" editable="false" prefHeight="48.0" prefWidth="400.0">
-                        <VBox.margin>
-                            <Insets bottom="15.0" right="10.0" />
-                        </VBox.margin>
-                    </TextField>
-                    <Label layoutX="10.0" layoutY="170.0" text="Epost" />
-                    <TextField fx:id="epostTekstFelt" editable="false" layoutX="10.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
-                        <VBox.margin>
-                            <Insets right="10.0" />
-                        </VBox.margin>
-                    </TextField>
-                </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="420.0">
-                <children>
-                    <Label layoutX="20.0" layoutY="170.0" text="Mobil">
-                        <VBox.margin>
-                            <Insets left="10.0" />
-                        </VBox.margin>
-                    </Label>
-
-                    <TextField fx:id="mobilTekstFelt" editable="false" layoutX="20.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
-                        <VBox.margin>
-                            <Insets bottom="15.0" left="10.0" />
-                        </VBox.margin>
-                    </TextField>
-                    <Label text="Fakturaadresse">
-                        <VBox.margin>
-                            <Insets left="10.0" />
-                        </VBox.margin>
-                    </Label>
-                    <TextField fx:id="fakturaadresseTekstFelt" editable="false" prefHeight="48.0" prefWidth="400.0">
-                        <VBox.margin>
-                            <Insets bottom="15.0" left="10.0" />
-                        </VBox.margin>
-                    </TextField>
-                    <Label layoutX="10.0" layoutY="10.0" text="Postnummer">
-                        <VBox.margin>
-                            <Insets left="10.0" />
-                        </VBox.margin>
-                    </Label>
-                    <TextField fx:id="postnummerTekstFelt" editable="false" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
-                        <VBox.margin>
-                            <Insets bottom="15.0" left="10.0" />
-                        </VBox.margin>
-                    </TextField>
-                    <Label layoutX="10.0" layoutY="54.0" text="Poststed">
-                        <VBox.margin>
-                            <Insets left="10.0" />
-                        </VBox.margin>
-                    </Label>
-                    <TextField fx:id="poststedTekstFelt" editable="false" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
-                        <VBox.margin>
-                            <Insets bottom="15.0" left="10.0" />
-                        </VBox.margin>
-                    </TextField>
-                </children>
-            </VBox>
-        </children>
-        <VBox.margin>
-            <Insets top="20.0" />
-        </VBox.margin>
-    </HBox>
-
-    <BorderPane prefHeight="200.0" prefWidth="200.0">
-        <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRedigerKundeKnapp" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Rediger" BorderPane.alignment="CENTER">
-                <BorderPane.margin>
-                    <Insets right="15.0" />
-                </BorderPane.margin>
-            </Button>
-        </right>
-    </BorderPane>
+   <VBox fx:id="vbox1" prefHeight="175.0" prefWidth="930.0" styleClass="vis-kunde-kontainer">
+      <children>
+         <HBox alignment="CENTER" prefHeight="504.0" prefWidth="930.0">
+            <children>
+               <VBox prefHeight="100.0" prefWidth="300.0">
+                  <children>
+                     <HBox prefHeight="47.0" prefWidth="420.0">
+                        <children>
+                           <Label prefHeight="47.0" prefWidth="66.0" text="KundeNr:">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="kundeNrLabel" prefHeight="48.0" prefWidth="206.0" />
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="47.0" prefWidth="420.0">
+                        <children>
+                           <Label prefHeight="47.0" prefWidth="184.0" text="Navn:">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="navnLabel" prefHeight="50.0" prefWidth="394.0" />
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="47.0" prefWidth="420.0">
+                        <children>
+                           <Label prefHeight="47.0" prefWidth="224.0" text="Etternavn:">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="etternavnLabel" prefHeight="50.0" prefWidth="381.0" />
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+               <VBox prefHeight="100.0" prefWidth="300.0">
+                  <children>
+                     <HBox prefHeight="47.0" prefWidth="420.0">
+                        <children>
+                           <Label prefHeight="47.0" prefWidth="185.0" text="Epost:">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="epostLabel" prefHeight="50.0" prefWidth="393.0" />
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="47.0" prefWidth="420.0">
+                        <children>
+                           <Label prefHeight="47.0" prefWidth="189.0" text="Mobil:">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="mobilLabel" prefHeight="48.0" prefWidth="400.0" />
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="47.0" prefWidth="420.0">
+                        <children>
+                           <Label prefHeight="47.0" prefWidth="308.0" text="Fakturaadresse:">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="fakturaadresseLabel" prefHeight="48.0" prefWidth="400.0" />
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+               <VBox prefHeight="100.0" prefWidth="300.0">
+                  <children>
+                     <HBox prefHeight="47.0" prefWidth="420.0">
+                        <children>
+                           <Label prefHeight="46.0" prefWidth="285.0" text="Postnummer:">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="postnummerLabel" prefHeight="48.0" prefWidth="400.0" />
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="47.0" prefWidth="420.0">
+                        <children>
+                           <Label prefHeight="47.0" prefWidth="243.0" text="Poststed:">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="poststedLabel" prefHeight="48.0" prefWidth="400.0" />
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="47.0" prefWidth="420.0">
+                        <children>
+                           <Label prefHeight="47.0" prefWidth="331.0" text="Opprettelsesdato:">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="opprettelsesdatoLabel" prefHeight="48.0" prefWidth="400.0" />
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+            <VBox.margin>
+               <Insets bottom="20.0" />
+            </VBox.margin>
+         </HBox>
+      </children>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <VBox.margin>
+         <Insets bottom="20.0" left="15.0" right="15.0" />
+      </VBox.margin></VBox>
+   <HBox prefHeight="242.0" prefWidth="910.0">
+      <children>
+         <VBox fx:id="vbox1" prefHeight="261.0" prefWidth="310.0" styleClass="vis-kunde-kontainer">
+            <children>
+               <HBox prefHeight="47.0" prefWidth="420.0">
+                  <children>
+                     <Label prefHeight="47.0" prefWidth="135.0" text="Kundes forsikringer:" />
+                  </children>
+               </HBox>
+               <Hyperlink prefHeight="25.0" prefWidth="305.0" text="Hyperlink" />
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <HBox.margin>
+               <Insets right="15.0" />
+            </HBox.margin>
+            <padding>
+               <Insets right="15.0" />
+            </padding>
+         </VBox>
+         <VBox fx:id="vbox1" prefHeight="175.0" prefWidth="310.0" styleClass="vis-kunde-kontainer">
+            <children>
+               <HBox prefHeight="47.0" prefWidth="420.0">
+                  <children>
+                     <Label prefHeight="47.0" prefWidth="148.0" text="Registrerte skader:" />
+                  </children>
+               </HBox>
+               <Hyperlink prefHeight="25.0" prefWidth="305.0" text="Hyperlink" />
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <HBox.margin>
+               <Insets right="15.0" />
+            </HBox.margin>
+         </VBox>
+         <VBox fx:id="vbox1" prefHeight="175.0" prefWidth="310.0" styleClass="vis-kunde-kontainer">
+            <children>
+               <HBox prefHeight="47.0" prefWidth="420.0">
+                  <children>
+                     <Label prefHeight="47.0" prefWidth="175.0" text="Registrerte utbetalinger:" />
+                  </children>
+               </HBox>
+               <Hyperlink prefHeight="25.0" prefWidth="305.0" text="Hyperlink" />
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </VBox>
+      </children>
+      <VBox.margin>
+         <Insets left="15.0" right="15.0" />
+      </VBox.margin>
+   </HBox>
 
 
 </VBox>

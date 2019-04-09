@@ -10,7 +10,7 @@ import programutvikling.database.DataSourceObject;
 
 import java.io.IOException;
 
-public class RedigerKundeSceneKontroller {
+public class RedigerKundeSceneKontroller implements KontrollerMedData {
 
   DataSourceObject dso = DataSourceObject.getInstance();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();

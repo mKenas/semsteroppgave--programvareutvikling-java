@@ -37,7 +37,7 @@
                      </graphic></MenuItem>
                         <MenuItem mnemonicParsing="false" onAction="#handleLagreKnapp" text="Lagre">
                      <graphic>
-                        <Label text="">
+                        <Label text="">
                            <font>
                               <Font name="Font Awesome 5 Free Solid" size="13.0" />
                            </font>
@@ -45,7 +45,7 @@
                      </graphic></MenuItem>
                         <MenuItem mnemonicParsing="false" onAction="#handleAvsluttKnapp" text="Avslutt">
                      <graphic>
-                        <Label text="">
+                        <Label text="">
                            <font>
                               <Font name="Font Awesome 5 Free Solid" size="13.0" />
                            </font>
@@ -67,7 +67,7 @@
                 <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
             </BorderPane.margin>
             <children>
-                <Label alignment="TOP_LEFT">
+                <Label alignment="TOP_LEFT" text="Hoved meny">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -103,7 +103,7 @@
 
 
     <center>
-        <fx:include source="/programutvikling/views/dashbordScene.fxml" />
+        <!--<fx:include source="/programutvikling/views/dashbordScene.fxml" />-->
 
     </center>
 

@@ -29,7 +29,7 @@
         <children>
             <VBox prefHeight="230.0" prefWidth="420.0">
                 <children>
-                    <Button mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer ny kunde">
+                    <Button mnemonicParsing="false" onAction="#NavigeringTilRegistrerKundeScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer ny kunde">
                         <VBox.margin>
                             <Insets bottom="5.0" left="10.0" top="10.0" />
                         </VBox.margin>
@@ -49,7 +49,7 @@
             </VBox>
             <VBox prefHeight="504.0" prefWidth="420.0">
                 <children>
-                    <Button id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Opprett ny forsikring">
+                    <Button id="dashbord-knapp" mnemonicParsing="false" onAction="#NavigeringTilOpprettForsikringScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Opprett ny forsikring">
                         <VBox.margin>
                             <Insets bottom="5.0" left="10.0" top="10.0" />
                         </VBox.margin>
