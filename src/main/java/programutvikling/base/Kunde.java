@@ -132,7 +132,7 @@ public class Kunde implements Serializable, Observable {
 
   @Override
   public String toString() {
-    return String.format("Navn: %s, Fakturaadresse: %s", navn, fakturaAdresse);
+    return String.format("%s %s %s", kundeNr, navn, etternavn);
   }
 
   @Override
@@ -140,19 +140,13 @@ public class Kunde implements Serializable, Observable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Kunde kunde = (Kunde) o;
-    return Objects.equals(kundeNr, kunde.kundeNr) &&
-            Objects.equals(navn, kunde.navn) &&
-            Objects.equals(etternavn, kunde.etternavn) &&
-            Objects.equals(fakturaAdresse, kunde.fakturaAdresse) &&
-            Objects.equals(postnummer, kunde.postnummer) &&
-            Objects.equals(poststed, kunde.poststed) &&
-            Objects.equals(opprettelsesDato, kunde.opprettelsesDato);
+    return Objects.equals(kundeNr, kunde.kundeNr);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(kundeNr, navn, etternavn, fakturaAdresse, postnummer, poststed, opprettelsesDato);
+    return Objects.hash(kundeNr);
   }
 }
 

@@ -17,23 +17,29 @@ public class ObjektFilLeser {
     FileChooser filvelger = new FileChooser();
     filvelger.setTitle("Åpne fil");
 
-    FileChooser.ExtensionFilter filendelse = new FileChooser.ExtensionFilter("JOBJ filer (*.jobj)", "*.jobj");
-    FileChooser.ExtensionFilter filendelse2 = new FileChooser.ExtensionFilter("CSV filer (*.csv)", "*.csv");
-    filvelger.getExtensionFilters().addAll(filendelse,filendelse2);
+    FileChooser.ExtensionFilter filEndelse = new FileChooser.ExtensionFilter("JOBJ filer (*.jobj)", "*.jobj");
+    FileChooser.ExtensionFilter filEndelse2 = new FileChooser.ExtensionFilter("CSV filer (*.csv)", "*.csv");
+    filvelger.getExtensionFilters().addAll(filEndelse, filEndelse2);
 
     File fil = filvelger.showOpenDialog(null);
+    String valgtFilEndelse = filvelger.getSelectedExtensionFilter().getExtensions().get(0);
 
 
-
-    if(fil != null) {
-       filsti = String.valueOf(fil.toPath());
+    if (fil != null) {
+      filsti = String.valueOf(fil.toPath());
     }
-    try (FileInputStream fin = new FileInputStream(filsti);
-         ObjectInputStream oin = new ObjectInputStream(fin)) {
-      List<Kunde> list = (List<Kunde>) oin.readObject();
 
-      return FXCollections.observableList(list);
+    if (valgtFilEndelse == "*.jobj") {
+
+      try (FileInputStream fin = new FileInputStream(filsti);
+           ObjectInputStream oin = new ObjectInputStream(fin)) {
+        List<Kunde> list = (List<Kunde>) oin.readObject();
+
+        return FXCollections.observableList(list);
+      }
     }
+    // Dette bør fiskes !!
+    return null;
   }
 
 }

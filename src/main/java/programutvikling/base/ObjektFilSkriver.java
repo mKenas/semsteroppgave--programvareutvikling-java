@@ -16,23 +16,31 @@ public class ObjektFilSkriver {
     FileChooser filvelger = new FileChooser();
 
     filvelger.setTitle("Lagre fil");
-    FileChooser.ExtensionFilter filendelse = new FileChooser.ExtensionFilter("JOBJ filer (*.jobj)", "*.jobj");
-    FileChooser.ExtensionFilter filendelse2 = new FileChooser.ExtensionFilter("CSV filer (*.csv)", "*.csv");
-    filvelger.getExtensionFilters().addAll(filendelse,filendelse2);
+    FileChooser.ExtensionFilter filEndelse = new FileChooser.ExtensionFilter("JOBJ filer (*.jobj)", "*.jobj");
+    FileChooser.ExtensionFilter filEndelse2 = new FileChooser.ExtensionFilter("CSV filer (*.csv)", "*.csv");
+    filvelger.getExtensionFilters().addAll(filEndelse,filEndelse2);
 
 
     File fil = filvelger.showSaveDialog(null);
 
+    String valgtFilEndelse = filvelger.getSelectedExtensionFilter().getExtensions().get(0);
     if(fil != null) {
        filsti = String.valueOf(fil.toPath());
+
+
+
+    }
+    if (valgtFilEndelse =="*.jobj"){
+
+      try (
+              FileOutputStream fos = new FileOutputStream(filsti);
+              ObjectOutputStream out = new ObjectOutputStream(fos);
+      ) {
+        out.writeObject(new ArrayList<Kunde>(kunderliste));
+      }
     }
 
-    try (
-            FileOutputStream fos = new FileOutputStream(filsti);
-            ObjectOutputStream out = new ObjectOutputStream(fos);
-    ) {
-      out.writeObject(new ArrayList<Kunde>(kunderliste));
-    }
+
   }
 
 }

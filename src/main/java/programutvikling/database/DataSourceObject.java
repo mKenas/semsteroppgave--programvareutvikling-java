@@ -62,7 +62,12 @@ public final class DataSourceObject implements Observable {
   }
 
   public void leggTilKunde(Kunde kunde) {
-    this.kunder.add(kunde);
+    this.kunder.forEach(k ->{
+      if (!kunde.equals(k)){
+        this.kunder.add(kunde);
+
+      }
+    } );
   }
 
   public void slettlKunde(Kunde kunde) {
