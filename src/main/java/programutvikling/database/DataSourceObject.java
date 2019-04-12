@@ -3,17 +3,18 @@ package programutvikling.database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import programutvikling.base.Erstatning;
-import programutvikling.base.*;
-
-import java.util.ArrayList;
+import programutvikling.base.Observable;
+import programutvikling.base.Observer;
+import programutvikling.base.Skade;
 
 public final class DataSourceObject implements Observable {
 
   private static DataSourceObject dso = null;
-  private ObservableList<Kunde> kunder = FXCollections.observableArrayList();
-  private ArrayList<Forsikring> forsikrings = new ArrayList<>();
-  private ArrayList<Skade> skaders = new ArrayList<>();
-  private ArrayList<Erstatning> erstatninger = new ArrayList<>();
+  private KunderListe kunderListe = KunderListe.getInstance();
+
+  private ForsikringerListe forsikringerListe = ForsikringerListe.getInstance();
+  private ObservableList<Skade> skaders = FXCollections.observableArrayList();
+  private ObservableList<Erstatning> erstatninger = FXCollections.observableArrayList();
 
 
   private DataSourceObject() {
@@ -26,56 +27,28 @@ public final class DataSourceObject implements Observable {
     return dso;
   }
 
-  public ObservableList<Kunde> getKunder() {
-    return kunder;
+  public KunderListe getKunderListe() {
+    return kunderListe;
   }
 
-  public void setKunder(ObservableList<Kunde> kunderliste) {
-
-    this.kunder = kunderliste;
+  public ForsikringerListe getForsikringerListe() {
+    return forsikringerListe;
   }
 
-  public ArrayList<Forsikring> getForsikrings() {
-    return forsikrings;
-  }
 
-  public ArrayList<Skade> getSkaders() {
+  public ObservableList<Skade> getSkaders() {
     return skaders;
   }
 
-  public ArrayList<Erstatning> getErstatninger() {
+  public ObservableList<Erstatning> getErstatninger() {
     return erstatninger;
   }
 
-  public void nullstillKunder() {
-    this.kunder.clear();
-
-
-  }
-
-  public void leggTilKunder(ObservableList<Kunde> kunderliste) {
-    for (int i = 0; i < kunderliste.size(); i++) {
-      Kunde k = kunderliste.get(i);
-      this.kunder.add(k);
-
-    }
-  }
-
-  public void leggTilKunde(Kunde kunde) {
-    this.kunder.forEach(k ->{
-      if (!kunde.equals(k)){
-        this.kunder.add(kunde);
-
-      }
-    } );
-  }
-
-  public void slettlKunde(Kunde kunde) {
-    this.kunder.remove(kunde);
-  }
 
   @Override
   public void observe(Observer o) {
 
   }
+
+
 }

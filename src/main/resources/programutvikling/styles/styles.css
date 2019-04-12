@@ -1,7 +1,8 @@
 .button {
     -fx-font-weight: bold;
 }
-.label{
+
+.label {
     -fx-text-fill: #609691;
 
 }
@@ -20,7 +21,6 @@
     -fx-background-color: #FFF;
     -fx-background-radius: 12;
 }
-
 
 .mainbar {
 
@@ -90,8 +90,6 @@
     -fx-background-color: #609691;
     -fx-background-radius: 5;
 
-
-
 }
 
 .sub-scene-knapp:hover {
@@ -101,7 +99,7 @@
 }
 
 /*tabell knapp*/
-.rediger-knapp,.vis-kunde-knapp {
+.rediger-knapp, .vis-kunde-knapp {
 
     -fx-background-color: #8DC0BC;
     -fx-font-family: "Font Awesome 5 Free";
@@ -115,8 +113,6 @@
     -fx-font-family: "Font Awesome 5 Free";
     -fx-text-fill: #FFF;
     -fx-background-radius: 5;
-
-
 
 }
 
@@ -138,16 +134,16 @@
 .menu-item {
 
 }
-.menu-item .label{
+
+.menu-item .label {
     -fx-text-fill: #609691;
 
 }
 
-
-
 .menu-item:focused {
     -fx-background-color: #F7F7F7;
 }
+
 .context-menu {
     -fx-pref-width: 100px;
 
@@ -199,16 +195,12 @@
     -fx-text-fill: #FFF;
     -fx-table-cell-border-color: #b3b3b3;
 
-
-
-
 }
-
 
 /**** */
 
-.vis-kunde-kontainer{
+.vis-kunde-kontainer {
     -fx-background-radius: 15;
-    -fx-background-color:#F7F7F7 ;
+    -fx-background-color: #F7F7F7;
 }
 

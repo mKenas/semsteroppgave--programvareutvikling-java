@@ -36,7 +36,6 @@ public class RedigerKundeSceneKontroller implements KontrollerMedData {
   private TextField poststedTekstFelt;
 
 
-
   public void initialize() {
 
 

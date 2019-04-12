@@ -9,9 +9,11 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
-import programutvikling.base.*;
+import programutvikling.base.HovedSceneKontainer;
+import programutvikling.base.Kunde;
+import programutvikling.base.Navigator;
 import programutvikling.database.DataSourceObject;
-import programutvikling.kontrollere.uihelpers.FileExceptionHandler;
+import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
 import java.io.IOException;
 
@@ -39,7 +41,7 @@ public class KunderSceneKontroller {
     if (kunderlisteFraFil != null) {
       if (kunderlisteFraFil.size() > 0) {
 
-        dso.setKunder(kunderlisteFraFil);
+        dso.getKunderListe().setKunder(kunderlisteFraFil);
 
 
         kundeEndret();
@@ -48,9 +50,10 @@ public class KunderSceneKontroller {
       }
     }
 
-    kunderliste = dso.getKunder();
+    kunderliste = dso.getKunderListe().getKunder();
 
-    if (kunderliste.size() ==0) {
+
+    if (kunderliste.size() == 0) {
       tableview.setPlaceholder(new Label("Ingen kunder er registrert ennå!"));
 
     }
@@ -89,14 +92,12 @@ public class KunderSceneKontroller {
   }
 
 
-
-
   private void leggTilSlettKnapp() {
     //TableColumn<Kunde, Void> kolonne = new TableColumn("Slett");
     //TableColumn colBtn = (TableColumn) tableview.getColumns().get(2);
 
 
-    Callback<TableColumn<Kunde, Void>, TableCell<Kunde, Void>> cellFactory = new Callback<TableColumn<Kunde, Void>, TableCell<Kunde, Void>>() {
+ /*   Callback<TableColumn<Kunde, Void>, TableCell<Kunde, Void>> cellFactory = new Callback<>() {
       @Override
       public TableCell<Kunde, Void> call(final TableColumn<Kunde, Void> param) {
         final TableCell<Kunde, Void> cell = new TableCell<Kunde, Void>() {
@@ -111,7 +112,7 @@ public class KunderSceneKontroller {
               System.out.println("Kunde: " + kunde);
 
               kunderliste.remove(getIndex());
-              dso.slettlKunde(kunde);
+              dso.getKunderListe().slettlKunde(kunde);
 
 
             });
@@ -131,8 +132,9 @@ public class KunderSceneKontroller {
       }
     };
 
-    slettKolonne.setCellFactory(cellFactory);
+    slettKolonne.setCellFactory(cellFactory);*/
 
+    TabellKnapp tabellKnapp = new TabellKnapp(slettKolonne);
 
 
   }
@@ -224,11 +226,10 @@ public class KunderSceneKontroller {
   }
 
 
-
   protected void NavigeringTilRedigerKundeScene() {
 
     try {
-      Navigator.visSceneMedKundeInfo(borderPane, new Navigator().getREDIGER_KUNDE_SCENE(),kunde);
+      Navigator.visSceneMedKundeInfo(borderPane, new Navigator().getREDIGER_KUNDE_SCENE(), kunde);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -237,7 +238,7 @@ public class KunderSceneKontroller {
   protected void NavigeringTilVisKundeScene() {
 
     try {
-      Navigator.visSceneMedKundeInfo(borderPane, new Navigator().getVIS_KUNDE_SCENE(),kunde);
+      Navigator.visSceneMedKundeInfo(borderPane, new Navigator().getVIS_KUNDE_SCENE(), kunde);
     } catch (IOException e) {
       e.printStackTrace();
     }

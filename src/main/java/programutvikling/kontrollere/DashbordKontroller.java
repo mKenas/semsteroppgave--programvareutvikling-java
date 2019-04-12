@@ -30,6 +30,7 @@ public class DashbordKontroller {
     }
 
   }
+
   @FXML
   protected void NavigeringTilOpprettForsikringScene() {
 

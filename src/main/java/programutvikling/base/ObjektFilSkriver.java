@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ObjektFilSkriver {
 
+
   public static void write(ObservableList<Kunde> kunderliste, String filsti) throws IOException {
 
     FileChooser filvelger = new FileChooser();
@@ -18,19 +19,18 @@ public class ObjektFilSkriver {
     filvelger.setTitle("Lagre fil");
     FileChooser.ExtensionFilter filEndelse = new FileChooser.ExtensionFilter("JOBJ filer (*.jobj)", "*.jobj");
     FileChooser.ExtensionFilter filEndelse2 = new FileChooser.ExtensionFilter("CSV filer (*.csv)", "*.csv");
-    filvelger.getExtensionFilters().addAll(filEndelse,filEndelse2);
+    filvelger.getExtensionFilters().addAll(filEndelse, filEndelse2);
 
 
     File fil = filvelger.showSaveDialog(null);
 
     String valgtFilEndelse = filvelger.getSelectedExtensionFilter().getExtensions().get(0);
-    if(fil != null) {
-       filsti = String.valueOf(fil.toPath());
-
+    if (fil != null) {
+      filsti = String.valueOf(fil.toPath());
 
 
     }
-    if (valgtFilEndelse =="*.jobj"){
+    if (valgtFilEndelse == "*.jobj") {
 
       try (
               FileOutputStream fos = new FileOutputStream(filsti);

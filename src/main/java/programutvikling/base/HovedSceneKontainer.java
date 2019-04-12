@@ -3,6 +3,7 @@ package programutvikling.base;
 
 import javafx.scene.layout.BorderPane;
 
+
 public class HovedSceneKontainer {
 
   private static HovedSceneKontainer hsk = null;

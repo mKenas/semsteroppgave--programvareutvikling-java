@@ -1,10 +1,11 @@
 package programutvikling.base;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public abstract class Forsikring {
+public abstract class Forsikring implements Serializable {
 
   private Date oprettelsesDato;
   private Double forsikringsbelop;

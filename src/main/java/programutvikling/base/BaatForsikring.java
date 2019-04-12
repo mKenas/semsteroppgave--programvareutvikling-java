@@ -1,6 +1,6 @@
 package programutvikling.base;
 
-public class BaatForsikring extends Forsikring{
+public class BaatForsikring extends Forsikring {
 
   private String eier;
   private String registreringsnummer;
@@ -11,8 +11,8 @@ public class BaatForsikring extends Forsikring{
   private String motortype;
   private String motorstyrke;
 
-  public BaatForsikring(Double forsikringsbeløp,Double forsikringspremie, String forsikringsbetingelser, String eier, String registreringsnummer, String baatType, String baatModell, String lengde, String aarsmodell, String motortype, String motorstyrke) {
-    super(forsikringsbeløp,forsikringspremie,forsikringsbetingelser);
+  public BaatForsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser, String eier, String registreringsnummer, String baatType, String baatModell, String lengde, String aarsmodell, String motortype, String motorstyrke) {
+    super(forsikringsbeløp, forsikringspremie, forsikringsbetingelser);
     this.eier = eier;
     this.registreringsnummer = registreringsnummer;
     this.baatType = baatType;

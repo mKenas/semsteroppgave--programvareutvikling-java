@@ -25,4 +25,18 @@ public class HusOgInnboForsikring extends Forsikring {
     this.bygningsForsikringsbelop = bygningsForsikringsbelop;
     this.innboForsikringsbelop = innboForsikringsbelop;
   }
+
+  @Override
+  public String toString() {
+    return "HusOgInnboForsikring{" +
+            "boligAdresse='" + boligAdresse + '\'' +
+            ", byggeaar='" + byggeaar + '\'' +
+            ", boligType='" + boligType + '\'' +
+            ", byggeMateriale='" + byggeMateriale + '\'' +
+            ", standard='" + standard + '\'' +
+            ", storrelse='" + storrelse + '\'' +
+            ", bygningsForsikringsbelop='" + bygningsForsikringsbelop + '\'' +
+            ", innboForsikringsbelop='" + innboForsikringsbelop + '\'' +
+            '}';
+  }
 }

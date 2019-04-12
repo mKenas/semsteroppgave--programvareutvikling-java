@@ -46,10 +46,13 @@ public class RegistrerKundeSceneKontroller {
     String epost = epostTekstFelt.getText();
     String mobil = mobilTekstFelt.getText();
 
-    Kunde kunde = new Kunde(kundeNr, navn,etternavn, epost,mobil,fakturaadresse,postnummer,poststed);
+    Kunde kunde = new Kunde(kundeNr, navn, etternavn, epost, mobil, fakturaadresse, postnummer, poststed);
 
-    dso.leggTilKunde(kunde);
+
+    dso.getKunderListe().leggTilKunde(kunde);
     navigeringTilKunederScene();
+
+
   }
 
   protected void navigeringTilKunederScene() {

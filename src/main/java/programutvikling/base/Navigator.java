@@ -5,7 +5,6 @@ import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import programutvikling.kontrollere.KontrollerMedData;
 
-
 import java.io.IOException;
 
 public class Navigator {
@@ -48,7 +47,6 @@ public class Navigator {
 
     borderPane.setCenter(root);
   }
-
 
 
   public static void visSceneMedKundeInfo(BorderPane borderPane, String fxml, Kunde kunde) {

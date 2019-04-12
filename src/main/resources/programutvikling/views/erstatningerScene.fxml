@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.control.Button?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
       styleClass="mainbar" stylesheets="@../styles/styles.css"
       xmlns="http://javafx.com/javafx/8.0.172-ea">
@@ -32,30 +29,28 @@
         <columns>
             <TableColumn prefWidth="150.0" text="ErstatningerNr">
                 <cellValueFactory>
-                    <PropertyValueFactory property="ErstatningerNr" />
+                    <PropertyValueFactory property="ErstatningerNr"/>
                 </cellValueFactory>
             </TableColumn>
 
             <TableColumn prefWidth="200.0" text="Beløp">
                 <cellValueFactory>
-                    <PropertyValueFactory property="Beløp" />
+                    <PropertyValueFactory property="Beløp"/>
                 </cellValueFactory>
             </TableColumn>
 
             <TableColumn prefWidth="150.0" text="Utbetalingsdato">
                 <cellValueFactory>
-                    <PropertyValueFactory property="Utbetalingsdato" />
+                    <PropertyValueFactory property="Utbetalingsdato"/>
                 </cellValueFactory>
             </TableColumn>
-
 
 
             <TableColumn prefWidth="220.0" text="Kunde">
                 <cellValueFactory>
-                    <PropertyValueFactory property="Kunde" />
+                    <PropertyValueFactory property="Kunde"/>
                 </cellValueFactory>
             </TableColumn>
-
 
 
             <TableColumn fx:id="visKundeKolonne" prefWidth="60.0" text="">
@@ -73,15 +68,17 @@
 
         </columns>
         <VBox.margin>
-            <Insets bottom="100.0" />
+            <Insets bottom="100.0"/>
         </VBox.margin>
     </TableView>
 
     <BorderPane prefHeight="128.0" prefWidth="930.0">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false"  prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Utbetal erstatning" BorderPane.alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="64.0"
+                    prefWidth="320.0" styleClass="sub-scene-knapp" text="Utbetal erstatning"
+                    BorderPane.alignment="CENTER">
                 <BorderPane.margin>
-                    <Insets right="15.0" />
+                    <Insets right="15.0"/>
                 </BorderPane.margin>
             </Button>
         </right>

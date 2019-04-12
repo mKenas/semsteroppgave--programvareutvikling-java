@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.KunderSceneKontroller">
+<VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
+      styleClass="mainbar" stylesheets="@../styles/styles.css"
+      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="programutvikling.kontrollere.KunderSceneKontroller">
     <BorderPane.margin>
-        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0"/>
     </BorderPane.margin>
 
     <HBox prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
             <Label prefHeight="93.0" prefWidth="176.0" text="Kunder">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
                 <HBox.margin>
-                    <Insets left="15.0" />
+                    <Insets left="15.0"/>
                 </HBox.margin>
             </Label>
         </children>
@@ -32,30 +28,28 @@
         <columns>
             <TableColumn prefWidth="150.0" text="KundeNr">
                 <cellValueFactory>
-                    <PropertyValueFactory property="KundeNr" />
+                    <PropertyValueFactory property="KundeNr"/>
                 </cellValueFactory>
             </TableColumn>
 
             <TableColumn prefWidth="200.0" text="Navn">
                 <cellValueFactory>
-                    <PropertyValueFactory property="Navn" />
+                    <PropertyValueFactory property="Navn"/>
                 </cellValueFactory>
             </TableColumn>
 
             <TableColumn prefWidth="150.0" text="Etternavn">
                 <cellValueFactory>
-                    <PropertyValueFactory property="Etternavn" />
+                    <PropertyValueFactory property="Etternavn"/>
                 </cellValueFactory>
             </TableColumn>
-
 
 
             <TableColumn prefWidth="220.0" text="Faktura Adresse">
                 <cellValueFactory>
-                    <PropertyValueFactory property="FakturaAdresse" />
+                    <PropertyValueFactory property="FakturaAdresse"/>
                 </cellValueFactory>
             </TableColumn>
-            
 
 
             <TableColumn fx:id="visKundeKolonne" prefWidth="60.0" text="">
@@ -72,16 +66,18 @@
 
 
         </columns>
-      <VBox.margin>
-         <Insets bottom="100.0" />
-      </VBox.margin>
+        <VBox.margin>
+            <Insets bottom="100.0"/>
+        </VBox.margin>
     </TableView>
 
     <BorderPane prefHeight="128.0" prefWidth="930.0">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Registrer kunde" BorderPane.alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false"
+                    onAction="#handleRegistrerKundeKnapp" prefHeight="64.0" prefWidth="320.0"
+                    styleClass="sub-scene-knapp" text="Registrer kunde" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
-                    <Insets right="15.0" />
+                    <Insets right="15.0"/>
                 </BorderPane.margin>
             </Button>
         </right>

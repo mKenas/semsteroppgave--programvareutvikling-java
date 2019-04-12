@@ -1,12 +1,9 @@
 package programutvikling.kontrollere;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
-import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataSourceObject;
 
@@ -19,19 +16,13 @@ public class OpprettForsikringSceneKontroller {
   private ObservableList kunderListe;
 
 
+  public void initialize() {
 
 
-public void initialize(){
-
-
-
-
-
-
-}
+  }
 
   @FXML
-  public void NavigeringTilHusOGInnboForsikringScene(){
+  public void NavigeringTilHusOGInnboForsikringScene() {
 
     try {
       Navigator.visScene(borderPane, new Navigator().getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE());
@@ -40,7 +31,6 @@ public void initialize(){
     }
 
   }
-
 
 
 }

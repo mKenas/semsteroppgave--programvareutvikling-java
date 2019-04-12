@@ -31,15 +31,15 @@ public class ObjektFilLeser {
 
     if (valgtFilEndelse == "*.jobj") {
 
-      try (FileInputStream fin = new FileInputStream(filsti);
-           ObjectInputStream oin = new ObjectInputStream(fin)) {
-        List<Kunde> list = (List<Kunde>) oin.readObject();
+      FileInputStream fin = new FileInputStream(filsti);
+      ObjectInputStream oin = new ObjectInputStream(fin);
+      List<Kunde> list = (List<Kunde>) oin.readObject();
 
-        return FXCollections.observableList(list);
-      }
+      return FXCollections.observableList(list);
+
     }
     // Dette bør fiskes !!
-    return null;
+    return FXCollections.emptyObservableList();
   }
 
 }

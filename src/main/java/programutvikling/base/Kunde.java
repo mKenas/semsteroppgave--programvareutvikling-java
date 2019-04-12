@@ -1,8 +1,6 @@
 package programutvikling.base;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,6 +21,8 @@ public class Kunde implements Serializable, Observable {
   private String poststed;
   private String opprettelsesDato;
 
+  //bytte til Arrarylist
+
   private ArrayList<Forsikring> forsikringer;
 
   public Kunde(String navn, String fakturaAdresse) {
@@ -30,10 +30,9 @@ public class Kunde implements Serializable, Observable {
     this.fakturaAdresse = fakturaAdresse;
 
 
-
   }
 
-  public Kunde(String personnummer, String navn, String etternavn,String epost, String mobil, String fakturaAdresse, String postnummer, String poststed)  {
+  public Kunde(String personnummer, String navn, String etternavn, String epost, String mobil, String fakturaAdresse, String postnummer, String poststed) {
     String dato;
     SimpleDateFormat datoFormat;
 
@@ -48,6 +47,8 @@ public class Kunde implements Serializable, Observable {
     datoFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
     dato = datoFormat.format(new Date());
     this.opprettelsesDato = dato;
+    this.forsikringer = new ArrayList<>();
+
 
   }
 
@@ -118,7 +119,15 @@ public class Kunde implements Serializable, Observable {
     return this.opprettelsesDato;
   }
 
+  public void leggTilForsikring(Forsikring forsikring) {
 
+    this.forsikringer.add(forsikring);
+
+  }
+
+  public ArrayList<Forsikring> getForsikringer() {
+    return forsikringer;
+  }
 
   public String getFakturaAdresse() {
     return fakturaAdresse;

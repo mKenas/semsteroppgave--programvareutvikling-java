@@ -7,13 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.*;
 import programutvikling.database.DataSourceObject;
-import programutvikling.kontrollere.uihelpers.FileExceptionHandler;
+import programutvikling.kontrollere.feilmeldinger.FileExceptionHandler;
 
 import java.io.IOException;
 
 public class hovedSceneKontroller {
 
-  private static final String KUNDE_FIL_LOKASJON="";
+  private static final String KUNDE_FIL_LOKASJON = "kunder.jobj";
+  private static final long serialVersionUID = 5;
   @FXML
   protected Button mainSceneKnapp;
   @FXML
@@ -24,7 +25,7 @@ public class hovedSceneKontroller {
   private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
 
   public void initialize() {
-    kunderliste = dso.getKunder();
+    kunderliste = dso.getKunderListe().getKunder();
 
     hsk.setBorderPane(borderPane);
     Platform.runLater(() -> mainSceneKnapp.requestFocus());
@@ -33,6 +34,7 @@ public class hovedSceneKontroller {
       Navigator.visScene(borderPane, new Navigator().getDashbordScene());
     } catch (IOException e) {
       e.printStackTrace();
+
     }
 
 
@@ -102,12 +104,14 @@ public class hovedSceneKontroller {
   @FXML
   protected void handleLagreKnapp() {
 
-
+    System.out.println(kunderliste);
     try {
       ObjektFilSkriver.write(kunderliste, KUNDE_FIL_LOKASJON);
       System.out.println("Kundene lagret");
     } catch (IOException e) {
+
       FileExceptionHandler.generateIOExceptionMsg(e);
+
     }
 
 
@@ -123,20 +127,19 @@ public class hovedSceneKontroller {
 
       kunderlisteFraFil = ObjektFilLeser.read(KUNDE_FIL_LOKASJON);
 
-
-      dso.nullstillKunder();
-      dso.getKunder().addAll(kunderlisteFraFil);
+      System.out.println("fra fil; " + kunderlisteFraFil);
+      dso.getKunderListe().nullstillKunder();
+      dso.getKunderListe().getKunder().addAll(kunderlisteFraFil);
 
 
     } catch (IOException e) {
       FileExceptionHandler.generateIOExceptionMsg(e);
+
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
 
   }
-
-
 
 
   @FXML
