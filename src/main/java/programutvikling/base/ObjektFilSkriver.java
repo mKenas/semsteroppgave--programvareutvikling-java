@@ -3,15 +3,12 @@ package programutvikling.base;
 import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 public class ObjektFilSkriver {
 
-
+  private static final String CSV_SEPARATOR = ",";
   public static void write(ObservableList<Kunde> kunderliste, String filsti) throws IOException {
 
     FileChooser filvelger = new FileChooser();
@@ -38,9 +35,39 @@ public class ObjektFilSkriver {
       ) {
         out.writeObject(new ArrayList<Kunde>(kunderliste));
       }
+    } else if (valgtFilEndelse == "*.csv") {
+
+
+      try {
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filsti), "UTF-8"));
+        ArrayList<Kunde> kunder = new ArrayList<Kunde>(kunderliste);
+        StringBuffer oneLine = new StringBuffer();
+        //oneLine.append("sep=,\n");
+        oneLine .append("KundeNr,Navn,Etternavn\n");
+
+
+
+        for (Kunde kunde : kunder) {
+
+          oneLine.append(kunde.getPersonNr().trim().length() == 0 ? "" : kunde.getPersonNr());
+          oneLine.append(CSV_SEPARATOR);
+          oneLine.append(kunde.getNavn().trim().length() == 0 ? "" : kunde.getNavn());
+          oneLine.append(CSV_SEPARATOR);
+          oneLine.append(kunde.getEtternavn().trim().length() == 0 ? "" : kunde.getEtternavn());
+          oneLine.append(CSV_SEPARATOR);
+          bw.write(oneLine.toString());
+          bw.newLine();
+        }
+
+        bw.flush();
+        bw.close();
+
+      } catch (UnsupportedEncodingException e) {
+      } catch (FileNotFoundException e) {
+      } catch (IOException e) {
+      }
+
     }
-
-
   }
 
 }

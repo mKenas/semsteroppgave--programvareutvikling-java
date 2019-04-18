@@ -1,6 +1,7 @@
 package programutvikling.kontrollere;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
@@ -13,12 +14,15 @@ import java.io.IOException;
 
 public class RegistrerKundeSceneKontroller {
 
+
   DataSourceObject dso = DataSourceObject.getInstance();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
 
+  Kunde kunde;
+
   @FXML
-  private TextField kundeNrTekstFelt;
+  private TextField personNrTekstFelt;
   @FXML
   private TextField navnTekstFelt;
   @FXML
@@ -33,11 +37,16 @@ public class RegistrerKundeSceneKontroller {
   private TextField epostTekstFelt;
   @FXML
   private TextField mobilTekstFelt;
+  @FXML
+  private ComboBox forsikringsTypeKomboBoks;
+
+  String forsikringsType;
+
 
 
   @FXML
   private void handleRegistrerKundeKnapp() {
-    String kundeNr = kundeNrTekstFelt.getText();
+    String personNr = personNrTekstFelt.getText();
     String navn = navnTekstFelt.getText();
     String etternavn = etternavnTekstFelt.getText();
     String fakturaadresse = fakturaadresseTekstFelt.getText();
@@ -46,22 +55,23 @@ public class RegistrerKundeSceneKontroller {
     String epost = epostTekstFelt.getText();
     String mobil = mobilTekstFelt.getText();
 
-    Kunde kunde = new Kunde(kundeNr, navn, etternavn, epost, mobil, fakturaadresse, postnummer, poststed);
+    kunde = new Kunde(personNr, navn, etternavn, epost, mobil, fakturaadresse, postnummer, poststed);
+    forsikringsType = forsikringsTypeKomboBoks.getSelectionModel().getSelectedItem().toString();
+
+
 
 
     dso.getKunderListe().leggTilKunde(kunde);
-    navigeringTilKunederScene();
+    navigeringTilOpprettForsikringScene();
 
 
   }
 
-  protected void navigeringTilKunederScene() {
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getKunderScene());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+
+  protected void navigeringTilOpprettForsikringScene() {
+
+    Navigator.visForsikringSceneMedKundeInfo(borderPane, forsikringsType,kunde);
 
   }
 }

@@ -1,17 +1,19 @@
 package programutvikling.base;
 
+import programutvikling.base.klassHjelpere.SkademeldingStatus;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-public class Kunde implements Serializable, Observable {
+public class Kunde implements Serializable {
 
   private static final long serialVersionUID = 1;
 
-  private ObservableHelper observersHandler = new ObservableHelper();
-  private String kundeNr;
+  //private ObservableHelper observersHandler = new ObservableHelper();
+  private String personNr;
   private String navn;
   private String etternavn;
   private String epost;
@@ -24,6 +26,9 @@ public class Kunde implements Serializable, Observable {
   //bytte til Arrarylist
 
   private ArrayList<Forsikring> forsikringer;
+  private ArrayList<Skademelding> skadeMeldinger;
+  private ArrayList<Skademelding> erstatninger;
+  private ArrayList<Skademelding> avvisteErstatninger;
 
   public Kunde(String navn, String fakturaAdresse) {
     this.navn = navn;
@@ -36,7 +41,7 @@ public class Kunde implements Serializable, Observable {
     String dato;
     SimpleDateFormat datoFormat;
 
-    this.kundeNr = personnummer;
+    this.personNr = personnummer;
     this.navn = navn;
     this.etternavn = etternavn;
     this.epost = epost;
@@ -44,18 +49,18 @@ public class Kunde implements Serializable, Observable {
     this.fakturaAdresse = fakturaAdresse;
     this.postnummer = postnummer;
     this.poststed = poststed;
-    datoFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+    datoFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     dato = datoFormat.format(new Date());
     this.opprettelsesDato = dato;
     this.forsikringer = new ArrayList<>();
+    this.skadeMeldinger = new ArrayList<>();
+    this.erstatninger = new ArrayList<>();
+    this.avvisteErstatninger = new ArrayList<>();
 
 
   }
 
-  @Override
-  public void observe(Observer o) {
-    observersHandler.add(o);
-  }
+
 
   public String getNavn() {
     return navn;
@@ -63,16 +68,16 @@ public class Kunde implements Serializable, Observable {
 
   public void setNavn(String navn) {
     this.navn = navn;
-    observersHandler.update();
+    //observersHandler.update();
 
   }
 
-  public String getKundeNr() {
-    return kundeNr;
+  public String getPersonNr() {
+    return personNr;
   }
 
-  public void setKundeNr(String kundeNr) {
-    this.kundeNr = kundeNr;
+  public void setPersonNr(String personNr) {
+    this.personNr = personNr;
   }
 
   public String getEtternavn() {
@@ -125,6 +130,12 @@ public class Kunde implements Serializable, Observable {
 
   }
 
+  public void leggTilSkadeMelding(Skademelding skademelding) {
+
+    this.skadeMeldinger.add(skademelding);
+
+  }
+
   public ArrayList<Forsikring> getForsikringer() {
     return forsikringer;
   }
@@ -135,13 +146,45 @@ public class Kunde implements Serializable, Observable {
 
   public void setFakturaAdresse(String fakturaAdresse) {
     this.fakturaAdresse = fakturaAdresse;
-    observersHandler.update();
+    //observersHandler.update();
 
+  }
+
+  public ArrayList<Skademelding> getSkadeMeldinger() {
+    return skadeMeldinger;
+  }
+
+  public ArrayList<Skademelding> getErstatninger() {
+    return erstatninger;
+  }
+  public ArrayList<Skademelding> getAvvisteErstatninger() {
+    return avvisteErstatninger;
+  }
+
+  public void godkjennSkademelding(Skademelding skademelding) {
+    skademelding.setStatus(SkademeldingStatus.GODKJENT);
+    this.skadeMeldinger.remove(skademelding);
+    this.erstatninger.add(skademelding);
+
+
+  }
+
+  public void avvisSkademelding(Skademelding skademelding) {
+    skademelding.setStatus(SkademeldingStatus.AVVIST);
+    this.skadeMeldinger.remove(skademelding);
+    this.avvisteErstatninger.add(skademelding);
+
+
+  }
+
+
+  public void setErstatninger(ArrayList<Skademelding> erstatninger) {
+    this.erstatninger = erstatninger;
   }
 
   @Override
   public String toString() {
-    return String.format("%s %s %s", kundeNr, navn, etternavn);
+    return String.format("%s %s %s", personNr, navn, etternavn);
   }
 
   @Override
@@ -149,13 +192,13 @@ public class Kunde implements Serializable, Observable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Kunde kunde = (Kunde) o;
-    return Objects.equals(kundeNr, kunde.kundeNr);
+    return Objects.equals(personNr, kunde.personNr);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(kundeNr);
+    return Objects.hash(personNr);
   }
 }
 

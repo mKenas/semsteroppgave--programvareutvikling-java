@@ -30,12 +30,8 @@ public class hovedSceneKontroller {
     hsk.setBorderPane(borderPane);
     Platform.runLater(() -> mainSceneKnapp.requestFocus());
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getDashbordScene());
-    } catch (IOException e) {
-      e.printStackTrace();
+    Navigator.visScene(borderPane, Navigator.getDashbordScene());
 
-    }
 
 
   }
@@ -44,12 +40,7 @@ public class hovedSceneKontroller {
   protected void handleNavigeringTilDashbord() {
 
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getDashbordScene());
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Navigator.visScene(borderPane, Navigator.getDashbordScene());
 
   }
 
@@ -57,11 +48,7 @@ public class hovedSceneKontroller {
   protected void handleNavigeringTilForsikringerScene() {
 
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getForsikringScene());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Navigator.visScene(borderPane, Navigator.getForsikringScene());
 
   }
 
@@ -69,11 +56,7 @@ public class hovedSceneKontroller {
   protected void handleNavigeringTilKunderScene() {
 
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getKunderScene());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Navigator.visScene(borderPane, Navigator.getKunderScene());
 
   }
 
@@ -81,11 +64,7 @@ public class hovedSceneKontroller {
   protected void handleNavigeringTilSkaderScene() {
 
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getSKADER_SCENE());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Navigator.visScene(borderPane, Navigator.getSKADER_SCENE());
 
   }
 
@@ -93,11 +72,7 @@ public class hovedSceneKontroller {
   protected void handleNavigeringTilErstatningerScene() {
 
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getERSTATNINGER_SCENE());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Navigator.visScene(borderPane, Navigator.getERSTATNINGER_SCENE());
 
   }
 
@@ -128,7 +103,7 @@ public class hovedSceneKontroller {
       kunderlisteFraFil = ObjektFilLeser.read(KUNDE_FIL_LOKASJON);
 
       System.out.println("fra fil; " + kunderlisteFraFil);
-      dso.getKunderListe().nullstillKunder();
+      dso.getKunderListe().nullstillKunderListe();
       dso.getKunderListe().getKunder().addAll(kunderlisteFraFil);
 
 

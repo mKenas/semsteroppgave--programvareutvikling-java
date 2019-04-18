@@ -23,8 +23,8 @@ public class MainApp extends Application {
     scene.getStylesheets().add(getClass().getResource("styles/styles.css").toExternalForm());
 
 
-    stage.setMinHeight(800);
-    stage.setMinWidth(1150);
+    //stage.setMinHeight(800);
+    //stage.setMinWidth(1150);
 
     stage.setTitle("Expert forsikring");
     stage.setScene(scene);

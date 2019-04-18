@@ -23,22 +23,14 @@ public class DashbordKontroller {
   @FXML
   protected void NavigeringTilRegistrerKundeScene() {
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getRegistrerKundeScene());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Navigator.visScene(borderPane, Navigator.getRegistrerKundeScene());
 
   }
 
   @FXML
-  protected void NavigeringTilOpprettForsikringScene() {
+  protected void NavigeringTilKunderScene() {
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getOPPRETT_FORSIKRING_SCENE());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Navigator.visScene(borderPane, Navigator.getKunderScene());
 
   }
 

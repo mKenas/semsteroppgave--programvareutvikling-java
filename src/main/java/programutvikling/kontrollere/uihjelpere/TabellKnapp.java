@@ -6,57 +6,44 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
-import programutvikling.base.Kunde;
-import programutvikling.database.DataSourceObject;
-import programutvikling.database.KunderListe;
 
-public class TabellKnapp extends TableCell {
+import java.util.function.Consumer;
 
-  private Kunde kunde;
-  private DataSourceObject dso = DataSourceObject.getInstance();
-  private KunderListe kunderliste = dso.getKunderListe();
-  private TableColumn kolonne = new TableColumn();
+public class TabellKnapp<S> extends TableCell<S, Button> {
 
-  public TabellKnapp(TableColumn kolonne) {
-    this.kolonne = kolonne;
+  private final Button knapp;
 
-    Callback<TableColumn<Kunde, Void>, TableCell<Kunde, Void>> cellFactory = new Callback<>() {
-      @Override
-      public TableCell<Kunde, Void> call(final TableColumn<Kunde, Void> param) {
-        final TableCell<Kunde, Void> cell = new TableCell<Kunde, Void>() {
-
-          private final Button knapp = new Button("\uf00d");
-
-          {
-            knapp.getStyleClass().add("slett-knapp");
-            knapp.setCursor(Cursor.HAND);
-            knapp.setOnAction((ActionEvent event) -> {
-              kunde = getTableView().getItems().get(getIndex());
-              System.out.println("Kunde: " + kunde);
-
-              kunderliste.getKunder().remove(getIndex());
-              dso.getKunderListe().slettlKunde(kunde);
+  public TabellKnapp(String tittel, String stil, Consumer< S> funksjon) {
 
 
-            });
-          }
+    this.knapp = new Button(tittel);
+    this.knapp.getStyleClass().add(stil);
+    this.knapp.setCursor(Cursor.HAND);
 
-          @Override
-          public void updateItem(Void item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty) {
-              setGraphic(null);
-            } else {
-              setGraphic(knapp);
-            }
-          }
-        };
-        return cell;
-      }
-    };
+    this.knapp.setOnAction((ActionEvent e) -> {
+      funksjon.accept(getvalgtElement());
+    });
 
-    kolonne.setCellFactory(cellFactory);
   }
 
+  public S getvalgtElement() {
+    return (S) getTableView().getItems().get(getIndex());
+  }
 
+  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, Consumer< S> funksjon) {
+
+
+    return param -> new TabellKnapp<>(tittel,stil, funksjon);
+  }
+
+  @Override
+  public void updateItem(Button item, boolean empty) {
+    super.updateItem(item, empty);
+
+    if (empty) {
+      setGraphic(null);
+    } else {
+      setGraphic(knapp);
+    }
+  }
 }

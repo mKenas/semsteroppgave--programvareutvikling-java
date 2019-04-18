@@ -1,120 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
-      styleClass="mainbar" stylesheets="@../styles/styles.css"
-      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="programutvikling.kontrollere.RegistrerKundeSceneKontroller">
+
+<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RegistrerKundeSceneKontroller">
     <BorderPane.margin>
-        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0"/>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
 
     <HBox prefHeight="93.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
             <Label prefHeight="93.0" prefWidth="277.0" text="Kunde &gt; Registrer ny kunde">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
                 <HBox.margin>
-                    <Insets left="15.0"/>
+                    <Insets left="15.0" />
                 </HBox.margin>
             </Label>
         </children>
     </HBox>
-    <HBox alignment="CENTER" prefHeight="504.0" prefWidth="930.0">
+    <HBox alignment="CENTER" prefHeight="426.0" prefWidth="930.0">
         <children>
-            <VBox prefHeight="100.0" prefWidth="420.0">
+            <VBox prefHeight="326.0" prefWidth="420.0">
                 <children>
-                    <Label text="KundeNr"/>
-                    <TextField fx:id="kundeNrTekstFelt" layoutX="10.0" layoutY="71.0" prefHeight="48.0"
-                               prefWidth="400.0">
+                    <Label text="PersonNr" />
+                    <TextField fx:id="personNrTekstFelt" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
-                            <Insets bottom="15.0" right="10.0"/>
+                            <Insets bottom="15.0" right="10.0" />
                         </VBox.margin>
                     </TextField>
-                    <Label layoutX="10.0" layoutY="10.0" text="Navn"/>
+                    <Label layoutX="10.0" layoutY="10.0" text="Navn" />
                     <TextField fx:id="navnTekstFelt" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
-                            <Insets bottom="15.0" right="10.0"/>
+                            <Insets bottom="15.0" right="10.0" />
                         </VBox.margin>
                     </TextField>
-                    <Label layoutX="10.0" layoutY="54.0" text="Etternavn"/>
+                    <Label layoutX="10.0" layoutY="54.0" text="Etternavn" />
                     <TextField fx:id="etternavnTekstFelt" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
-                            <Insets bottom="15.0" right="10.0"/>
+                            <Insets bottom="15.0" right="10.0" />
                         </VBox.margin>
                     </TextField>
-                    <Label layoutX="10.0" layoutY="170.0" text="Epost"/>
-                    <TextField fx:id="epostTekstFelt" layoutX="10.0" layoutY="187.0" prefHeight="48.0"
-                               prefWidth="400.0">
+                    <Label layoutX="10.0" layoutY="170.0" text="Epost" />
+                    <TextField fx:id="epostTekstFelt" layoutX="10.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
-                            <Insets right="10.0"/>
+                            <Insets bottom="15.0" right="10.0" />
                         </VBox.margin>
                     </TextField>
+               <Label text="Forsikrings type" />
+               <ComboBox fx:id="forsikringsTypeKomboBoks" prefHeight="39.0" prefWidth="411.0">
+                   <items>
+                       <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Hus og innboforsikring" />
+                           <String fx:value="Fritidsboligforsikring" />
+                           <String fx:value="Båtforsikring" />
+                           <String fx:value="Reiseforsikring" />
+                       </FXCollections>
+                   </items>
+                   <value>
+                       <String fx:value="Hus og innboforsikring" />
+                   </value>
+               </ComboBox>
                 </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="420.0">
                 <children>
                     <Label layoutX="20.0" layoutY="170.0" text="Mobil">
                         <VBox.margin>
-                            <Insets left="10.0"/>
+                            <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
 
-                    <TextField fx:id="mobilTekstFelt" layoutX="20.0" layoutY="187.0" prefHeight="48.0"
-                               prefWidth="400.0">
+                    <TextField fx:id="mobilTekstFelt" layoutX="20.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
-                            <Insets bottom="15.0" left="10.0"/>
+                            <Insets bottom="15.0" left="10.0" />
                         </VBox.margin>
                     </TextField>
                     <Label text="Fakturaadresse">
                         <VBox.margin>
-                            <Insets left="10.0"/>
+                            <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
                     <TextField fx:id="fakturaadresseTekstFelt" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
-                            <Insets bottom="15.0" left="10.0"/>
+                            <Insets bottom="15.0" left="10.0" />
                         </VBox.margin>
                     </TextField>
                     <Label layoutX="10.0" layoutY="10.0" text="Postnummer">
                         <VBox.margin>
-                            <Insets left="10.0"/>
+                            <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
-                    <TextField fx:id="postnummerTekstFelt" layoutX="10.0" layoutY="27.0" prefHeight="48.0"
-                               prefWidth="400.0">
+                    <TextField fx:id="postnummerTekstFelt" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
-                            <Insets bottom="15.0" left="10.0"/>
+                            <Insets bottom="15.0" left="10.0" />
                         </VBox.margin>
                     </TextField>
                     <Label layoutX="10.0" layoutY="54.0" text="Poststed">
                         <VBox.margin>
-                            <Insets left="10.0"/>
+                            <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
-                    <TextField fx:id="poststedTekstFelt" layoutX="10.0" layoutY="71.0" prefHeight="48.0"
-                               prefWidth="400.0">
+                    <TextField fx:id="poststedTekstFelt" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
-                            <Insets bottom="15.0" left="10.0"/>
+                            <Insets bottom="15.0" left="10.0" />
                         </VBox.margin>
                     </TextField>
                 </children>
             </VBox>
         </children>
         <VBox.margin>
-            <Insets top="20.0"/>
+            <Insets top="20.0" />
         </VBox.margin>
+
     </HBox>
     <BorderPane prefHeight="200.0" prefWidth="200.0">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false"
-                    onAction="#handleRegistrerKundeKnapp" prefHeight="64.0" prefWidth="320.0"
-                    styleClass="sub-scene-knapp" text="Registrer kunde" BorderPane.alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Neste" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
-                    <Insets right="15.0"/>
+                    <Insets right="15.0" />
                 </BorderPane.margin>
             </Button>
         </right>

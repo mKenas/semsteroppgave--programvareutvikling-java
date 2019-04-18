@@ -204,3 +204,13 @@
     -fx-background-color: #F7F7F7;
 }
 
+.combo-box{
+    -fx-border-color: #CFCFCF;
+}
+.split-pane, .combo-box,.scroll-pane{
+    -fx-background-color: transparent;
+}
+.split-pane *.split-pane-divider {
+    -fx-padding: 0 0 0 0;
+}
+

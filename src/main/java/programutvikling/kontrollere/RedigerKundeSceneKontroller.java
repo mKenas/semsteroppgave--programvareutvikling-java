@@ -10,7 +10,7 @@ import programutvikling.database.DataSourceObject;
 
 import java.io.IOException;
 
-public class RedigerKundeSceneKontroller implements KontrollerMedData {
+public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
 
   DataSourceObject dso = DataSourceObject.getInstance();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
@@ -19,7 +19,7 @@ public class RedigerKundeSceneKontroller implements KontrollerMedData {
   private Kunde kunde = null;
 
   @FXML
-  private TextField kundeNrTekstFelt;
+  private TextField personNrTekstFelt;
   @FXML
   private TextField navnTekstFelt;
   @FXML
@@ -43,7 +43,7 @@ public class RedigerKundeSceneKontroller implements KontrollerMedData {
 
   public void setKunde(Kunde k) {
     this.kunde = k;
-    kundeNrTekstFelt.setText(k.getKundeNr());
+    personNrTekstFelt.setText(k.getPersonNr());
     navnTekstFelt.setText(k.getNavn());
     etternavnTekstFelt.setText(k.getEtternavn());
     epostTekstFelt.setText(k.getEpost());
@@ -58,12 +58,12 @@ public class RedigerKundeSceneKontroller implements KontrollerMedData {
   @FXML
   public void handleRedigerKundeKnapp() {
 
-    NavigeringTilRegistrerKundeScene();
+    NavigeringTilRedigerKundeScene();
   }
 
 
-  protected void NavigeringTilRegistrerKundeScene() {
-    kunde.setKundeNr(kundeNrTekstFelt.getText());
+  protected void NavigeringTilRedigerKundeScene() {
+    kunde.setPersonNr(personNrTekstFelt.getText());
     kunde.setNavn(navnTekstFelt.getText());
     kunde.setEtternavn(etternavnTekstFelt.getText());
     kunde.setEpost(epostTekstFelt.getText());
@@ -73,11 +73,7 @@ public class RedigerKundeSceneKontroller implements KontrollerMedData {
     kunde.setPoststed(poststedTekstFelt.getText());
 
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getKunderScene());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Navigator.visScene(borderPane, Navigator.getKunderScene());
 
   }
 }

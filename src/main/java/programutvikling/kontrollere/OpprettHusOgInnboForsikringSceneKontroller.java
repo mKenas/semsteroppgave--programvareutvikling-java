@@ -5,14 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.HovedSceneKontainer;
-import programutvikling.base.HusOgInnboForsikring;
-import programutvikling.base.Navigator;
+import programutvikling.base.*;
 import programutvikling.database.DataSourceObject;
 
 import java.io.IOException;
 
-public class OpprettHusOgInnboForsikringSceneKontroller {
+public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMedKundeInfo{
   @FXML
   TextField boligensAdresseTekstfelt;
   @FXML
@@ -29,37 +27,49 @@ public class OpprettHusOgInnboForsikringSceneKontroller {
   TextField bygningForsikringsbelopTekstfelt;
   @FXML
   TextField innboForsikringsbelopTekstfelt;
+  @FXML
+  TextField forsikringsbelopTekstfelt;
+  @FXML
+  TextField forsikringspremieTekstfelt;
+
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
   private DataSourceObject dso = DataSourceObject.getInstance();
   private ObservableList kunderListe;
+  private Kunde kunde;
+  private Forsikring forsikring;
   @FXML
   private ComboBox kunderListeKomboboks;
+  @FXML
+  private TextField personNrTekstfelt;
 
   public void initialize() {
 
-    kunderListe = dso.getKunderListe().getKunder();
-    kunderListeKomboboks.setItems(kunderListe);
+   /* kunderListe = dso.getKunderListe().getKunder();
+    kunderListeKomboboks.setItems(kunderListe);*/
     //kunderListeKomboboks.setEditable(true);
     //new AutoCompleteComboBoxListener<>(kunderListeKomboboks);
 
 
   }
 
+  public void setKunde(Kunde k) {
+    this.kunde = k;
+    this.personNrTekstfelt.setText(k.toString());
+
+
+
+  }
 
   @FXML
   public void NavigeringTilHusOGInnboForsikringScene() {
 
-    try {
-      Navigator.visScene(borderPane, new Navigator().getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Navigator.visScene(borderPane, Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE());
 
   }
 
   public void handleOpprettHusOgInnboForsikringKnapp() {
-
+    boolean kundeEksisterer = false;
     String boligensAdresse = boligensAdresseTekstfelt.getText();
     String byggeAr = byggeArTekstfelt.getText();
     String boligType = boligTypeTekstfelt.getText();
@@ -68,24 +78,36 @@ public class OpprettHusOgInnboForsikringSceneKontroller {
     String antallkvadratmeter = antallkvadratmeterTekstfelt.getText();
     String bygningForsikringsbelop = bygningForsikringsbelopTekstfelt.getText();
     String innboForsikringsbelop = innboForsikringsbelopTekstfelt.getText();
+    Double forsikringsbelop = Double.valueOf(forsikringsbelopTekstfelt.getText());
+    Double forsikringspremie = Double.valueOf(forsikringspremieTekstfelt.getText());
 
 
-    HusOgInnboForsikring forsikring = new HusOgInnboForsikring(0.0, 0.0, "",
-            boligensAdresse, byggeAr, boligType, byggeMateriale, standard, antallkvadratmeter, bygningForsikringsbelop, innboForsikringsbelop);
+    System.out.println(forsikringsbelop);
+    System.out.println(forsikringspremie);
 
 
-    String[] kundeNr = kunderListeKomboboks.getValue().toString().split(" ");
-    System.out.println(kundeNr[0]);
+    forsikring = new HusOgInnboForsikring(forsikringsbelop, forsikringspremie, "",
+           boligensAdresse, byggeAr, boligType, byggeMateriale, standard, antallkvadratmeter, bygningForsikringsbelop, innboForsikringsbelop);
 
-    dso.getKunderListe().getKunder().forEach(kunde -> {
+    //Forsikring<HusOgInnboForsikring> forsikring = new Forsikring<>(1.0,0.0,"");
+
+    kunde.leggTilForsikring(forsikring);
+    // kunde må slettes fra liste hvis validering mislykkes!
+
+     // dso.getKunderListe().slettlKunde(kunde);
 
 
-      if (kunde.getKundeNr().equals(kundeNr[0])) {
-        kunde.leggTilForsikring(forsikring);
-        dso.getForsikringerListe().leggTilForsikring(forsikring);
-      }
-    });
 
+
+    NavigeringTilVisKundeScene();
+
+  }
+
+
+  @FXML
+  public void NavigeringTilVisKundeScene() {
+
+    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(),kunde);
 
   }
 

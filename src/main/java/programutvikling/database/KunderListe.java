@@ -2,6 +2,7 @@ package programutvikling.database;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import programutvikling.base.Forsikring;
 import programutvikling.base.Kunde;
 import programutvikling.kontrollere.feilmeldinger.KundeEksistererExceptionHandler;
 
@@ -32,7 +33,7 @@ public class KunderListe {
   }
 
 
-  public void nullstillKunder() {
+  public void nullstillKunderListe() {
     this.kunderListe.clear();
 
 
@@ -58,5 +59,14 @@ public class KunderListe {
   public void slettlKunde(Kunde kunde) {
     this.kunderListe.remove(kunde);
   }
+
+  public void slettlForsikring(Forsikring forsikring) {
+
+    this.getKunder().forEach(kunde -> kunde.getForsikringer().remove(forsikring));
+
+  }
+
+
+
 
 }

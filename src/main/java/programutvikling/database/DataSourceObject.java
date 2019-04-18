@@ -2,19 +2,18 @@ package programutvikling.database;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import programutvikling.base.Erstatning;
-import programutvikling.base.Observable;
-import programutvikling.base.Observer;
-import programutvikling.base.Skade;
 
-public final class DataSourceObject implements Observable {
+
+import programutvikling.base.Skademelding;
+
+public final class DataSourceObject {
 
   private static DataSourceObject dso = null;
   private KunderListe kunderListe = KunderListe.getInstance();
 
   private ForsikringerListe forsikringerListe = ForsikringerListe.getInstance();
-  private ObservableList<Skade> skaders = FXCollections.observableArrayList();
-  private ObservableList<Erstatning> erstatninger = FXCollections.observableArrayList();
+  private ObservableList<Skademelding> skadeMeldinger = FXCollections.observableArrayList();
+
 
 
   private DataSourceObject() {
@@ -36,19 +35,13 @@ public final class DataSourceObject implements Observable {
   }
 
 
-  public ObservableList<Skade> getSkaders() {
-    return skaders;
-  }
-
-  public ObservableList<Erstatning> getErstatninger() {
-    return erstatninger;
+  public ObservableList<Skademelding> getSkadeMeldinger() {
+    return skadeMeldinger;
   }
 
 
-  @Override
-  public void observe(Observer o) {
 
-  }
+
 
 
 }
