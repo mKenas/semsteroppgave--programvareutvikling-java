@@ -25,6 +25,7 @@ public abstract class Navigator {
   private static final String VIS_HUS_OG_INNBO_FORSIKRING_SCENE ="/programutvikling/views/visHusOgInnboForsikringScene.fxml";
   private static final String REGISTRER_SKADE_MELDING_SCENE = "/programutvikling/views/registrerSkademeldingScene.fxml";
   private static final String VIS_SKADE_MELDING_SCENE = "/programutvikling/views/visSkadeMeldingScene.fxml";
+  private static final String REDIGER_SKADE_MELDING_SCENE = "/programutvikling/views/redigerSkademeldingScene.fxml";
 
 
 
@@ -175,6 +176,10 @@ public abstract class Navigator {
 
   public static String getVisSkadeMeldingScene() {
     return VIS_SKADE_MELDING_SCENE;
+  }
+
+  public static String getRedigerSkadeMeldingScene() {
+    return REDIGER_SKADE_MELDING_SCENE;
   }
 }
 

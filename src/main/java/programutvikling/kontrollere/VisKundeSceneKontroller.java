@@ -122,10 +122,6 @@ private Skademelding skademelding;
 
           kundesErstatningerKontainer.getChildren().add(hyperlink);
 
-
-
-
-
       });
 
     }
@@ -196,5 +192,7 @@ private Skademelding skademelding;
   @FXML public void handleRedigerKundeInfoKnapp(){
     Navigator.visSceneMedKundeInfo(borderPane, Navigator.getREDIGER_KUNDE_SCENE(),kunde);
   }
+
+
 
 }

@@ -3,10 +3,10 @@ package programutvikling.kontrollere;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import programutvikling.base.*;
+import programutvikling.base.klassHjelpere.SkademeldingStatus;
 import programutvikling.database.DataSourceObject;
-
-import java.io.IOException;
 
 public  class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedSkademeldingInfo {
 
@@ -43,12 +43,22 @@ private Label statusLabel;
   private TextArea ovrigInformasjonTekstfelt;
 
   @FXML
+  private HBox godkjentAvvistKontainer;
+
+  @FXML
+  private Button skademeldingLagreKnapp;
+
+  @FXML
+  private Button redigerSkadeMeldingKnapp;
+
+
+/*  @FXML
   private RadioButton godkjentRadioKnapp;
   @FXML
   private RadioButton avissRadioKnapp;
 
   @FXML
-  private RadioButton underBehandlingRadioKnapp;
+  private RadioButton underBehandlingRadioKnapp;*/
 
 
 
@@ -63,13 +73,19 @@ private Label statusLabel;
   @FXML
   public void handleTilbakeKnapp() {
 
+    NavigerTilVisKundeScene();
 
 
-    NavigeringTilKunderScene();
   }
 
   protected void NavigeringTilKunderScene() {
     Navigator.visScene(borderPane, Navigator.getKunderScene());
+
+  }
+
+  public void NavigerTilVisKundeScene() {
+
+    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
 
   }
 
@@ -95,12 +111,22 @@ private Label statusLabel;
     ovrigInformasjonTekstfelt.setText(skademelding.getOvrigSkadeInformasjon());
     opprettelsesdatoLabel.setText(skademelding.getOpprettelsesDato());
 
+    if (skademelding.getTakseringsbelop() != null ) {
+      takseringsbelopTekstfelt.setText(skademelding.getTakseringsbelop().toString());
+    }
+
+    if (skademelding.getUtbetaltErstatningsbelop() != null) {
+      utbetaltErstatningsbelopTekstfelt.setText(skademelding.getUtbetaltErstatningsbelop().toString());
+
+    }
+
+    skjulSkademeldingKnapper();
   }
 
 
-  public void handleGodkjennSkademeldingKnapp(){
+  public void godkjennSkadeMelding(){
 
-    System.out.println(kunde);
+
     Double takseringsbelop = Double.valueOf(takseringsbelopTekstfelt.getText());
     Double utbetaltErstatningsbelop = Double.valueOf(utbetaltErstatningsbelopTekstfelt.getText());
     this.skademelding.setTakseringsbelop(takseringsbelop);
@@ -111,32 +137,78 @@ private Label statusLabel;
 
 
   }
-  public void handleAvvisSkademelding(){
+  public void avvisSkademelding(){
 
+    Double takseringsbelop = Double.valueOf(takseringsbelopTekstfelt.getText());
+    this.skademelding.setTakseringsbelop(takseringsbelop);
     kunde.avvisSkademelding(skademelding);
+
   }
+
+  public void handleLagreSkadeMelding() {
+
+    this.skademelding.setStatus(SkademeldingStatus.UNDER_BEHANDLING);
+
+    Double takseringsBelop = Double.valueOf(takseringsbelopTekstfelt.getText());
+
+    skademelding.setTakseringsbelop(takseringsBelop);
+
+    Double utbetaltErstatningsBelop = Double.valueOf(utbetaltErstatningsbelopTekstfelt.getText());
+
+    skademelding.setUtbetaltErstatningsbelop(utbetaltErstatningsBelop);
+
+  }
+
 
   @FXML
   public void handleAvslaSkademeldingKnapp(){
 
 
-  } @FXML
+  }
+
+  @FXML
   public void handleLagreKnapp(){
 
-    if (godkjentRadioKnapp.isSelected())
-    {
-      handleGodkjennSkademeldingKnapp();
-    }
-    else if (avissRadioKnapp.isSelected()){
+    handleLagreSkadeMelding();
 
-      handleAvvisSkademelding();
+  }
+
+  @FXML
+  public void handleSkadeMeldingGodkjentKnapp() {
+
+    godkjennSkadeMelding();
+    NavigerTilVisKundeScene();
+
+  }
+
+  @FXML
+  public void handleSkadeMeldingAvvistKnapp() {
+
+    avvisSkademelding();
+    NavigerTilVisKundeScene();
+  }
+
+  public void skjulSkademeldingKnapper() {
+
+    if (skademelding.getStatus() == SkademeldingStatus.AVVIST || skademelding.getStatus() == SkademeldingStatus.GODKJENT) {
+      godkjentAvvistKontainer.setVisible(false);
+      skademeldingLagreKnapp.setVisible(false);
+      takseringsbelopTekstfelt.setDisable(true);
+      utbetaltErstatningsbelopTekstfelt.setDisable(true);
+      redigerSkadeMeldingKnapp.setVisible(false);
     }
 
-    else if (underBehandlingRadioKnapp.isSelected())
-    {
-      //handleLagreSkadeMelding();
-    }
+  }
+
+  @FXML
+  public void handleRedigerSkademeldingKnapp() {
+
+    Navigator.visSceneMedSkademeldingInfo(borderPane, Navigator.getRedigerSkadeMeldingScene(),kunde,skademelding);
 
 
   }
+
+
+  //TODO logikk slik at man ikke kan godkjenne også avvise samme skademelding og få to versjoner av samme.
+
 }

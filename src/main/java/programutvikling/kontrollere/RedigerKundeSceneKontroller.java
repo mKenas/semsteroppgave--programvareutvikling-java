@@ -63,6 +63,7 @@ public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
 
 
   protected void NavigeringTilRedigerKundeScene() {
+
     kunde.setPersonNr(personNrTekstFelt.getText());
     kunde.setNavn(navnTekstFelt.getText());
     kunde.setEtternavn(etternavnTekstFelt.getText());
