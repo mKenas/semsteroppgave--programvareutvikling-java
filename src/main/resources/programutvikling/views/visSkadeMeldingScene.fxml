@@ -250,6 +250,7 @@
 
     <HBox fx:id="godkjentAvvistKontainer">
       <children>
+         <Hyperlink layoutX="81.0" layoutY="10.0" onAction="#slettSkademeldingKnapp" text="Slett" />
          <Hyperlink onAction="#handleSkadeMeldingGodkjentKnapp" text="Godkjent" />
          <Hyperlink layoutX="10.0" layoutY="10.0" onAction="#handleSkadeMeldingAvvistKnapp" text="Avvist" />
       </children>

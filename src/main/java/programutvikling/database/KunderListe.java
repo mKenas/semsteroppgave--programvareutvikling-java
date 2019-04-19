@@ -4,13 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import programutvikling.base.Forsikring;
 import programutvikling.base.Kunde;
+import programutvikling.base.Skademelding;
 import programutvikling.kontrollere.feilmeldinger.KundeEksistererExceptionHandler;
 
 
-public class KunderListe {
+public class KunderListe  {
 
   private static KunderListe kl = null;
   private ObservableList<Kunde> kunderListe = FXCollections.observableArrayList();
+
 
   private KunderListe() {
   }
@@ -63,6 +65,14 @@ public class KunderListe {
   public void slettlForsikring(Forsikring forsikring) {
 
     this.getKunder().forEach(kunde -> kunde.getForsikringer().remove(forsikring));
+
+  }
+
+  public void slettSkademelding(Skademelding skademelding) {
+
+
+      this.getKunder().forEach(kunde -> kunde.getSkadeMeldinger().remove(skademelding));
+
 
   }
 

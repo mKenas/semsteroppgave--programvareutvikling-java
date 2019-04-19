@@ -33,8 +33,8 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
     private TextArea skadeBeskrivelseTekstfelt;
     @FXML
     private TextArea ovrigSkadeInformasjonTekstfelt;
-    @FXML
-    private Hyperlink slettSkademeldingKnapp;
+
+
 
 
     @Override
@@ -89,11 +89,6 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
         Navigator.visSceneMedSkademeldingInfo(borderPane, Navigator.getVisSkadeMeldingScene(),kunde ,skademelding);
     }
 
-    public void slettSkademeldingKnapp() {
 
-
-
-
-    }
 
 }

@@ -138,6 +138,8 @@ public class Skademelding implements Serializable {
     return Objects.hash(skadeNr);
   }
 
+
+
   @Override
   public String toString() {
     return "Skademelding{" +

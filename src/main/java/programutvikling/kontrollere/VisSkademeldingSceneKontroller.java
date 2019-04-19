@@ -51,6 +51,9 @@ private Label statusLabel;
   @FXML
   private Button redigerSkadeMeldingKnapp;
 
+  @FXML
+  private Hyperlink slettSkademeldingKnapp;
+
 
 /*  @FXML
   private RadioButton godkjentRadioKnapp;
@@ -206,6 +209,16 @@ private Label statusLabel;
     Navigator.visSceneMedSkademeldingInfo(borderPane, Navigator.getRedigerSkadeMeldingScene(),kunde,skademelding);
 
   }
+
+  @FXML
+  public void slettSkademeldingKnapp() {
+
+    dso.getKunderListe().slettSkademelding(skademelding);
+    NavigerTilVisKundeScene();
+
+  }
+
+
 
 
   //TODO logikk slik at man ikke kan godkjenne også avvise samme skademelding og få to versjoner av samme.
