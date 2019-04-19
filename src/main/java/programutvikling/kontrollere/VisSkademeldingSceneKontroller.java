@@ -107,7 +107,7 @@ private Label statusLabel;
     klokkeslettLabel.setText(skademelding.getKlokkeSlett());
     forsikringsTypeLabel.setText(skademelding.getForsikringsType());
     skadeTypeLabel.setText(skademelding.getSkadeType());
-    skadebeskrivelseTekstfelt.setText(skademelding.getOvrigSkadeInformasjon());
+    skadebeskrivelseTekstfelt.setText(skademelding.getSkadeBeskrivelse());
     ovrigInformasjonTekstfelt.setText(skademelding.getOvrigSkadeInformasjon());
     opprettelsesdatoLabel.setText(skademelding.getOpprettelsesDato());
 
@@ -204,7 +204,6 @@ private Label statusLabel;
   public void handleRedigerSkademeldingKnapp() {
 
     Navigator.visSceneMedSkademeldingInfo(borderPane, Navigator.getRedigerSkadeMeldingScene(),kunde,skademelding);
-
 
   }
 

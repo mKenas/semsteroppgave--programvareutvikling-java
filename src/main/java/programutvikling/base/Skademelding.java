@@ -5,6 +5,7 @@ import programutvikling.base.klassHjelpere.SkademeldingStatus;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
@@ -125,6 +126,10 @@ public class Skademelding implements Serializable {
 
   public String getKlokkeSlett() {
     return klokkeSlett;
+  }
+
+  public void setKlokkeSlett(String klokkeSlett) {
+    this.klokkeSlett = klokkeSlett;
   }
 
   @Override

@@ -29,7 +29,6 @@ public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo{
   ComboBox forsikringsTypeKomboboks;
   @FXML
   TextField skadeTypeTekstfelt;
-
   @FXML
   TextArea skadeBeskrivelseTekstfelt;
   @FXML
@@ -46,13 +45,11 @@ public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo{
   public void initialize() {
 
 
-
   }
 
   public void setKunde(Kunde k) {
     this.kunde = k;
     this.personNrTekstfelt.setText(k.toString());
-
 
 
   }
