@@ -174,6 +174,13 @@ private Skademelding skademelding;
     Navigator.visSceneMedSkademeldingInfo(borderPane, Navigator.getVisSkadeMeldingScene(),kunde ,skademelding);
   }
 
+  protected void navigeringTilKunderScene() {
+
+
+    Navigator.visScene(borderPane, Navigator.getKunderScene());
+  }
+
+
   @FXML
   protected  void leggTilNyForsikring(){
 
@@ -193,6 +200,12 @@ private Skademelding skademelding;
     Navigator.visSceneMedKundeInfo(borderPane, Navigator.getREDIGER_KUNDE_SCENE(),kunde);
   }
 
+  @FXML
+  public void handleSlettKundeKnapp(){
+
+    dso.getKunderListe().slettlKunde(kunde);
+    navigeringTilKunderScene();
+  }
 
 
 }

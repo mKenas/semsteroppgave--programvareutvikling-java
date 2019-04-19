@@ -42,8 +42,14 @@ public class ObjektFilSkriver {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filsti), "UTF-8"));
         ArrayList<Kunde> kunder = new ArrayList<Kunde>(kunderliste);
         StringBuffer oneLine = new StringBuffer();
-        //oneLine.append("sep=,\n");
-        oneLine .append("KundeNr,Navn,Etternavn\n");
+        //oneLine.append("sep=,");
+        //bw.newLine();
+      oneLine .append("KundeNr");
+        oneLine.append(CSV_SEPARATOR);
+        oneLine .append("Navn");
+        oneLine.append(CSV_SEPARATOR);
+        oneLine .append("Etternavn\n");
+
 
 
 
@@ -51,14 +57,18 @@ public class ObjektFilSkriver {
 
           oneLine.append(kunde.getPersonNr().trim().length() == 0 ? "" : kunde.getPersonNr());
           oneLine.append(CSV_SEPARATOR);
+
           oneLine.append(kunde.getNavn().trim().length() == 0 ? "" : kunde.getNavn());
           oneLine.append(CSV_SEPARATOR);
-          oneLine.append(kunde.getEtternavn().trim().length() == 0 ? "" : kunde.getEtternavn());
-          oneLine.append(CSV_SEPARATOR);
-          bw.write(oneLine.toString());
-          bw.newLine();
-        }
 
+          oneLine.append(kunde.getEtternavn().trim().length() == 0 ? "" : kunde.getEtternavn());
+         oneLine.append("\n");
+
+
+
+
+        }
+        bw.write(oneLine.toString());
         bw.flush();
         bw.close();
 

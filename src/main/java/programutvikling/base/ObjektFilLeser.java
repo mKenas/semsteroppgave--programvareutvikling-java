@@ -4,10 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ObjektFilLeser {
@@ -38,8 +37,28 @@ public class ObjektFilLeser {
       return FXCollections.observableList(list);
 
     }
+
+    if (valgtFilEndelse == "*.csv"){
+      List<String> records = new ArrayList<>();
+      try (BufferedReader br = new BufferedReader(new FileReader(filsti))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+          List<String > values = Arrays.asList(line.split(","));
+          List<Kunde> kunder = new ArrayList<>();
+
+          values.forEach(val-> System.out.println(val));
+
+          //System.out.println(values);
+          //records.add(values);
+
+        }
+        System.out.println(records);
+      }
+      //return FXCollections.observableList(records);
+    }
     // Dette bør fiskes !!
     return FXCollections.emptyObservableList();
+
   }
 
 }
