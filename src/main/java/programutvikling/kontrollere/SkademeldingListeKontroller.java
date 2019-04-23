@@ -38,7 +38,7 @@ public class SkademeldingListeKontroller {
     skademeldingTabell.setPlaceholder(new Label("Ingen skademelding er registrert ennå!"));
 
 
-    skademeldingListe = dlo.getSkademeldingListe();
+    skademeldingListe = dho.getKundeMedSkademeldingListeHandling().getSkademeldingListe();
 
 
     if (skademeldingListe.size() >= 1) {

@@ -95,18 +95,18 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
       navigeringTilVisHusOgInnboForsikringScene();
     });
 
-    HyberlinkBygger kundeSkademeldingHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesSkademeldingerKontainer, kunde.getSkadeMeldinger(), "Skademelding", (Skademelding skademelding) -> {
+    HyberlinkBygger kundeSkademeldingHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesSkademeldingerKontainer, dhl.getKundeMedSkademeldingListeHandling().getSkademeldingListeTilKunde(kunde), "Skademelding", (Skademelding skademelding) -> {
       this.skademelding = skademelding;
       navigeringTilSkademeldingScene();
     });
 
-    HyberlinkBygger kundesErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesErstatningerKontainer, kunde.getErstatninger(), "Erstatning", (Skademelding erstatning) -> {
+    HyberlinkBygger kundesErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesErstatningerKontainer, dhl.getKundeMedSkademeldingListeHandling().getErstatningListeTilKunde(kunde), "Erstatning", (Skademelding erstatning) -> {
       this.skademelding = erstatning;
       navigeringTilSkademeldingScene();
     });
 
 
-    HyberlinkBygger kundesAvvisteErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesAvvisteErstatningerKontainer, kunde.getAvvisteErstatninger(), "Avviste erstatningskrav", (Skademelding avvisteErstatningskrav) -> {
+    HyberlinkBygger kundesAvvisteErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesAvvisteErstatningerKontainer, dhl.getKundeMedSkademeldingListeHandling().getAvvistSkademeldingListeTilKunde(kunde), "Avviste erstatningskrav", (Skademelding avvisteErstatningskrav) -> {
       this.skademelding = avvisteErstatningskrav;
       navigeringTilSkademeldingScene();
     });

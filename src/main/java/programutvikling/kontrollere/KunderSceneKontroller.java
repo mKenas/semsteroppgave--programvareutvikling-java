@@ -44,6 +44,8 @@ public class KunderSceneKontroller {
 
     kunderTabell.setPlaceholder(new Label("Ingen kunder er registrert ennå!"));
 
+
+
 /*    if (kunderlisteFraFil != null) {
       if (kunderlisteFraFil.size() > 0) {
 
@@ -190,7 +192,7 @@ public class KunderSceneKontroller {
 
 
     visKundeKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uf2c2", "vis-kunde-knapp", (Kunde k) -> {
-      //kunderTabell.getItems().remove(p);
+      //
       kunde = k;
       NavigeringTilVisKundeScene();
     }));

@@ -129,7 +129,7 @@ public class KundeMedSkademeldingListeHandling {
 
   }
 
-  public ArrayList<Skademelding>  getErstatningListeTilKunde(Kunde kunde, SkademeldingStatus status) {
+  public ArrayList<Skademelding>  filterSkademeldingListeTilKunde(Kunde kunde, SkademeldingStatus status) {
 
     Predicate<Skademelding> filter = new Predicate<Skademelding>() {
       @Override
@@ -142,9 +142,42 @@ public class KundeMedSkademeldingListeHandling {
     };
 
     return kunde.getSkadeMeldinger().stream()
-            .filter(filter).collect(Collectors.toCollection( ArrayList::new));
+            .filter(filter).collect(Collectors.toCollection( ArrayList<Skademelding>::new));
 
 
+  }
+
+  public ArrayList<Skademelding>  filterSkademeldingListeTilKunde(Kunde kunde, SkademeldingStatus status,SkademeldingStatus status2) {
+
+    Predicate<Skademelding> filter = new Predicate<Skademelding>() {
+      @Override
+      public boolean test(Skademelding skademelding) {
+        if (skademelding.getStatus() == status || skademelding.getStatus() == status2) {
+          return true;
+        }
+        return false;
+      }
+    };
+
+    return kunde.getSkadeMeldinger().stream()
+            .filter(filter).collect(Collectors.toCollection( ArrayList<Skademelding>::new));
+
+
+  }
+
+   public ArrayList<Skademelding> getErstatningListeTilKunde(Kunde kunde){
+
+     return filterSkademeldingListeTilKunde(kunde,SkademeldingStatus.GODKJENT);
+  }
+
+  public ArrayList<Skademelding> getAvvistSkademeldingListeTilKunde(Kunde kunde){
+
+    return filterSkademeldingListeTilKunde(kunde,SkademeldingStatus.AVVIST);
+  }
+
+  public ArrayList<Skademelding> getSkademeldingListeTilKunde(Kunde kunde){
+
+    return filterSkademeldingListeTilKunde(kunde,SkademeldingStatus.UBEHANDLET,SkademeldingStatus.UNDER_BEHANDLING);
   }
 
 }

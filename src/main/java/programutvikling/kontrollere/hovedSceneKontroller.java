@@ -3,14 +3,18 @@ package programutvikling.kontrollere;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import programutvikling.base.*;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.feilmeldinger.FileExceptionHandler;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class hovedSceneKontroller {
 
@@ -25,9 +29,14 @@ public class hovedSceneKontroller {
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dhl = new DataHandlingObjekt();
   private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
+  private ObservableList<Forsikring> forsikringliste;
+  private HashMap<String,Object> allData,allDataFraFil;
+
 
   public void initialize() {
-    kunderliste = dlo.getKundeListe();
+  /*    kunderliste = dlo.getKundeListe();
+    forsikringliste = dlo.getForsikringListe();*/
+
 
     hsk.setBorderPane(borderPane);
     Platform.runLater(() -> mainSceneKnapp.requestFocus());
@@ -87,9 +96,12 @@ public class hovedSceneKontroller {
   @FXML
   protected void handleLagreKnapp() {
 
-    System.out.println(kunderliste);
+    allData = dlo.getAllData();
+
     try {
-      ObjektFilSkriver.write(kunderliste, KUNDE_FIL_LOKASJON);
+
+      ObjektFilSkriver.write(allData, KUNDE_FIL_LOKASJON);
+      //ObjektFilSkriver.write(kunderliste, KUNDE_FIL_LOKASJON);
       System.out.println("Kundene lagret");
     } catch (IOException e) {
 
@@ -107,12 +119,17 @@ public class hovedSceneKontroller {
 
     try {
 
+      allDataFraFil = ObjektFilLeser.read(KUNDE_FIL_LOKASJON);
 
-      kunderlisteFraFil = ObjektFilLeser.read(KUNDE_FIL_LOKASJON);
+     dlo.setAllData(allDataFraFil);
 
-      System.out.println("fra fil; " + kunderlisteFraFil);
-      dhl.getKundeListeHandling().nullstillKundeListe();
-      dlo.getKundeListe().addAll(kunderlisteFraFil);
+
+
+
+
+     // System.out.println("fra fil; " + allDataFraFil);
+
+
 
 
     } catch (IOException e) {
@@ -129,6 +146,14 @@ public class hovedSceneKontroller {
   protected void handleAvsluttKnapp() {
 
     Platform.exit();
+/*    Kunde k = new Kunde("asd","asd","","","","","","");
+    dhl.getKundeListeHandling().leggTilKunde(k);
+    for (int i=0; i<10000; i++){
+      dhl.getKundeMedForsikringListeHandling().leggTilForsikring( new HusOgInnboForsikring(0.0,0.0,"a","a","a","a","","","","","")
+              ,k);
+      dhl.getKundeMedSkademeldingListeHandling().leggTilSkademelding(new Skademelding("a","s","ssss","sss",0.0,0.0,"",""),k);
+    }*/
+
   }
 
 

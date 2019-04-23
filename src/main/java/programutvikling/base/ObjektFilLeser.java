@@ -3,16 +3,18 @@ package programutvikling.base;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
+import programutvikling.database.DataLagringObjekt;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class ObjektFilLeser {
 
 
-  public static ObservableList<Kunde> read(String filsti) throws IOException, ClassNotFoundException {
+  public static HashMap<String,Object> read(String filsti) throws IOException, ClassNotFoundException {
     FileChooser filvelger = new FileChooser();
     filvelger.setTitle("Åpne fil");
 
@@ -32,12 +34,14 @@ public class ObjektFilLeser {
 
       FileInputStream fin = new FileInputStream(filsti);
       ObjectInputStream oin = new ObjectInputStream(fin);
-      List<Kunde> list = (List<Kunde>) oin.readObject();
+      //List<Kunde> list = (List<Kunde>) oin.readObject();
+      HashMap<String,Object> list = (HashMap<String,Object>) oin.readObject();
 
-      return FXCollections.observableList(list);
+      //return FXCollections.observableList(list);
+      return list;
 
     }
-
+/*
     if (valgtFilEndelse == "*.csv") {
       List<String> records = new ArrayList<>();
       try (BufferedReader br = new BufferedReader(new FileReader(filsti))) {
@@ -56,8 +60,9 @@ public class ObjektFilLeser {
       }
       //return FXCollections.observableList(records);
     }
+    */
     // Dette bør fiskes !!
-    return FXCollections.emptyObservableList();
+    return new HashMap<>();
 
   }
 

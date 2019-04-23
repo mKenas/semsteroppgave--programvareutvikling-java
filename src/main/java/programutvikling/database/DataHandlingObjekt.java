@@ -1,5 +1,7 @@
 package programutvikling.database;
 
+import java.io.Serializable;
+
 public class DataHandlingObjekt {
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   KundeMedForsikringListeHandling kundeMedForsikringListeHandling;

@@ -5,12 +5,13 @@ import javafx.stage.FileChooser;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ObjektFilSkriver {
 
   private static final String CSV_SEPARATOR = ",";
 
-  public static void write(ObservableList<Kunde> kunderliste, String filsti) throws IOException {
+  public  static  void write(HashMap<String,Object> liste, String filsti) throws IOException {
 
     FileChooser filvelger = new FileChooser();
 
@@ -34,14 +35,14 @@ public class ObjektFilSkriver {
               FileOutputStream fos = new FileOutputStream(filsti);
               ObjectOutputStream out = new ObjectOutputStream(fos);
       ) {
-        out.writeObject(new ArrayList<Kunde>(kunderliste));
+        out.writeObject(liste);
       }
-    } else if (valgtFilEndelse == "*.csv") {
+/*    } else if (valgtFilEndelse == "*.csv") {
 
 
       try {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filsti), "UTF-8"));
-        ArrayList<Kunde> kunder = new ArrayList<Kunde>(kunderliste);
+        ArrayList<Kunde> kunder = new ArrayList<Kunde>(liste);
         StringBuffer oneLine = new StringBuffer();
         //oneLine.append("sep=,");
         //bw.newLine();
@@ -73,7 +74,7 @@ public class ObjektFilSkriver {
       } catch (FileNotFoundException e) {
       } catch (IOException e) {
       }
-
+*/
     }
   }
 
