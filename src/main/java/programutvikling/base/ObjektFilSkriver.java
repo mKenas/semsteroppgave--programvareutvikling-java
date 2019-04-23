@@ -73,7 +73,8 @@ public class ObjektFilSkriver {
       } catch (UnsupportedEncodingException e) {
       } catch (FileNotFoundException e) {
       } catch (IOException e) {
-      }
+
+ //     }
 */
     }
   }
