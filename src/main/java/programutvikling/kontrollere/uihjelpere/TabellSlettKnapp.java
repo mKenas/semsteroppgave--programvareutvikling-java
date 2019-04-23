@@ -1,5 +1,6 @@
 package programutvikling.kontrollere.uihjelpere;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -7,14 +8,15 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 import programutvikling.base.Kunde;
-import programutvikling.database.DataSourceObject;
-import programutvikling.database.KunderListe;
+import programutvikling.database.DataHandlingObjekt;
+import programutvikling.database.DataLagringObjekt;
 
 public class TabellSlettKnapp extends TableCell {
 
+  DataHandlingObjekt dhl = new DataHandlingObjekt();
   private Kunde kunde;
-  private DataSourceObject dso = DataSourceObject.getInstance();
-  private KunderListe kunderliste = dso.getKunderListe();
+  private DataLagringObjekt dlo = DataLagringObjekt.getInstance();
+  private ObservableList<Kunde> kunderliste = dlo.getKundeListe();
   private TableColumn kolonne = new TableColumn();
 
   public TabellSlettKnapp(TableColumn kolonne) {
@@ -36,8 +38,8 @@ public class TabellSlettKnapp extends TableCell {
               System.out.println(getTableView().getItems());
               System.out.println("Kunde: " + kunde);
 
-              kunderliste.getKunder().remove(getIndex());
-              dso.getKunderListe().slettlKunde(kunde);
+              kunderliste.remove(getIndex());
+              dhl.getKundeListeHandling().slettKunde(kunde);
 
 
             });

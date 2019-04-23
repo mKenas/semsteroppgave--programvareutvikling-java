@@ -7,13 +7,14 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class TabellKnapp<S> extends TableCell<S, Button> {
 
   private final Button knapp;
 
-  public TabellKnapp(String tittel, String stil, Consumer< S> funksjon) {
+  public TabellKnapp(String tittel, String stil, Consumer<S> funksjon) {
 
 
     this.knapp = new Button(tittel);
@@ -26,14 +27,33 @@ public class TabellKnapp<S> extends TableCell<S, Button> {
 
   }
 
-  public S getvalgtElement() {
-    return (S) getTableView().getItems().get(getIndex());
+  public TabellKnapp(String tittel, String stil, BiConsumer<S, S> funksjon) {
+
+
+    this.knapp = new Button(tittel);
+    this.knapp.getStyleClass().add(stil);
+    this.knapp.setCursor(Cursor.HAND);
+
+    this.knapp.setOnAction((ActionEvent e) -> {
+      funksjon.accept(getvalgtElement(), null);
+    });
+
   }
 
-  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, Consumer< S> funksjon) {
+  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, Consumer<S> funksjon) {
 
 
-    return param -> new TabellKnapp<>(tittel,stil, funksjon);
+    return param -> new TabellKnapp<>(tittel, stil, funksjon);
+  }
+
+  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, BiConsumer<S, S> funksjon) {
+
+
+    return param -> new TabellKnapp<>(tittel, stil, funksjon);
+  }
+
+  public S getvalgtElement() {
+    return (S) getTableView().getItems().get(getIndex());
   }
 
   @Override

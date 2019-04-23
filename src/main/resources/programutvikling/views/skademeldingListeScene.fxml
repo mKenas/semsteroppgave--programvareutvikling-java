@@ -2,19 +2,19 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
       styleClass="mainbar" stylesheets="@../styles/styles.css"
-      xmlns="http://javafx.com/javafx/8.0.172-ea">
+      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="programutvikling.kontrollere.SkademeldingListeKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0"/>
     </BorderPane.margin>
 
     <HBox prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
-            <Label prefHeight="93.0" prefWidth="176.0" text="Erstatninger">
+            <Label prefHeight="93.0" prefWidth="176.0" text="Skader">
                 <font>
                     <Font size="20.0"/>
                 </font>
@@ -25,45 +25,36 @@
         </children>
     </HBox>
 
-    <TableView fx:id="tableview" prefHeight="383.0" prefWidth="930.0">
+    <TableView fx:id="skademeldingTabell" prefHeight="383.0" prefWidth="930.0">
         <columns>
-            <TableColumn prefWidth="150.0" text="ErstatningerNr">
+            <TableColumn prefWidth="150.0" text="Skade type">
                 <cellValueFactory>
-                    <PropertyValueFactory property="ErstatningerNr"/>
+                    <PropertyValueFactory property="SkadeType"/>
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn prefWidth="200.0" text="Beløp">
+            <TableColumn prefWidth="200.0" text="Takseringsbeløp">
                 <cellValueFactory>
-                    <PropertyValueFactory property="Beløp"/>
+                    <PropertyValueFactory property="Takseringsbelop"/>
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn prefWidth="150.0" text="Utbetalingsdato">
+            <TableColumn prefWidth="150.0" text="utbetalt beløp">
                 <cellValueFactory>
-                    <PropertyValueFactory property="Utbetalingsdato"/>
+                    <PropertyValueFactory property="UtbetaltErstatningsbelop"/>
                 </cellValueFactory>
             </TableColumn>
 
 
             <TableColumn prefWidth="220.0" text="Kunde">
-                <cellValueFactory>
-                    <PropertyValueFactory property="Kunde"/>
-                </cellValueFactory>
-            </TableColumn>
-
-
-            <TableColumn fx:id="visKundeKolonne" prefWidth="60.0" text="">
 
             </TableColumn>
 
-            <TableColumn fx:id="redigerKolonne" prefWidth="60.0" text="">
+
+            <TableColumn fx:id="visSkademeldingKnapp" prefWidth="60.0" text="">
 
             </TableColumn>
 
-            <TableColumn fx:id="slettKolonne" prefWidth="60.0" text="">
-
-            </TableColumn>
 
 
         </columns>
@@ -75,13 +66,13 @@
     <BorderPane prefHeight="128.0" prefWidth="930.0">
         <right>
             <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="64.0"
-                    prefWidth="320.0" styleClass="sub-scene-knapp" text="Utbetal erstatning"
-                    BorderPane.alignment="CENTER">
+                    prefWidth="320.0" styleClass="sub-scene-knapp" text="Registrer Skade" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0"/>
                 </BorderPane.margin>
             </Button>
         </right>
     </BorderPane>
+
 
 </VBox>

@@ -3,7 +3,7 @@ package programutvikling.base.klassHjelpere;
 public enum SkademeldingStatus {
 
   GODKJENT,
-   AVVIST,
+  AVVIST,
   UBEHANDLET,
   UNDER_BEHANDLING
 

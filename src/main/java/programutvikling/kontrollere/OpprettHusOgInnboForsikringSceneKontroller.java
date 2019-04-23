@@ -6,11 +6,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.*;
-import programutvikling.database.DataSourceObject;
+import programutvikling.database.DataHandlingObjekt;
+import programutvikling.database.DataLagringObjekt;
 
-import java.io.IOException;
-
-public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMedKundeInfo{
+public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMedKundeInfo {
   @FXML
   TextField boligensAdresseTekstfelt;
   @FXML
@@ -31,10 +30,10 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
   TextField forsikringsbelopTekstfelt;
   @FXML
   TextField forsikringspremieTekstfelt;
-
+  DataHandlingObjekt dho = new DataHandlingObjekt();
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
-  private DataSourceObject dso = DataSourceObject.getInstance();
+  private DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   private ObservableList kunderListe;
   private Kunde kunde;
   private Forsikring forsikring;
@@ -45,7 +44,7 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
 
   public void initialize() {
 
-   /* kunderListe = dso.getKunderListe().getKunder();
+   /* kunderListe = dlo.getKunderListe().getKundeListe();
     kunderListeKomboboks.setItems(kunderListe);*/
     //kunderListeKomboboks.setEditable(true);
     //new AutoCompleteComboBoxListener<>(kunderListeKomboboks);
@@ -58,18 +57,11 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
     this.personNrTekstfelt.setText(k.toString());
 
 
-
   }
 
-  @FXML
-  public void NavigeringTilHusOGInnboForsikringScene() {
-
-    Navigator.visScene(borderPane, Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE());
-
-  }
 
   public void handleOpprettHusOgInnboForsikringKnapp() {
-    boolean kundeEksisterer = false;
+
     String boligensAdresse = boligensAdresseTekstfelt.getText();
     String byggeAr = byggeArTekstfelt.getText();
     String boligType = boligTypeTekstfelt.getText();
@@ -87,16 +79,15 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
 
 
     forsikring = new HusOgInnboForsikring(forsikringsbelop, forsikringspremie, "",
-           boligensAdresse, byggeAr, boligType, byggeMateriale, standard, antallkvadratmeter, bygningForsikringsbelop, innboForsikringsbelop);
+            boligensAdresse, byggeAr, boligType, byggeMateriale, standard, antallkvadratmeter, bygningForsikringsbelop, innboForsikringsbelop);
 
     //Forsikring<HusOgInnboForsikring> forsikring = new Forsikring<>(1.0,0.0,"");
 
-    kunde.leggTilForsikring(forsikring);
+    //kunde.leggTilForsikring(forsikring);
+    dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);
     // kunde må slettes fra liste hvis validering mislykkes!
 
-     // dso.getKunderListe().slettlKunde(kunde);
-
-
+    // dlo.getKunderListe().slettKunde(kunde);
 
 
     NavigeringTilVisKundeScene();
@@ -107,7 +98,7 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
   @FXML
   public void NavigeringTilVisKundeScene() {
 
-    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(),kunde);
+    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
 
   }
 

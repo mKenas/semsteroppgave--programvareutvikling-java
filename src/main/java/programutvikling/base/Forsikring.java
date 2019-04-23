@@ -1,7 +1,5 @@
 package programutvikling.base;
 
-import programutvikling.database.DataSourceObject;
-
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -12,7 +10,6 @@ import java.util.UUID;
 public abstract class Forsikring implements Serializable {
 
 
-
   private String forsikringsNr;
   private String oprettelsesDato;
   private Double forsikringsbelop;
@@ -21,7 +18,7 @@ public abstract class Forsikring implements Serializable {
   private DateFormat datoFormat;
 
   public Forsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser) {
-   this.forsikringsNr = UUID.randomUUID().toString();
+    this.forsikringsNr = UUID.randomUUID().toString();
 
     this.forsikringsbelop = forsikringsbeløp;
     this.forsikringspremie = forsikringspremie;
@@ -34,7 +31,6 @@ public abstract class Forsikring implements Serializable {
   public String getOprettelsesDato() {
     return oprettelsesDato;
   }
-
 
 
   public Double getForsikringsbelop() {
@@ -79,7 +75,6 @@ public abstract class Forsikring implements Serializable {
 
     return Objects.hash(forsikringsNr);
   }
-
 
 
 }

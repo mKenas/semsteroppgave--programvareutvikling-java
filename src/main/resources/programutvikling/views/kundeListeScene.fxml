@@ -30,7 +30,7 @@
          <TextField fx:id="KunderFilterTesktfelt" prefHeight="58.0" prefWidth="239.0" promptText="Søk" />
         </children>
     </HBox>
-    <TableView fx:id="tableview" prefHeight="383.0" prefWidth="930.0">
+    <TableView fx:id="kunderTabell" prefHeight="383.0" prefWidth="930.0">
         <columns>
             <TableColumn prefWidth="150.0" text="PersonNr">
                 <cellValueFactory>

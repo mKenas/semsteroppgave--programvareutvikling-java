@@ -61,7 +61,6 @@ public class Kunde implements Serializable {
   }
 
 
-
   public String getNavn() {
     return navn;
   }
@@ -157,6 +156,11 @@ public class Kunde implements Serializable {
   public ArrayList<Skademelding> getErstatninger() {
     return erstatninger;
   }
+
+  public void setErstatninger(ArrayList<Skademelding> erstatninger) {
+    this.erstatninger = erstatninger;
+  }
+
   public ArrayList<Skademelding> getAvvisteErstatninger() {
     return avvisteErstatninger;
   }
@@ -175,11 +179,6 @@ public class Kunde implements Serializable {
     this.avvisteErstatninger.add(skademelding);
 
 
-  }
-
-
-  public void setErstatninger(ArrayList<Skademelding> erstatninger) {
-    this.erstatninger = erstatninger;
   }
 
   @Override

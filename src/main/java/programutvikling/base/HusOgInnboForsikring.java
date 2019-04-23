@@ -98,7 +98,8 @@ public class HusOgInnboForsikring extends Forsikring {
 
   @Override
   public String toString() {
-    return "HusOgInnboForsikring{" +
+    return "super: " + super.toString() +
+            "HusOgInnboForsikring{" +
             "boligAdresse='" + boligAdresse + '\'' +
             ", byggeAr='" + byggeAr + '\'' +
             ", boligType='" + boligType + '\'' +
@@ -107,6 +108,7 @@ public class HusOgInnboForsikring extends Forsikring {
             ", storrelse='" + storrelse + '\'' +
             ", bygningsForsikringsbelop='" + bygningsForsikringsbelop + '\'' +
             ", innboForsikringsbelop='" + innboForsikringsbelop + '\'' +
+            ", ForsikringsType='" + ForsikringsType + '\'' +
             '}';
   }
 }

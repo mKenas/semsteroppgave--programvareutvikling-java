@@ -11,17 +11,18 @@ import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
-import programutvikling.database.DataSourceObject;
+import programutvikling.database.DataHandlingObjekt;
+import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
-import java.io.IOException;
 import java.util.function.Predicate;
 
 
 public class KunderSceneKontroller {
 
   private static final String KUNDE_FIL_LOKASJON = "kunder.jobj";
-  DataSourceObject dso = DataSourceObject.getInstance();
+  DataLagringObjekt dlo = DataLagringObjekt.getInstance();
+  DataHandlingObjekt dhl = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   @FXML
   TableColumn<Kunde, Button> redigerKolonne;
@@ -34,35 +35,38 @@ public class KunderSceneKontroller {
   private BorderPane borderPane = hsk.getBorderPane();
   private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
   @FXML
-  private TableView tableview;
+  private TableView kunderTabell;
 
-  @FXML private TextField KunderFilterTesktfelt;
+  @FXML
+  private TextField KunderFilterTesktfelt;
 
   public void initialize() {
 
-    if (kunderlisteFraFil != null) {
+    kunderTabell.setPlaceholder(new Label("Ingen kunder er registrert ennå!"));
+
+/*    if (kunderlisteFraFil != null) {
       if (kunderlisteFraFil.size() > 0) {
 
-        dso.getKunderListe().setKunder(kunderlisteFraFil);
+        dlo.getKunderListe().setKunder(kunderlisteFraFil);
 
 
         kundeEndret();
         System.out.println("kunder liste: " + kunderliste);
 
       }
-    }
+    }*/
 
-    kunderliste = dso.getKunderListe().getKunder();
+    kunderliste = dlo.getKundeListe();
 
 
     if (kunderliste.size() == 0) {
-      tableview.setPlaceholder(new Label("Ingen kunder er registrert ennå!"));
+
 
     }
     if (kunderliste.size() >= 1) {
 
 
-      tableview.getItems().setAll(kunderliste);
+      kunderTabell.getItems().setAll(kunderliste);
       leggTilRedigerKnapp();
       leggTilSlettKnapp();
       leggTilVisKundeKnapp();
@@ -79,20 +83,16 @@ public class KunderSceneKontroller {
     });
 
 
-
     /***Filtring***/
     FilteredList<Kunde> filteredList = new FilteredList<>(kunderliste);
 
 
-
-
-
-    KunderFilterTesktfelt.textProperty().addListener((observable, oldValue, newValue)->{
+    KunderFilterTesktfelt.textProperty().addListener((observable, oldValue, newValue) -> {
       filteredList.setPredicate(
               new Predicate<Kunde>() {
                 @Override
                 public boolean test(Kunde kunde) {
-                  if (kunde.getPersonNr().contains(KunderFilterTesktfelt.getText())|| kunde.getNavn().contains(KunderFilterTesktfelt.getText())) {
+                  if (kunde.getPersonNr().contains(KunderFilterTesktfelt.getText()) || kunde.getNavn().contains(KunderFilterTesktfelt.getText())) {
                     return true;
                   }
                   return false;
@@ -104,7 +104,7 @@ public class KunderSceneKontroller {
 
       kunderliste = FXCollections.observableArrayList(filteredList);
 
-      tableview.setItems(FXCollections.observableList(kunderliste));
+      kunderTabell.setItems(FXCollections.observableList(kunderliste));
 
     });
 
@@ -114,7 +114,7 @@ public class KunderSceneKontroller {
   private void kundeEndret() {
 
 
-    tableview.getItems().setAll(kunderliste);
+    kunderTabell.getItems().setAll(kunderliste);
 
 
     leggTilRedigerKnapp();
@@ -142,7 +142,7 @@ public class KunderSceneKontroller {
               System.out.println("Kunde: " + kunde);
 
               kunderliste.remove(getIndex());
-              dso.getKunderListe().slettlKunde(kunde);
+              dlo.getKunderListe().slettKunde(kunde);
 
 
             });
@@ -164,10 +164,10 @@ public class KunderSceneKontroller {
 
     slettKolonne.setCellFactory(cellFactory);*/
 
-   // Knapp knapp = new Knapp(slettKolonne);
-    slettKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uf00d","slett-knapp", (Kunde k) -> {
-      dso.getKunderListe().slettlKunde(k);
-      tableview.getItems().remove(k);
+    // Knapp knapp = new Knapp(slettKolonne);
+    slettKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uf00d", "slett-knapp", (Kunde k) -> {
+      dhl.getKundeListeHandling().slettKunde(k);
+      kunderTabell.getItems().remove(k);
 
       //return p;
     }));
@@ -176,47 +176,9 @@ public class KunderSceneKontroller {
 
   private void leggTilRedigerKnapp() {
 
-/*
 
-    Callback<TableColumn<Kunde, Void>, TableCell<Kunde, Void>> cellFactory = new Callback<>() {
-      @Override
-      public TableCell<Kunde, Void> call(final TableColumn<Kunde, Void> param) {
-        final TableCell<Kunde, Void> cell = new TableCell<>() {
-
-          private final Button knapp = new Button("\uF044");
-
-          {
-            knapp.getStyleClass().add("rediger-knapp");
-            knapp.setCursor(Cursor.HAND);
-            knapp.setOnAction((ActionEvent event) -> {
-              kunde = getTableView().getItems().get(getIndex());
-              System.out.println("Kunde: " + kunde);
-
-
-              NavigeringTilRedigerKundeScene();
-
-            });
-          }
-
-          @Override
-          public void updateItem(Void item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty) {
-              setGraphic(null);
-            } else {
-              setGraphic(knapp);
-            }
-          }
-        };
-        return cell;
-      }
-    };
-
-    redigerKolonne.setCellFactory(cellFactory);
-*/
-
-    redigerKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uF044","rediger-knapp", (Kunde k) -> {
-      //tableview.getItems().remove(p);
+    redigerKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uF044", "rediger-knapp", (Kunde k) -> {
+      //kunderTabell.getItems().remove(p);
       kunde = k;
       NavigeringTilRedigerKundeScene();
       //return p;
@@ -227,43 +189,8 @@ public class KunderSceneKontroller {
   private void leggTilVisKundeKnapp() {
 
 
-   /* Callback<TableColumn<Kunde, Void>, TableCell<Kunde, Void>> cellFactory = new Callback<>() {
-      @Override
-      public TableCell<Kunde, Void> call(final TableColumn<Kunde, Void> param) {
-        final TableCell<Kunde, Void> cell = new TableCell<>() {
-
-          private final Button knapp = new Button("\uf2c2");
-
-          {
-            knapp.getStyleClass().add("vis-kunde-knapp");
-            knapp.setCursor(Cursor.HAND);
-            knapp.setOnAction((ActionEvent event) -> {
-              kunde = getTableView().getItems().get(getIndex());
-              System.out.println("Kunde: " + kunde);
-
-
-              NavigeringTilVisKundeScene();
-
-            });
-          }
-
-          @Override
-          public void updateItem(Void item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty) {
-              setGraphic(null);
-            } else {
-              setGraphic(knapp);
-            }
-          }
-        };
-        return cell;
-      }
-    };
-
-    visKundeKolonne.setCellFactory(cellFactory);*/
-    visKundeKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uf2c2","vis-kunde-knapp",(Kunde k) -> {
-      //tableview.getItems().remove(p);
+    visKundeKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uf2c2", "vis-kunde-knapp", (Kunde k) -> {
+      //kunderTabell.getItems().remove(p);
       kunde = k;
       NavigeringTilVisKundeScene();
     }));

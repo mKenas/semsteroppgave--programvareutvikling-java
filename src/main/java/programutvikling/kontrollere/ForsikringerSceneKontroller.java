@@ -4,72 +4,51 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.Forsikring;
 import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
-import programutvikling.database.DataSourceObject;
-import programutvikling.database.ForsikringerListe;
+import programutvikling.database.DataHandlingObjekt;
+import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
-import java.io.IOException;
 
 public class ForsikringerSceneKontroller {
 
 
   private static final String KUNDE_FIL_LOKASJON = "kunder.jobj";
-  DataSourceObject dso = DataSourceObject.getInstance();
+  DataLagringObjekt dlo = DataLagringObjekt.getInstance();
+  DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
+  @FXML
+  TableColumn<Forsikring, Button> visForsikringKolonne;
   private Kunde kunde;
   private Forsikring forsikring;
   private BorderPane borderPane = hsk.getBorderPane();
   //private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
-  private ObservableList<Forsikring> forsikringerListe,forsikringerListeFraFil;
-
-
+  private ObservableList<Forsikring> forsikringerListe, forsikringerListeFraFil;
   @FXML
-  TableColumn<Forsikring, Void> redigerKolonne;
-  @FXML
-  TableColumn<Forsikring, Button> slettKolonne;
-  @FXML
-  TableColumn<Forsikring, Void> visForsikringKolonne;
-
-  @FXML
-  private TableView tableview;
+  private TableView forsikringTabell;
 
   public void initialize() {
 
-    System.out.println(dso.getForsikringerListe().getForsikringer());
-
-    if (forsikringerListeFraFil != null) {
-      if (forsikringerListe.size() > 0) {
-
-        dso.getForsikringerListe().setForsikringer(forsikringerListeFraFil);
+    forsikringTabell.setPlaceholder(new Label("Ingen forsikringer er registrert ennå!"));
 
 
-        forsikringEndret();
-        System.out.println("forsikringerListe: " + forsikringerListe);
-
-      }
-    }
-
-    forsikringerListe = dso.getForsikringerListe().getForsikringer();
+    forsikringerListe = dlo.getForsikringListe();
 
 
-
-    if (forsikringerListe.size() == 0) {
-      tableview.setPlaceholder(new Label("Ingen forsikringer er registrert ennå!"));
-
-    }
     if (forsikringerListe.size() >= 1) {
 
 
-      tableview.getItems().setAll(forsikringerListe);
-      //leggTilRedigerKnapp();
-      leggTilSlettKnapp();
-      //leggTilVisKundeKnapp();
+      forsikringTabell.getItems().setAll(forsikringerListe);
+
+      leggTilVisForsikringKnapp();
 
     }
 
@@ -77,7 +56,7 @@ public class ForsikringerSceneKontroller {
     forsikringerListe.addListener(new InvalidationListener() {
       @Override
       public void invalidated(Observable observable) {
-        System.out.println("Endret");
+        System.out.println("Forsikring liste Endret");
         forsikringEndret();
       }
     });
@@ -89,49 +68,39 @@ public class ForsikringerSceneKontroller {
   private void forsikringEndret() {
 
 
-    tableview.getItems().setAll(forsikringerListe);
+    forsikringTabell.getItems().setAll(forsikringerListe);
 
     //leggTilRedigerKnapp();
-    leggTilSlettKnapp();
+
 
   }
 
 
-  private void leggTilSlettKnapp() {
+  private void leggTilVisForsikringKnapp() {
+
+    visForsikringKolonne.setCellFactory(TabellKnapp.<Forsikring>genererKnapp("\uf2c2", "vis-kunde-knapp", (f) -> {
+      forsikring = f;
+      kunde = dho.getKundeMedForsikringListeHandling().finnForsikringsEier(f);
 
 
-
-    slettKolonne.setCellFactory(TabellKnapp.<Forsikring>genererKnapp("\uf00d", "slett-knapp",(Forsikring f) -> {
-      dso.getForsikringerListe().slettlForsikring(f);
-      dso.getKunderListe().slettlForsikring(f);
-      tableview.getItems().remove(f);
+      navigerTilVisForsikringScene();
 
     }));
 
   }
 
-  private void leggTilRedigerKnapp() {
 
+  @FXML
+  protected void navigeringTilOpprettForsikringScene() {
 
+    Navigator.visScene(borderPane, Navigator.getOPPRETT_FORSIKRING_SCENE());
   }
 
-  private void leggTilVisKundeKnapp() {
+  @FXML
+  protected void navigerTilVisForsikringScene() {
 
-
-
+    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getVIS_HUS_OG_INNBO_FORSIKRING_SCENE(), kunde, forsikring);
   }
-
-
-  protected void NavigeringTilRedigerKundeScene() {
-
-    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getREDIGER_KUNDE_SCENE(), kunde);
-  }
-
-    @FXML
-    protected void NavigeringTilOpprettForsikringScene () {
-
-      Navigator.visScene(borderPane, Navigator.getOPPRETT_FORSIKRING_SCENE());
-    }
 
 
 }

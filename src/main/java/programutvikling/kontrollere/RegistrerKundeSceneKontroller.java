@@ -7,20 +7,19 @@ import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
-import programutvikling.database.DataSourceObject;
-
-import java.io.IOException;
+import programutvikling.database.DataHandlingObjekt;
+import programutvikling.database.DataLagringObjekt;
 
 
 public class RegistrerKundeSceneKontroller {
 
 
-  DataSourceObject dso = DataSourceObject.getInstance();
+  DataLagringObjekt dlo = DataLagringObjekt.getInstance();
+  DataHandlingObjekt dhl = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-  private BorderPane borderPane = hsk.getBorderPane();
-
   Kunde kunde;
-
+  String forsikringsType;
+  private BorderPane borderPane = hsk.getBorderPane();
   @FXML
   private TextField personNrTekstFelt;
   @FXML
@@ -40,10 +39,6 @@ public class RegistrerKundeSceneKontroller {
   @FXML
   private ComboBox forsikringsTypeKomboBoks;
 
-  String forsikringsType;
-
-
-
   @FXML
   private void handleRegistrerKundeKnapp() {
     String personNr = personNrTekstFelt.getText();
@@ -59,19 +54,16 @@ public class RegistrerKundeSceneKontroller {
     forsikringsType = forsikringsTypeKomboBoks.getSelectionModel().getSelectedItem().toString();
 
 
-
-
-    dso.getKunderListe().leggTilKunde(kunde);
+    dhl.getKundeListeHandling().leggTilKunde(kunde);
     navigeringTilOpprettForsikringScene();
 
 
   }
 
 
-
   protected void navigeringTilOpprettForsikringScene() {
 
-    Navigator.visForsikringSceneMedKundeInfo(borderPane, forsikringsType,kunde);
+    Navigator.visForsikringSceneMedKundeInfo(borderPane, forsikringsType, kunde);
 
   }
 }

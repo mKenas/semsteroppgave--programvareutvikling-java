@@ -38,15 +38,15 @@ public class ObjektFilLeser {
 
     }
 
-    if (valgtFilEndelse == "*.csv"){
+    if (valgtFilEndelse == "*.csv") {
       List<String> records = new ArrayList<>();
       try (BufferedReader br = new BufferedReader(new FileReader(filsti))) {
         String line;
         while ((line = br.readLine()) != null) {
-          List<String > values = Arrays.asList(line.split(","));
+          List<String> values = Arrays.asList(line.split(","));
           List<Kunde> kunder = new ArrayList<>();
 
-          values.forEach(val-> System.out.println(val));
+          values.forEach(val -> System.out.println(val));
 
           //System.out.println(values);
           //records.add(values);

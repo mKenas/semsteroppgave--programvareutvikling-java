@@ -29,7 +29,7 @@
         </children>
     </HBox>
 
-    <TableView fx:id="tableview" prefHeight="383.0" prefWidth="930.0">
+    <TableView fx:id="forsikringTabell" prefHeight="383.0" prefWidth="930.0">
         <columns>
             <TableColumn prefWidth="150.0" text="ForsikringNr">
                 <cellValueFactory>
@@ -60,13 +60,6 @@
 
             </TableColumn>
 
-            <TableColumn fx:id="redigerKolonne" prefWidth="60.0" text="">
-
-            </TableColumn>
-
-            <TableColumn fx:id="slettKolonne" prefWidth="60.0" text="">
-
-            </TableColumn>
 
 
         </columns>
@@ -77,7 +70,7 @@
 
     <BorderPane prefHeight="128.0" prefWidth="930.0">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#NavigeringTilOpprettForsikringScene" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Opprett Ny forsikring" BorderPane.alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#navigeringTilOpprettForsikringScene" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Opprett Ny forsikring" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0" />
                 </BorderPane.margin>

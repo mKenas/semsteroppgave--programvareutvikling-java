@@ -94,12 +94,13 @@
                     </VBox.margin>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNavigeringTilSkaderScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Skader">
+                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNavigeringTilSkaderScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Skademeldinger">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
                 </Button>
                 <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleNavigeringTilErstatningerScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Erstatninger" />
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleNavigeringTilAvvistSkademeldingListeScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Avviste erstatningskrav" />
             </children>
         </VBox>
 

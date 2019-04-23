@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class ObjektFilSkriver {
 
   private static final String CSV_SEPARATOR = ",";
+
   public static void write(ObservableList<Kunde> kunderliste, String filsti) throws IOException {
 
     FileChooser filvelger = new FileChooser();
@@ -44,13 +45,11 @@ public class ObjektFilSkriver {
         StringBuffer oneLine = new StringBuffer();
         //oneLine.append("sep=,");
         //bw.newLine();
-      oneLine .append("KundeNr");
+        oneLine.append("KundeNr");
         oneLine.append(CSV_SEPARATOR);
-        oneLine .append("Navn");
+        oneLine.append("Navn");
         oneLine.append(CSV_SEPARATOR);
-        oneLine .append("Etternavn\n");
-
-
+        oneLine.append("Etternavn\n");
 
 
         for (Kunde kunde : kunder) {
@@ -62,9 +61,7 @@ public class ObjektFilSkriver {
           oneLine.append(CSV_SEPARATOR);
 
           oneLine.append(kunde.getEtternavn().trim().length() == 0 ? "" : kunde.getEtternavn());
-         oneLine.append("\n");
-
-
+          oneLine.append("\n");
 
 
         }

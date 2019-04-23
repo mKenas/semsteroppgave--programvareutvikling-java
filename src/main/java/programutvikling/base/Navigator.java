@@ -12,21 +12,21 @@ import java.io.IOException;
 public abstract class Navigator {
 
 
-  private static final String DASHBORD_SCENE ="/programutvikling/views/dashbordScene.fxml";
-  private static final String FORSIKRING_SCENE ="/programutvikling/views/forsikringer.fxml";
-  private static final String KUNDER_SCENE = "/programutvikling/views/kunderScene.fxml";
+  private static final String DASHBORD_SCENE = "/programutvikling/views/dashbordScene.fxml";
+  private static final String FORSIKRING_LISTE_SCENE = "/programutvikling/views/forsikringListeScene.fxml";
+  private static final String KUNDE_LISTE_SCENE = "/programutvikling/views/kundeListeScene.fxml";
   private static final String REGISTRER_KUNDE_SCENE = "/programutvikling/views/registrerKundeScene.fxml";
-  private static final String REDIGER_KUNDE_SCENE ="/programutvikling/views/redigerKundeScene.fxml";
-  private static final String ERSTATNINGER_SCENE= "/programutvikling/views/erstatningerScene.fxml";
-  private static final String SKADER_SCENE ="/programutvikling/views/skaderScene.fxml";
+  private static final String REDIGER_KUNDE_SCENE = "/programutvikling/views/redigerKundeScene.fxml";
+  private static final String ERSTATNING_LISTE_SCENE = "/programutvikling/views/erstatningListeScene.fxml";
+  private static final String SKADEMELDING_LISTE_SCENE = "/programutvikling/views/skademeldingListeScene.fxml";
+  private static final String AVVIST_SKADEMELDING_LISTE_SCENE = "/programutvikling/views/avvistSkademeldingListeScene.fxml";
   private static final String VIS_KUNDE_SCENE = "/programutvikling/views/visKundeScene.fxml";
-  private static final String OPPRETT_FORSIKRING_SCENE ="/programutvikling/views/opprettForsikringScene.fxml";
+  private static final String OPPRETT_FORSIKRING_SCENE = "/programutvikling/views/opprettForsikringScene.fxml";
   private static final String OPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE = "/programutvikling/views/opprettHusOgInnboForsikringScene.fxml";
-  private static final String VIS_HUS_OG_INNBO_FORSIKRING_SCENE ="/programutvikling/views/visHusOgInnboForsikringScene.fxml";
+  private static final String VIS_HUS_OG_INNBO_FORSIKRING_SCENE = "/programutvikling/views/visHusOgInnboForsikringScene.fxml";
   private static final String REGISTRER_SKADE_MELDING_SCENE = "/programutvikling/views/registrerSkademeldingScene.fxml";
-  private static final String VIS_SKADE_MELDING_SCENE = "/programutvikling/views/visSkadeMeldingScene.fxml";
+  private static final String VIS_SKADE_MELDING_SCENE = "/programutvikling/views/visSkademeldingScene.fxml";
   private static final String REDIGER_SKADE_MELDING_SCENE = "/programutvikling/views/redigerSkademeldingScene.fxml";
-
 
 
   public static void visScene(BorderPane borderPane, String fxml) {
@@ -66,29 +66,33 @@ public abstract class Navigator {
 
     Parent root = null;
 
-    String fxml ="";
-    switch (forsikringsType){
-      case "Hus og innboforsikring":fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
-      case "Fritidsboligforsikring":fxml =Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
-      case "Båtforsikring":fxml =Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
-      case "Reiseforsikring":fxml =Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
+    String fxml = "";
+    switch (forsikringsType) {
+      case "Hus og innboforsikring":
+        fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
+      case "Fritidsboligforsikring":
+        fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
+      case "Båtforsikring":
+        fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
+      case "Reiseforsikring":
+        fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
 
     }
 
 
-      FXMLLoader loader = new FXMLLoader(Navigator.class.getResource(fxml));
+    FXMLLoader loader = new FXMLLoader(Navigator.class.getResource(fxml));
     try {
       root = loader.load();
     } catch (IOException e) {
       e.printStackTrace();
     }
     KontrollerMedKundeInfo kontroller = loader.getController();
-      kontroller.setKunde(kunde);
+    kontroller.setKunde(kunde);
 
-     borderPane.setCenter(root);
+    borderPane.setCenter(root);
   }
 
-  public static void visSceneMedForsikringInfo(BorderPane borderPane, String fxml,Kunde kunde, Forsikring forsikring)  {
+  public static void visSceneMedForsikringInfo(BorderPane borderPane, String fxml, Kunde kunde, Forsikring forsikring) {
 
     Parent root = null;
 
@@ -108,7 +112,7 @@ public abstract class Navigator {
   }
 
 
-  public static void visSceneMedSkademeldingInfo(BorderPane borderPane, String fxml,Kunde kunde, Skademelding skademelding) {
+  public static void visSceneMedSkademeldingInfo(BorderPane borderPane, String fxml, Kunde kunde, Skademelding skademelding) {
 
     Parent root = null;
 
@@ -126,16 +130,17 @@ public abstract class Navigator {
 
     borderPane.setCenter(root);
   }
+
   public static String getDashbordScene() {
     return DASHBORD_SCENE;
   }
 
-  public static String getForsikringScene() {
-    return FORSIKRING_SCENE;
+  public static String getForsikringListeScene() {
+    return FORSIKRING_LISTE_SCENE;
   }
 
-  public static String getKunderScene() {
-    return KUNDER_SCENE;
+  public static String getKundeListeScene() {
+    return KUNDE_LISTE_SCENE;
   }
 
   public static String getRegistrerKundeScene() {
@@ -147,11 +152,11 @@ public abstract class Navigator {
   }
 
   public static String getERSTATNINGER_SCENE() {
-    return ERSTATNINGER_SCENE;
+    return ERSTATNING_LISTE_SCENE;
   }
 
   public static String getSKADER_SCENE() {
-    return SKADER_SCENE;
+    return SKADEMELDING_LISTE_SCENE;
   }
 
   public static String getVIS_KUNDE_SCENE() {
@@ -180,6 +185,10 @@ public abstract class Navigator {
 
   public static String getRedigerSkadeMeldingScene() {
     return REDIGER_SKADE_MELDING_SCENE;
+  }
+
+  public static String getAvvistSkademeldingListeScene() {
+    return AVVIST_SKADEMELDING_LISTE_SCENE;
   }
 }
 

@@ -5,7 +5,6 @@ import programutvikling.base.klassHjelpere.SkademeldingStatus;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
@@ -25,8 +24,7 @@ public class Skademelding implements Serializable {
   private SkademeldingStatus status;
 
 
-
-  public Skademelding(String skadeDato, String klokkeSlett, String  forsikringsType, String skadeType, Double takseringsbelop, Double utbetaltErstatningsbelop, String skadeBeskrivelse, String ovrigSkadeInformasjon) {
+  public Skademelding(String skadeDato, String klokkeSlett, String forsikringsType, String skadeType, Double takseringsbelop, Double utbetaltErstatningsbelop, String skadeBeskrivelse, String ovrigSkadeInformasjon) {
     this.skadeNr = UUID.randomUUID().toString();
     this.skadeDato = skadeDato;
     this.klokkeSlett = klokkeSlett;
@@ -112,7 +110,7 @@ public class Skademelding implements Serializable {
     this.status = status;
   }
 
-  public String  getOpprettelsesDato() {
+  public String getOpprettelsesDato() {
     return opprettelsesDato;
   }
 
@@ -137,7 +135,6 @@ public class Skademelding implements Serializable {
 
     return Objects.hash(skadeNr);
   }
-
 
 
   @Override

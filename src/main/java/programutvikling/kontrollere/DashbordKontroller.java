@@ -5,8 +5,6 @@ import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Navigator;
 
-import java.io.IOException;
-
 
 public class DashbordKontroller {
 
@@ -30,7 +28,7 @@ public class DashbordKontroller {
   @FXML
   protected void NavigeringTilKunderScene() {
 
-    Navigator.visScene(borderPane, Navigator.getKunderScene());
+    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
 
   }
 

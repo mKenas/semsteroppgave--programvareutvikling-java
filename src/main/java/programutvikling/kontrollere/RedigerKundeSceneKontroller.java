@@ -6,13 +6,11 @@ import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
-import programutvikling.database.DataSourceObject;
-
-import java.io.IOException;
+import programutvikling.database.DataLagringObjekt;
 
 public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
 
-  DataSourceObject dso = DataSourceObject.getInstance();
+  DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
 
@@ -74,7 +72,7 @@ public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
     kunde.setPoststed(poststedTekstFelt.getText());
 
 
-    Navigator.visScene(borderPane, Navigator.getKunderScene());
+    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
 
   }
 }

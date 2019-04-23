@@ -4,14 +4,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import programutvikling.base.*;
+import programutvikling.base.HovedSceneKontainer;
+import programutvikling.base.Kunde;
+import programutvikling.base.Navigator;
+import programutvikling.base.Skademelding;
 import programutvikling.base.klassHjelpere.SkademeldingStatus;
-import programutvikling.database.DataSourceObject;
+import programutvikling.database.DataHandlingObjekt;
+import programutvikling.database.DataLagringObjekt;
 
-public  class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedSkademeldingInfo {
+public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedSkademeldingInfo {
 
 
-  DataSourceObject dso = DataSourceObject.getInstance();
+  DataLagringObjekt dlo = DataLagringObjekt.getInstance();
+  DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
 
@@ -19,8 +24,8 @@ public  class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, 
   private Kunde kunde;
   private Skademelding skademelding;
 
-@FXML
-private Label statusLabel;
+  @FXML
+  private Label statusLabel;
   @FXML
   private Label personNrLabel;
   @FXML
@@ -64,13 +69,10 @@ private Label statusLabel;
   private RadioButton underBehandlingRadioKnapp;*/
 
 
-
-
   public void initialize() {
 
 
   }
-
 
 
   @FXML
@@ -82,7 +84,7 @@ private Label statusLabel;
   }
 
   protected void NavigeringTilKunderScene() {
-    Navigator.visScene(borderPane, Navigator.getKunderScene());
+    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
 
   }
 
@@ -114,7 +116,7 @@ private Label statusLabel;
     ovrigInformasjonTekstfelt.setText(skademelding.getOvrigSkadeInformasjon());
     opprettelsesdatoLabel.setText(skademelding.getOpprettelsesDato());
 
-    if (skademelding.getTakseringsbelop() != null ) {
+    if (skademelding.getTakseringsbelop() != null) {
       takseringsbelopTekstfelt.setText(skademelding.getTakseringsbelop().toString());
     }
 
@@ -127,7 +129,7 @@ private Label statusLabel;
   }
 
 
-  public void godkjennSkadeMelding(){
+  public void godkjennSkadeMelding() {
 
 
     Double takseringsbelop = Double.valueOf(takseringsbelopTekstfelt.getText());
@@ -135,16 +137,18 @@ private Label statusLabel;
     this.skademelding.setTakseringsbelop(takseringsbelop);
     this.skademelding.setUtbetaltErstatningsbelop(utbetaltErstatningsbelop);
 
-    kunde.godkjennSkademelding(skademelding);
-
+    dho.getKundeMedSkademeldingListeHandling().godkjennSkademelding(skademelding);
+    //kunde.godkjennSkademelding(skademelding);
 
 
   }
-  public void avvisSkademelding(){
+
+  public void avvisSkademelding() {
 
     Double takseringsbelop = Double.valueOf(takseringsbelopTekstfelt.getText());
     this.skademelding.setTakseringsbelop(takseringsbelop);
-    kunde.avvisSkademelding(skademelding);
+    dho.getKundeMedSkademeldingListeHandling().avvisSkademelding(skademelding);
+    //kunde.avvisSkademelding(skademelding);
 
   }
 
@@ -164,13 +168,13 @@ private Label statusLabel;
 
 
   @FXML
-  public void handleAvslaSkademeldingKnapp(){
+  public void handleAvslaSkademeldingKnapp() {
 
 
   }
 
   @FXML
-  public void handleLagreKnapp(){
+  public void handleLagreKnapp() {
 
     handleLagreSkadeMelding();
 
@@ -206,19 +210,17 @@ private Label statusLabel;
   @FXML
   public void handleRedigerSkademeldingKnapp() {
 
-    Navigator.visSceneMedSkademeldingInfo(borderPane, Navigator.getRedigerSkadeMeldingScene(),kunde,skademelding);
+    Navigator.visSceneMedSkademeldingInfo(borderPane, Navigator.getRedigerSkadeMeldingScene(), kunde, skademelding);
 
   }
 
   @FXML
   public void slettSkademeldingKnapp() {
 
-    dso.getKunderListe().slettSkademelding(skademelding);
+    dho.getKundeMedSkademeldingListeHandling().slettSkademelding(skademelding, kunde);
     NavigerTilVisKundeScene();
 
   }
-
-
 
 
   //TODO logikk slik at man ikke kan godkjenne også avvise samme skademelding og få to versjoner av samme.

@@ -6,7 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.*;
-import programutvikling.database.DataSourceObject;
+import programutvikling.database.DataHandlingObjekt;
+import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.feilmeldinger.FileExceptionHandler;
 
 import java.io.IOException;
@@ -21,17 +22,17 @@ public class hovedSceneKontroller {
   protected BorderPane borderPane;
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   //private Kunde kunde;
-  DataSourceObject dso = DataSourceObject.getInstance();
+  DataLagringObjekt dlo = DataLagringObjekt.getInstance();
+  DataHandlingObjekt dhl = new DataHandlingObjekt();
   private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
 
   public void initialize() {
-    kunderliste = dso.getKunderListe().getKunder();
+    kunderliste = dlo.getKundeListe();
 
     hsk.setBorderPane(borderPane);
     Platform.runLater(() -> mainSceneKnapp.requestFocus());
 
     Navigator.visScene(borderPane, Navigator.getDashbordScene());
-
 
 
   }
@@ -48,7 +49,7 @@ public class hovedSceneKontroller {
   protected void handleNavigeringTilForsikringerScene() {
 
 
-    Navigator.visScene(borderPane, Navigator.getForsikringScene());
+    Navigator.visScene(borderPane, Navigator.getForsikringListeScene());
 
   }
 
@@ -56,7 +57,7 @@ public class hovedSceneKontroller {
   protected void handleNavigeringTilKunderScene() {
 
 
-    Navigator.visScene(borderPane, Navigator.getKunderScene());
+    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
 
   }
 
@@ -73,6 +74,13 @@ public class hovedSceneKontroller {
 
 
     Navigator.visScene(borderPane, Navigator.getERSTATNINGER_SCENE());
+
+  }
+  @FXML
+  protected void handleNavigeringTilAvvistSkademeldingListeScene() {
+
+
+    Navigator.visScene(borderPane, Navigator.getAvvistSkademeldingListeScene());
 
   }
 
@@ -103,8 +111,8 @@ public class hovedSceneKontroller {
       kunderlisteFraFil = ObjektFilLeser.read(KUNDE_FIL_LOKASJON);
 
       System.out.println("fra fil; " + kunderlisteFraFil);
-      dso.getKunderListe().nullstillKunderListe();
-      dso.getKunderListe().getKunder().addAll(kunderlisteFraFil);
+      dhl.getKundeListeHandling().nullstillKundeListe();
+      dlo.getKundeListe().addAll(kunderlisteFraFil);
 
 
     } catch (IOException e) {

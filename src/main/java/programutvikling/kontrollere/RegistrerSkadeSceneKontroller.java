@@ -8,17 +8,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.util.StringConverter;
-import javafx.util.converter.LocalDateStringConverter;
-import programutvikling.base.*;
-import programutvikling.database.DataSourceObject;
+import programutvikling.base.HovedSceneKontainer;
+import programutvikling.base.Kunde;
+import programutvikling.base.Navigator;
+import programutvikling.base.Skademelding;
+import programutvikling.database.DataHandlingObjekt;
+import programutvikling.database.DataLagringObjekt;
 
-import java.io.IOException;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.util.Date;
-
-public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo{
+public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo {
   @FXML
   TextField personNrTekstfelt;
   @FXML
@@ -35,8 +32,9 @@ public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo{
   TextArea ovrigSkadeInformasjonTekstfelt;
 
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
+  private DataHandlingObjekt dho = new DataHandlingObjekt();
   private BorderPane borderPane = hsk.getBorderPane();
-  private DataSourceObject dso = DataSourceObject.getInstance();
+  private DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   private ObservableList kunderListe;
   private Kunde kunde;
   private Skademelding skademelding;
@@ -55,13 +53,10 @@ public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo{
   }
 
 
-
-
-
   @FXML
   public void NavigeringTilVisKundeScene() {
 
-    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(),kunde);
+    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
 
   }
 
@@ -100,9 +95,6 @@ public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo{
 */
 
 
-
-
-
     String klokkeslett = klokkeslettTekstfelt.getText();
     String skadeDato = skadeDatoVelger.getValue().toString();
 
@@ -111,21 +103,15 @@ public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo{
     String skadeBeskrivelse = skadeBeskrivelseTekstfelt.getText();
     String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
 
-    skademelding = new Skademelding(skadeDato,klokkeslett,forsikringsType,skadeType,null,null,skadeBeskrivelse,ovrigSkadeInformasjon);
+    skademelding = new Skademelding(skadeDato, klokkeslett, forsikringsType, skadeType, null, null, skadeBeskrivelse, ovrigSkadeInformasjon);
 
 
-    kunde.leggTilSkadeMelding(skademelding);
+    dho.getKundeMedSkademeldingListeHandling().leggTilSkademelding(skademelding, kunde);
 
     NavigeringTilVisKundeScene();
 
 
-
-
-
-
-
-
-   // NavigeringTilVisKundeScene();
+    // NavigeringTilVisKundeScene();
 
   }
 }

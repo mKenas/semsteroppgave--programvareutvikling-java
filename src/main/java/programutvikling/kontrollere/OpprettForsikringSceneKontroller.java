@@ -6,14 +6,12 @@ import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
-import programutvikling.database.DataSourceObject;
+import programutvikling.database.DataLagringObjekt;
 
-import java.io.IOException;
-
-public class OpprettForsikringSceneKontroller implements KontrollerMedKundeInfo{
+public class OpprettForsikringSceneKontroller implements KontrollerMedKundeInfo {
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
-  private DataSourceObject dso = DataSourceObject.getInstance();
+  private DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   private ObservableList kunderListe;
   private Kunde kunde;
 
@@ -28,12 +26,12 @@ public class OpprettForsikringSceneKontroller implements KontrollerMedKundeInfo{
     this.kunde = k;
 
 
-
   }
+
   @FXML
   public void NavigeringTilHusOGInnboForsikringScene() {
 
-    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE(),kunde);
+    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE(), kunde);
 
   }
 
