@@ -6,18 +6,18 @@ public class BaatForsikring extends Forsikring {
   private String registreringsnummer;
   private String baatType;
   private String baatModell;
-  private String lengde;
+  private String batLengde;
   private String aarsmodell;
   private String motortype;
   private String motorstyrke;
 
-  public BaatForsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser, String eier, String registreringsnummer, String baatType, String baatModell, String lengde, String aarsmodell, String motortype, String motorstyrke) {
+  public BaatForsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser, String eier, String registreringsnummer, String baatType, String baatModell, String batLengde, String aarsmodell, String motortype, String motorstyrke) {
     super(forsikringsbeløp, forsikringspremie, forsikringsbetingelser);
     this.eier = eier;
     this.registreringsnummer = registreringsnummer;
     this.baatType = baatType;
     this.baatModell = baatModell;
-    this.lengde = lengde;
+    this.batLengde = batLengde;
     this.aarsmodell = aarsmodell;
     this.motortype = motortype;
     this.motorstyrke = motorstyrke;
@@ -55,12 +55,12 @@ public class BaatForsikring extends Forsikring {
     this.baatModell = baatModell;
   }
 
-  public String getLengde() {
-    return lengde;
+  public String getBatLengde() {
+    return batLengde;
   }
 
-  public void setLengde(String lengde) {
-    this.lengde = lengde;
+  public void setBatLengde(String batLengde) {
+    this.batLengde = batLengde;
   }
 
   public String getAarsmodell() {

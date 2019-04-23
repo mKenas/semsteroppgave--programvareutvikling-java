@@ -131,7 +131,19 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
   protected void navigeringTilVisHusOgInnboForsikringScene() {
 
 
-    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getVIS_HUS_OG_INNBO_FORSIKRING_SCENE(), kunde, forsikring);
+
+
+    String fxml = "";
+
+    if (forsikring instanceof HusOgInnboForsikring) {
+      fxml = Navigator.getVIS_HUS_OG_INNBO_FORSIKRING_SCENE();
+      System.out.println("Hus og innbo");
+    } if (forsikring instanceof BaatForsikring) {
+      System.out.println("Båtforsikring");
+      fxml = Navigator.getVisBatForsikringScene();
+    }
+    System.out.println(fxml);
+    Navigator.visSceneMedForsikringInfo(borderPane, fxml, kunde, forsikring);
   }
 
   protected void navigeringTilSkademeldingScene() {

@@ -24,9 +24,16 @@ public abstract class Navigator {
   private static final String OPPRETT_FORSIKRING_SCENE = "/programutvikling/views/opprettForsikringScene.fxml";
   private static final String OPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE = "/programutvikling/views/opprettHusOgInnboForsikringScene.fxml";
   private static final String VIS_HUS_OG_INNBO_FORSIKRING_SCENE = "/programutvikling/views/visHusOgInnboForsikringScene.fxml";
+
+  private static final String OPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE = "/programutvikling/views/opprettFritidsboligForsikringScene.fxml";
+
+  private static final String OPPRETT_BAT_FORSIKRING_SCENE = "/programutvikling/views/opprettBaatForsikringScene.fxml";
+  private static final String VIS_BAT_FORSIKRING_SCENE = "/programutvikling/views/visBatForsikringScene.fxml";
+
   private static final String REGISTRER_SKADE_MELDING_SCENE = "/programutvikling/views/registrerSkademeldingScene.fxml";
   private static final String VIS_SKADE_MELDING_SCENE = "/programutvikling/views/visSkademeldingScene.fxml";
   private static final String REDIGER_SKADE_MELDING_SCENE = "/programutvikling/views/redigerSkademeldingScene.fxml";
+
 
 
   public static void visScene(BorderPane borderPane, String fxml) {
@@ -68,15 +75,22 @@ public abstract class Navigator {
 
     String fxml = "";
     switch (forsikringsType) {
-      case "Hus og innboforsikring":
+      case "Hus og innboforsikring": {
         fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
-      case "Fritidsboligforsikring":
+        break;
+      }
+        case "Fritidsboligforsikring": {
+          fxml = Navigator.getOPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE();
+          break;
+        }
+      case "Båtforsikring": {
+        fxml = Navigator.getOPPRETT_BAT_FORSIKRING_SCENE();
+        break;
+      }
+      case "Reiseforsikring": {
         fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
-      case "Båtforsikring":
-        fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
-      case "Reiseforsikring":
-        fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
-
+        break;
+      }
     }
 
 
@@ -174,6 +188,17 @@ public abstract class Navigator {
   public static String getVIS_HUS_OG_INNBO_FORSIKRING_SCENE() {
     return VIS_HUS_OG_INNBO_FORSIKRING_SCENE;
   }
+
+  public static String getOPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE() {
+    return OPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE;
+  }
+
+  public static String getOPPRETT_BAT_FORSIKRING_SCENE() {
+    return OPPRETT_BAT_FORSIKRING_SCENE;
+  }
+
+
+  public static String getVisBatForsikringScene() {return VIS_BAT_FORSIKRING_SCENE;}
 
   public static String getRegistrerSkadeMeldingScene() {
     return REGISTRER_SKADE_MELDING_SCENE;

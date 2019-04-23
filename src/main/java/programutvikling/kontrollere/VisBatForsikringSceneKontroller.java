@@ -9,7 +9,7 @@ import programutvikling.database.DataLagringObjekt;
 
 import java.util.ArrayList;
 
-public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
+public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
 
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dho = new DataHandlingObjekt();
@@ -17,31 +17,35 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   private BorderPane borderPane = hsk.getBorderPane();
 
   private ArrayList<Forsikring> forsikringer;
-  private HusOgInnboForsikring forsikring;
+  private BaatForsikring forsikring;
   private Kunde kunde;
+
 
   @FXML
   private Label personNrLabel;
   @FXML
-  private Label adresseLabel;
+  Label batForsikringsBelopLabel;
   @FXML
-  private Label byggearLabel;
+  Label batForsikringsPremieLabel;
   @FXML
-  private Label boligTypeLabel;
+  Label batEierLabel;
   @FXML
-  private Label byggeMaterialeLabel;
+  Label batensRegistreringsNummerLabel;
   @FXML
-  private Label standardLabel;
+  Label batTypeLabel;
   @FXML
-  private Label antallKvadratmeterLabel;
+  Label batModellLabel;
   @FXML
-  private Label opprettelsesdatoLabel;
+  Label batLengdeLabel;
   @FXML
-  private Label forsikringsBelopLabel;
+  Label batensAarsModellLabel;
   @FXML
-  private Label forsikringsPremieLabel;
+  Label batMotortypeLabel;
   @FXML
-  private Label bygningForsikringsbelopLabel;
+  Label batMotorStyrkeLabel;
+  @FXML
+  Label opprettelsesdatoLabel;
+
 
 
   public void initialize() {
@@ -52,21 +56,29 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
 
   public void setForsikring(Forsikring forsikring) {
 
-    if (forsikring instanceof HusOgInnboForsikring) {
-      HusOgInnboForsikring f = (HusOgInnboForsikring) forsikring;
+    if (forsikring instanceof BaatForsikring) {
+      BaatForsikring f = (BaatForsikring) forsikring;
 
       this.forsikring = f;
+
       //personNrLabel.setText(f);
-      adresseLabel.setText(f.getBoligAdresse());
-      byggearLabel.setText(f.getByggeAr());
-      boligTypeLabel.setText(f.getBoligType());
-      byggeMaterialeLabel.setText(f.getByggeMateriale());
-      standardLabel.setText(f.getStandard());
-      antallKvadratmeterLabel.setText(f.getStorrelse());
-      forsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
-      forsikringsPremieLabel.setText(String.valueOf(f.getForsikringspremie()));
-      bygningForsikringsbelopLabel.setText(String.valueOf(f.getBygningsForsikringsbelop()));
-      opprettelsesdatoLabel.setText(f.getOprettelsesDato().toString());
+      batEierLabel.setText(f.getEier());
+      batensRegistreringsNummerLabel.setText(f.getRegistreringsnummer());
+      batTypeLabel.setText(f.getBaatType());
+      batModellLabel.setText(f.getBaatType());
+      batLengdeLabel.setText(f.getBatLengde());
+      batTypeLabel.setText(f.getBaatType());
+
+      batMotortypeLabel.setText(f.getMotortype());
+      batMotorStyrkeLabel.setText(f.getMotorstyrke());
+
+      opprettelsesdatoLabel.setText(f.getOprettelsesDato());
+
+      batForsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
+      batForsikringsPremieLabel.setText(String.valueOf(f.getForsikringspremie()));
+      //TODO navigator, diverse annet navigering, on action til knapper osv.
+
+
 
     }
 
@@ -80,6 +92,7 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   }
 
   protected void NavigeringTilKunderScene() {
+
     Navigator.visScene(borderPane, Navigator.getKundeListeScene());
 
   }
