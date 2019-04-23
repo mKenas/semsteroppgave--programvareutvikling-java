@@ -38,7 +38,7 @@ public class AvvistSkademeldingListeSceneKontroller {
     avvistSkademeldingTabell.setPlaceholder(new Label("Ingen erstatning er registrert ennå!"));
 
 
-    avvistSkademeldingListe = dlo.getAvvistSkademeldingListe();
+    avvistSkademeldingListe = dho.getKundeMedSkademeldingListeHandling().getAvvistSkademeldingListe();
 
 
     if (avvistSkademeldingListe.size() >= 1) {

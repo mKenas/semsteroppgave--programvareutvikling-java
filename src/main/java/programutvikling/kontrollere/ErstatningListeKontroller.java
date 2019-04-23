@@ -38,7 +38,7 @@ public class ErstatningListeKontroller {
     erstatningTabell.setPlaceholder(new Label("Ingen erstatning er registrert ennå!"));
 
 
-    erstatningListe = dlo.getErstatningListe();
+    erstatningListe = dho.getKundeMedSkademeldingListeHandling().getErstatningListe();
 
 
     if (erstatningListe.size() >= 1) {

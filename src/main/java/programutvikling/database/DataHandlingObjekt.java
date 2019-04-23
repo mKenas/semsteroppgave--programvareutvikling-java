@@ -9,7 +9,7 @@ public class DataHandlingObjekt {
   public DataHandlingObjekt() {
     this.kundeMedForsikringListeHandling = new KundeMedForsikringListeHandling(dlo.getKundeMedForsikringListe(), dlo.getForsikringListe());
     this.kundeListeHandling = new KundeListeHandling(dlo.getKundeListe());
-    this.kundeMedSkademeldingListeHandling = new KundeMedSkademeldingListeHandling(dlo.getKundeMedSkadeMeldingListe(), dlo.getAlleSkadeMeldinger());
+    this.kundeMedSkademeldingListeHandling = new KundeMedSkademeldingListeHandling(dlo.getKundeMedSkadeMeldingListe(), dlo.getSkademeldingListe());
 
 
   }

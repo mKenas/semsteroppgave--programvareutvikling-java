@@ -36,76 +36,11 @@ public final class DataLagringObjekt {
   }
 
 
-  public ObservableList<Skademelding> getAlleSkadeMeldinger() {
+  public ObservableList<Skademelding> getSkademeldingListe() {
     return skademeldingListe;
   }
 
-  public ObservableList<Skademelding> filterSkademeldingListe(ObservableList<Skademelding> skademeldingListe ,SkademeldingStatus status) {
-    Predicate<Skademelding> filter = new Predicate<Skademelding>() {
-      @Override
-      public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() == status) {
-          return true;
-        }
-        return false;
-      }
-    };
 
-    return skademeldingListe.stream()
-            .filter(filter)
-            .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
-
-
-  }
-
-  public ObservableList<Skademelding> filterSkademeldingListe(SkademeldingStatus status, SkademeldingStatus status2) {
-    Predicate<Skademelding> filter = new Predicate<Skademelding>() {
-      @Override
-      public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() == status || skademelding.getStatus() == status2) {
-          return true;
-        }
-        return false;
-      }
-    };
-
-    return skademeldingListe.stream()
-            .filter(filter)
-            .collect(Collectors.collectingAndThen(Collectors.toList(), l -> FXCollections.observableArrayList(l)));
-
-
-  }
-  public ObservableList<Skademelding>  getSkademeldingListe() {
-    return filterSkademeldingListe(SkademeldingStatus.UBEHANDLET, SkademeldingStatus.UNDER_BEHANDLING);
-
-  }
-  public ObservableList<Skademelding>  getErstatningListe() {
-    return filterSkademeldingListe(this.skademeldingListe,SkademeldingStatus.GODKJENT);
-
-  }
-
-  public ObservableList<Skademelding> getAvvistSkademeldingListe() {
-    return filterSkademeldingListe(this.skademeldingListe,SkademeldingStatus.AVVIST);
-
-  }
-
-  public ArrayList<Skademelding>  getErstatningListeTilKunde(Kunde kunde, SkademeldingStatus status) {
-
-    Predicate<Skademelding> filter = new Predicate<Skademelding>() {
-      @Override
-      public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() == status ) {
-          return true;
-        }
-        return false;
-      }
-    };
-
-    return kunde.getSkadeMeldinger().stream()
-            .filter(filter).collect(Collectors.toCollection(ArrayList::new));
-
-
-  }
 
   public ObservableList<Kunde> getKundeListe() {
     return kundeListe;
