@@ -4,19 +4,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.OpprettFritidsboligSceneKontroller">
+<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisFritidsboligForsikringSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
     <HBox prefHeight="142.0" prefWidth="930.0">
         <children>
-            <Label prefHeight="93.0" prefWidth="602.0" text="Forsikringer &gt; Opprette ny forsikring &gt; Fritidsbolig forsikring">
+            <Label prefHeight="93.0" prefWidth="602.0" text="Kunde &gt; Forsikringer &gt; Fritidsbolig forsikring">
                 <font>
                     <Font size="20.0" />
                 </font>
@@ -38,11 +37,11 @@
                             <Insets left="40.0" />
                         </VBox.margin>
                     </Label>
-                    <TextField fx:id="personNrTekstfelt" disable="true" layoutX="10.0" layoutY="27.0" maxWidth="840.0" prefHeight="39.0" prefWidth="745.0">
+                    <Label fx:id="personNrLabel" disable="true" layoutX="10.0" layoutY="27.0" maxWidth="840.0" prefHeight="39.0" prefWidth="745.0">
                         <VBox.margin>
                             <Insets bottom="10.0" left="40.0" right="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </Label>
                 </children>
             </VBox>
         </children>
@@ -51,36 +50,36 @@
         <children>
             <VBox prefHeight="100.0" prefWidth="420.0">
                 <children>
-                    <Label layoutX="10.0" layoutY="10.0" text="Boligens adresse" />
-                    <TextField fx:id="boligensAdresseTekstfelt" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
+                    <Label layoutX="10.0" layoutY="10.0" text="Fritidsboligens adresse" />
+                    <Label fx:id="boligensAdresseLabel" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="10.0" right="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </Label>
                     <Label layoutX="10.0" layoutY="54.0" text="Byggeår" />
-                    <TextField fx:id="byggeArTekstfelt" prefHeight="48.0" prefWidth="400.0">
+                    <Label fx:id="byggeArLabel" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="10.0" right="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </Label>
                     <Label layoutX="10.0" layoutY="170.0" text="Bolig type" />
-                    <TextField fx:id="boligTypeTekstfelt" layoutX="10.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
+                    <Label fx:id="boligTypeLabel" layoutX="10.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="10.0" right="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </Label>
                     <Label text="Bygge materiale" />
-                    <TextField fx:id="byggeMaterialeTekstfelt" prefHeight="48.0" prefWidth="400.0">
+                    <Label fx:id="byggeMaterialeLabel" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="10.0" right="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </Label>
                <Label text="Forsikringsbeløp" />
-               <TextField fx:id="forsikringsbelopTekstfelt" prefHeight="48.0" prefWidth="400.0">
+               <Label fx:id="forsikringsBelopLabel" prefHeight="48.0" prefWidth="400.0">
                   <VBox.margin>
                      <Insets bottom="10.0" right="10.0" />
                   </VBox.margin>
-               </TextField>
+               </Label>
                <Label text="Forsikringsvillkår" />
                <ComboBox prefHeight="27.0" prefWidth="400.0" />
                 </children>
@@ -93,51 +92,53 @@
                         </VBox.margin>
                     </Label>
 
-                    <TextField fx:id="standardTekstfelt" layoutX="20.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
+                    <Label fx:id="standardLabel" layoutX="20.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </Label>
                     <Label text="Antall kvadratmeter">
                         <VBox.margin>
                             <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
-                    <TextField fx:id="antallkvadratmeterTekstfelt" prefHeight="48.0" prefWidth="400.0">
+                    <Label fx:id="antallKvadratmeterLabel" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </Label>
                     <Label layoutX="10.0" layoutY="10.0" text="Bygning forsikringsbeløp">
                         <VBox.margin>
                             <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
-                    <TextField fx:id="bygningForsikringsbelopTekstfelt" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
+                    <Label fx:id="bygningForsikringsbelopLabel" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </Label>
                     <Label layoutX="10.0" layoutY="54.0" text="Innbo forsikringsbeløp">
                         <VBox.margin>
                             <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
-                    <TextField fx:id="innboForsikringsbelopTekstfelt" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
+                    <Label fx:id="innboForsikringsbelopLabel" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </Label>
                <Label text="Forsikringspremie">
                   <VBox.margin>
                      <Insets left="10.0" />
                   </VBox.margin>
                </Label>
-               <TextField fx:id="forsikringspremieTekstfelt" prefHeight="48.0" prefWidth="400.0">
+               <Label fx:id="forsikringspremieLabel" prefHeight="48.0" prefWidth="400.0">
                   <VBox.margin>
                      <Insets left="10.0" />
                   </VBox.margin>
-               </TextField>
+               </Label>
+               <Label layoutX="20.0" layoutY="318.0" text="Opprettelsesdato" />
+               <Label fx:id="opprettelsesdatoLabel" layoutX="20.0" layoutY="347.0" prefHeight="48.0" prefWidth="400.0" />
                 </children>
             </VBox>
         </children>
@@ -148,7 +149,7 @@
 
     <BorderPane prefHeight="200.0" prefWidth="200.0">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleOpprettFritidsboligForsikringKnapp" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Opprett forsikring" BorderPane.alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleTilbakeKnapp" prefHeight="64.0" prefWidth="282.0" styleClass="sub-scene-knapp" text="Tilbake" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0" />
                 </BorderPane.margin>
