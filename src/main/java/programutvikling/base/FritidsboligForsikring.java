@@ -25,4 +25,37 @@ public class FritidsboligForsikring extends Forsikring {
     this.bygningsForsikringsbelop = bygningsForsikringsbelop;
     this.innboForsikringsbelop = innboForsikringsbelop;
   }
+
+
+  public String getBoligAdresse() {
+    return boligAdresse;
+  }
+
+  public String getByggeaar() {
+    return byggeaar;
+  }
+
+  public String getBoligType() {
+    return boligType;
+  }
+
+  public String getByggeMateriale() {
+    return byggeMateriale;
+  }
+
+  public String getStandard() {
+    return standard;
+  }
+
+  public String getStorrelse() {
+    return storrelse;
+  }
+
+  public String getBygningsForsikringsbelop() {
+    return bygningsForsikringsbelop;
+  }
+
+  public String getInnboForsikringsbelop() {
+    return innboForsikringsbelop;
+  }
 }

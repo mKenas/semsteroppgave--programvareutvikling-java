@@ -61,7 +61,7 @@ public class OpprettFritidsboligSceneKontroller implements KontrollerMedKundeInf
   }
 
 
-  public void handleOpprettHusOgInnboForsikringKnapp() {
+  public void handleOpprettFritidsboligForsikringKnapp() {
 
     String boligensAdresse = boligensAdresseTekstfelt.getText();
     String byggeAr = byggeArTekstfelt.getText();
@@ -79,7 +79,7 @@ public class OpprettFritidsboligSceneKontroller implements KontrollerMedKundeInf
     System.out.println(forsikringspremie);
 
 
-    forsikring = new HusOgInnboForsikring(forsikringsbelop, forsikringspremie, "",
+    forsikring = new FritidsboligForsikring(forsikringsbelop, forsikringspremie, "",
             boligensAdresse, byggeAr, boligType, byggeMateriale, standard, antallkvadratmeter, bygningForsikringsbelop, innboForsikringsbelop);
 
     //Forsikring<HusOgInnboForsikring> forsikring = new Forsikring<>(1.0,0.0,"");
@@ -89,6 +89,8 @@ public class OpprettFritidsboligSceneKontroller implements KontrollerMedKundeInf
     // kunde må slettes fra liste hvis validering mislykkes!
 
     // dlo.getKunderListe().slettKunde(kunde);
+
+    System.out.println("Fritidsbolig");
 
 
     NavigeringTilVisKundeScene();

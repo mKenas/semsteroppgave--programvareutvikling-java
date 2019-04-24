@@ -8,6 +8,7 @@ import programutvikling.kontrollere.KontrollerMedKundeInfo;
 import programutvikling.kontrollere.KontrollerMedSkademeldingInfo;
 
 import java.io.IOException;
+import java.security.PublicKey;
 
 public abstract class Navigator {
 
@@ -26,9 +27,13 @@ public abstract class Navigator {
   private static final String VIS_HUS_OG_INNBO_FORSIKRING_SCENE = "/programutvikling/views/visHusOgInnboForsikringScene.fxml";
 
   private static final String OPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE = "/programutvikling/views/opprettFritidsboligForsikringScene.fxml";
+  private static final String VIS_FRITIDSBOLIG_FORSIKRING_SCENE = "/programutvikling/views/visFritidsBoligScene.fxml";
 
   private static final String OPPRETT_BAT_FORSIKRING_SCENE = "/programutvikling/views/opprettBaatForsikringScene.fxml";
   private static final String VIS_BAT_FORSIKRING_SCENE = "/programutvikling/views/visBatForsikringScene.fxml";
+
+  private static final String OPPRETT_REISEFORSIKRING_SCENE = "/programutvikling/views/OpprettReiseforsikringScene.fxml";
+  private static final String VIS_REISEFORSIKRING_SCENE = "/programutvikling/views/visReiseforsikringScene.fxml";
 
   private static final String REGISTRER_SKADE_MELDING_SCENE = "/programutvikling/views/registrerSkademeldingScene.fxml";
   private static final String VIS_SKADE_MELDING_SCENE = "/programutvikling/views/visSkademeldingScene.fxml";
@@ -88,7 +93,7 @@ public abstract class Navigator {
         break;
       }
       case "Reiseforsikring": {
-        fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
+        fxml = Navigator.getOPPRETT_REISEFORSIKRING_SCENE();
         break;
       }
     }
@@ -189,6 +194,7 @@ public abstract class Navigator {
     return VIS_HUS_OG_INNBO_FORSIKRING_SCENE;
   }
 
+
   public static String getOPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE() {
     return OPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE;
   }
@@ -197,8 +203,16 @@ public abstract class Navigator {
     return OPPRETT_BAT_FORSIKRING_SCENE;
   }
 
-
   public static String getVisBatForsikringScene() {return VIS_BAT_FORSIKRING_SCENE;}
+
+  public static String getVIS_FRITIDSBOLIG_FORSIKRING_SCENE() {return VIS_FRITIDSBOLIG_FORSIKRING_SCENE;}
+
+  public static String getOPPRETT_REISEFORSIKRING_SCENE() {return OPPRETT_REISEFORSIKRING_SCENE;}
+
+  public static String getVIS_REISEFORSIKRING_SCENE() {return VIS_REISEFORSIKRING_SCENE;}
+
+
+
 
   public static String getRegistrerSkadeMeldingScene() {
     return REGISTRER_SKADE_MELDING_SCENE;

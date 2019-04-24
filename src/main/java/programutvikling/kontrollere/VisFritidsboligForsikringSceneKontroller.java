@@ -9,7 +9,7 @@ import programutvikling.database.DataLagringObjekt;
 
 import java.util.ArrayList;
 
-public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
+public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
 
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dho = new DataHandlingObjekt();
@@ -17,34 +17,33 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
   private BorderPane borderPane = hsk.getBorderPane();
 
   private ArrayList<Forsikring> forsikringer;
-  private BaatForsikring forsikring;
+  private FritidsboligForsikring forsikring;
   private Kunde kunde;
-
 
   @FXML
   private Label personNrLabel;
   @FXML
-  Label batForsikringsBelopLabel;
+  private Label boligensAdresseLabel;
   @FXML
-  Label batForsikringsPremieLabel;
+  private Label byggeArLabel;
   @FXML
-  Label batEierLabel;
+  private Label boligTypeLabel;
   @FXML
-  Label batensRegistreringsNummerLabel;
+  private Label byggeMaterialeLabel;
   @FXML
-  Label batTypeLabel;
+  public Label forsikringsBelopLabel;
   @FXML
-  Label batModellLabel;
+  private Label standardLabel;
   @FXML
-  Label batLengdeLabel;
+  private Label bygningForsikringsbelopLabel;
   @FXML
-  Label batensAarsModellLabel;
+  private Label innboForsikringsbelopLabel;
   @FXML
-  Label batMotortypeLabel;
+  private Label forsikringspremieLabel;
   @FXML
-  Label batMotorStyrkeLabel;
+  private Label antallKvadratmeterLabel;
   @FXML
-  Label opprettelsesdatoLabel;
+  private Label opprettelsesdatoLabel;
 
 
 
@@ -56,27 +55,24 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
 
   public void setForsikring(Forsikring forsikring) {
 
-    if (forsikring instanceof BaatForsikring) {
-      BaatForsikring f = (BaatForsikring) forsikring;
+    if (forsikring instanceof FritidsboligForsikring) {
+      FritidsboligForsikring f = (FritidsboligForsikring) forsikring;
 
       this.forsikring = f;
-
       //personNrLabel.setText(f);
-      batEierLabel.setText(f.getEier());
-      batensRegistreringsNummerLabel.setText(f.getRegistreringsnummer());
-      batTypeLabel.setText(f.getBaatType());
-      batModellLabel.setText(f.getBaatType());
-      batLengdeLabel.setText(f.getBatLengde());
-      batTypeLabel.setText(f.getBaatType());
 
-      batMotortypeLabel.setText(f.getMotortype());
-      batMotorStyrkeLabel.setText(f.getMotorstyrke());
 
+      boligensAdresseLabel.setText(f.getBoligAdresse());
+      byggeArLabel.setText(f.getByggeaar());
+      boligTypeLabel.setText(f.getBoligType());
+      byggeMaterialeLabel.setText(f.getByggeMateriale());
+      forsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
+      standardLabel.setText(f.getStandard());
+      bygningForsikringsbelopLabel.setText(String.valueOf(f.getBygningsForsikringsbelop()));
+      innboForsikringsbelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
+      forsikringspremieLabel.setText(String.valueOf(f.getForsikringspremie()));
+      antallKvadratmeterLabel.setText(f.getStorrelse());
       opprettelsesdatoLabel.setText(f.getOprettelsesDato());
-
-      batForsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
-      batForsikringsPremieLabel.setText(String.valueOf(f.getForsikringspremie()));
-
 
 
     }
