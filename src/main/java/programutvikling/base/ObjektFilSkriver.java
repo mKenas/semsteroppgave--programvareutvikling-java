@@ -2,6 +2,8 @@ package programutvikling.base;
 
 import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
+import programutvikling.filhantering.SkrivingTilFil.CSVFormatSkriver;
+import programutvikling.filhantering.SkrivingTilFil.FilSkriver;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -37,6 +39,7 @@ public class ObjektFilSkriver {
       ) {
         out.writeObject(liste);
       }
+
 /*    } else if (valgtFilEndelse == "*.csv") {
 
 
@@ -76,6 +79,11 @@ public class ObjektFilSkriver {
 
  //     }
 */
+    }
+    else if (valgtFilEndelse == "*.csv"){
+      FilSkriver filSkriver = new CSVFormatSkriver();
+      filSkriver.skrivTilFil(null,filsti);
+
     }
   }
 

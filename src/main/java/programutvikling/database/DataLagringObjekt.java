@@ -5,15 +5,10 @@ import javafx.collections.ObservableList;
 import programutvikling.base.Forsikring;
 import programutvikling.base.Kunde;
 import programutvikling.base.Skademelding;
-import programutvikling.base.klassHjelpere.SkademeldingStatus;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public final class DataLagringObjekt implements Serializable {
 

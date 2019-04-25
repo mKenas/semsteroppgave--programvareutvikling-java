@@ -2,10 +2,7 @@ package programutvikling.database;
 
 import javafx.collections.ObservableList;
 import programutvikling.base.Kunde;
-import programutvikling.base.Skademelding;
-import programutvikling.kontrollere.feilmeldinger.KundeEksistererExceptionHandler;
-
-import java.util.ArrayList;
+import programutvikling.feilmeldinger.KundeEksistererExceptionHandler;
 
 public class KundeListeHandling {
 

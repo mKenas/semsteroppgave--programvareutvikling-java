@@ -1,20 +1,24 @@
 package programutvikling.kontrollere;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Navigator;
+import programutvikling.status.InnlesingOgSkrivingStatus;
 
 
 public class DashbordKontroller {
 
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
+  @FXML
+  Button registrerKundeKnapp;
 
 
   public void initialize() {
 
-
+    registrerKundeKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingAktiv());
   }
 
 

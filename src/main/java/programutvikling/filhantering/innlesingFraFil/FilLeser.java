@@ -1,4 +1,4 @@
-package programutvikling.base;
+package programutvikling.filhantering.innlesingFraFil;
 
 import java.io.IOException;
 import java.util.HashMap;

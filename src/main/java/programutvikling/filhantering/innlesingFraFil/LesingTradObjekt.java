@@ -1,37 +1,39 @@
-package programutvikling.base;
+package programutvikling.filhantering.innlesingFraFil;
 
 import javafx.concurrent.Task;
-import javafx.scene.control.ProgressBar;
-import programutvikling.database.DataLagringObjekt;
-import programutvikling.kontrollere.feilmeldinger.FileExceptionHandler;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class LesingTradObjekt extends Task<HashMap<String,Object>> {
 
 
   private Runnable runMeWhenDone;
+  private Runnable kjorMegNarKjoringStarter;
   private String filstil;
-  private HashMap<String,Object> liste;
+  private HashMap<String,Object> dataliste;
 
 
-  public LesingTradObjekt(String filsti, Runnable doneFunc) {
+  public LesingTradObjekt(String filsti, Runnable runFunc,Runnable doneFunc) {
     this.runMeWhenDone = doneFunc;
     this.filstil = filsti;
+    this.kjorMegNarKjoringStarter = runFunc;
   }
 
   @Override
   protected HashMap<String,Object> call() throws Exception {
-    System.out.println("running");
+    System.out.println("starter lesing fra fil");
     FilLeser filLeser = new JOBJFormatLeser();
-    this.liste = filLeser.lesFraFil(this.filstil);
+    this.dataliste = filLeser.lesFraFil(this.filstil);
 
 
 
-    return liste;
+    return dataliste;
+  }
+
+  @Override
+  protected void running() {
+    System.out.println("running");
+    kjorMegNarKjoringStarter.run();
   }
 
   // succeeded kjører i main-UI tråden, og UI elementer kan manipuleres her

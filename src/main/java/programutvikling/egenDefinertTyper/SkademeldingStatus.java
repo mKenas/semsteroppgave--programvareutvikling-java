@@ -1,4 +1,4 @@
-package programutvikling.base.klassHjelpere;
+package programutvikling.egenDefinertTyper;
 
 public enum SkademeldingStatus {
 

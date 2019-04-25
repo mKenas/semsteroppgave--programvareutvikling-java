@@ -10,6 +10,7 @@ public class FritidsboligForsikring extends Forsikring {
   private String storrelse;
   private String bygningsForsikringsbelop;
   private String innboForsikringsbelop;
+  private String forsikringsType;
 
   public FritidsboligForsikring(Double forsikringsbelop, Double forsikringspremie, String forsikringsbetingelser,
                                 String boligAdresse, String byggeaar, String boligType, String byggeMateriale,
@@ -24,6 +25,7 @@ public class FritidsboligForsikring extends Forsikring {
     this.storrelse = storrelse;
     this.bygningsForsikringsbelop = bygningsForsikringsbelop;
     this.innboForsikringsbelop = innboForsikringsbelop;
+    this.forsikringsType = "Fritidsbolig Forsikring";
   }
 
 
@@ -57,5 +59,9 @@ public class FritidsboligForsikring extends Forsikring {
 
   public String getInnboForsikringsbelop() {
     return innboForsikringsbelop;
+  }
+
+  public String getForsikringsType() {
+    return forsikringsType;
   }
 }

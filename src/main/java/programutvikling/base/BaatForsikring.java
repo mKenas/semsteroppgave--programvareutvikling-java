@@ -10,6 +10,7 @@ public class BaatForsikring extends Forsikring {
   private String aarsmodell;
   private String motortype;
   private String motorstyrke;
+  private String forsikringsType;
 
   public BaatForsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser, String eier, String registreringsnummer, String baatType, String baatModell, String batLengde, String aarsmodell, String motortype, String motorstyrke) {
     super(forsikringsbeløp, forsikringspremie, forsikringsbetingelser);
@@ -21,6 +22,7 @@ public class BaatForsikring extends Forsikring {
     this.aarsmodell = aarsmodell;
     this.motortype = motortype;
     this.motorstyrke = motorstyrke;
+    this.forsikringsType = "Båt Forsikring";
   }
 
   public String getEier() {
@@ -87,4 +89,7 @@ public class BaatForsikring extends Forsikring {
     this.motorstyrke = motorstyrke;
   }
 
+  public String getForsikringsType() {
+    return forsikringsType;
+  }
 }

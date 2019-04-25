@@ -1,6 +1,6 @@
 package programutvikling.base;
 
-import programutvikling.base.klassHjelpere.SkademeldingStatus;
+import programutvikling.egenDefinertTyper.SkademeldingStatus;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

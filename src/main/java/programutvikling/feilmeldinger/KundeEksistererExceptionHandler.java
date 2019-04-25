@@ -1,4 +1,4 @@
-package programutvikling.kontrollere.feilmeldinger;
+package programutvikling.feilmeldinger;
 
 import javafx.scene.control.Alert;
 

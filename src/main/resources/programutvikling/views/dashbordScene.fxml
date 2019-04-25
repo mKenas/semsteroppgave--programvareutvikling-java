@@ -29,7 +29,7 @@
         <children>
             <VBox prefHeight="230.0" prefWidth="420.0">
                 <children>
-                    <Button mnemonicParsing="false" onAction="#NavigeringTilRegistrerKundeScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer ny kunde">
+                    <Button fx:id="registrerKundeKnapp" mnemonicParsing="false" onAction="#NavigeringTilRegistrerKundeScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer ny kunde">
                         <VBox.margin>
                             <Insets bottom="5.0" left="10.0" top="10.0" />
                         </VBox.margin>

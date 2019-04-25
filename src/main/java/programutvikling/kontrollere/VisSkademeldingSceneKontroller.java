@@ -8,7 +8,7 @@ import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.base.Skademelding;
-import programutvikling.base.klassHjelpere.SkademeldingStatus;
+import programutvikling.egenDefinertTyper.SkademeldingStatus;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 

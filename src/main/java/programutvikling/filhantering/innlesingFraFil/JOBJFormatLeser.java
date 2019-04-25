@@ -1,4 +1,4 @@
-package programutvikling.base;
+package programutvikling.filhantering.innlesingFraFil;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,9 +11,9 @@ public class JOBJFormatLeser extends FilLeser {
     FileInputStream fin = new FileInputStream(filsti);
     ObjectInputStream oin = new ObjectInputStream(fin);
     //List<Kunde> list = (List<Kunde>) oin.readObject();
-    HashMap<String,Object> list = (HashMap<String,Object>) oin.readObject();
+    HashMap<String,Object> dataliste = (HashMap<String,Object>) oin.readObject();
 
     //return FXCollections.observableList(list);
-    return list;
+    return dataliste;
   }
 }
