@@ -2,6 +2,10 @@ package programutvikling.base;
 
 import programutvikling.egenDefinertTyper.SkademeldingStatus;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,6 +17,7 @@ public class Kunde implements Serializable {
   private static final long serialVersionUID = 1;
 
   //private ObservableHelper observersHandler = new ObservableHelper();
+@NotEmpty(message = "kan ikke være tomt")
   private String personNr;
   private String navn;
   private String etternavn;

@@ -10,6 +10,12 @@ import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import java.util.Set;
+
 
 public class RegistrerKundeSceneKontroller {
 
@@ -50,9 +56,24 @@ public class RegistrerKundeSceneKontroller {
     String epost = epostTekstFelt.getText();
     String mobil = mobilTekstFelt.getText();
 
+
+
+
+
     kunde = new Kunde(personNr, navn, etternavn, epost, mobil, fakturaadresse, postnummer, poststed);
     forsikringsType = forsikringsTypeKomboBoks.getSelectionModel().getSelectedItem().toString();
 
+   /* ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+    Validator validator = factory.getValidator();
+
+    //Kunde k = new Kunde("","","","","","","","");
+
+    Set<ConstraintViolation<Kunde>> violations = validator.validate(k);
+
+    for (ConstraintViolation<Kunde> violation : violations) {
+      System.out.println(violation.getMessage());
+    }
+*/
 
     dhl.getKundeListeHandling().leggTilKunde(kunde);
     navigeringTilOpprettForsikringScene();

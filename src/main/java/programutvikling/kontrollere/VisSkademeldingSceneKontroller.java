@@ -223,6 +223,5 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
   }
 
 
-  //TODO logikk slik at man ikke kan godkjenne også avvise samme skademelding og få to versjoner av samme.
 
 }
