@@ -1,8 +1,12 @@
 package programutvikling.filhantering.MappingStrategy.innlesingMappingStrategy;
 
-import com.opencsv.bean.*;
+import com.opencsv.bean.ColumnPositionMappingStrategy;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.bean.CsvToBeanFilter;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;

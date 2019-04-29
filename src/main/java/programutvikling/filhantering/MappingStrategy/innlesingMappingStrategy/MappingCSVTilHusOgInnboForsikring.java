@@ -2,7 +2,6 @@ package programutvikling.filhantering.MappingStrategy.innlesingMappingStrategy;
 
 import com.opencsv.bean.CsvToBeanFilter;
 import programutvikling.base.HusOgInnboForsikring;
-import programutvikling.base.ReiseForsikring;
 
 import java.util.List;
 

@@ -8,9 +8,9 @@ import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.base.Skademelding;
-import programutvikling.egenDefinertTyper.SkademeldingStatus;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.egenDefinertTyper.SkademeldingStatus;
 
 public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedSkademeldingInfo {
 

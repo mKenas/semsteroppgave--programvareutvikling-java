@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public final class DataLagringObjekt implements Serializable {

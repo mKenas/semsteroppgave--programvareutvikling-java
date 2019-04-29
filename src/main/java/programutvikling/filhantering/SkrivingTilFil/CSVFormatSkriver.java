@@ -1,16 +1,16 @@
 package programutvikling.filhantering.SkrivingTilFil;
 
+import com.opencsv.CSVWriter;
+import programutvikling.base.*;
+import programutvikling.filhantering.MappingStrategy.skrivingMappingStrategy.SkrivingMappingStrategy;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
-
-import com.opencsv.CSVWriter;
-
-import programutvikling.base.*;
-
-import programutvikling.filhantering.MappingStrategy.skrivingMappingStrategy.SkrivingMappingStrategy;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class CSVFormatSkriver extends FilSkriver {

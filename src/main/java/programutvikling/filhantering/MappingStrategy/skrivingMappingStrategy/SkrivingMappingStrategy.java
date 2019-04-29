@@ -1,7 +1,9 @@
 package programutvikling.filhantering.MappingStrategy.skrivingMappingStrategy;
 
 import com.opencsv.CSVWriter;
-import com.opencsv.bean.*;
+import com.opencsv.bean.ColumnPositionMappingStrategy;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 

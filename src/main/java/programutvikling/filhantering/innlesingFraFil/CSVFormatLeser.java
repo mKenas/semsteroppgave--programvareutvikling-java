@@ -1,10 +1,7 @@
 package programutvikling.filhantering.innlesingFraFil;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import programutvikling.base.Forsikring;
-import programutvikling.base.HusOgInnboForsikring;
 import programutvikling.base.Kunde;
 import programutvikling.base.Skademelding;
 import programutvikling.filhantering.MappingStrategy.innlesingMappingStrategy.*;
@@ -12,7 +9,6 @@ import programutvikling.filhantering.MappingStrategy.innlesingMappingStrategy.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class CSVFormatLeser extends FilLeser {
   @Override

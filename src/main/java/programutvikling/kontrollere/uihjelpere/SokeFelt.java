@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import programutvikling.base.Kunde;
 
 import java.util.function.Predicate;
 
