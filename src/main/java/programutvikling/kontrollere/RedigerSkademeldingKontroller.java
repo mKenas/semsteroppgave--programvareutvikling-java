@@ -1,5 +1,9 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -23,19 +27,19 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
 
 
   @FXML
-  private TextField personNrTekstfelt;
+  private JFXTextField personNrTekstfelt;
   @FXML
-  private ComboBox forsikringsTypeKomboboks;
+  private JFXComboBox forsikringsTypeKomboboks;
   @FXML
-  private DatePicker skadeDatoVelger;
+  private JFXDatePicker skadeDatoVelger;
   @FXML
-  private TextField klokkeslettTekstfelt;
+  private JFXTextField klokkeslettTekstfelt;
   @FXML
-  private TextField skadeTypeTekstfelt;
+  private JFXTextField skadeTypeTekstfelt;
   @FXML
-  private TextArea skadeBeskrivelseTekstfelt;
+  private JFXTextArea skadeBeskrivelseTekstfelt;
   @FXML
-  private TextArea ovrigSkadeInformasjonTekstfelt;
+  private JFXTextArea ovrigSkadeInformasjonTekstfelt;
 
 
   @Override
@@ -62,24 +66,24 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
   }
 
   @FXML
-  public void handleRedigerSkademeldingKnapp() {
+    public void handleRedigerSkademeldingKnapp() {
 
-    String forikringsType = forsikringsTypeKomboboks.getValue().toString();
-    String skadeDato = skadeDatoVelger.getValue().toString();
-    String klokkeslett = klokkeslettTekstfelt.getText();
-    String skadeType = skadeTypeTekstfelt.getText();
-    String skadeBeskrivelse = skadeBeskrivelseTekstfelt.getText();
-    String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
+      String forikringsType = forsikringsTypeKomboboks.getValue().toString();
+      String skadeDato = skadeDatoVelger.getValue().toString();
+      String klokkeslett = klokkeslettTekstfelt.getText();
+      String skadeType = skadeTypeTekstfelt.getText();
+      String skadeBeskrivelse = skadeBeskrivelseTekstfelt.getText();
+      String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
 
 
-    skademelding.setForsikringsType(forikringsType);
-    skademelding.setSkadeDato(skadeDato);
-    skademelding.setKlokkeSlett(klokkeslett);
-    skademelding.setSkadeType(skadeType);
-    skademelding.setSkadeBeskrivelse(skadeBeskrivelse);
-    skademelding.setOvrigSkadeInformasjon(ovrigSkadeInformasjon);
+      skademelding.setForsikringsType(forikringsType);
+      skademelding.setSkadeDato(skadeDato);
+      skademelding.setKlokkeSlett(klokkeslett);
+      skademelding.setSkadeType(skadeType);
+      skademelding.setSkadeBeskrivelse(skadeBeskrivelse);
+      skademelding.setOvrigSkadeInformasjon(ovrigSkadeInformasjon);
 
-    navigeringTilSkademeldingScene();
+      navigeringTilSkademeldingScene();
 
   }
 

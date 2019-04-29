@@ -15,7 +15,7 @@
     </BorderPane.margin>
     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Kunde &gt; Forsikringer &gt; Reiseforsikring  " HBox.hgrow="ALWAYS">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Kunde &gt; Forsikringer &gt; Vis Reiseforsikring  " HBox.hgrow="ALWAYS">
                 <font>
                     <Font size="20.0" />
                 </font>
@@ -37,7 +37,7 @@
                             <Insets left="15.0" />
                         </VBox.margin>
                     </Label>
-                    <Label fx:id="personNrLabel" disable="true" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
+                    <Label fx:id="personNrLabel" disable="true" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="424.0">
                         <VBox.margin>
                             <Insets left="15.0" />
                         </VBox.margin>
@@ -66,13 +66,16 @@
                            <Insets left="15.0" right="15.0" />
                         </VBox.margin>
                      </Label>
-                     <Label fx:id="reiseForsikringssumLabel" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="598.0">
+                     <Label fx:id="reiseForsikringssumLabel" maxWidth="1.7976931348623157E308">
                         <VBox.margin>
-                           <Insets bottom="10.0" left="15.0" right="15.0" />
+                           <Insets />
                         </VBox.margin>
                      </Label>
-                     <Label maxWidth="1.7976931348623157E308" text="Forsikringsbeløp" />
-                     <Label fx:id="reiseForsikringsBelopLabel" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="313.0" />
+                     <Label maxWidth="1.7976931348623157E308" prefHeight="21.0" prefWidth="271.0" text="Forsikringsbeløp">
+                        <VBox.margin>
+                           <Insets left="15.0" right="15.0" />
+                        </VBox.margin></Label>
+                     <Label fx:id="reiseForsikringsBelopLabel" maxWidth="1.7976931348623157E308" />
                   </children>
                </VBox>
                <VBox maxWidth="1.7976931348623157E308">
@@ -82,13 +85,13 @@
                            <Insets />
                         </VBox.margin>
                      </Label>
-                     <Label fx:id="reiseForsikringsomradeLabel" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
+                     <Label fx:id="reiseForsikringsomradeLabel" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308">
                         <VBox.margin>
-                           <Insets bottom="10.0" right="15.0" />
+                           <Insets />
                         </VBox.margin>
                      </Label>
                      <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Årlig forsikringspremie" />
-                     <Label fx:id="reiseArligForsikringspremieLabel" layoutX="10.0" layoutY="31.0" maxWidth="1.7976931348623157E308" prefHeight="48.0" />
+                     <Label fx:id="reiseArligForsikringspremieLabel" layoutX="10.0" layoutY="31.0" maxWidth="1.7976931348623157E308" />
                   </children>
                </VBox>
             </items>
@@ -98,11 +101,6 @@
          </SplitPane>
       </children>
     </HBox>
-   <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-      <VBox.margin>
-         <Insets bottom="10.0" />
-      </VBox.margin>
-   </HBox>
 
     <BorderPane maxWidth="1.7976931348623157E308">
         <right>

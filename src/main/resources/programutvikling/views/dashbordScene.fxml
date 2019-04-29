@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.DashbordKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
@@ -29,42 +30,42 @@
         <children>
             <VBox prefHeight="230.0" prefWidth="420.0">
                 <children>
-                    <Button fx:id="registrerKundeKnapp" mnemonicParsing="false" onAction="#NavigeringTilRegistrerKundeScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer ny kunde">
+                    <JFXButton fx:id="registrerKundeKnapp" mnemonicParsing="false" onAction="#NavigeringTilRegistrerKundeScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer ny kunde">
                         <VBox.margin>
                             <Insets bottom="5.0" left="10.0" top="10.0" />
                         </VBox.margin>
                         <font>
                             <Font size="36.0" />
                         </font>
-                    </Button>
-                    <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer skade">
+                    </JFXButton>
+                    <JFXButton mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer skade">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" top="5.0" />
                         </VBox.margin>
                         <font>
                             <Font size="36.0" />
                         </font>
-                    </Button>
+                    </JFXButton>
                 </children>
             </VBox>
             <VBox prefHeight="504.0" prefWidth="420.0">
                 <children>
-                    <Button id="dashbord-knapp" mnemonicParsing="false" onAction="#NavigeringTilKunderScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Finn kunde">
+                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" onAction="#NavigeringTilKunderScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Finn kunde">
                         <VBox.margin>
                             <Insets bottom="5.0" left="10.0" top="10.0" />
                         </VBox.margin>
                         <font>
                             <Font size="36.0" />
                         </font>
-                    </Button>
-                    <Button id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Skademeldinger">
+                    </JFXButton>
+                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Skademeldinger">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" top="5.0" />
                         </VBox.margin>
                         <font>
                             <Font size="36.0" />
                         </font>
-                    </Button>
+                    </JFXButton>
                 </children>
             </VBox>
         </children>

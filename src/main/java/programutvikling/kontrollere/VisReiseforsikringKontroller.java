@@ -1,5 +1,6 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,7 +13,7 @@ import programutvikling.database.DataLagringObjekt;
 public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
 
   @FXML
-  Label personNrLabel;
+  JFXTextField personNrTekstfelt;
   @FXML
   Label reiseForsikringssumLabel;
   @FXML
@@ -34,12 +35,6 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
   private ReiseForsikring forsikring;
 
 
-  public void setKunde(Kunde k) {
-    this.kunde = k;
-    this.personNrLabel.setText(k.toString());
-
-  }
-
 
   public void setForsikring(Forsikring forsikring) {
 
@@ -52,8 +47,6 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
       reiseForsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
       reiseArligForsikringspremieLabel.setText(String.valueOf(f.getForsikringspremie()));
       reiseForsikringsomradeLabel.setText(f.getForsikringsområde());
-
-
 
     }
   }
@@ -73,6 +66,13 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
 
   }
 
+
+  @Override
+  public void setKunde(Kunde kunde) {
+    this.kunde = kunde;
+    personNrTekstfelt.setText(kunde.getPersonNr());
+
+  }
 
 
 

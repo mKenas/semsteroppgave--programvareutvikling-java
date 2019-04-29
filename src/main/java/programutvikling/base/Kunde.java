@@ -2,7 +2,7 @@ package programutvikling.base;
 
 import programutvikling.egenDefinertTyper.SkademeldingStatus;
 
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,12 +15,28 @@ public class Kunde implements Serializable {
 
   //private ObservableHelper observersHandler = new ObservableHelper();
 
+  @Pattern(regexp = "[0-9]*", message = "Personnummer feltet tillater kun tall")
+  @Size(min = 11, max = 11, message = "Personnummer feltet må være på 11 tall")
+  @NotEmpty(message = "Personnummer feltet kan ikke være tomt")
   private String personNr;
+
+  //Pattern(regexp = "[A-Z][a-z]", message = "Fornavn feltet tillater kun bokstaver") //[!@#$%^&*(),.?\":{}|<>]"
+  @Size(min = 2, max = 26, message = "Fornavnet må være på mellon 2-26 bokstaver")
+  @NotBlank(message = "Fornavn feltet kan ikke være tomt")
   private String navn;
+
+  @Size(min = 2, max = 25, message = "Etternavnet må være mellom 2-26 bokstaver")
+  @NotBlank(message = "Etternavn feltet kan ikke være tomt")
   private String etternavn;
+
+  @Email
+  @NotNull
   private String epost;
+
   private String mobil;
+
   private String fakturaAdresse;
+
   private String postnummer;
   private String poststed;
   private String opprettelsesDato;

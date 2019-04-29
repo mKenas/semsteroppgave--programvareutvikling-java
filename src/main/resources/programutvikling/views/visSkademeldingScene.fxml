@@ -13,6 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisSkademeldingSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
@@ -124,7 +127,7 @@
                     </VBox>
                <AnchorPane prefHeight="200.0" prefWidth="200.0">
                   <children>
-                     <Button fx:id="redigerSkadeMeldingKnapp" mnemonicParsing="false" onAction="#handleRedigerSkademeldingKnapp" text="Rediger" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                     <JFXButton fx:id="redigerSkadeMeldingKnapp" mnemonicParsing="false" onAction="#handleRedigerSkademeldingKnapp" text="Rediger" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                   </children>
                </AnchorPane>
                 </children>
@@ -135,9 +138,9 @@
             <VBox prefHeight="275.0" prefWidth="900.0">
                 <children>
                     <Label prefHeight="47.0" prefWidth="395.0" text="Skadebeskrivelse:" />
-                    <TextArea fx:id="skadebeskrivelseTekstfelt" disable="true" prefHeight="168.0" prefWidth="900.0" />
+                    <JFXTextArea fx:id="skadebeskrivelseTekstfelt" disable="true" prefHeight="168.0" prefWidth="900.0" />
                     <Label prefHeight="47.0" prefWidth="395.0" text="Øvrig informasjon:" />
-                    <TextArea fx:id="ovrigInformasjonTekstfelt" disable="true" prefHeight="200.0" prefWidth="200.0" />
+                    <JFXTextArea fx:id="ovrigInformasjonTekstfelt" disable="true" prefHeight="200.0" prefWidth="200.0" />
                 </children>
             </VBox>
         </children>
@@ -168,11 +171,11 @@
                                             <Insets left="15.0" right="15.0" />
                                         </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="takseringsbelopTekstfelt" layoutX="10.0" layoutY="187.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
+                                    <JFXTextField fx:id="takseringsbelopTekstfelt" layoutX="10.0" layoutY="187.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
                                         <VBox.margin>
                                             <Insets bottom="10.0" left="15.0" right="15.0" />
                                         </VBox.margin>
-                                    </TextField>
+                                    </JFXTextField>
                                 </children>
                             </VBox>
                             <VBox maxWidth="1.7976931348623157E308">
@@ -182,11 +185,11 @@
                                             <Insets />
                                         </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="utbetaltErstatningsbelopTekstfelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
+                                    <JFXTextField fx:id="utbetaltErstatningsbelopTekstfelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
                                         <VBox.margin>
                                             <Insets bottom="10.0" right="15.0" />
                                         </VBox.margin>
-                                    </TextField>
+                                    </JFXTextField>
                                 </children>
                             </VBox>
                         </items>
@@ -261,12 +264,12 @@
         <right>
             <HBox prefHeight="100.0" BorderPane.alignment="CENTER">
                 <children>
-                    <Button fx:id="skademeldingLagreKnapp" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleLagreKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="sub-scene-knapp" text="Lagre">
+                    <JFXButton fx:id="skademeldingLagreKnapp" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleLagreKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="sub-scene-knapp" text="Lagre">
                         <HBox.margin>
                             <Insets left="10.0" right="10.0" />
                         </HBox.margin>
-                    </Button>
-                    <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleTilbakeKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="sub-scene-knapp" text="Tilbake" />
+                    </JFXButton>
+                    <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleTilbakeKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="sub-scene-knapp" text="Tilbake" />
                 </children>
                 <BorderPane.margin>
                     <Insets />

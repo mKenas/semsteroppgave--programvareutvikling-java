@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="parent" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.hovedSceneKontroller">
 
     <top>
@@ -78,29 +79,29 @@
                         <Insets bottom="30.0" left="15.0" top="15.0" />
                     </VBox.margin>
                 </Label>
-                <Button fx:id="mainSceneKnapp" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleNavigeringTilDashbord" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Dashbord">
+                <JFXButton fx:id="mainSceneKnapp" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleNavigeringTilDashbord" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Dashbord">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
-                </Button>
-                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleNavigeringTilKunderScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Kunder">
+                </JFXButton>
+                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleNavigeringTilKunderScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Kunder">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
-                </Button>
-                <Button fx:id="forsikringerSceneKnapp" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleNavigeringTilForsikringerScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Forsikringer">
+                </JFXButton>
+                <JFXButton fx:id="forsikringerSceneKnapp" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleNavigeringTilForsikringerScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Forsikringer">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
-                </Button>
+                </JFXButton>
 
-                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNavigeringTilSkaderScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Skademeldinger">
+                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNavigeringTilSkaderScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Skademeldinger">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
-                </Button>
-                <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleNavigeringTilErstatningerScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Erstatninger" />
-            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleNavigeringTilAvvistSkademeldingListeScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Avviste erstatningskrav" />
+                </JFXButton>
+                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleNavigeringTilErstatningerScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Erstatninger" />
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleNavigeringTilAvvistSkademeldingListeScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Avviste erstatningskrav" />
             </children>
         </VBox>
 

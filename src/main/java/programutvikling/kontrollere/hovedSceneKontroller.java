@@ -1,5 +1,6 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -27,7 +28,7 @@ public class hovedSceneKontroller {
 
   private static final long serialVersionUID = 5;
   @FXML
-  protected Button mainSceneKnapp;
+  protected JFXButton mainSceneKnapp;
   @FXML
   protected BorderPane borderPane;
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();

@@ -108,8 +108,19 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
 
   }
 
+
+  @FXML
   protected void navigeringTilKunderScene() {
 
     Navigator.visScene(borderPane, Navigator.getKundeListeScene());
   }
+
+  @FXML
+  public void handleNavigerTilRedigerFritidsboligKnapp() {
+
+    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_FRITIDSBOLIG_FORSIKRING_SCENE(),kunde,forsikring);
+
+  }
+
+
 }

@@ -64,4 +64,41 @@ public class FritidsboligForsikring extends Forsikring {
   public String getForsikringsType() {
     return forsikringsType;
   }
+
+
+  public void setBoligAdresse(String boligAdresse) {
+    this.boligAdresse = boligAdresse;
+  }
+
+  public void setByggeaar(String byggeaar) {
+    this.byggeaar = byggeaar;
+  }
+
+  public void setBoligType(String boligType) {
+    this.boligType = boligType;
+  }
+
+  public void setByggeMateriale(String byggeMateriale) {
+    this.byggeMateriale = byggeMateriale;
+  }
+
+  public void setStandard(String standard) {
+    this.standard = standard;
+  }
+
+  public void setStorrelse(String storrelse) {
+    this.storrelse = storrelse;
+  }
+
+  public void setBygningsForsikringsbelop(String bygningsForsikringsbelop) {
+    this.bygningsForsikringsbelop = bygningsForsikringsbelop;
+  }
+
+  public void setInnboForsikringsbelop(String innboForsikringsbelop) {
+    this.innboForsikringsbelop = innboForsikringsbelop;
+  }
+
+  public void setForsikringsType(String forsikringsType) {
+    this.forsikringsType = forsikringsType;
+  }
 }

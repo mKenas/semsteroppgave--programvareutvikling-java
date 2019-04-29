@@ -1,5 +1,6 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,19 +18,21 @@ import programutvikling.database.DataLagringObjekt;
 
 public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo {
   @FXML
-  TextField personNrTekstfelt;
+  JFXTextField personNrTekstfelt;
   @FXML
-  TextField klokkeslettTekstfelt;
+  JFXTextField klokkeslettTekstfelt;
   @FXML
-  DatePicker skadeDatoVelger;
+  JFXDatePicker skadeDatoVelger;
   @FXML
-  ComboBox forsikringsTypeKomboboks;
+  JFXComboBox forsikringsTypeKomboboks;
   @FXML
-  TextField skadeTypeTekstfelt;
+  JFXTextField skadeTypeTekstfelt;
   @FXML
-  TextArea skadeBeskrivelseTekstfelt;
+  JFXTextArea skadeBeskrivelseTekstfelt;
   @FXML
-  TextArea ovrigSkadeInformasjonTekstfelt;
+  JFXTextArea ovrigSkadeInformasjonTekstfelt;
+  @FXML
+
 
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private DataHandlingObjekt dho = new DataHandlingObjekt();

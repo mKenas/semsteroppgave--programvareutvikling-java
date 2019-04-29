@@ -3,8 +3,7 @@ module forsikringRegisteringSystem {
   requires javafx.fxml;
   requires opencsv;
   requires java.validation;
-  requires javax.el;
-
+  requires com.jfoenix;
 
 
   opens programutvikling to javafx.fxml;
