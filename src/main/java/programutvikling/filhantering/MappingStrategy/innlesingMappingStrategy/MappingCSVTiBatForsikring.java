@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MappingCSVTiBatForsikring extends InnlesingMappingStrategy {
 
-  List<BatForsikring> baatForsikringliste;
+  List<BatForsikring> batForsikringsliste;
 
   public MappingCSVTiBatForsikring(String filstil) {
 
@@ -17,28 +17,28 @@ public class MappingCSVTiBatForsikring extends InnlesingMappingStrategy {
         @Override
         public boolean allowLine(String[] strings) {
 
-          boolean result = false;
+          boolean erBatForsikring = false;
           if (strings.length >= 12) {
             String forsikringsNr = strings[11];
             String forsikringsType = strings[15];
 
 
-            result = !"".equals(forsikringsNr) && forsikringsType.equals("Båt Forsikring");
+            erBatForsikring = !"".equals(forsikringsNr) && forsikringsType.equals("Båt Forsikring");
 
           }
 
 
-          return result;
+          return erBatForsikring;
           //return true;
         }
       };
 
-    this.baatForsikringliste = this.mapToCSV( filstil, BatForsikring.class, filter);
+    this.batForsikringsliste = this.objektTilCSV( filstil, BatForsikring.class, filter);
     //System.out.println(list);
 
   }
 
-  public List<BatForsikring> getBatForsikringliste() {
-    return baatForsikringliste;
+  public List<BatForsikring> getBatForsikringsliste() {
+    return batForsikringsliste;
   }
 }

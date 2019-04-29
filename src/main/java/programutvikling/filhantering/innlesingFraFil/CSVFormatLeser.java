@@ -23,20 +23,20 @@ public class CSVFormatLeser extends FilLeser {
 
     MappingCSVTilReiseForsikring mappingCSVTilReiseForsikring  = new MappingCSVTilReiseForsikring(filsti);
     //System.out.println("ReiseForsikringliste");
-    //System.out.println(mappingCSVTilReiseForsikring.getReiseForsikringliste());
+    //System.out.println(mappingCSVTilReiseForsikring.getReiseForsikringsliste());
 
 
     MappingCSVTilHusOgInnboForsikring mappingCSVTilHusOgInnboForsikring  = new MappingCSVTilHusOgInnboForsikring(filsti);
     //System.out.println("HusOgInnboForsikringliste");
-    //System.out.println(mappingCSVTilHusOgInnboForsikring.getHusOgInnboForsikringliste());
+    //System.out.println(mappingCSVTilHusOgInnboForsikring.getHusOgInnboForsikringsliste());
 
     MappingCSVTiBatForsikring mappingCSVTiBatForsikring  = new MappingCSVTiBatForsikring(filsti);
     //System.out.println("BatForsikringliste");
-    //System.out.println(mappingCSVTiBatForsikring.getBatForsikringliste());
+    //System.out.println(mappingCSVTiBatForsikring.getBatForsikringsliste());
 
     MappingCSVTiFritidsboligForsikring mappingCSVTiFritidsboligForsikring = new MappingCSVTiFritidsboligForsikring(filsti);
     //System.out.println("FritidsboligForsikringliste");
-    //System.out.println(mappingCSVTiFritidsboligForsikring.getFritidsboligForsikringliste());
+    //System.out.println(mappingCSVTiFritidsboligForsikring.getFritidsboligForsikringsliste());
 
 
 
@@ -54,10 +54,10 @@ public class CSVFormatLeser extends FilLeser {
     HashMap<Kunde,Skademelding> kundeMedSkadeMeldingListe = new HashMap<>();
 
     kundeliste.addAll(mappingCSVTilKundeliste.getKundeliste());
-    forsikringliste.addAll(mappingCSVTilHusOgInnboForsikring.getHusOgInnboForsikringliste());
-    forsikringliste.addAll(mappingCSVTilReiseForsikring.getReiseForsikringliste());
-    forsikringliste.addAll(mappingCSVTiBatForsikring.getBatForsikringliste());
-    forsikringliste.addAll(mappingCSVTiFritidsboligForsikring.getFritidsboligForsikringliste());
+    forsikringliste.addAll(mappingCSVTilHusOgInnboForsikring.getHusOgInnboForsikringsliste());
+    forsikringliste.addAll(mappingCSVTilReiseForsikring.getReiseForsikringsliste());
+    forsikringliste.addAll(mappingCSVTiBatForsikring.getBatForsikringsliste());
+    forsikringliste.addAll(mappingCSVTiFritidsboligForsikring.getFritidsboligForsikringsliste());
     skademeldingListe.addAll(mappingCSVTilSkademelding.getSkademeldingListe());
 
 

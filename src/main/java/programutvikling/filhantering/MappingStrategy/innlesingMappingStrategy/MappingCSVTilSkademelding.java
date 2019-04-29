@@ -18,7 +18,7 @@ public class MappingCSVTilSkademelding extends InnlesingMappingStrategy<Kunde> {
       @Override
       public boolean allowLine(String[] strings) {
 
-        boolean result = false;
+        boolean erSkademelding = false;
         if (strings.length >= 20) {
           String skadesNr = strings[34];
 
@@ -26,9 +26,9 @@ public class MappingCSVTilSkademelding extends InnlesingMappingStrategy<Kunde> {
 
 
 
-          result = !"".equals(skadesNr);
+          erSkademelding = !"".equals(skadesNr);
 
-          if (result){
+          if (erSkademelding){
             // check if double values not null
             //System.out.println("strings[40] " + strings[40]);
             //System.out.println("strings[41] " +strings[41]);
@@ -43,12 +43,12 @@ public class MappingCSVTilSkademelding extends InnlesingMappingStrategy<Kunde> {
         }
 
 
-        return result;
+        return erSkademelding;
         //return true;
       }
     };
 
-    this.skademeldingListe = this.mapToCSV( filstil, Skademelding.class, filter);
+    this.skademeldingListe = this.objektTilCSV( filstil, Skademelding.class, filter);
     //System.out.println(list);
 
   }

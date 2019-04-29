@@ -4,11 +4,10 @@ import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
@@ -17,6 +16,7 @@ import programutvikling.feilmeldinger.UtdatertFilAvvikHandler;
 import programutvikling.filhantering.SkrivingTilFil.SkrivingTradObjekt;
 import programutvikling.filhantering.innlesingFraFil.LesingTradObjekt;
 import programutvikling.kontrollere.uihjelpere.ApneFilVelger;
+import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.LagreFilVelger;
 import programutvikling.status.InnlesingOgSkrivingStatus;
 
@@ -49,7 +49,7 @@ public class hovedSceneKontroller {
     Platform.runLater(() -> mainSceneKnapp.requestFocus());
 
     Navigator.visScene(borderPane, Navigator.getDashbordScene());
-    mainSceneKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingAktiv());
+    mainSceneKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
 
 
   }
@@ -78,13 +78,7 @@ public class hovedSceneKontroller {
 
   }
 
-  @FXML
-  protected void handleNavigeringTilSkaderScene() {
 
-
-    Navigator.visScene(borderPane, Navigator.getSKADER_SCENE());
-
-  }
 
   @FXML
   protected void handleNavigeringTilErstatningerScene() {
@@ -179,7 +173,7 @@ public class hovedSceneKontroller {
       dlo.setAllData(allDataFraFil);
       //mainSceneKnapp.setDisable(false);
     }
-    InnlesingOgSkrivingStatus.erInnlesingAktiv().set(false);
+    InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
 
   }
 
@@ -200,5 +194,9 @@ public class hovedSceneKontroller {
 */
   }
 
+  @FXML
+  public void handleNavigeringTilSkademeldingScene(ActionEvent actionEvent) {
 
+    Navigator.visScene(borderPane, Navigator.getSkademeldingerScene());
+  }
 }

@@ -20,7 +20,7 @@ public class CSVFormatSkriver extends FilSkriver {
   public void skrivTilFil(HashMap<String, Object> dataliste, String filsti) throws IOException {
 
 
-
+    final char SEPERATOR = ';';
     List<Kunde> kundeListe = (ArrayList<Kunde>) dataliste.get("kundeListe");
     List<HusOgInnboForsikring> husOgInnboForsikringListe = (ArrayList<HusOgInnboForsikring>) dataliste.get("husOgInnboForsikringListe");
     List<FritidsboligForsikring> fritidsboligForsikringListe = (ArrayList<FritidsboligForsikring>) dataliste.get("fritidsboligForsikringListe");
@@ -30,22 +30,22 @@ public class CSVFormatSkriver extends FilSkriver {
 
     try {
       try (
-              Writer writer = Files.newBufferedWriter(Paths.get(filsti));
+              Writer skriver = Files.newBufferedWriter(Paths.get(filsti));
 
-              CSVWriter csvWriter = new CSVWriter(writer,
-                      CSVWriter.DEFAULT_SEPARATOR,
+              CSVWriter csvSkriver = new CSVWriter(skriver,
+                      SEPERATOR,
                       CSVWriter.NO_QUOTE_CHARACTER,
                       CSVWriter.DEFAULT_ESCAPE_CHARACTER,
                       CSVWriter.DEFAULT_LINE_END);
       ) {
-        csvWriter.writeNext(SkrivingMappingStrategy.HEADER);
-        SkrivingMappingStrategy.csvToObject(Kunde.class, writer, kundeListe);
+        csvSkriver.writeNext(SkrivingMappingStrategy.HEADER);
+        SkrivingMappingStrategy.objektTilCSV(Kunde.class, skriver, kundeListe);
 
-        SkrivingMappingStrategy.csvToObject(HusOgInnboForsikring.class, writer, husOgInnboForsikringListe);
-        SkrivingMappingStrategy.csvToObject(ReiseForsikring.class, writer, reiseForsikringListe);
-        SkrivingMappingStrategy.csvToObject(FritidsboligForsikring.class, writer, fritidsboligForsikringListe);
-        SkrivingMappingStrategy.csvToObject(BatForsikring.class, writer, batorsikringListe);
-        SkrivingMappingStrategy.csvToObject(Skademelding.class, writer, skademeldingListe);
+        SkrivingMappingStrategy.objektTilCSV(HusOgInnboForsikring.class, skriver, husOgInnboForsikringListe);
+        SkrivingMappingStrategy.objektTilCSV(ReiseForsikring.class, skriver, reiseForsikringListe);
+        SkrivingMappingStrategy.objektTilCSV(FritidsboligForsikring.class, skriver, fritidsboligForsikringListe);
+        SkrivingMappingStrategy.objektTilCSV(BatForsikring.class, skriver, batorsikringListe);
+        SkrivingMappingStrategy.objektTilCSV(Skademelding.class, skriver, skademeldingListe);
 
 
       }

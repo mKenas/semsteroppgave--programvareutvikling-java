@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MappingCSVTilHusOgInnboForsikring extends InnlesingMappingStrategy {
 
-  List<HusOgInnboForsikring> husOgInnboForsikringliste;
+  List<HusOgInnboForsikring> husOgInnboForsikringsliste;
 
   public MappingCSVTilHusOgInnboForsikring(String filstil) {
 
@@ -17,28 +17,28 @@ public class MappingCSVTilHusOgInnboForsikring extends InnlesingMappingStrategy 
         @Override
         public boolean allowLine(String[] strings) {
 
-          boolean result = false;
+          boolean erHusOgInnboForsikring = false;
           if (strings.length >= 12) {
             String forsikringsNr = strings[11];
             String forsikringsType = strings[15];
 
 
-            result = !"".equals(forsikringsNr) && forsikringsType.equals("Hus Og Innbo Forsikring");
+            erHusOgInnboForsikring = !"".equals(forsikringsNr) && forsikringsType.equals("Hus Og Innbo Forsikring");
 
           }
 
 
-          return result;
+          return erHusOgInnboForsikring;
           //return true;
         }
       };
 
-    this.husOgInnboForsikringliste = this.mapToCSV( filstil, HusOgInnboForsikring.class, filter);
+    this.husOgInnboForsikringsliste = this.objektTilCSV( filstil, HusOgInnboForsikring.class, filter);
     //System.out.println(list);
 
   }
 
-  public List<HusOgInnboForsikring> getHusOgInnboForsikringliste() {
-    return husOgInnboForsikringliste;
+  public List<HusOgInnboForsikring> getHusOgInnboForsikringsliste() {
+    return husOgInnboForsikringsliste;
   }
 }

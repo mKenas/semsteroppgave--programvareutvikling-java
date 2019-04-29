@@ -139,7 +139,7 @@ public final class DataLagringObjekt implements Serializable {
     dataliste.put("kundeListe",new ArrayList(this.kundeListe));
     dataliste.put("forsikringListe",new ArrayList(this.forsikringListe));
     dataliste.put("husOgInnboForsikringListe",new ArrayList(this.getHusOgInnboForsikringListe()));
-    dataliste.put("fritidsboligForsikringListe",this.getFritidsboligForsikringListe());
+    dataliste.put("fritidsboligForsikringListe",this.getFritidsboligForsikringsliste());
     dataliste.put("reiseForsikringListe",this.getReiseForsikringListe());
     dataliste.put("batorsikringListe",this.getBatorsikringListe());
 

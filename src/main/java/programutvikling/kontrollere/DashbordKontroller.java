@@ -1,10 +1,11 @@
 package programutvikling.kontrollere;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Navigator;
+import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.status.InnlesingOgSkrivingStatus;
 
 
@@ -18,23 +19,35 @@ public class DashbordKontroller {
 
   public void initialize() {
 
-    registrerKundeKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingAktiv());
+    registrerKundeKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
   }
 
 
   @FXML
-  protected void NavigeringTilRegistrerKundeScene() {
+  protected void handlNavigeringTilRegistrerKundeScene() {
 
     Navigator.visScene(borderPane, Navigator.getRegistrerKundeScene());
 
   }
 
   @FXML
-  protected void NavigeringTilKunderScene() {
+  protected void handlNavigeringTilKunderScene() {
 
     Navigator.visScene(borderPane, Navigator.getKundeListeScene());
 
   }
 
+  @FXML
+  protected void handleNavigeringTilForsikringerScene(ActionEvent actionEvent) {
+
+    Navigator.visScene(borderPane, Navigator.getForsikringListeScene());
+  }
+
+
+  @FXML
+  protected void handleNavigeringTilSkademeldingerScene(ActionEvent actionEvent) {
+
+    Navigator.visScene(borderPane, Navigator.getSkademeldingerScene());
+  }
 }
 

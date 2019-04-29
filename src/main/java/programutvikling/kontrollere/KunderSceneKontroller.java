@@ -6,11 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.SokeFelt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
@@ -23,10 +23,7 @@ public class KunderSceneKontroller {
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dhl = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-  @FXML
-  TableColumn<Kunde, Button> redigerKolonne;
-  @FXML
-  TableColumn<Kunde, Button> slettKolonne;
+
   @FXML
   TableColumn<Kunde, Button> visKundeKolonne;
 
@@ -50,8 +47,7 @@ public class KunderSceneKontroller {
     if (kunderliste.size() >= 1) {
 
       kunderTabell.getItems().setAll(kunderliste);
-      leggTilRedigerKnapp();
-      leggTilSlettKnapp();
+
       leggTilVisKundeKnapp();
 
     }
@@ -117,38 +113,13 @@ public class KunderSceneKontroller {
     kunderTabell.getItems().setAll(kunderliste);
 
 
-    leggTilRedigerKnapp();
-    leggTilSlettKnapp();
     leggTilVisKundeKnapp();
 
   }
 
 
-  private void leggTilSlettKnapp() {
 
 
-
-    // Knapp knapp = new Knapp(slettKolonne);
-    slettKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uf00d", "slett-knapp", (Kunde k) -> {
-      dhl.getKundeListeHandling().slettKunde(k);
-      kunderTabell.getItems().remove(k);
-
-      //return p;
-    }));
-
-  }
-
-  private void leggTilRedigerKnapp() {
-
-
-    redigerKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uF044", "rediger-knapp", (Kunde k) -> {
-      //kunderTabell.getItems().remove(p);
-      kunde = k;
-      NavigeringTilRedigerKundeScene();
-      //return p;
-    }));
-
-  }
 
   private void leggTilVisKundeKnapp() {
 

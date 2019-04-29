@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MappingCSVTiFritidsboligForsikring extends InnlesingMappingStrategy {
 
-  List<FritidsboligForsikring> fritidsboligForsikringliste;
+  List<FritidsboligForsikring> fritidsboligForsikringsliste;
 
   public MappingCSVTiFritidsboligForsikring(String filstil) {
 
@@ -17,30 +17,30 @@ public class MappingCSVTiFritidsboligForsikring extends InnlesingMappingStrategy
         @Override
         public boolean allowLine(String[] strings) {
 
-          boolean result = false;
+          boolean erFritidsboligForsikring = false;
           if (strings.length >= 12) {
             String forsikringsNr = strings[11];
             String forsikringsType = strings[15];
 
 
 
-            result = !"".equals(forsikringsNr) && forsikringsType.equals("Fritidsbolig Forsikring");
+            erFritidsboligForsikring = !"".equals(forsikringsNr) && forsikringsType.equals("Fritidsbolig Forsikring");
 
 
           }
 
 
-          return result;
+          return erFritidsboligForsikring;
           //return true;
         }
       };
 
-    this.fritidsboligForsikringliste = this.mapToCSV( filstil, FritidsboligForsikring.class, filter);
+    this.fritidsboligForsikringsliste = this.objektTilCSV( filstil, FritidsboligForsikring.class, filter);
     //System.out.println(list);
 
   }
 
-  public List<FritidsboligForsikring> getFritidsboligForsikringliste() {
-    return fritidsboligForsikringliste;
+  public List<FritidsboligForsikring> getFritidsboligForsikringsliste() {
+    return fritidsboligForsikringsliste;
   }
 }

@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 import programutvikling.base.*;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.HyberlinkBygger;
 
 public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
@@ -182,9 +183,10 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
   @FXML
   public void handleSlettKundeKnapp() {
 
-    dhl.getKundeListeHandling().slettKunde(kunde);
+
     dhl.getKundeMedForsikringListeHandling().slettAlleForsikringTilKunde(kunde);
     dhl.getKundeMedSkademeldingListeHandling().slettAlleSkademeldingTilKunde(kunde);
+    dhl.getKundeListeHandling().slettKunde(kunde);
     navigeringTilKunderScene();
   }
 

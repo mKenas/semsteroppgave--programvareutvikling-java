@@ -22,7 +22,7 @@ public class SkrivingMappingStrategy {
           "motorType", "motorStyrke","skademeldingNr","skadeDato","klokkeSlett","skadeType","skadeBeskrivelse",
           "ovrigSkadeInformasjon","takseringsbelop","utbetaltErstatningsbelop","opprettelsesDato","status"};
 
-  public static  <T> void csvToObject(Class<T> mapToClass, Writer writer, List<T> liste)  {
+  public static  <T> void objektTilCSV(Class<T> klasse, Writer skriver, List<T> liste)  {
 
 
 
@@ -30,19 +30,20 @@ public class SkrivingMappingStrategy {
     ColumnPositionMappingStrategy<T> strategy = new  ColumnPositionMappingStrategy<T>();
     //HeaderColumnNameTranslateMappingStrategy<T> strategy = new HeaderColumnNameTranslateMappingStrategy<T>();
 
-    strategy.setType(mapToClass);
+    strategy.setType(klasse);
 
     strategy.setColumnMapping(SkrivingMappingStrategy.HEADER);
 
 
 
-        StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder(writer)
+        StatefulBeanToCsv<T> objektTilCSV = new StatefulBeanToCsvBuilder(skriver)
                 .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
                 .withMappingStrategy(strategy)
+                .withSeparator(';')
                 .build();
 
         try {
-          beanToCsv.write(liste);
+          objektTilCSV.write(liste);
         } catch (CsvDataTypeMismatchException e) {
           e.printStackTrace();
         } catch (CsvRequiredFieldEmptyException e) {

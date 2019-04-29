@@ -1,4 +1,4 @@
-package programutvikling.base;
+package programutvikling.kontrollere.uihjelpere;
 
 
 import javafx.scene.layout.BorderPane;

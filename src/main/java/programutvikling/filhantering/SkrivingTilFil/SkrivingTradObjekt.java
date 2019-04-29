@@ -39,20 +39,20 @@ public class SkrivingTradObjekt extends Task<Void> {
   protected void running() {
     System.out.println("running");
 
-    InnlesingOgSkrivingStatus.erInnlesingAktiv().set(true);
+    InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(true);
 
   }
 
   @Override
   protected void failed() {
-    InnlesingOgSkrivingStatus.erInnlesingAktiv().set(false);
+    InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
   }
 
 
   @Override
   protected void succeeded() {
     System.out.println("Done");
-    InnlesingOgSkrivingStatus.erInnlesingAktiv().set(false);
+    InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
 
   }
 

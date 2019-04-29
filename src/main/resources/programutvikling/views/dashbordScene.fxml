@@ -30,7 +30,7 @@
         <children>
             <VBox prefHeight="230.0" prefWidth="420.0">
                 <children>
-                    <JFXButton fx:id="registrerKundeKnapp" mnemonicParsing="false" onAction="#NavigeringTilRegistrerKundeScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer ny kunde">
+                    <JFXButton fx:id="registrerKundeKnapp" mnemonicParsing="false" onAction="#handlNavigeringTilRegistrerKundeScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer ny kunde">
                         <VBox.margin>
                             <Insets bottom="5.0" left="10.0" top="10.0" />
                         </VBox.margin>
@@ -38,7 +38,7 @@
                             <Font size="36.0" />
                         </font>
                     </JFXButton>
-                    <JFXButton mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer skade">
+                    <JFXButton mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Finn Forsikring" onAction="#handleNavigeringTilForsikringerScene">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" top="5.0" />
                         </VBox.margin>
@@ -50,7 +50,7 @@
             </VBox>
             <VBox prefHeight="504.0" prefWidth="420.0">
                 <children>
-                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" onAction="#NavigeringTilKunderScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Finn kunde">
+                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" onAction="#handlNavigeringTilKunderScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Finn kunde">
                         <VBox.margin>
                             <Insets bottom="5.0" left="10.0" top="10.0" />
                         </VBox.margin>
@@ -58,7 +58,7 @@
                             <Font size="36.0" />
                         </font>
                     </JFXButton>
-                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Skademeldinger">
+                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Finn Skademelding" onAction="#handleNavigeringTilSkademeldingerScene">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" top="5.0" />
                         </VBox.margin>

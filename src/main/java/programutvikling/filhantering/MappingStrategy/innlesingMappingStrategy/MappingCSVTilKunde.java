@@ -18,15 +18,15 @@ public class MappingCSVTilKunde extends InnlesingMappingStrategy<Kunde> {
       public boolean allowLine(String[] strings) {
 
 
-        String value = strings[0];
+        String personNr = strings[0];
 
-        boolean result = !"".equals(value);
-        return result;
+        boolean erKunde = !"".equals(personNr);
+        return erKunde;
         //return true;
       }
     };
 
-    this.kundeliste = this.mapToCSV( filstil, Kunde.class, filter);
+    this.kundeliste = this.objektTilCSV( filstil, Kunde.class, filter);
     //System.out.println(list);
 
   }

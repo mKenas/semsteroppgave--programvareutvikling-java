@@ -4,9 +4,13 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.*;
+import programutvikling.base.Forsikring;
+import programutvikling.base.HusOgInnboForsikring;
+import programutvikling.base.Kunde;
+import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 
 import java.util.ArrayList;
 

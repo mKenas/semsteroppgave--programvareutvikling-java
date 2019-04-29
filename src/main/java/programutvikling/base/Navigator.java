@@ -177,7 +177,7 @@ public abstract class Navigator {
     return ERSTATNING_LISTE_SCENE;
   }
 
-  public static String getSKADER_SCENE() {
+  public static String getSkademeldingerScene() {
     return SKADEMELDING_LISTE_SCENE;
   }
 

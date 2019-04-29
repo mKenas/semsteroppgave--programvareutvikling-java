@@ -10,15 +10,16 @@ public class GyldigCSVFil {
 
   public static boolean sjekkCSVFilErGyldig(String filsti){
     //CSVReader reader = new CSVReader(new StringReader(csvContent));
-    BufferedReader reader = null;
+    BufferedReader leser = null;
     //CSVReader reader = null;
     try {
-      reader = Files.newBufferedReader(Paths.get(filsti));
+      leser = Files.newBufferedReader(Paths.get(filsti));
       //reader = new CSVReader(new FileReader(filsti));
-      String line;
-      while ((line = reader.readLine()) != null) {
-        if (line.contains(";"))
-          return false;
+      String linje;
+      while ((linje = leser.readLine()) != null) {
+        String[] ordliste = linje.split(";");
+        if (linje.contains(";") && ordliste.length >1)
+          return true;
 
       }
 
@@ -28,7 +29,7 @@ public class GyldigCSVFil {
     }
 
 
-    return true;
+    return false;
   }
 
 

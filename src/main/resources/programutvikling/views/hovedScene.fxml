@@ -95,7 +95,7 @@
                     </VBox.margin>
                 </JFXButton>
 
-                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNavigeringTilSkaderScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Skademeldinger">
+                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNavigeringTilSkademeldingScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Skademeldinger">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>

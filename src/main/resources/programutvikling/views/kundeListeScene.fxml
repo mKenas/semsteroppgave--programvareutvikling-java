@@ -62,13 +62,6 @@
 
             </TableColumn>
 
-            <TableColumn fx:id="redigerKolonne" prefWidth="60.0" text="">
-
-            </TableColumn>
-
-            <TableColumn fx:id="slettKolonne" prefWidth="60.0" text="">
-
-            </TableColumn>
 
 
         </columns>

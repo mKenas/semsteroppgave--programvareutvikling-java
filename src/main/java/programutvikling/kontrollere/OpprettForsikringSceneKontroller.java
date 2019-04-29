@@ -3,10 +3,10 @@ package programutvikling.kontrollere;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 
 public class OpprettForsikringSceneKontroller implements KontrollerMedKundeInfo {
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();

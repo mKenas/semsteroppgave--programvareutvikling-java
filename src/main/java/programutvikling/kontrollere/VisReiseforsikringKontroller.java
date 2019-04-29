@@ -5,9 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.*;
+import programutvikling.base.Forsikring;
+import programutvikling.base.Kunde;
+import programutvikling.base.Navigator;
+import programutvikling.base.ReiseForsikring;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 
 public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
 
