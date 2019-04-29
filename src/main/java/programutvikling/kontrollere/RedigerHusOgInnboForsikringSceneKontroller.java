@@ -2,7 +2,6 @@ package programutvikling.kontrollere;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.*;
@@ -10,9 +9,26 @@ import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.validering.Validator;
 
-public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMedKundeInfo {
+import java.util.ArrayList;
+
+public class RedigerHusOgInnboForsikringSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
+
+  DataLagringObjekt dlo = DataLagringObjekt.getInstance();
+  DataHandlingObjekt dho = new DataHandlingObjekt();
+  HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
+  private BorderPane borderPane = hsk.getBorderPane();
+
+  private ArrayList<Forsikring> forsikringer;
+  private HusOgInnboForsikring forsikring;
+
+  private Kunde kunde;
+
+
   @FXML
   JFXTextField boligensAdresseTekstfelt;
+
+  //TODO Legge til faktura adresse forskjellig fra boligensadresse
+
   @FXML
   JFXTextField byggeArTekstfelt;
   @FXML
@@ -37,15 +53,66 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
   private JFXComboBox kunderListeKomboboks;
 
 
-  DataHandlingObjekt dho = new DataHandlingObjekt();
-  private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-  private BorderPane borderPane = hsk.getBorderPane();
-  private DataLagringObjekt dlo = DataLagringObjekt.getInstance();
-  private ObservableList kunderListe;
-  private Kunde kunde;
-  private Forsikring forsikring;
+
+  @Override
+  public void setKunde(Kunde kunde) {
+    this.kunde = kunde;
+    personNrTekstfelt.setText(kunde.getPersonNr());
+
+  }
 
 
+  @Override
+  public void setForsikring(Forsikring forsikring) {
+
+    if (forsikring instanceof HusOgInnboForsikring) {
+      HusOgInnboForsikring f = (HusOgInnboForsikring) forsikring;
+
+      this.forsikring = f;
+      //personNrLabel.setText(f);
+      boligensAdresseTekstfelt.setText(f.getBoligAdresse());
+      byggeArTekstfelt.setText(f.getByggeAr());
+      boligTypeTekstfelt.setText(f.getBoligType());
+      byggeMaterialeTekstfelt.setText(f.getByggeMateriale());
+      standardTekstfelt.setText(f.getStandard());
+      antallkvadratmeterTekstfelt.setText(f.getStorrelse());
+      bygningForsikringsbelopTekstfelt.setText(String.valueOf(f.getInnboForsikringsbelop()));
+      innboForsikringsbelopTekstfelt.setText(String.valueOf(f.getInnboForsikringsbelop()));
+      forsikringsbelopTekstfelt.setText(String.valueOf(f.getBygningsForsikringsbelop()));
+      forsikringspremieTekstfelt.setText(String.valueOf(f.getForsikringspremie()));
+
+    }
+
+  }
+
+
+  @FXML
+  public void handleTilbakeKnapp() {
+
+    NavigeringTilKunderScene();
+
+  }
+
+  protected void NavigeringTilKunderScene() {
+    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
+
+  }
+
+
+/*  @FXML
+  public void handleSlettForsikringKnapp() {
+
+    dho.getKundeMedForsikringListeHandling().slettForsikring(forsikring, kunde);
+    navigeringTilKunderScene();
+
+  }*/
+
+  @FXML
+  public void NavigeringTilVisKundeScene() {
+
+    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
+
+  }
 
 /*  public void initialize() {
 
@@ -59,14 +126,8 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
 
   }*/
 
-  public void setKunde(Kunde k) {
-    this.kunde = k;
-    this.personNrTekstfelt.setText(k.toString());
 
-  }
-
-
-  public void handleOpprettHusOgInnboForsikringKnapp() {
+  public void handleRedigerHusOgInnboForsikringKnapp() {
 
     String boligensAdresse = boligensAdresseTekstfelt.getText();
     String byggeAr = byggeArTekstfelt.getText();
@@ -80,12 +141,9 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
     Double forsikringspremie = Double.valueOf(forsikringspremieTekstfelt.getText());
 
 
-    System.out.println(forsikringsbelop);
-    System.out.println(forsikringspremie);
 
 
-    forsikring = new HusOgInnboForsikring(forsikringsbelop, forsikringspremie, "",
-            boligensAdresse, byggeAr, boligType, byggeMateriale, standard, antallkvadratmeter, bygningForsikringsbelop, innboForsikringsbelop);
+
 
     //Forsikring<HusOgInnboForsikring> forsikring = new Forsikring<>(1.0,0.0,"");
     //kunde.leggTilForsikring(forsikring);
@@ -105,9 +163,25 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
             innboForsikringsbelopTekstfelt.validate() == true &&
             forsikringsbelopTekstfelt.validate() == true &&
             forsikringspremieTekstfelt.validate() == true) {
-      dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);
+
+
+      forsikring.setBoligAdresse(boligensAdresse);
+      forsikring.setByggeAr(byggeAr);
+      forsikring.setBoligType(boligType);
+      forsikring.setByggeMateriale(byggeMateriale);
+      forsikring.setStandard(standard);
+      forsikring.setStorrelse(antallkvadratmeter);
+      forsikring.setBygningsForsikringsbelop(bygningForsikringsbelop);
+      forsikring.setInnboForsikringsbelop(innboForsikringsbelop);
+      forsikring.setForsikringsbelop(forsikringsbelop);
+      forsikring.setForsikringspremie(forsikringspremie);
+
       NavigeringTilVisKundeScene();
     }
+
+
+
+
   }
 
   public void initialize() {
@@ -124,14 +198,6 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
     Validator.valider(forsikringspremieTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
 
   //TODO gå igjennom uednret versjon, finne hvilke felter som trenger validering og ikke, samt endre focusproperty slik at man ikke får feil med mindre man taster feil.
-
-  }
-
-
-  @FXML
-  public void NavigeringTilVisKundeScene() {
-
-    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
 
   }
 

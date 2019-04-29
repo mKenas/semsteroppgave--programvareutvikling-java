@@ -1,5 +1,6 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -18,10 +19,13 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
 
   private ArrayList<Forsikring> forsikringer;
   private HusOgInnboForsikring forsikring;
+
   private Kunde kunde;
 
   @FXML
   private Label personNrLabel;
+  @FXML
+  private JFXButton redigerHusOgInnboForsikringKnapp;
   @FXML
   private Label adresseLabel;
   @FXML
@@ -42,6 +46,10 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   private Label forsikringsPremieLabel;
   @FXML
   private Label bygningForsikringsbelopLabel;
+  @FXML
+  private Label innboForsikringsbelopLabel;
+
+
 
 
   public void initialize() {
@@ -66,7 +74,8 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
       forsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
       forsikringsPremieLabel.setText(String.valueOf(f.getForsikringspremie()));
       bygningForsikringsbelopLabel.setText(String.valueOf(f.getBygningsForsikringsbelop()));
-      opprettelsesdatoLabel.setText(f.getOprettelsesDato().toString());
+      opprettelsesdatoLabel.setText(f.getOprettelsesDato());
+      innboForsikringsbelopLabel.setText(String.valueOf(f.getInnboForsikringsbelop()));
 
     }
 
@@ -100,8 +109,21 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
 
   }
 
+  @FXML
+  public void handleNavigerTilRedigerHusOgInnboKnapp() {
+
+    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_HUS_OG_INNBO_FORSIKRING_SCENE(),kunde,forsikring);
+
+
+
+  }
+
+
   protected void navigeringTilKunderScene() {
 
     Navigator.visScene(borderPane, Navigator.getKundeListeScene());
   }
+
+
+
 }

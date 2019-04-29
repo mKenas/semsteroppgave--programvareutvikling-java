@@ -1,26 +1,27 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.*;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.validering.Validator;
 
 public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo {
   @FXML
-  TextField personNrTekstfelt;
+  JFXTextField personNrTekstfelt;
   @FXML
-  TextField reiseForsikringssumTekstfelt;
-  @FXML
-  private
-  TextField reiseForsikringsBelopTekstfelt;
+  JFXTextField reiseForsikringssumTekstfelt;
   @FXML
   private
-  TextField reiseForsikringsomradeTekstfelt;
+  JFXTextField reiseForsikringsBelopTekstfelt;
   @FXML
-  TextField reiseArligForsikringspremieTekstfelt;
+  private
+  JFXTextField reiseForsikringsomradeTekstfelt;
+  @FXML
+  JFXTextField reiseArligForsikringspremieTekstfelt;
 
 
 
@@ -34,10 +35,10 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
   private Forsikring forsikring;
 
 
-  public void setKunde(Kunde k) {
-    this.kunde = k;
-    this.personNrTekstfelt.setText(k.toString());
-
+  @Override
+  public void setKunde(Kunde kunde) {
+    this.kunde = kunde;
+    personNrTekstfelt.setText(kunde.getPersonNr());
 
   }
 
@@ -57,10 +58,29 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
 
     NavigeringTilVisKundeScene();
 
+
+    if(reiseForsikringssumTekstfelt.validate() == true &&
+            reiseForsikringsBelopTekstfelt.validate() == true &&
+            reiseForsikringsomradeTekstfelt.validate() == true &&
+            reiseArligForsikringspremieTekstfelt.validate() == true) {
+
+      dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);
+      NavigeringTilVisKundeScene();
+    }
   }
 
 
+
+
   public void initialize() {
+
+
+
+
+    Validator.valider(reiseForsikringssumTekstfelt,"([0-9]{4,14})$","Forsikringsbeløp tillater 4-14 tall");
+    Validator.valider(reiseForsikringsBelopTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
+    Validator.valider(reiseForsikringsomradeTekstfelt,"^[a-zA-ZäöæøåøÄÖÆØÅ[0-9] ]{2,16}?$","Forsikringsområde må være mellom 2-16 skandinaviske bokstaver og eller tall");
+    Validator.valider(reiseArligForsikringspremieTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
 
 
   }

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
       styleClass="mainbar" stylesheets="@../styles/styles.css"
       xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="programutvikling.kontrollere.OpprettForsikringSceneKontroller">
@@ -27,7 +28,7 @@
         <children>
             <VBox prefHeight="230.0" prefWidth="420.0">
                 <children>
-                    <Button mnemonicParsing="false" onAction="#NavigeringTilHusOGInnboForsikringScene"
+                    <JFXButton mnemonicParsing="false" onAction="#NavigeringTilHusOGInnboForsikringScene"
                             prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp"
                             text="Hus og innboforsikring">
                         <VBox.margin>
@@ -36,8 +37,8 @@
                         <font>
                             <Font size="36.0"/>
                         </font>
-                    </Button>
-                    <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp"
+                    </JFXButton>
+                    <JFXButton mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp"
                             text="Båtforsikring">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" top="5.0"/>
@@ -45,12 +46,12 @@
                         <font>
                             <Font size="36.0"/>
                         </font>
-                    </Button>
+                    </JFXButton>
                 </children>
             </VBox>
             <VBox prefHeight="504.0" prefWidth="420.0">
                 <children>
-                    <Button id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0"
+                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0"
                             styleClass="dashbord-knapp" text="Fritidsboligforsikring">
                         <VBox.margin>
                             <Insets bottom="5.0" left="10.0" top="10.0"/>
@@ -58,8 +59,8 @@
                         <font>
                             <Font size="36.0"/>
                         </font>
-                    </Button>
-                    <Button id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0"
+                    </JFXButton>
+                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0"
                             styleClass="dashbord-knapp" text="Reiseforsikring">
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" top="5.0"/>
@@ -67,7 +68,7 @@
                         <font>
                             <Font size="36.0"/>
                         </font>
-                    </Button>
+                    </JFXButton>
                 </children>
             </VBox>
         </children>

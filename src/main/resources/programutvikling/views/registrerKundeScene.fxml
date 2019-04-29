@@ -12,6 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXButton?>
 <VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RegistrerKundeSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
@@ -34,31 +37,31 @@
             <VBox prefHeight="326.0" prefWidth="420.0">
                 <children>
                     <Label text="PersonNr" />
-                    <TextField fx:id="personNrTekstFelt" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
+                    <JFXTextField fx:id="personNrTekstFelt" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="15.0" right="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </JFXTextField>
                     <Label layoutX="10.0" layoutY="10.0" text="Navn" />
-                    <TextField fx:id="navnTekstFelt" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
+                    <JFXTextField fx:id="navnTekstFelt" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="15.0" right="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </JFXTextField>
                     <Label layoutX="10.0" layoutY="54.0" text="Etternavn" />
-                    <TextField fx:id="etternavnTekstFelt" prefHeight="48.0" prefWidth="400.0">
+                    <JFXTextField fx:id="etternavnTekstFelt" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="15.0" right="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </JFXTextField>
                     <Label layoutX="10.0" layoutY="170.0" text="Epost" />
-                    <TextField fx:id="epostTekstFelt" layoutX="10.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
+                    <JFXTextField fx:id="epostTekstFelt" layoutX="10.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="15.0" right="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </JFXTextField>
                <Label text="Forsikrings type" />
-               <ComboBox fx:id="forsikringsTypeKomboBoks" prefHeight="39.0" prefWidth="411.0">
+               <JFXComboBox fx:id="forsikringsTypeKomboBoks" prefHeight="39.0" prefWidth="411.0">
                    <items>
                        <FXCollections fx:factory="observableArrayList">
                            <String fx:value="Hus og innboforsikring" />
@@ -70,7 +73,7 @@
                    <value>
                        <String fx:value="Hus og innboforsikring" />
                    </value>
-               </ComboBox>
+               </JFXComboBox>
                 </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="420.0">
@@ -81,41 +84,41 @@
                         </VBox.margin>
                     </Label>
 
-                    <TextField fx:id="mobilTekstFelt" layoutX="20.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
+                    <JFXTextField fx:id="mobilTekstFelt" layoutX="20.0" layoutY="187.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="15.0" left="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </JFXTextField>
                     <Label text="Fakturaadresse">
                         <VBox.margin>
                             <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
-                    <TextField fx:id="fakturaadresseTekstFelt" prefHeight="48.0" prefWidth="400.0">
+                    <JFXTextField fx:id="fakturaadresseTekstFelt" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="15.0" left="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </JFXTextField>
                     <Label layoutX="10.0" layoutY="10.0" text="Postnummer">
                         <VBox.margin>
                             <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
-                    <TextField fx:id="postnummerTekstFelt" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
+                    <JFXTextField fx:id="postnummerTekstFelt" layoutX="10.0" layoutY="27.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="15.0" left="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </JFXTextField>
                     <Label layoutX="10.0" layoutY="54.0" text="Poststed">
                         <VBox.margin>
                             <Insets left="10.0" />
                         </VBox.margin>
                     </Label>
-                    <TextField fx:id="poststedTekstFelt" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
+                    <JFXTextField fx:id="poststedTekstFelt" layoutX="10.0" layoutY="71.0" prefHeight="48.0" prefWidth="400.0">
                         <VBox.margin>
                             <Insets bottom="15.0" left="10.0" />
                         </VBox.margin>
-                    </TextField>
+                    </JFXTextField>
                 </children>
             </VBox>
         </children>
@@ -126,11 +129,11 @@
     </HBox>
     <BorderPane prefHeight="200.0" prefWidth="200.0">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Neste" BorderPane.alignment="CENTER">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Neste" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0" />
                 </BorderPane.margin>
-            </Button>
+            </JFXButton>
         </right>
     </BorderPane>
 

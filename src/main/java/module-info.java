@@ -12,6 +12,8 @@ module forsikringRegisteringSystem {
 
 
 
+  requires java.validation;
+  requires com.jfoenix;
 
 
   opens programutvikling to javafx.fxml;

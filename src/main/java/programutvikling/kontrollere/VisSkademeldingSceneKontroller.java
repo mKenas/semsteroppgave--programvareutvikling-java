@@ -1,7 +1,11 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import programutvikling.base.HovedSceneKontainer;
@@ -37,25 +41,21 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
   @FXML
   private Label skadeTypeLabel;
   @FXML
-  private TextField takseringsbelopTekstfelt;
+  private JFXTextField takseringsbelopTekstfelt;
   @FXML
-  private TextField utbetaltErstatningsbelopTekstfelt;
+  private JFXTextField utbetaltErstatningsbelopTekstfelt;
   @FXML
   private Label opprettelsesdatoLabel;
   @FXML
-  private TextArea skadebeskrivelseTekstfelt;
+  private JFXTextArea skadebeskrivelseTekstfelt;
   @FXML
-  private TextArea ovrigInformasjonTekstfelt;
-
+  private JFXTextArea ovrigInformasjonTekstfelt;
   @FXML
   private HBox godkjentAvvistKontainer;
-
   @FXML
-  private Button skademeldingLagreKnapp;
-
+  private JFXButton skademeldingLagreKnapp;
   @FXML
-  private Button redigerSkadeMeldingKnapp;
-
+  private JFXButton redigerSkadeMeldingKnapp;
   @FXML
   private Hyperlink slettSkademeldingKnapp;
 
@@ -124,7 +124,6 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
       utbetaltErstatningsbelopTekstfelt.setText(skademelding.getUtbetaltErstatningsbelop().toString());
 
     }
-
     skjulSkademeldingKnapper();
   }
 

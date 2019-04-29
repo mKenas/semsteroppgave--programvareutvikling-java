@@ -1,7 +1,7 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Navigator;
@@ -13,7 +13,7 @@ public class DashbordKontroller {
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
   @FXML
-  Button registrerKundeKnapp;
+  JFXButton registrerKundeKnapp;
 
 
   public void initialize() {

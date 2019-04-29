@@ -5,6 +5,7 @@
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.JFXButton?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
       styleClass="mainbar" stylesheets="@../styles/styles.css"
       xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="programutvikling.kontrollere.SkademeldingListeKontroller">
@@ -65,12 +66,12 @@
 
     <BorderPane prefHeight="128.0" prefWidth="930.0">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="64.0"
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="64.0"
                     prefWidth="320.0" styleClass="sub-scene-knapp" text="Registrer Skade" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0"/>
                 </BorderPane.margin>
-            </Button>
+            </JFXButton>
         </right>
     </BorderPane>
 

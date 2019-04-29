@@ -1,7 +1,7 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.HovedSceneKontainer;
 import programutvikling.base.Kunde;
@@ -17,21 +17,21 @@ public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
   private Kunde kunde = null;
 
   @FXML
-  private TextField personNrTekstFelt;
+  private JFXTextField personNrTekstFelt;
   @FXML
-  private TextField navnTekstFelt;
+  private JFXTextField navnTekstFelt;
   @FXML
-  private TextField etternavnTekstFelt;
+  private JFXTextField etternavnTekstFelt;
   @FXML
-  private TextField epostTekstFelt;
+  private JFXTextField epostTekstFelt;
   @FXML
-  private TextField mobilTekstFelt;
+  private JFXTextField mobilTekstFelt;
   @FXML
-  private TextField fakturaadresseTekstFelt;
+  private JFXTextField fakturaadresseTekstFelt;
   @FXML
-  private TextField postnummerTekstFelt;
+  private JFXTextField postnummerTekstFelt;
   @FXML
-  private TextField poststedTekstFelt;
+  private JFXTextField poststedTekstFelt;
 
 
   public void initialize() {
