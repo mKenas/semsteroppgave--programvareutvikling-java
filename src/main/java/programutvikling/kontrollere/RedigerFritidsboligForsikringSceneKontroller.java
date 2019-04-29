@@ -68,7 +68,7 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
       this.forsikring = f;
       //personNrLabel.setText(f);
       boligensAdresseTekstfelt.setText(f.getBoligAdresse());
-      byggeArTekstfelt.setText(f.getByggeaar());
+      byggeArTekstfelt.setText(f.getByggeAr());
       boligTypeTekstfelt.setText(f.getBoligType());
       byggeMaterialeTekstfelt.setText(f.getByggeMateriale());
       standardTekstfelt.setText(f.getStandard());
@@ -132,8 +132,8 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
     String byggeMateriale = byggeMaterialeTekstfelt.getText();
     String standard = standardTekstfelt.getText();
     String antallkvadratmeter = antallkvadratmeterTekstfelt.getText();
-    String bygningForsikringsbelop = bygningForsikringsbelopTekstfelt.getText();
-    String innboForsikringsbelop = innboForsikringsbelopTekstfelt.getText();
+    Double bygningForsikringsbelop = Double.valueOf(bygningForsikringsbelopTekstfelt.getText());
+    Double innboForsikringsbelop = Double.valueOf(innboForsikringsbelopTekstfelt.getText());
     Double forsikringsbelop = Double.valueOf(forsikringsbelopTekstfelt.getText());
     Double forsikringspremie = Double.valueOf(forsikringspremieTekstfelt.getText());
 
@@ -149,7 +149,7 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
 
 
       forsikring.setBoligAdresse(boligensAdresse);
-      forsikring.setByggeaar(byggeAr);
+      forsikring.setByggeAr(byggeAr);
       forsikring.setBoligType(boligType);
       forsikring.setByggeMateriale(byggeMateriale);
       forsikring.setStandard(standard);
