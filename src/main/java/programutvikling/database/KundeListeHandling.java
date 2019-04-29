@@ -21,7 +21,9 @@ public class KundeListeHandling {
   }
 
   public void slettKunde(Kunde kunde) {
+
     this.kundeListe.remove(kunde);
+
   }
 
 

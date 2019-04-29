@@ -13,6 +13,7 @@ import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.kontrollere.uihjelpere.SokeFelt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
 import java.util.function.Predicate;
@@ -31,6 +32,7 @@ public class KunderSceneKontroller {
   @FXML
   TableColumn<Kunde, Button> visKundeKolonne;
 
+
   private Kunde kunde;
   private BorderPane borderPane = hsk.getBorderPane();
   private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
@@ -44,29 +46,10 @@ public class KunderSceneKontroller {
 
     kunderTabell.setPlaceholder(new Label("Ingen kunder er registrert ennå!"));
 
-
-
-/*    if (kunderlisteFraFil != null) {
-      if (kunderlisteFraFil.size() > 0) {
-
-        dlo.getKunderListe().setKunder(kunderlisteFraFil);
-
-
-        kundeEndret();
-        System.out.println("kunder liste: " + kunderliste);
-
-      }
-    }*/
-
     kunderliste = dlo.getKundeListe();
 
 
-    if (kunderliste.size() == 0) {
-
-
-    }
     if (kunderliste.size() >= 1) {
-
 
       kunderTabell.getItems().setAll(kunderliste);
       leggTilRedigerKnapp();
@@ -86,11 +69,28 @@ public class KunderSceneKontroller {
 
 
     /***Filtring***/
-    FilteredList<Kunde> filteredList = new FilteredList<>(kunderliste);
+
+    Predicate<Kunde> betingelse =   new Predicate<Kunde>() {
+      @Override
+      public boolean test(Kunde kunde) {
+        if (kunde.getPersonNr().contains(KunderFilterTesktfelt.getText()) || kunde.getNavn().contains(KunderFilterTesktfelt.getText())) {
+          return true;
+        }
+        return false;
+      }
+
+    };
 
 
-    KunderFilterTesktfelt.textProperty().addListener((observable, oldValue, newValue) -> {
-      filteredList.setPredicate(
+
+    SokeFelt sokeFelt = new SokeFelt(kunderTabell,KunderFilterTesktfelt,kunderliste,betingelse);
+   /*  FilteredList<Kunde> filtrertListe = new FilteredList<>(kunderliste);
+
+
+
+
+   KunderFilterTesktfelt.textProperty().addListener((observable, oldValue, newValue) -> {
+      filtrertListe.setPredicate(
               new Predicate<Kunde>() {
                 @Override
                 public boolean test(Kunde kunde) {
@@ -104,11 +104,11 @@ public class KunderSceneKontroller {
 
       );
 
-      kunderliste = FXCollections.observableArrayList(filteredList);
+      kunderliste = FXCollections.observableArrayList(filtrertListe);
 
       kunderTabell.setItems(FXCollections.observableList(kunderliste));
 
-    });
+    });*/
 
   }
 
@@ -128,43 +128,7 @@ public class KunderSceneKontroller {
 
   private void leggTilSlettKnapp() {
 
-  /*
-    Callback<TableColumn<Kunde, Void>, TableCell<Kunde, Void>> cellFactory = new Callback<>() {
-      @Override
-      public TableCell<Kunde, Void> call(final TableColumn<Kunde, Void> param) {
-        final TableCell<Kunde, Void> cell = new TableCell<>() {
 
-          private final Button knapp = new Button("\uf00d");
-
-          {
-            knapp.getStyleClass().add("slett-knapp");
-            knapp.setCursor(Cursor.HAND);
-            knapp.setOnAction((ActionEvent event) -> {
-              kunde = getTableView().getItems().get(getIndex());
-              System.out.println("Kunde: " + kunde);
-
-              kunderliste.remove(getIndex());
-              dlo.getKunderListe().slettKunde(kunde);
-
-
-            });
-          }
-
-          @Override
-          public void updateItem(Void item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty) {
-              setGraphic(null);
-            } else {
-              setGraphic(knapp);
-            }
-          }
-        };
-        return cell;
-      }
-    };
-
-    slettKolonne.setCellFactory(cellFactory);*/
 
     // Knapp knapp = new Knapp(slettKolonne);
     slettKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uf00d", "slett-knapp", (Kunde k) -> {

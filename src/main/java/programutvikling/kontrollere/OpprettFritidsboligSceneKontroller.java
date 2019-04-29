@@ -69,8 +69,8 @@ public class OpprettFritidsboligSceneKontroller implements KontrollerMedKundeInf
     String byggeMateriale = byggeMaterialeTekstfelt.getText();
     String standard = standardTekstfelt.getText();
     String antallkvadratmeter = antallkvadratmeterTekstfelt.getText();
-    String bygningForsikringsbelop = bygningForsikringsbelopTekstfelt.getText();
-    String innboForsikringsbelop = innboForsikringsbelopTekstfelt.getText();
+    Double bygningForsikringsbelop = Double.valueOf(bygningForsikringsbelopTekstfelt.getText());
+    Double innboForsikringsbelop = Double.valueOf(innboForsikringsbelopTekstfelt.getText());
     Double forsikringsbelop = Double.valueOf(forsikringsbelopTekstfelt.getText());
     Double forsikringspremie = Double.valueOf(forsikringspremieTekstfelt.getText());
 

@@ -7,6 +7,7 @@ import programutvikling.base.Kunde;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class KundeMedForsikringListeHandling {
@@ -36,6 +37,7 @@ public class KundeMedForsikringListeHandling {
   public void leggTilForsikring(Forsikring forsikring, Kunde kunde) {
 
     kunde.leggTilForsikring(forsikring);
+
     this.kundeMedForsikringListe.put(kunde, kunde.getForsikringer());
     this.forsikringListe.add(forsikring);
 
@@ -51,6 +53,22 @@ public class KundeMedForsikringListeHandling {
       System.out.println("Forsikring slettet");
     } else {
       System.out.println("Forsikring ikke finnes");
+    }
+  }
+
+  public void slettAlleForsikringTilKunde(Kunde kunde) {
+    if (this.kundeMedForsikringListe.containsKey(kunde)) {
+
+      List<Forsikring> liste =kunde.getForsikringer();
+      for (Forsikring f: liste){
+        this.forsikringListe.remove(f);
+      }
+
+      this.kundeMedForsikringListe.remove(kunde);
+
+      //System.out.println("Forsikring slettet");
+    } else {
+      //System.out.println("Forsikring ikke finnes");
     }
   }
 

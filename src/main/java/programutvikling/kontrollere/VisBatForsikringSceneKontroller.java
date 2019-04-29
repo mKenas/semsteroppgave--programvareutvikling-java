@@ -17,7 +17,7 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
   private BorderPane borderPane = hsk.getBorderPane();
 
   private ArrayList<Forsikring> forsikringer;
-  private BaatForsikring forsikring;
+  private BatForsikring forsikring;
   private Kunde kunde;
 
 
@@ -56,21 +56,21 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
 
   public void setForsikring(Forsikring forsikring) {
 
-    if (forsikring instanceof BaatForsikring) {
-      BaatForsikring f = (BaatForsikring) forsikring;
+    if (forsikring instanceof BatForsikring) {
+      BatForsikring f = (BatForsikring) forsikring;
 
       this.forsikring = f;
 
       //personNrLabel.setText(f);
       batEierLabel.setText(f.getEier());
-      batensRegistreringsNummerLabel.setText(f.getRegistreringsnummer());
-      batTypeLabel.setText(f.getBaatType());
-      batModellLabel.setText(f.getBaatType());
+      batensRegistreringsNummerLabel.setText(f.getRegistreringsNr());
+      batTypeLabel.setText(f.getBatType());
+      batModellLabel.setText(f.getBatType());
       batLengdeLabel.setText(f.getBatLengde());
-      batTypeLabel.setText(f.getBaatType());
+      batTypeLabel.setText(f.getBatType());
 
-      batMotortypeLabel.setText(f.getMotortype());
-      batMotorStyrkeLabel.setText(f.getMotorstyrke());
+      batMotortypeLabel.setText(f.getMotorType());
+      batMotorStyrkeLabel.setText(f.getMotorStyrke());
 
       opprettelsesdatoLabel.setText(f.getOprettelsesDato());
 

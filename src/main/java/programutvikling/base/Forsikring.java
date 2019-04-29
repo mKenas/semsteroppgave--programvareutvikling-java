@@ -17,8 +17,28 @@ public abstract class Forsikring implements Serializable {
   private String forsikringsbetingelser;
   private DateFormat datoFormat;
 
+  public Forsikring() {
+/*    this.forsikringsNr = "";
+    this.forsikringsbelop = 0.0;
+    this.forsikringspremie = 0.0;
+    this.forsikringsbetingelser = "";
+    this.datoFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+    this.oprettelsesDato = datoFormat.format(new Date());*/
+  }
+
   public Forsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser) {
     this.forsikringsNr = UUID.randomUUID().toString();
+
+    this.forsikringsbelop = forsikringsbeløp;
+    this.forsikringspremie = forsikringspremie;
+    this.forsikringsbetingelser = forsikringsbetingelser;
+    this.datoFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+    this.oprettelsesDato = datoFormat.format(new Date());
+
+  }
+
+  public Forsikring(String forsikringsNr, Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser) {
+    this.forsikringsNr = forsikringsNr;
 
     this.forsikringsbelop = forsikringsbeløp;
     this.forsikringspremie = forsikringspremie;
@@ -41,13 +61,18 @@ public abstract class Forsikring implements Serializable {
     this.forsikringsbelop = forsikringsbelop;
   }
 
+
+
   public Double getForsikringspremie() {
     return forsikringspremie;
   }
 
+
   public void setForsikringspremie(Double forsikringspremie) {
     this.forsikringspremie = forsikringspremie;
   }
+
+
 
   public String getForsikringsbetingelser() {
     return forsikringsbetingelser;
@@ -57,6 +82,13 @@ public abstract class Forsikring implements Serializable {
     this.forsikringsbetingelser = forsikringsbetingelser;
   }
 
+  public void setForsikringsNr(String forsikringsNr) {
+    this.forsikringsNr = forsikringsNr;
+  }
+
+  public void setOprettelsesDato(String oprettelsesDato) {
+    this.oprettelsesDato = oprettelsesDato;
+  }
 
   public String getForsikringsNr() {
     return forsikringsNr;
@@ -76,7 +108,16 @@ public abstract class Forsikring implements Serializable {
     return Objects.hash(forsikringsNr);
   }
 
-
+  @Override
+  public String toString() {
+    return "Forsikring{" +
+            "forsikringsNr='" + forsikringsNr + '\'' +
+            ", oprettelsesDato='" + oprettelsesDato + '\'' +
+            ", forsikringsbelop=" + forsikringsbelop +
+            ", forsikringspremie=" + forsikringspremie +
+            ", forsikringsbetingelser='" + forsikringsbetingelser + '\'' +
+            '}';
+  }
 }
 
 

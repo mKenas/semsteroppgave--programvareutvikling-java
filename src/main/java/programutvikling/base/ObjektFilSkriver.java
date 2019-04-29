@@ -2,6 +2,7 @@ package programutvikling.base;
 
 import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
+import programutvikling.database.DataLagringObjekt;
 import programutvikling.filhantering.SkrivingTilFil.CSVFormatSkriver;
 import programutvikling.filhantering.SkrivingTilFil.FilSkriver;
 
@@ -82,7 +83,9 @@ public class ObjektFilSkriver {
     }
     else if (valgtFilEndelse == "*.csv"){
       FilSkriver filSkriver = new CSVFormatSkriver();
-      filSkriver.skrivTilFil(null,filsti);
+      DataLagringObjekt dlo = DataLagringObjekt.getInstance();
+      HashMap<String, Object> data = dlo.getAllData();
+      filSkriver.skrivTilFil(data,filsti);
 
     }
   }

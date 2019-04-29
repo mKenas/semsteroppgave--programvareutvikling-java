@@ -10,12 +10,6 @@ import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import java.util.Set;
-
 
 public class RegistrerKundeSceneKontroller {
 

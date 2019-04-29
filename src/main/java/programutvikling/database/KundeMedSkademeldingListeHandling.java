@@ -8,6 +8,7 @@ import programutvikling.egenDefinertTyper.SkademeldingStatus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ public class KundeMedSkademeldingListeHandling {
   public void leggTilSkademelding(Skademelding skademelding, Kunde kunde) {
 
     kunde.leggTilSkadeMelding(skademelding);
+
     this.kundeMedSkademeldingListe.put(kunde, kunde.getSkadeMeldinger());
     this.skademeldingListe.add(skademelding);
 
@@ -39,6 +41,21 @@ public class KundeMedSkademeldingListeHandling {
       kunde.getSkadeMeldinger().remove(skademelding);
       this.kundeMedSkademeldingListe.put(kunde, kunde.getSkadeMeldinger());
       this.skademeldingListe.remove(skademelding);
+      System.out.println("Skademelding slettet");
+    } else {
+      System.out.println("Skademelding ikke finnes");
+    }
+  }
+
+  public void slettAlleSkademeldingTilKunde(Kunde kunde) {
+    if (this.kundeMedSkademeldingListe.containsKey(kunde)) {
+
+      List<Skademelding> liste = kunde.getSkadeMeldinger();
+      for (Skademelding s: liste){
+        this.skademeldingListe.remove(s);
+      }
+      this.kundeMedSkademeldingListe.remove(kunde);
+
       System.out.println("Skademelding slettet");
     } else {
       System.out.println("Skademelding ikke finnes");

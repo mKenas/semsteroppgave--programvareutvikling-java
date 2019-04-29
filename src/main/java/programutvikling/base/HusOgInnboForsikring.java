@@ -12,6 +12,19 @@ public class HusOgInnboForsikring extends Forsikring {
   private String innboForsikringsbelop;
   private String forsikringsType;
 
+  public HusOgInnboForsikring() {
+    super(0.0,0.0,"");
+    this.boligAdresse = "";
+    this.byggeAr = "2";
+    this.boligType = "";
+    this.byggeMateriale = "";
+    this.standard = "";
+    this.storrelse = "";
+    this.bygningsForsikringsbelop = "";
+    this.innboForsikringsbelop = "";
+    this.forsikringsType = "Hus Og Innbo Forsikring";
+  }
+
   public HusOgInnboForsikring(Double forsikringsbelop, Double forsikringspremie, String forsikringsbetingelser,
                               String boligAdresse, String byggeAr, String boligType, String byggeMateriale,
                               String standard, String storrelse, String bygningsForsikringsbelop,
@@ -25,7 +38,7 @@ public class HusOgInnboForsikring extends Forsikring {
     this.storrelse = storrelse;
     this.bygningsForsikringsbelop = bygningsForsikringsbelop;
     this.innboForsikringsbelop = innboForsikringsbelop;
-    this.forsikringsType = "Hus og innbo";
+    this.forsikringsType = "Hus Og Innbo Forsikring";
   }
 
   public String getBoligAdresse() {
@@ -92,9 +105,14 @@ public class HusOgInnboForsikring extends Forsikring {
     this.innboForsikringsbelop = innboForsikringsbelop;
   }
 
+  public void setForsikringsType(String forsikringsType) {
+    this.forsikringsType = forsikringsType;
+  }
+
   public String getForsikringsType() {
     return forsikringsType;
   }
+
 
   @Override
   public String toString() {

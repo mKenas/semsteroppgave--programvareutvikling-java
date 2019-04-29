@@ -81,7 +81,7 @@ public class OpprettBaatForsikringSceneKontroller implements KontrollerMedKundeI
     String batensMotorstyrke = batensMotorstyrkeTekstfelt.getText();
 
 
-    forsikring = new BaatForsikring(forsikringsBelop, forsikringsPremie, "", batensEier, batensRegistreringsnummer, batType, batModell, batensLengde, batensAarsModell, batensMotortype, batensMotorstyrke);
+    forsikring = new BatForsikring(forsikringsBelop, forsikringsPremie, "", batensEier, batensRegistreringsnummer, batType, batModell, batensLengde, batensAarsModell, batensMotortype, batensMotorstyrke);
 
     dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);
 

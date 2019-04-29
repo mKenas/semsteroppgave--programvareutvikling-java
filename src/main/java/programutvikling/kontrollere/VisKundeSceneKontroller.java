@@ -68,7 +68,7 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
     epostLabel.setText(k.getEpost());
     mobilLabel.setText(k.getMobil());
     fakturaadresseLabel.setText(k.getFakturaAdresse());
-    postnummerLabel.setText(k.getPostnummer());
+    postnummerLabel.setText(k.getPostNr());
     poststedLabel.setText(k.getPoststed());
     opprettelsesdatoLabel.setText(k.getOpprettelsesDato());
 
@@ -137,7 +137,7 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
       fxml = Navigator.getVIS_HUS_OG_INNBO_FORSIKRING_SCENE();
     } if (forsikring instanceof  FritidsboligForsikring) {
       fxml = Navigator.getVIS_FRITIDSBOLIG_FORSIKRING_SCENE();
-    } if (forsikring instanceof BaatForsikring) {
+    } if (forsikring instanceof BatForsikring) {
       fxml = Navigator.getVisBatForsikringScene();
     } if (forsikring instanceof ReiseForsikring) {
       fxml = Navigator.getVIS_REISEFORSIKRING_SCENE();
@@ -183,6 +183,8 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
   public void handleSlettKundeKnapp() {
 
     dhl.getKundeListeHandling().slettKunde(kunde);
+    dhl.getKundeMedForsikringListeHandling().slettAlleForsikringTilKunde(kunde);
+    dhl.getKundeMedSkademeldingListeHandling().slettAlleSkademeldingTilKunde(kunde);
     navigeringTilKunderScene();
   }
 

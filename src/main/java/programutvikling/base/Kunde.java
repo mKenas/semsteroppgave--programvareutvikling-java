@@ -1,11 +1,5 @@
 package programutvikling.base;
 
-import programutvikling.egenDefinertTyper.SkademeldingStatus;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,14 +11,14 @@ public class Kunde implements Serializable {
   private static final long serialVersionUID = 1;
 
   //private ObservableHelper observersHandler = new ObservableHelper();
-@NotEmpty(message = "kan ikke være tomt")
+//@NotEmpty(message = "kan ikke være tomt")
   private String personNr;
   private String navn;
   private String etternavn;
   private String epost;
   private String mobil;
   private String fakturaAdresse;
-  private String postnummer;
+  private String postNr;
   private String poststed;
   private String opprettelsesDato;
 
@@ -32,8 +26,34 @@ public class Kunde implements Serializable {
 
   private ArrayList<Forsikring> forsikringer;
   private ArrayList<Skademelding> skadeMeldinger;
-  private ArrayList<Skademelding> erstatninger;
-  private ArrayList<Skademelding> avvisteErstatninger;
+
+
+  private String  forsikringNrListe;
+  private String  skadeMeldingNrListe;
+
+  public Kunde() {
+
+    String dato;
+    SimpleDateFormat datoFormat;
+
+    this.personNr = "";
+    this.navn = "";
+    this.etternavn = "";
+    this.epost = "";
+    this.mobil = "";
+    this.fakturaAdresse = "";
+    this.postNr = "";
+    this.poststed = "";
+    datoFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+    dato = datoFormat.format(new Date());
+    this.opprettelsesDato = dato;
+    this.forsikringer = new ArrayList<>();
+    this.skadeMeldinger = new ArrayList<>();
+
+    this.forsikringNrListe = "";
+    this.skadeMeldingNrListe="";
+
+  }
 
   public Kunde(String navn, String fakturaAdresse) {
     this.navn = navn;
@@ -42,25 +62,26 @@ public class Kunde implements Serializable {
 
   }
 
-  public Kunde(String personnummer, String navn, String etternavn, String epost, String mobil, String fakturaAdresse, String postnummer, String poststed) {
+  public Kunde(String personNr, String navn, String etternavn, String epost, String mobil, String fakturaAdresse, String postNr, String poststed) {
     String dato;
     SimpleDateFormat datoFormat;
 
-    this.personNr = personnummer;
+    this.personNr = personNr;
     this.navn = navn;
     this.etternavn = etternavn;
     this.epost = epost;
     this.mobil = mobil;
     this.fakturaAdresse = fakturaAdresse;
-    this.postnummer = postnummer;
+    this.postNr = postNr;
     this.poststed = poststed;
     datoFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     dato = datoFormat.format(new Date());
     this.opprettelsesDato = dato;
     this.forsikringer = new ArrayList<>();
     this.skadeMeldinger = new ArrayList<>();
-    this.erstatninger = new ArrayList<>();
-    this.avvisteErstatninger = new ArrayList<>();
+
+    this.forsikringNrListe = "";
+    this.skadeMeldingNrListe="";
 
 
   }
@@ -108,12 +129,12 @@ public class Kunde implements Serializable {
     this.mobil = mobil;
   }
 
-  public String getPostnummer() {
-    return postnummer;
+  public String getPostNr() {
+    return postNr;
   }
 
-  public void setPostnummer(String postnummer) {
-    this.postnummer = postnummer;
+  public void setPostNr(String postNr) {
+    this.postNr = postNr;
   }
 
   public String getPoststed() {
@@ -131,12 +152,16 @@ public class Kunde implements Serializable {
   public void leggTilForsikring(Forsikring forsikring) {
 
     this.forsikringer.add(forsikring);
+    this.setForsikringNrListe(this.getForsikringNrListe() + "|" +forsikring.getForsikringsNr());
+
 
   }
+
 
   public void leggTilSkadeMelding(Skademelding skademelding) {
 
     this.skadeMeldinger.add(skademelding);
+    this.setSkadeMeldingNrListe(this.getSkadeMeldingNrListe() + "|" +skademelding.getSkademeldingNr());
 
   }
 
@@ -158,37 +183,66 @@ public class Kunde implements Serializable {
     return skadeMeldinger;
   }
 
-  public ArrayList<Skademelding> getErstatninger() {
-    return erstatninger;
-  }
 
-  public void setErstatninger(ArrayList<Skademelding> erstatninger) {
+/*  public void setErstatninger(ArrayList<Skademelding> erstatninger) {
     this.erstatninger = erstatninger;
+  }*/
+
+
+
+public void nullstilleAlleLister(){
+  this.forsikringer.clear();
+  this.skadeMeldinger.clear();
+}
+
+
+  public String getForsikringNrListe() {
+   /* List<String > forsikringNr = new ArrayList<>();
+
+    for (Forsikring f: this.forsikringer)
+    {
+
+      forsikringNr.add(f.getForsikringsNr());
+    }
+    this.forsikringNrListe= String.join("|", forsikringNr);*/
+    return forsikringNrListe;
   }
 
-  public ArrayList<Skademelding> getAvvisteErstatninger() {
-    return avvisteErstatninger;
+  public String getSkadeMeldingNrListe() {
+    return skadeMeldingNrListe;
   }
 
-  public void godkjennSkademelding(Skademelding skademelding) {
-    skademelding.setStatus(SkademeldingStatus.GODKJENT);
-    this.skadeMeldinger.remove(skademelding);
-    this.erstatninger.add(skademelding);
-
-
+  public void setSkadeMeldingNrListe(String skadeMeldingNrListe) {
+    this.skadeMeldingNrListe = skadeMeldingNrListe;
   }
 
-  public void avvisSkademelding(Skademelding skademelding) {
-    skademelding.setStatus(SkademeldingStatus.AVVIST);
-    this.skadeMeldinger.remove(skademelding);
-    this.avvisteErstatninger.add(skademelding);
-
-
+  public void setForsikringNrListe(String forsikringNrListe) {
+    this.forsikringNrListe = forsikringNrListe;
   }
 
+/*
   @Override
   public String toString() {
     return String.format("%s %s %s", personNr, navn, etternavn);
+  }*/
+
+  @Override
+  public String toString() {
+    return "Kunde{" +
+            "personNr='" + personNr + '\'' +
+            ", navn='" + navn + '\'' +
+            ", etternavn='" + etternavn + '\'' +
+            ", epost='" + epost + '\'' +
+            ", mobil='" + mobil + '\'' +
+            ", fakturaAdresse='" + fakturaAdresse + '\'' +
+            ", postNr='" + postNr + '\'' +
+            ", poststed='" + poststed + '\'' +
+            ", opprettelsesDato='" + opprettelsesDato + '\'' +
+            ", forsikringer=" + forsikringer +
+            ", skadeMeldinger=" + skadeMeldinger +
+            ", forsikringNrListe='" + forsikringNrListe + '\'' +
+            ", skadeMeldingNrListe='" + skadeMeldingNrListe + '\'' +
+            '}';
   }
 
   @Override
@@ -203,6 +257,10 @@ public class Kunde implements Serializable {
   public int hashCode() {
 
     return Objects.hash(personNr);
+  }
+
+  public void setOpprettelsesDato(String opprettelsesDato) {
+    this.opprettelsesDato = opprettelsesDato;
   }
 }
 

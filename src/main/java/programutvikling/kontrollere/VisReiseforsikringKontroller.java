@@ -3,7 +3,6 @@ package programutvikling.kontrollere;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.*;
 import programutvikling.database.DataHandlingObjekt;
@@ -48,10 +47,10 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
 
       this.forsikring = f;
 
-      reiseForsikringssumLabel.setText(String.valueOf(f.getForsikringssum()));
+      reiseForsikringssumLabel.setText(String.valueOf(f.getForsikringsSum()));
       reiseForsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
       reiseArligForsikringspremieLabel.setText(String.valueOf(f.getForsikringspremie()));
-      reiseForsikringsomradeLabel.setText(f.getForsikringsområde());
+      reiseForsikringsomradeLabel.setText(f.getForsikringsOmrade());
 
 
 

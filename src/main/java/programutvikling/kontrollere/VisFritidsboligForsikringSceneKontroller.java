@@ -63,7 +63,7 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
 
 
       boligensAdresseLabel.setText(f.getBoligAdresse());
-      byggeArLabel.setText(f.getByggeaar());
+      byggeArLabel.setText(f.getByggeAr());
       boligTypeLabel.setText(f.getBoligType());
       byggeMaterialeLabel.setText(f.getByggeMateriale());
       forsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));

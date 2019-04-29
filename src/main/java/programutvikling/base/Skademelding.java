@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Skademelding implements Serializable {
-  private String skadeNr;
+  private String skademeldingNr;
   private String skadeDato;
   private String klokkeSlett;
   private String forsikringsType;
@@ -23,9 +23,27 @@ public class Skademelding implements Serializable {
   private String opprettelsesDato;
   private SkademeldingStatus status;
 
+  public Skademelding() {
+
+
+    this.skademeldingNr = UUID.randomUUID().toString();
+    this.skadeDato = "";
+    this.klokkeSlett = "";
+    this.forsikringsType = "";
+    this.skadeType = "";
+    this.takseringsbelop = 0.0;
+    this.utbetaltErstatningsbelop = 0.0;
+    this.skadeBeskrivelse = "";
+    this.ovrigSkadeInformasjon = "";
+
+    this.datoFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+    this.opprettelsesDato = "";
+
+    this.status = SkademeldingStatus.UBEHANDLET;
+  }
 
   public Skademelding(String skadeDato, String klokkeSlett, String forsikringsType, String skadeType, Double takseringsbelop, Double utbetaltErstatningsbelop, String skadeBeskrivelse, String ovrigSkadeInformasjon) {
-    this.skadeNr = UUID.randomUUID().toString();
+    this.skademeldingNr = UUID.randomUUID().toString();
     this.skadeDato = skadeDato;
     this.klokkeSlett = klokkeSlett;
     this.forsikringsType = forsikringsType;
@@ -49,8 +67,8 @@ public class Skademelding implements Serializable {
     this.skadeDato = skadeDato;
   }
 
-  public String getSkadeNr() {
-    return skadeNr;
+  public String getSkademeldingNr() {
+    return skademeldingNr;
   }
 
 
@@ -119,7 +137,7 @@ public class Skademelding implements Serializable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Skademelding that = (Skademelding) o;
-    return Objects.equals(skadeNr, that.skadeNr);
+    return Objects.equals(skademeldingNr, that.skademeldingNr);
   }
 
   public String getKlokkeSlett() {
@@ -130,26 +148,35 @@ public class Skademelding implements Serializable {
     this.klokkeSlett = klokkeSlett;
   }
 
+  public void setSkademeldingNr(String skademeldingNr) {
+    this.skademeldingNr = skademeldingNr;
+  }
+
+  public void setOpprettelsesDato(String opprettelsesDato) {
+    this.opprettelsesDato = opprettelsesDato;
+  }
+
   @Override
   public int hashCode() {
 
-    return Objects.hash(skadeNr);
+    return Objects.hash(skademeldingNr);
   }
-
 
   @Override
   public String toString() {
     return "Skademelding{" +
-            "skadeNr='" + skadeNr + '\'' +
+            "skademeldingNr='" + skademeldingNr + '\'' +
             ", skadeDato='" + skadeDato + '\'' +
             ", klokkeSlett='" + klokkeSlett + '\'' +
             ", forsikringsType='" + forsikringsType + '\'' +
             ", skadeType='" + skadeType + '\'' +
             ", skadeBeskrivelse='" + skadeBeskrivelse + '\'' +
             ", ovrigSkadeInformasjon='" + ovrigSkadeInformasjon + '\'' +
-            ", takseringsbeløp=" + takseringsbelop +
+            ", takseringsbelop=" + takseringsbelop +
             ", utbetaltErstatningsbelop=" + utbetaltErstatningsbelop +
-            ", opprettelsesDato=" + opprettelsesDato +
+            ", datoFormat=" + datoFormat +
+            ", opprettelsesDato='" + opprettelsesDato + '\'' +
+            ", status=" + status +
             '}';
   }
 }

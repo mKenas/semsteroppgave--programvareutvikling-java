@@ -10,14 +10,17 @@ import javafx.scene.layout.BorderPane;
 import programutvikling.base.*;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
-import programutvikling.filhantering.SkrivingTilFil.CSVFormatSkriver;
-import programutvikling.filhantering.SkrivingTilFil.FilSkriver;
-import programutvikling.filhantering.innlesingFraFil.LesingTradObjekt;
+import programutvikling.feilmeldinger.CSVFormatAvvikHandler;
 import programutvikling.feilmeldinger.FileExceptionHandler;
-import programutvikling.kontrollere.uihjelpere.FilVelger;
+import programutvikling.feilmeldinger.UtdatertFilAvvikHandler;
+import programutvikling.filhantering.SkrivingTilFil.SkrivingTradObjekt;
+import programutvikling.filhantering.innlesingFraFil.LesingTradObjekt;
+import programutvikling.kontrollere.uihjelpere.ApneFilVelger;
+import programutvikling.kontrollere.uihjelpere.LagreFilVelger;
 import programutvikling.status.InnlesingOgSkrivingStatus;
 
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -34,6 +37,7 @@ public class hovedSceneKontroller {
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dhl = new DataHandlingObjekt();
   Task<HashMap<String, Object>> leseFilHandling;
+  Task<Void> skriveTilFilHandling;
 
 
   private HashMap<String,Object> allData,allDataFraFil;
@@ -102,16 +106,17 @@ public class hovedSceneKontroller {
 
     allData = dlo.getAllData();
 
-    try {
+    System.out.println(allData);
 
-      ObjektFilSkriver.write(allData, "");
-      //ObjektFilSkriver.write(kunderliste, DATA_FIL_LOKASJON);
-      System.out.println("Data er lagret");
-    } catch (IOException e) {
+    LagreFilVelger filVelger = new LagreFilVelger();
 
-      FileExceptionHandler.generateIOExceptionMsg(e);
+    ExecutorService service = Executors.newSingleThreadExecutor();
 
-    }
+     skriveTilFilHandling = new SkrivingTradObjekt( allData, filVelger.getFilsti());
+
+
+    service.execute(skriveTilFilHandling);
+
 
 
   }
@@ -120,42 +125,60 @@ public class hovedSceneKontroller {
   @FXML
   protected void handleApneKnapp() {
 
-    FilVelger filVelger = new FilVelger();
-    if (filVelger.getValgtFilEndelse() == "*.jobj") {
+    ApneFilVelger filVelger = new ApneFilVelger();
 
       ExecutorService service = Executors.newSingleThreadExecutor();
 
-      leseFilHandling = new LesingTradObjekt(filVelger.getFilsti(),this::deaktiverDataEndring ,this::oppdatereGuiMedDataLastetFraFil);
-      leseFilHandling.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-        @Override
-        public void handle(WorkerStateEvent t) {
-          allDataFraFil = leseFilHandling.getValue();
-        }
-      });
-      service.execute(leseFilHandling);
-    }
 
+
+        leseFilHandling = new LesingTradObjekt( filVelger.getFilsti(),this::oppdatereGuiMedDataLastetFraFil);
+        leseFilHandling.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+          @Override
+          public void handle(WorkerStateEvent t) {
+
+            if (leseFilHandling.getValue() != null)
+              allDataFraFil = leseFilHandling.getValue();
+
+          }
+        });
+
+    leseFilHandling.setOnFailed(evt -> {
+      System.err.println("The task failed with the following exception:");
+      //leseFilHandling.getException().printStackTrace(System.err);
+
+      if (leseFilHandling.getException().getClass() == InvalidClassException.class){
+        UtdatertFilAvvikHandler.genererUtdatertFilAvvikMelding((InvalidClassException) leseFilHandling.getException());
+      }
+
+      else if (leseFilHandling.getException().getClass() == CSVFormatAvvikHandler.class){
+
+
+        CSVFormatAvvikHandler.generateCSVFormatExceptionMsg((CSVFormatAvvikHandler) leseFilHandling.getException());
+      }
+
+
+      leseFilHandling.cancel();
+
+
+    });
+        service.execute(leseFilHandling);
 
 
 
   }
 
-  private void deaktiverDataEndring() {
 
-//oppdatere GUIet etter at tråden er ferdig kjørt.
- //mainSceneKnapp.setDisable(true);
-    InnlesingOgSkrivingStatus.erInnlesingAktiv().set(true);
-
-  }
 
 
   private void oppdatereGuiMedDataLastetFraFil() {
-
+    if (allDataFraFil !=null) {
+      System.out.println(allDataFraFil);
 //oppdatere GUIet etter at tråden er ferdig kjørt.
       System.out.println("Ferdig med å laste fra fil");
 
       dlo.setAllData(allDataFraFil);
-    //mainSceneKnapp.setDisable(false);
+      //mainSceneKnapp.setDisable(false);
+    }
     InnlesingOgSkrivingStatus.erInnlesingAktiv().set(false);
 
   }
@@ -163,8 +186,10 @@ public class hovedSceneKontroller {
 
   @FXML
   protected void handleAvsluttKnapp() {
-
-    Platform.exit();
+    System.out.println(leseFilHandling.getState());
+    System.out.println(leseFilHandling.isRunning());
+    System.out.println(leseFilHandling.isDone());
+    //Platform.exit();
  /*   Kunde k = new Kunde("asd","asd","","","","","","");
     dhl.getKundeListeHandling().leggTilKunde(k);
     for (int i=0; i<10000; i++){

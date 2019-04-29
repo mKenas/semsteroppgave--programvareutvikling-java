@@ -47,7 +47,7 @@ public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
     epostTekstFelt.setText(k.getEpost());
     mobilTekstFelt.setText(k.getMobil());
     fakturaadresseTekstFelt.setText(k.getFakturaAdresse());
-    postnummerTekstFelt.setText(k.getPostnummer());
+    postnummerTekstFelt.setText(k.getPostNr());
     poststedTekstFelt.setText(k.getPoststed());
 
 
@@ -68,7 +68,7 @@ public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
     kunde.setEpost(epostTekstFelt.getText());
     kunde.setMobil(mobilTekstFelt.getText());
     kunde.setFakturaAdresse(fakturaadresseTekstFelt.getText());
-    kunde.setPostnummer(postnummerTekstFelt.getText());
+    kunde.setPostNr(postnummerTekstFelt.getText());
     kunde.setPoststed(poststedTekstFelt.getText());
 
 
