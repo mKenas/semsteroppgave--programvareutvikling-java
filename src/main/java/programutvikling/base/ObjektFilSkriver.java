@@ -1,12 +1,13 @@
 package programutvikling.base;
 
-import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 import programutvikling.filhantering.SkrivingTilFil.CSVFormatSkriver;
 import programutvikling.filhantering.SkrivingTilFil.FilSkriver;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 public class ObjektFilSkriver {

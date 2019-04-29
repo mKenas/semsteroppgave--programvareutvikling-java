@@ -8,7 +8,6 @@ import programutvikling.kontrollere.KontrollerMedKundeInfo;
 import programutvikling.kontrollere.KontrollerMedSkademeldingInfo;
 
 import java.io.IOException;
-import java.security.PublicKey;
 
 public abstract class Navigator {
 

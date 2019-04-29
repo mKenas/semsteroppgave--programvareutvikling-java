@@ -1,7 +1,5 @@
 package programutvikling.base;
 
-import java.util.ArrayList;
-
 public class ReiseForsikring extends Forsikring {
 
   private String Forsikringsområde;

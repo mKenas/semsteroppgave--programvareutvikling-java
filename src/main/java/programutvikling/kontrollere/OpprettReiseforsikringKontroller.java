@@ -2,9 +2,7 @@ package programutvikling.kontrollere;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.*;
 import programutvikling.database.DataHandlingObjekt;
