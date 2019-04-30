@@ -125,7 +125,7 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
   @FXML
   public void handleRedigerBatForsikringKnapp() {
 
-    Navigator.visScene(borderPane, Navigator.getREDIGER_BAT_FORSIKRING_SCENE());
+    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_BAT_FORSIKRING_SCENE(),kunde,forsikring);
 
   }
 

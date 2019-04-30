@@ -183,9 +183,6 @@ public class RedigerHusOgInnboForsikringSceneKontroller implements KontrollerMed
       NavigeringTilVisKundeScene();
     }
 
-
-
-
   }
 
   public void initialize() {
