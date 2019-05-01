@@ -10,6 +10,7 @@ import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.egenDefinertTyper.Handling;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 
 import java.util.ArrayList;
@@ -111,7 +112,7 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   @FXML
   public void handleNavigerTilRedigerHusOgInnboKnapp() {
 
-    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_HUS_OG_INNBO_FORSIKRING_SCENE(),kunde,forsikring);
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.REDIGER,forsikring, kunde );
 
 
 

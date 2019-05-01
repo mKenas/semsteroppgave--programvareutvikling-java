@@ -14,6 +14,8 @@ public class JOBJFormatLeser extends FilLeser {
     HashMap<String,Object> dataliste = (HashMap<String,Object>) oin.readObject();
 
     //return FXCollections.observableList(list);
+
+
     return dataliste;
   }
 }

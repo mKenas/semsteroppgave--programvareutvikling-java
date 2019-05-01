@@ -64,14 +64,14 @@
                <JFXComboBox fx:id="forsikringsTypeKomboBoks" prefHeight="39.0" prefWidth="411.0">
                    <items>
                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="Hus og innboforsikring" />
-                           <String fx:value="Fritidsboligforsikring" />
-                           <String fx:value="Båtforsikring" />
-                           <String fx:value="Reiseforsikring" />
+                           <String fx:value="Hus Og Innbo Forsikring" />
+                           <String fx:value="Fritidsbolig Forsikring" />
+                           <String fx:value="Båt Forsikring" />
+                           <String fx:value="Reise Forsikring" />
                        </FXCollections>
                    </items>
                    <value>
-                       <String fx:value="Hus og innboforsikring" />
+                       <String fx:value="Hus Og Innbo Forsikring" />
                    </value>
                </JFXComboBox>
                 </children>

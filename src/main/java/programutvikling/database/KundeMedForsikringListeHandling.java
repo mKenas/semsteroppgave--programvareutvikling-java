@@ -72,9 +72,9 @@ public class KundeMedForsikringListeHandling {
     }
   }
 
-  public Kunde finnForsikringsEier(Forsikring forsikring) {
+  public Kunde finnForsikringsEier(HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikringListe ,Forsikring forsikring) {
 
-    ArrayList<ArrayList<Forsikring>> listeAvForsikringListe = new ArrayList<>(kundeMedForsikringListe.values());
+   // ArrayList<ArrayList<Forsikring>> listeAvForsikringListe = new ArrayList<>(kundeMedForsikringListe.values());
     Kunde kunde;
 
 
@@ -83,7 +83,7 @@ public class KundeMedForsikringListeHandling {
             .forEach(System.out::println);*/
 
 
-    for (Map.Entry<Kunde, ArrayList<Forsikring>> liste : this.kundeMedForsikringListe.entrySet()) {
+    for (Map.Entry<Kunde, ArrayList<Forsikring>> liste : kundeMedForsikringListe.entrySet()) {
       if (liste.getValue().contains(forsikring)) {
         kunde = liste.getKey();
 

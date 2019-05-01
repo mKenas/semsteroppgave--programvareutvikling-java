@@ -23,10 +23,13 @@
                     <Font size="20.0" />
                 </font>
                 <HBox.margin>
-                    <Insets left="15.0" />
+                    <Insets />
                 </HBox.margin>
             </Label>
         </children>
+      <VBox.margin>
+         <Insets left="15.0" right="15.0" top="15.0" />
+      </VBox.margin>
     </HBox>
    <HBox maxWidth="1.7976931348623157E308">
       <children>
@@ -36,6 +39,9 @@
             </right>
          </BorderPane>
       </children>
+      <VBox.margin>
+         <Insets bottom="15.0" right="15.0" />
+      </VBox.margin>
    </HBox>
 
     <TableView fx:id="forsikringTabell" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
@@ -75,7 +81,7 @@
 
         </columns>
         <VBox.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="15.0" />
         </VBox.margin>
     </TableView>
 </VBox>

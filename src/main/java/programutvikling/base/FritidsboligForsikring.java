@@ -10,12 +10,11 @@ public class FritidsboligForsikring extends Forsikring {
   private String storrelse;
   private Double bygningsForsikringsbelop;
   private Double innboForsikringsbelop;
-  private String forsikringsType;
 
 
   public FritidsboligForsikring() {
 
-    super(0.0,0.0,"");
+    super("Fritidsbolig Forsikring",0.0,0.0,"");
     this.boligAdresse = "";
     this.byggeAr = "";
     this.boligType = "";
@@ -24,14 +23,14 @@ public class FritidsboligForsikring extends Forsikring {
     this.storrelse = "";
     this.bygningsForsikringsbelop = 0.0;
     this.innboForsikringsbelop = 0.0;
-    this.forsikringsType = "Fritidsbolig Forsikring";
+
   }
 
   public FritidsboligForsikring(Double forsikringsbelop, Double forsikringspremie, String forsikringsbetingelser,
                                 String boligAdresse, String byggeaar, String boligType, String byggeMateriale,
                                 String standard, String storrelse, Double bygningsForsikringsbelop,
                                 Double innboForsikringsbelop) {
-    super(forsikringsbelop, forsikringspremie, forsikringsbetingelser);
+    super("Fritidsbolig Forsikring",forsikringsbelop, forsikringspremie, forsikringsbetingelser);
     this.boligAdresse = boligAdresse;
     this.byggeAr = byggeaar;
     this.boligType = boligType;
@@ -40,7 +39,7 @@ public class FritidsboligForsikring extends Forsikring {
     this.storrelse = storrelse;
     this.bygningsForsikringsbelop = bygningsForsikringsbelop;
     this.innboForsikringsbelop = innboForsikringsbelop;
-    this.forsikringsType = "Fritidsbolig Forsikring";
+
   }
 
   public String getBoligAdresse() {
@@ -107,13 +106,7 @@ public class FritidsboligForsikring extends Forsikring {
     this.innboForsikringsbelop = innboForsikringsbelop;
   }
 
-  public String getForsikringsType() {
-    return forsikringsType;
-  }
 
-  public void setForsikringsType(String forsikringsType) {
-    this.forsikringsType = forsikringsType;
-  }
 
   @Override
   public String toString() {
@@ -126,7 +119,6 @@ public class FritidsboligForsikring extends Forsikring {
             ", storrelse='" + storrelse + '\'' +
             ", bygningsForsikringsbelop=" + bygningsForsikringsbelop +
             ", innboForsikringsbelop=" + innboForsikringsbelop +
-            ", forsikringsType='" + forsikringsType + '\'' +
             "} " + super.toString();
   }
 }

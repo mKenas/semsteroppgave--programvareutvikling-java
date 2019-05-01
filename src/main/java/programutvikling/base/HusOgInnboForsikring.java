@@ -10,10 +10,10 @@ public class HusOgInnboForsikring extends Forsikring {
   private String storrelse;
   private String bygningsForsikringsbelop;
   private String innboForsikringsbelop;
-  private String forsikringsType;
+  //private String forsikringsType;
 
   public HusOgInnboForsikring() {
-    super(0.0,0.0,"");
+    super("Hus Og Innbo Forsikring", 0.0,0.0,"");
     this.boligAdresse = "";
     this.byggeAr = "2";
     this.boligType = "";
@@ -22,14 +22,14 @@ public class HusOgInnboForsikring extends Forsikring {
     this.storrelse = "";
     this.bygningsForsikringsbelop = "";
     this.innboForsikringsbelop = "";
-    this.forsikringsType = "Hus Og Innbo Forsikring";
+
   }
 
   public HusOgInnboForsikring(Double forsikringsbelop, Double forsikringspremie, String forsikringsbetingelser,
                               String boligAdresse, String byggeAr, String boligType, String byggeMateriale,
                               String standard, String storrelse, String bygningsForsikringsbelop,
                               String innboForsikringsbelop) {
-    super(forsikringsbelop, forsikringspremie, forsikringsbetingelser);
+    super("Hus Og Innbo Forsikring",forsikringsbelop, forsikringspremie, forsikringsbetingelser);
     this.boligAdresse = boligAdresse;
     this.byggeAr = byggeAr;
     this.boligType = boligType;
@@ -38,7 +38,7 @@ public class HusOgInnboForsikring extends Forsikring {
     this.storrelse = storrelse;
     this.bygningsForsikringsbelop = bygningsForsikringsbelop;
     this.innboForsikringsbelop = innboForsikringsbelop;
-    this.forsikringsType = "Hus Og Innbo Forsikring";
+
   }
 
   public String getBoligAdresse() {
@@ -105,13 +105,7 @@ public class HusOgInnboForsikring extends Forsikring {
     this.innboForsikringsbelop = innboForsikringsbelop;
   }
 
-  public void setForsikringsType(String forsikringsType) {
-    this.forsikringsType = forsikringsType;
-  }
 
-  public String getForsikringsType() {
-    return forsikringsType;
-  }
 
 
   @Override
@@ -126,7 +120,6 @@ public class HusOgInnboForsikring extends Forsikring {
             ", storrelse='" + storrelse + '\'' +
             ", bygningsForsikringsbelop='" + bygningsForsikringsbelop + '\'' +
             ", innboForsikringsbelop='" + innboForsikringsbelop + '\'' +
-            ", forsikringsType='" + forsikringsType + '\'' +
             '}';
   }
 }

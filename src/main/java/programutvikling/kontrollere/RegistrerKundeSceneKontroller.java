@@ -88,7 +88,7 @@ public class RegistrerKundeSceneKontroller {
 
   protected void navigeringTilOpprettForsikringScene() {
     System.out.println(forsikringsType);
-    Navigator.visForsikringSceneMedKundeInfo(borderPane, forsikringsType, kunde);
+    Navigator.visOpprettForsikringSceneMedKundeInfo(borderPane, forsikringsType, kunde);
 
   }
 }

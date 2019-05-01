@@ -18,7 +18,7 @@
 
     <HBox maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
         <children>
-            <Label maxWidth="1.7976931348623157E308" text="Skader" HBox.hgrow="ALWAYS">
+            <Label maxWidth="1.7976931348623157E308" text="Skademeldinger" HBox.hgrow="ALWAYS">
                 <font>
                     <Font size="20.0" />
                 </font>
@@ -27,6 +27,9 @@
                 </HBox.margin>
             </Label>
         </children>
+      <VBox.margin>
+         <Insets left="15.0" right="15.0" top="15.0" />
+      </VBox.margin>
     </HBox>
    <HBox maxWidth="1.7976931348623157E308">
       <children>
@@ -36,6 +39,9 @@
             </right>
          </BorderPane>
       </children>
+      <VBox.margin>
+         <Insets bottom="15.0" right="15.0" />
+      </VBox.margin>
    </HBox>
 
     <TableView fx:id="skademeldingTabell" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
@@ -43,6 +49,9 @@
 
 
             <TableColumn fx:id="skademeldingNrKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="SkademeldingNr">
+                <cellValueFactory>
+                    <PropertyValueFactory property="SkademeldingNr" />
+                </cellValueFactory>
 
             </TableColumn>
             <TableColumn fx:id="skadeTypeKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="Skade type">
@@ -57,12 +66,6 @@
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn fx:id="utbetaltBelopKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="utbetalt beløp">
-                <cellValueFactory>
-                    <PropertyValueFactory property="UtbetaltErstatningsbelop" />
-                </cellValueFactory>
-            </TableColumn>
-
 
             <TableColumn fx:id="visSkademeldingKnapp" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="">
 
@@ -72,7 +75,7 @@
 
         </columns>
         <VBox.margin>
-            <Insets bottom="100.0" />
+            <Insets bottom="15.0" />
         </VBox.margin>
     </TableView>
 

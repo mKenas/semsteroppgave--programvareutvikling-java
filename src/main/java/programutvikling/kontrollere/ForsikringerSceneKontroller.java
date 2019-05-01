@@ -14,9 +14,13 @@ import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.egenDefinertTyper.Handling;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ForsikringerSceneKontroller {
@@ -46,6 +50,10 @@ public class ForsikringerSceneKontroller {
 
   public void initialize() {
 
+
+
+
+
     forsikringTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
     forsikringNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
     typeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
@@ -57,6 +65,7 @@ public class ForsikringerSceneKontroller {
 
 
     forsikringerListe = dlo.getForsikringListe();
+    System.out.println(forsikringerListe.size());
 
 
     if (forsikringerListe.size() >= 1) {
@@ -83,10 +92,17 @@ public class ForsikringerSceneKontroller {
 
   private void forsikringEndret() {
 
+    for (Map.Entry<Kunde, ArrayList<Forsikring>> liste : dlo.getKundeMedForsikringListe().entrySet()) {
+      System.out.println("Kunde");
+      System.out.println(liste.getKey());
+      System.out.println("forsikring");
+      System.out.println(liste.getValue());}
 
     forsikringTabell.getItems().setAll(forsikringerListe);
 
     leggTilVisForsikringKnapp();
+
+
 
 
   }
@@ -95,8 +111,15 @@ public class ForsikringerSceneKontroller {
   private void leggTilVisForsikringKnapp() {
 
     visKnappKolonne.setCellFactory(TabellKnapp.<Forsikring>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (f) -> {
+
+
+    HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikring = (HashMap<Kunde, ArrayList<Forsikring>>) dlo.getAllData().get("kundeMedForsikringListe");
+
+
       forsikring = f;
-      kunde = dho.getKundeMedForsikringListeHandling().finnForsikringsEier(f);
+      kunde = dho.getKundeMedForsikringListeHandling().finnForsikringsEier(kundeMedForsikring,f);
+
+      System.out.println(kunde);
 
 
       navigerTilVisForsikringScene();
@@ -115,7 +138,9 @@ public class ForsikringerSceneKontroller {
   @FXML
   protected void navigerTilVisForsikringScene() {
 
-    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getVIS_HUS_OG_INNBO_FORSIKRING_SCENE(), kunde, forsikring);
+
+
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.VIS,forsikring, kunde );
   }
 
 

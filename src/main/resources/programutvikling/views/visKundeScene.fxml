@@ -195,10 +195,10 @@
                      <ComboBox fx:id="forsikringsTypeKomboBoks" maxWidth="1.7976931348623157E308" value="Forsikrings type:" VBox.vgrow="ALWAYS">
                         <items>
                            <FXCollections fx:factory="observableArrayList">
-                              <String fx:value="Hus og innboforsikring" />
-                              <String fx:value="Fritidsboligforsikring" />
-                              <String fx:value="Båtforsikring" />
-                              <String fx:value="Reiseforsikring" />
+                               <String fx:value="Hus Og Innbo Forsikring" />
+                               <String fx:value="Fritidsbolig Forsikring" />
+                               <String fx:value="Båt Forsikring" />
+                               <String fx:value="Reise Forsikring" />
                            </FXCollections>
                         </items>
                      </ComboBox>
