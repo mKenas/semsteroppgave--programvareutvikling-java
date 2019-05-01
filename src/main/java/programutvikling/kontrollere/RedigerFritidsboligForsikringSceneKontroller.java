@@ -54,7 +54,6 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
   private JFXComboBox kunderListeKomboboks;
 
 
-
   @Override
   public void setKunde(Kunde kunde) {
     this.kunde = kunde;
@@ -77,9 +76,9 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
       byggeMaterialeTekstfelt.setText(f.getByggeMateriale());
       standardTekstfelt.setText(f.getStandard());
       antallkvadratmeterTekstfelt.setText(f.getStorrelse());
-      bygningForsikringsbelopTekstfelt.setText(String.valueOf(f.getInnboForsikringsbelop()));
+      bygningForsikringsbelopTekstfelt.setText(String.valueOf(f.getBygningsForsikringsbelop()));
       innboForsikringsbelopTekstfelt.setText(String.valueOf(f.getInnboForsikringsbelop()));
-      forsikringsbelopTekstfelt.setText(String.valueOf(f.getBygningsForsikringsbelop()));
+      forsikringsbelopTekstfelt.setText(String.valueOf(f.getForsikringsbelop()));
       forsikringspremieTekstfelt.setText(String.valueOf(f.getForsikringspremie()));
 
     }
@@ -115,7 +114,7 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
 
   }
 
-/*  public void initialize() {
+  /*  public void initialize() {
 
    *//* kunderListe = dlo.getKunderListe().getKundeListe();
     kunderListeKomboboks.setItems(kunderListe);*//*
@@ -126,6 +125,23 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
 
 
   }*/
+
+
+  public void initialize() {
+
+    Validator.valider(boligensAdresseTekstfelt, "^[0-9a-zA-ZäöæøåøÄÖÆØÅ ]{2,36}$", "Adressen må være mellom 2-36 skandinaviske bokstaver");
+    Validator.valider(byggeArTekstfelt, "^(18[0-9]\\d|19[0-9]\\d|20[01]\\d)?$", "Boligen må være bygget mellom 1800-tallet til dags dato");
+    Validator.valider(boligTypeTekstfelt, "^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$", "Boligtypen må være mellom 2 til 20 bosktaver");
+    Validator.valider(byggeMaterialeTekstfelt, "^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$", "Byggemateriale må være mellom 2 til 20 bosktaver");
+    Validator.valider(standardTekstfelt, "^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$", "Byggemateriale må være mellom 2 til 20 bosktaver");
+    Validator.valider(antallkvadratmeterTekstfelt, "^([0-9]{2,4})$", "Antall kvadratmeter tillater kun 2-4 tall");
+    Validator.valider(bygningForsikringsbelopTekstfelt, "^([0-9]){2,12}((\\.[0-9]{1,2})?)$", "Bygningensforsikringsbeløp tillater 4-14 tall");
+    Validator.valider(innboForsikringsbelopTekstfelt, "^([0-9]){2,12}((\\.[0-9]{1,2})?)$", "Innboforsikringsbeløp tillater 4-14 tall");
+    Validator.valider(forsikringsbelopTekstfelt, "^([0-9]){2,12}((\\.[0-9]{1,2})?)$", "Forsikringsbeløp tillater 4-14 tall");
+    Validator.valider(forsikringspremieTekstfelt, "^([0-9]){2,12}((\\.[0-9]{1,2})?)$", "Forsikringspremie tillater 4-14 tall");
+
+
+  }
 
 
   public void handleRedigerFritidsboligForsikringKnapp() {
@@ -142,7 +158,6 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
     Double forsikringspremie = Double.valueOf(forsikringspremieTekstfelt.getText());
 
 
-
     //Forsikring<HusOgInnboForsikring> forsikring = new Forsikring<>(1.0,0.0,"");
     //kunde.leggTilForsikring(forsikring);
 
@@ -150,6 +165,16 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
     // dlo.getKunderListe().slettKunde(kunde);
 
 
+    if (boligensAdresseTekstfelt.validate() == true &&
+            byggeArTekstfelt.validate() == true &&
+            boligTypeTekstfelt.validate() == true &&
+            byggeMaterialeTekstfelt.validate() == true &&
+            standardTekstfelt.validate() == true &&
+            antallkvadratmeterTekstfelt.validate() == true &&
+            bygningForsikringsbelopTekstfelt.validate() == true &&
+            innboForsikringsbelopTekstfelt.validate() == true &&
+            forsikringsbelopTekstfelt.validate() == true &&
+            forsikringspremieTekstfelt.validate() == true) {
 
 
       forsikring.setBoligAdresse(boligensAdresse);
@@ -163,26 +188,12 @@ public class RedigerFritidsboligForsikringSceneKontroller implements KontrollerM
       forsikring.setForsikringsbelop(forsikringsbelop);
       forsikring.setForsikringspremie(forsikringspremie);
 
+
       NavigeringTilVisKundeScene();
+
+
     }
 
-
-  public void initialize() {
-
-    Validator.valider(boligensAdresseTekstfelt,"^[0-9a-zA-ZäöæøåøÄÖÆØÅ ]{2,36}$","Adressen må være mellom 2-36 skandinaviske bokstaver");
-    Validator.valider(byggeArTekstfelt,"^(18[0-9]\\d|19[0-9]\\d|20[01]\\d)?$","Boligen må være bygget mellom 1800-tallet til dags dato");
-    Validator.valider(boligTypeTekstfelt,"^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$","Boligtypen må være mellom 2 til 20 bosktaver");
-    Validator.valider(byggeMaterialeTekstfelt,"^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$","Byggemateriale må være mellom 2 til 20 bosktaver");
-    Validator.valider(standardTekstfelt,"^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$","Byggemateriale må være mellom 2 til 20 bosktaver");
-    Validator.valider(antallkvadratmeterTekstfelt,"^([0-9]{2,4})$","Antall kvadratmeter tillater kun 2-4 tall");
-    Validator.valider(bygningForsikringsbelopTekstfelt,"([0-9]{4,14})$","Bygningensforsikringsbeløp tillater 4-14 tall");
-    Validator.valider(innboForsikringsbelopTekstfelt,"([0-9]{4,14})$","Innboforsikringsbeløp tillater 4-14 tall");
-    Validator.valider(forsikringsbelopTekstfelt,"([0-9]{4,14})$","Forsikringsbeløp tillater 4-14 tall");
-    Validator.valider(forsikringspremieTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
-
-  //TODO gå igjennom uednret versjon, finne hvilke felter som trenger validering og ikke, samt endre focusproperty slik at man ikke får feil med mindre man taster feil.
-
   }
-
 
 }

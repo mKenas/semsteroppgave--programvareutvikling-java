@@ -40,7 +40,6 @@ public class ReiseForsikring extends Forsikring {
     this.forsikringsSum = forsikringsSum;
   }
 
-
   public void setForsikringsType(String forsikringsType) {
     this.forsikringsType = forsikringsType;
   }

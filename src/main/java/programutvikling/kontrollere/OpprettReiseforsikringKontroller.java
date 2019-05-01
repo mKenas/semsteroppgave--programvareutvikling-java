@@ -48,7 +48,7 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
 
 
   @FXML
-  public void handleOpprettReiseforsikringKnapp() {
+  public void handleOpprettKnapp() {
 
     Double forsikringsbelop = Double.valueOf(reiseForsikringsBelopTekstfelt.getText());
     Double forsikringspremie = Double.valueOf(reiseArligForsikringspremieTekstfelt.getText());
@@ -57,11 +57,6 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
     String forsikringsomrade = reiseForsikringsomradeTekstfelt.getText();
 
     forsikring = new ReiseForsikring(forsikringsbelop, forsikringspremie,"", forsikringsomrade, forsikringssum);
-
-    dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);
-
-    NavigeringTilVisKundeScene();
-
 
     if(reiseForsikringssumTekstfelt.validate() == true &&
             reiseForsikringsBelopTekstfelt.validate() == true &&
@@ -81,15 +76,13 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
 
 
 
-    Validator.valider(reiseForsikringssumTekstfelt,"([0-9]{4,14})$","Forsikringsbeløp tillater 4-14 tall");
-    Validator.valider(reiseForsikringsBelopTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
+    Validator.valider(reiseForsikringssumTekstfelt,"([0-9]{4,14})$","Forsikringssum tillater 4-14 tall");
+    Validator.valider(reiseForsikringsBelopTekstfelt,"([0-9]{4,14})$","Forsikringsbeløp tillater 4-14 tall");
     Validator.valider(reiseForsikringsomradeTekstfelt,"^[a-zA-ZäöæøåøÄÖÆØÅ[0-9] ]{2,16}?$","Forsikringsområde må være mellom 2-16 skandinaviske bokstaver og eller tall");
     Validator.valider(reiseArligForsikringspremieTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
 
 
   }
-
-
 
 
   @FXML

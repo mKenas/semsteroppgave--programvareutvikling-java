@@ -73,26 +73,18 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
       forsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
       standardLabel.setText(f.getStandard());
       bygningForsikringsbelopLabel.setText(String.valueOf(f.getBygningsForsikringsbelop()));
-      innboForsikringsbelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
+      innboForsikringsbelopLabel.setText(String.valueOf(f.getInnboForsikringsbelop()));
       forsikringspremieLabel.setText(String.valueOf(f.getForsikringspremie()));
       antallKvadratmeterLabel.setText(f.getStorrelse());
       opprettelsesdatoLabel.setText(f.getOprettelsesDato());
 
-
     }
-
   }
 
   @FXML
   public void handleTilbakeKnapp() {
 
-    NavigeringTilKunderScene();
-
-  }
-
-  protected void NavigeringTilKunderScene() {
-
-    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
+    NavigeringTilVisKundeScene();
 
   }
 
@@ -108,15 +100,15 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
   public void handleSlettForsikringKnapp() {
 
     dho.getKundeMedForsikringListeHandling().slettForsikring(forsikring, kunde);
-    navigeringTilKunderScene();
+    NavigeringTilVisKundeScene();
 
   }
 
-
   @FXML
-  protected void navigeringTilKunderScene() {
+  public void NavigeringTilVisKundeScene() {
 
-    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
+    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
+
   }
 
   @FXML

@@ -17,7 +17,7 @@
 
     <HBox maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
         <children>
-            <Label maxWidth="1.7976931348623157E308" text="Kunde &gt; Forsikringer &gt; Båt" HBox.hgrow="ALWAYS">
+            <Label maxWidth="1.7976931348623157E308" text="Kunde &gt; Vis &gt; Båt" HBox.hgrow="ALWAYS">
                 <font>
                     <Font size="20.0" />
                 </font>
@@ -38,12 +38,15 @@
                         <children>
                             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
                                 <children>
-                                    <Label maxHeight="1.7976931348623157E308" text="PersonNr:">
+                                    <Label maxHeight="1.7976931348623157E308" text="Personnummer:">
                                         <HBox.margin>
-                                            <Insets left="5.0" right="5.0" />
+                                            <Insets left="5.0" />
                                         </HBox.margin>
                                     </Label>
-                                    <Label fx:id="personNrLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="personNrLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
                                 </children>
                         <VBox.margin>
                            <Insets bottom="5.0" top="5.0" />
@@ -51,12 +54,15 @@
                             </HBox>
                             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
                                 <children>
-                                    <Label maxHeight="1.7976931348623157E308" text="Båtens eier">
+                                    <Label maxHeight="1.7976931348623157E308" text="Båtens eier:">
                                         <HBox.margin>
-                                            <Insets left="5.0" right="5.0" />
+                                            <Insets left="5.0" />
                                         </HBox.margin>
                                     </Label>
-                                    <Label fx:id="batEierLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="batEierLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
                                 </children>
                         <VBox.margin>
                            <Insets bottom="5.0" />
@@ -64,12 +70,15 @@
                             </HBox>
                             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
                                 <children>
-                                    <Label maxHeight="1.7976931348623157E308" text="Båtens registreringsnummer">
+                                    <Label maxHeight="1.7976931348623157E308" text="Båtens registreringsnummer:">
                                         <HBox.margin>
-                                            <Insets left="5.0" right="5.0" />
+                                            <Insets left="5.0" />
                                         </HBox.margin>
                                     </Label>
-                                    <Label fx:id="batensRegistreringsNummerLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="batensRegistreringsNummerLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
                                 </children>
                         <VBox.margin>
                            <Insets bottom="5.0" />
@@ -77,15 +86,31 @@
                             </HBox>
                      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
                         <children>
-                           <Label maxHeight="1.7976931348623157E308" text="Båttype" HBox.hgrow="ALWAYS">
+                           <Label maxHeight="1.7976931348623157E308" text="Båttype:" HBox.hgrow="ALWAYS">
                               <HBox.margin>
-                                 <Insets left="5.0" right="5.0" />
+                                 <Insets left="5.0" />
                               </HBox.margin></Label>
-                           <Label fx:id="batTypeLabel" maxHeight="1.7976931348623157E308">
+                           <Label fx:id="batTypeLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                               <HBox.margin>
-                                  <Insets />
+                                  <Insets left="5.0" />
                               </HBox.margin>
                            </Label>
+                        </children>
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin>
+                     </HBox>
+                     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
+                        <children>
+                           <Label maxHeight="1.7976931348623157E308" text="Båtmodell:">
+                              <HBox.margin>
+                                  <Insets left="5.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label fx:id="batModellLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
                         </children>
                         <VBox.margin>
                            <Insets bottom="5.0" />
@@ -93,25 +118,15 @@
                      </HBox>
                      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
                         <children>
-                           <Label maxHeight="1.7976931348623157E308" text="Båtmodell">
+                           <Label maxHeight="1.7976931348623157E308" text="Båtlengde i fot:">
                               <HBox.margin>
-                                  <Insets left="5.0" right="5.0" />
+                                  <Insets left="5.0" />
                               </HBox.margin>
                            </Label>
-                           <Label fx:id="batModellLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                        </children>
-                        <VBox.margin>
-                           <Insets bottom="5.0" />
-                        </VBox.margin>
-                     </HBox>
-                     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
-                        <children>
-                           <Label maxHeight="1.7976931348623157E308" text="Båtlengde i fot">
+                           <Label fx:id="batLengdeLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                               <HBox.margin>
-                                  <Insets left="5.0" right="5.0" />
-                              </HBox.margin>
-                           </Label>
-                           <Label fx:id="batLengdeLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
                         </children>
                         <VBox.margin>
                            <Insets bottom="5.0" />
@@ -126,12 +141,15 @@
                         <children>
                      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
                         <children>
-                           <Label maxHeight="1.7976931348623157E308" text="Båtens årsmodell">
+                           <Label maxHeight="1.7976931348623157E308" text="Båtens årsmodell:">
                               <HBox.margin>
-                                  <Insets left="5.0" right="5.0" />
+                                  <Insets left="5.0" />
                               </HBox.margin>
                            </Label>
-                           <Label fx:id="batensAarsModellLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                           <Label fx:id="batensAarsModellLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
                         </children>
                         <VBox.margin>
                            <Insets bottom="5.0" top="5.0" />
@@ -139,30 +157,30 @@
                      </HBox>
                             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
                                 <children>
-                                    <Label maxHeight="1.7976931348623157E308" text="Båtens motorType">
+                                    <Label maxHeight="1.7976931348623157E308" text="Båtens motortype:">
                                         <HBox.margin>
-                                            <Insets left="5.0" right="5.0" />
+                                            <Insets left="5.0" />
                                         </HBox.margin>
                                     </Label>
-                                    <Label fx:id="batMotortypeLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                                </children>
-                        <VBox.margin>
-                           <Insets bottom="5.0" />
-                        </VBox.margin>
-                            </HBox>
-                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
-                                <children>
-                                    <Label maxHeight="1.7976931348623157E308" text="Båtens motorStyrke" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="batMotortypeLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                               <HBox.margin>
-                                 <Insets left="5.0" right="5.0" />
-                              </HBox.margin></Label>
-                                    <Label fx:id="batMotorStyrkeLabel" maxHeight="1.7976931348623157E308">
-                                        <HBox.margin>
-                                            <Insets />
-                                        </HBox.margin>
-                              <padding>
                                  <Insets left="5.0" />
-                              </padding>
+                              </HBox.margin></Label>
+                                </children>
+                        <VBox.margin>
+                           <Insets bottom="5.0" />
+                        </VBox.margin>
+                            </HBox>
+                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
+                                <children>
+                                    <Label maxHeight="1.7976931348623157E308" text="Båtens motorstyrke:" HBox.hgrow="ALWAYS">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
+                                    <Label fx:id="batMotorStyrkeLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                        <HBox.margin>
+                                            <Insets left="5.0" />
+                                        </HBox.margin>
                                     </Label>
                                 </children>
                         <VBox.margin>
@@ -171,12 +189,15 @@
                             </HBox>
                             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
                                 <children>
-                                    <Label maxHeight="1.7976931348623157E308" text="Forsikringsbeløp">
+                                    <Label maxHeight="1.7976931348623157E308" text="Forsikringsbeløp:">
                                         <HBox.margin>
-                                            <Insets left="5.0" right="5.0" />
+                                            <Insets left="5.0" />
                                         </HBox.margin>
                                     </Label>
-                                    <Label fx:id="batForsikringsBelopLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="batForsikringsBelopLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
                                 </children>
                         <VBox.margin>
                            <Insets bottom="5.0" />
@@ -184,12 +205,15 @@
                             </HBox>
                      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" VBox.vgrow="ALWAYS">
                         <children>
-                           <Label maxHeight="1.7976931348623157E308" text="Forsikringspremie">
+                           <Label maxHeight="1.7976931348623157E308" text="Forsikringspremie:">
                               <HBox.margin>
-                                  <Insets left="5.0" right="5.0" />
+                                  <Insets left="5.0" />
                               </HBox.margin>
                            </Label>
-                           <Label fx:id="batForsikringsPremieLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                           <Label fx:id="batForsikringsPremieLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
                         </children>
                         <VBox.margin>
                            <Insets bottom="5.0" />
@@ -199,10 +223,13 @@
                         <children>
                            <Label maxHeight="1.7976931348623157E308" text="Opprettelsesdato:">
                               <HBox.margin>
-                                  <Insets left="5.0" right="5.0" />
+                                  <Insets left="5.0" />
                               </HBox.margin>
                            </Label>
-                           <Label fx:id="opprettelsesdatoLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                           <Label fx:id="opprettelsesdatoLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <HBox.margin>
+                                 <Insets left="5.0" />
+                              </HBox.margin></Label>
                         </children>
                         <VBox.margin>
                            <Insets bottom="5.0" />
@@ -214,7 +241,7 @@
                   <children>
                      <AnchorPane>
                         <children>
-                           <Button mnemonicParsing="false" onAction="#handleRedigerBatForsikringKnapp" text="Rediger">
+                           <Button mnemonicParsing="false" onAction="#handleRedigerBatForsikringKnapp" text="Rediger" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                               <padding>
                                  <Insets right="5.0" top="5.0" />
                               </padding>

@@ -69,9 +69,9 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
       batEierLabel.setText(f.getEier());
       batensRegistreringsNummerLabel.setText(f.getRegistreringsNr());
       batTypeLabel.setText(f.getBatType());
-      batModellLabel.setText(f.getBatType());
+      batModellLabel.setText(f.getBatModell());
       batLengdeLabel.setText(f.getBatLengde());
-      batTypeLabel.setText(f.getBatType());
+      batensAarsModellLabel.setText(f.getArsModell());
 
       batMotortypeLabel.setText(f.getMotorType());
       batMotorStyrkeLabel.setText(f.getMotorStyrke());
@@ -90,16 +90,16 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
   @FXML
   public void handleTilbakeKnapp() {
 
-    NavigeringTilKunderScene();
+    NavigeringTilVisKundeScene();
 
   }
 
-  protected void NavigeringTilKunderScene() {
+  @FXML
+  public void NavigeringTilVisKundeScene() {
 
-    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
+    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
 
   }
-
 
   @Override
   public void setKunde(Kunde kunde) {
@@ -112,14 +112,8 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
   public void handleSlettForsikringKnapp() {
 
     dho.getKundeMedForsikringListeHandling().slettForsikring(forsikring, kunde);
-    navigeringTilKunderScene();
+    NavigeringTilVisKundeScene();
 
-  }
-
-  @FXML
-  protected void navigeringTilKunderScene() {
-
-    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
   }
 
   @FXML
@@ -128,5 +122,4 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
     Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_BAT_FORSIKRING_SCENE(),kunde,forsikring);
 
   }
-
 }

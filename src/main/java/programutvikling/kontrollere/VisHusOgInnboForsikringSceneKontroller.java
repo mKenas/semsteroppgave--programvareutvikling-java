@@ -89,12 +89,7 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   public void handleTilbakeKnapp() {
 
 
-    NavigeringTilKunderScene();
-  }
-
-  protected void NavigeringTilKunderScene() {
-    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
-
+    NavigeringTilVisKundeScene();
   }
 
 
@@ -109,7 +104,7 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   public void handleSlettForsikringKnapp() {
 
     dho.getKundeMedForsikringListeHandling().slettForsikring(forsikring, kunde);
-    navigeringTilKunderScene();
+    NavigeringTilVisKundeScene();
 
   }
 
@@ -123,9 +118,11 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   }
 
 
-  protected void navigeringTilKunderScene() {
+  @FXML
+  public void NavigeringTilVisKundeScene() {
 
-    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
+    Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
+
   }
 
 
