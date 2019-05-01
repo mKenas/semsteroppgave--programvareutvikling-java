@@ -13,12 +13,19 @@ public class SkrivingTradObjekt extends Task<Void> {
 
 
   public SkrivingTradObjekt(HashMap<String, Object> dataliste ,String filsti) {
+    if (filsti ==null){
+      this.cancel();
+    }
     this.filstil = filsti;
     this.dataliste = dataliste;
   }
 
   @Override
   protected Void call() throws Exception {
+    if (isCancelled()) {
+
+      return null;
+    }
     if(filstil.endsWith(".jobj")){
     System.out.println("starter skriving til jobj fil");
     FilSkriver filSkriver = new JOBJFormatSkriver();
@@ -45,9 +52,18 @@ public class SkrivingTradObjekt extends Task<Void> {
 
   @Override
   protected void failed() {
+    System.out.println("Task failed");
     InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
+
   }
 
+
+  @Override
+  protected void cancelled() {
+    System.out.println("Task canceled");
+    InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
+
+  }
 
   @Override
   protected void succeeded() {

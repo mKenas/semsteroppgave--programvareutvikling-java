@@ -23,7 +23,10 @@ public class LagreFilVelger {
     filvelger.getExtensionFilters().addAll(filEndelse, filEndelse2);
 
      File fil = filvelger.showSaveDialog(null);
-     this.valgtFilEndelse = filvelger.getSelectedExtensionFilter().getExtensions().get(0);
+    {
+      if (filvelger.getSelectedExtensionFilter() != null)
+        this.valgtFilEndelse = filvelger.getSelectedExtensionFilter().getExtensions().get(0);
+    }
 
     if (fil != null) {
       this.filsti = String.valueOf(fil.toPath());

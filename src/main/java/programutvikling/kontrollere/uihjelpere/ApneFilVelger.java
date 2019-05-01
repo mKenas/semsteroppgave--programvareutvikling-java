@@ -1,5 +1,6 @@
 package programutvikling.kontrollere.uihjelpere;
 
+import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -23,11 +24,17 @@ public class ApneFilVelger {
     filvelger.getExtensionFilters().addAll(filEndelse, filEndelse2);
 
      File fil = filvelger.showOpenDialog(null);
-     this.valgtFilEndelse = filvelger.getSelectedExtensionFilter().getExtensions().get(0);
+    {
+      if (filvelger.getSelectedExtensionFilter() != null)
+        this.valgtFilEndelse = filvelger.getSelectedExtensionFilter().getExtensions().get(0);
+    }
+
 
 
     if (fil != null) {
+
       this.filsti = String.valueOf(fil.toPath());
+
     }
 
 
