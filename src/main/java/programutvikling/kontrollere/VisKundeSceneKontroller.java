@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 import programutvikling.base.*;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.egenDefinertTyper.Handling;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.HyberlinkBygger;
 
@@ -130,20 +131,7 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
   protected void navigeringTilVisHusOgInnboForsikringScene() {
 
 
-
-
-    String fxml = "";
-
-    if (forsikring instanceof HusOgInnboForsikring) {
-      fxml = Navigator.getVIS_HUS_OG_INNBO_FORSIKRING_SCENE();
-    } if (forsikring instanceof  FritidsboligForsikring) {
-      fxml = Navigator.getVIS_FRITIDSBOLIG_FORSIKRING_SCENE();
-    } if (forsikring instanceof BatForsikring) {
-      fxml = Navigator.getVisBatForsikringScene();
-    } if (forsikring instanceof ReiseForsikring) {
-      fxml = Navigator.getVIS_REISEFORSIKRING_SCENE();
-    }
-    Navigator.visSceneMedForsikringInfo(borderPane, fxml, kunde, forsikring);
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.VIS, forsikring,kunde);
   }
 
   protected void navigeringTilSkademeldingScene() {
@@ -163,7 +151,7 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
   protected void leggTilNyForsikring() {
 
     String forsikringsType = forsikringsTypeKomboBoks.getSelectionModel().getSelectedItem().toString();
-    Navigator.visForsikringSceneMedKundeInfo(borderPane, forsikringsType, kunde);
+    Navigator.visOpprettForsikringSceneMedKundeInfo(borderPane, forsikringsType, kunde);
 
   }
 

@@ -184,6 +184,8 @@ public class Kunde implements Serializable {
   }
 
 
+
+
 /*  public void setErstatninger(ArrayList<Skademelding> erstatninger) {
     this.erstatninger = erstatninger;
   }*/

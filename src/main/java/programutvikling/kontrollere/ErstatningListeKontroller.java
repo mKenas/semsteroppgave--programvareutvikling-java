@@ -18,6 +18,9 @@ import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ErstatningListeKontroller {
 
 
@@ -26,8 +29,6 @@ public class ErstatningListeKontroller {
   DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
 
-  @FXML
-  TableColumn<Skademelding, Button> visErstatningKolonne;
   private Kunde kunde;
   private Skademelding skademelding;
   private Forsikring forsikring;
@@ -37,7 +38,27 @@ public class ErstatningListeKontroller {
   @FXML
   private TableView erstatningTabell;
 
+  @FXML
+  TableColumn skademeldingNrKolonne;
+  @FXML
+  TableColumn skadeTypeKolonne;
+  @FXML
+  TableColumn takseringsbelopKolonne;
+  @FXML
+  TableColumn utbetaltBelopKolonne;
+  @FXML
+  TableColumn<Skademelding, Button> visErstatningKolonne;
+
+
   public void initialize() {
+
+
+    erstatningTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
+    skademeldingNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
+    skadeTypeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    takseringsbelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    utbetaltBelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    visErstatningKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
 
     erstatningTabell.setPlaceholder(new Label("Ingen erstatning er registrert ennå!"));
 
@@ -58,8 +79,8 @@ public class ErstatningListeKontroller {
     erstatningListe.addListener(new InvalidationListener() {
       @Override
       public void invalidated(Observable observable) {
-        System.out.println("Forsikring liste Endret");
-        forsikringEndret();
+        System.out.println("erstatning liste Endret");
+        erstatningEndret();
       }
     });
 
@@ -67,7 +88,7 @@ public class ErstatningListeKontroller {
   }
 
 
-  private void forsikringEndret() {
+  private void erstatningEndret() {
 
 
     erstatningTabell.getItems().setAll(erstatningListe);
@@ -81,6 +102,8 @@ public class ErstatningListeKontroller {
   private void leggTilVisErstatningKnapp() {
 
     visErstatningKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (s) -> {
+      HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = (HashMap<Kunde, ArrayList<Skademelding>>) dlo.getAllData().get("kundeMedSkadeMeldingListe");
+
       this.skademelding = s;
       kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(s);
 

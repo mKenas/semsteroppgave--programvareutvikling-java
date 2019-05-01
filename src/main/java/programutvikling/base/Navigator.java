@@ -3,6 +3,7 @@ package programutvikling.base;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import programutvikling.egenDefinertTyper.Handling;
 import programutvikling.kontrollere.KontrollerMedForsikringInfo;
 import programutvikling.kontrollere.KontrollerMedKundeInfo;
 import programutvikling.kontrollere.KontrollerMedSkademeldingInfo;
@@ -77,25 +78,25 @@ public abstract class Navigator {
   }
 
 
-  public static void visForsikringSceneMedKundeInfo(BorderPane borderPane, String forsikringsType, Kunde kunde) {
+  public static void visOpprettForsikringSceneMedKundeInfo(BorderPane borderPane, String forsikringsType, Kunde kunde) {
 
     Parent root = null;
 
     String fxml = "";
     switch (forsikringsType) {
-      case "Hus og innboforsikring": {
+      case "Hus Og Innbo Forsikring": {
         fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
         break;
       }
-        case "Fritidsboligforsikring": {
+        case "Fritidsbolig Forsikring": {
           fxml = Navigator.getOPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE();
           break;
         }
-      case "Båtforsikring": {
+      case "Båt Forsikring": {
         fxml = Navigator.getOPPRETT_BAT_FORSIKRING_SCENE();
         break;
       }
-      case "Reiseforsikring": {
+      case "Reise Forsikring": {
         fxml = Navigator.getOPPRETT_REISEFORSIKRING_SCENE();
         break;
       }
@@ -114,9 +115,78 @@ public abstract class Navigator {
     borderPane.setCenter(root);
   }
 
-  public static void visSceneMedForsikringInfo(BorderPane borderPane, String fxml, Kunde kunde, Forsikring forsikring) {
+  public static void visSceneMedForsikringInfo(BorderPane borderPane, Handling handling,Forsikring forsikring, Kunde kunde) {
 
     Parent root = null;
+
+    String fxml = "";
+    switch (forsikring.getForsikringsType()) {
+      case "Hus Og Innbo Forsikring": {
+        switch (handling){
+          case VIS:{
+            fxml = Navigator.getVIS_HUS_OG_INNBO_FORSIKRING_SCENE();
+            break;
+          }
+
+          case REDIGER: {
+            fxml = Navigator.getREDIGER_HUS_OG_INNBO_FORSIKRING_SCENE();
+            break;
+          }
+        }
+
+        break;
+      }
+      case "Fritidsbolig Forsikring": {
+        switch (handling){
+          case VIS:{
+            fxml = Navigator.getVIS_FRITIDSBOLIG_FORSIKRING_SCENE();
+            break;
+          }
+
+
+          case REDIGER: {
+            fxml = Navigator.getREDIGER_FRITIDSBOLIG_FORSIKRING_SCENE();
+            break;
+          }
+        }
+
+        break;
+      }
+      case "Båt Forsikring": {
+        switch (handling){
+          case VIS:{
+            fxml = Navigator.getVisBatForsikringScene();
+            break;
+          }
+
+
+
+          case REDIGER: {
+            fxml = Navigator.getREDIGER_BAT_FORSIKRING_SCENE();
+            break;
+          }
+        }
+
+        break;
+      }
+      case "Reise Forsikring": {
+        switch (handling){
+          case VIS:{
+            fxml = Navigator.getVIS_REISEFORSIKRING_SCENE();
+            break;
+          }
+
+
+
+          case REDIGER: {
+
+            break;
+          }
+        }
+
+        break;
+      }
+    }
 
     try {
       FXMLLoader loader = new FXMLLoader(Navigator.class.getResource(fxml));

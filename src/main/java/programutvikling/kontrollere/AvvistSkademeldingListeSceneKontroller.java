@@ -18,6 +18,9 @@ import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class AvvistSkademeldingListeSceneKontroller {
 
 
@@ -26,8 +29,6 @@ public class AvvistSkademeldingListeSceneKontroller {
   DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
 
-  @FXML
-  TableColumn<Skademelding, Button> visAvvistSkademeldingKolonne;
   private Kunde kunde;
   private Skademelding skademelding;
   private Forsikring forsikring;
@@ -37,9 +38,25 @@ public class AvvistSkademeldingListeSceneKontroller {
   @FXML
   private TableView avvistSkademeldingTabell;
 
+  @FXML
+  TableColumn skademeldingNrKolonne;
+  @FXML
+  TableColumn skadeTypeKolonne;
+  @FXML
+  TableColumn takseringsbelopKolonne;
+  @FXML
+  TableColumn<Skademelding, Button> visAvvistSkademeldingKolonne;
+
+
   public void initialize() {
 
-    avvistSkademeldingTabell.setPlaceholder(new Label("Ingen erstatning er registrert ennå!"));
+    avvistSkademeldingTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
+    skademeldingNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
+    skadeTypeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    takseringsbelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    visAvvistSkademeldingKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
+
+    avvistSkademeldingTabell.setPlaceholder(new Label("Ingen avviste skademeldinger er registrert ennå!"));
 
 
     avvistSkademeldingListe = dho.getKundeMedSkademeldingListeHandling().getAvvistSkademeldingListe();
@@ -81,6 +98,8 @@ public class AvvistSkademeldingListeSceneKontroller {
   private void leggTilVisAvvistSkademelingKnapp() {
 
     visAvvistSkademeldingKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (s) -> {
+      HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = (HashMap<Kunde, ArrayList<Skademelding>>) dlo.getAllData().get("kundeMedSkadeMeldingListe");
+
       this.skademelding = s;
       kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(s);
 

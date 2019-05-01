@@ -9,38 +9,34 @@ import java.util.UUID;
 
 public abstract class Forsikring implements Serializable {
 
-
   private String forsikringsNr;
-  private String oprettelsesDato;
+  private String forsikringsType;
   private Double forsikringsbelop;
   private Double forsikringspremie;
   private String forsikringsbetingelser;
+  private String oprettelsesDato;
   private DateFormat datoFormat;
 
   public Forsikring() {
-/*    this.forsikringsNr = "";
-    this.forsikringsbelop = 0.0;
-    this.forsikringspremie = 0.0;
-    this.forsikringsbetingelser = "";
-    this.datoFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-    this.oprettelsesDato = datoFormat.format(new Date());*/
+
   }
 
-  public Forsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser) {
+  public Forsikring(String forsikringsType, Double forsikringsbelop, Double forsikringspremie, String forsikringsbetingelser) {
     this.forsikringsNr = UUID.randomUUID().toString();
-
-    this.forsikringsbelop = forsikringsbeløp;
+    this.forsikringsType = forsikringsType;
+    this.forsikringsbelop = forsikringsbelop;
     this.forsikringspremie = forsikringspremie;
     this.forsikringsbetingelser = forsikringsbetingelser;
     this.datoFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     this.oprettelsesDato = datoFormat.format(new Date());
 
+
   }
 
-  public Forsikring(String forsikringsNr, Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser) {
+  public Forsikring(String forsikringsType ,String forsikringsNr, Double forsikringsbelop, Double forsikringspremie, String forsikringsbetingelser) {
     this.forsikringsNr = forsikringsNr;
-
-    this.forsikringsbelop = forsikringsbeløp;
+    this.forsikringsType = forsikringsType;
+    this.forsikringsbelop = forsikringsbelop;
     this.forsikringspremie = forsikringspremie;
     this.forsikringsbetingelser = forsikringsbetingelser;
     this.datoFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
@@ -88,6 +84,14 @@ public abstract class Forsikring implements Serializable {
 
   public void setOprettelsesDato(String oprettelsesDato) {
     this.oprettelsesDato = oprettelsesDato;
+  }
+
+  public String getForsikringsType() {
+    return forsikringsType;
+  }
+
+  public void setForsikringsType(String forsikringsType) {
+    this.forsikringsType = forsikringsType;
   }
 
   public String getForsikringsNr() {

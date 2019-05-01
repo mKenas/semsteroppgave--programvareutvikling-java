@@ -9,6 +9,7 @@ import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.egenDefinertTyper.Handling;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 
 import java.util.ArrayList;
@@ -122,7 +123,7 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
   @FXML
   public void handleNavigerTilRedigerFritidsboligKnapp() {
 
-    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_FRITIDSBOLIG_FORSIKRING_SCENE(),kunde,forsikring);
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.REDIGER,forsikring, kunde );
 
   }
 

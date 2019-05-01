@@ -24,12 +24,12 @@
                     <Font size="20.0" />
                 </font>
                 <HBox.margin>
-                    <Insets left="15.0" />
+                    <Insets />
                 </HBox.margin>
             </Label>
         </children>
       <VBox.margin>
-         <Insets bottom="5.0" />
+         <Insets left="15.0" right="15.0" top="15.0" />
       </VBox.margin>
     </HBox>
    <HBox layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308">
@@ -41,7 +41,7 @@
          </BorderPane>
       </children>
       <VBox.margin>
-         <Insets bottom="5.0" />
+         <Insets bottom="15.0" right="15.0" />
       </VBox.margin>
    </HBox>
     <TableView fx:id="kunderTabell" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
@@ -80,7 +80,7 @@
       
               </columns>
       <VBox.margin>
-         <Insets bottom="20.0" />
+         <Insets bottom="15.0" />
       </VBox.margin>
     </TableView>
 
@@ -92,6 +92,9 @@
                 </BorderPane.margin>
             </Button>
         </right>
+      <VBox.margin>
+         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+      </VBox.margin>
     </BorderPane>
 
 

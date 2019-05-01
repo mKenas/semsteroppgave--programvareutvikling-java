@@ -15,8 +15,13 @@ import programutvikling.base.Navigator;
 import programutvikling.base.Skademelding;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.egenDefinertTyper.SkademeldingStatus;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.function.Predicate;
 
 public class SkademeldingListeKontroller {
 
@@ -42,8 +47,6 @@ public class SkademeldingListeKontroller {
   TableColumn skadeTypeKolonne;
   @FXML
   TableColumn takseringsbelopKolonne;
-  @FXML
-  TableColumn utbetaltBelopKolonne;
 
   public void initialize() {
 
@@ -51,13 +54,14 @@ public class SkademeldingListeKontroller {
     skademeldingNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
     skadeTypeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
     takseringsbelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    utbetaltBelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+
     visSkademeldingKnapp.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
 
     skademeldingTabell.setPlaceholder(new Label("Ingen skademelding er registrert ennå!"));
 
 
-    skademeldingListe = dho.getKundeMedSkademeldingListeHandling().getSkademeldingListe();
+    //skademeldingListe = dho.getKundeMedSkademeldingListeHandling().getSkademeldingListe();
+    skademeldingListe = dlo.getSkademeldingListe();
 
 
     if (skademeldingListe.size() >= 1) {
@@ -73,7 +77,7 @@ public class SkademeldingListeKontroller {
     skademeldingListe.addListener(new InvalidationListener() {
       @Override
       public void invalidated(Observable observable) {
-        System.out.println("Forsikring liste Endret");
+        System.out.println("Skademelding liste Endret");
         forsikringEndret();
       }
     });
@@ -96,6 +100,8 @@ public class SkademeldingListeKontroller {
   private void leggTilVisSkademeldingKnapp() {
 
     visSkademeldingKnapp.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (s) -> {
+      HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = (HashMap<Kunde, ArrayList<Skademelding>>) dlo.getAllData().get("kundeMedSkadeMeldingListe");
+
       this.skademelding = s;
       kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(s);
 

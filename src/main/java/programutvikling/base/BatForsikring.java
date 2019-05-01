@@ -10,10 +10,10 @@ public class BatForsikring extends Forsikring {
   private String arsModell;
   private String motorType;
   private String motorStyrke;
-  private String forsikringsType;
+
 
   public BatForsikring() {
-    super(0.0,0.0,"");
+    super("Båt Forsikring",0.0,0.0,"");
     this.eier = "";
     this.registreringsNr = "";
     this.batType = "";
@@ -22,11 +22,11 @@ public class BatForsikring extends Forsikring {
     this.arsModell = "";
     this.motorType = "";
     this.motorStyrke = "";
-    this.forsikringsType = "Båt Forsikring";
+
   }
 
   public BatForsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser, String eier, String registreringsnummer, String baatType, String baatModell, String batLengde, String aarsmodell, String motortype, String motorstyrke) {
-    super(forsikringsbeløp, forsikringspremie, forsikringsbetingelser);
+    super("Båt Forsikring",forsikringsbeløp, forsikringspremie, forsikringsbetingelser);
     this.eier = eier;
     this.registreringsNr = registreringsnummer;
     this.batType = baatType;
@@ -35,7 +35,7 @@ public class BatForsikring extends Forsikring {
     this.arsModell = aarsmodell;
     this.motorType = motortype;
     this.motorStyrke = motorstyrke;
-    this.forsikringsType = "Båt Forsikring";
+
   }
 
   public String getEier() {
@@ -102,13 +102,7 @@ public class BatForsikring extends Forsikring {
     this.motorStyrke = motorStyrke;
   }
 
-  public String getForsikringsType() {
-    return forsikringsType;
-  }
 
-  public void setForsikringsType(String forsikringsType) {
-    this.forsikringsType = forsikringsType;
-  }
 
   @Override
   public String toString() {
@@ -121,7 +115,6 @@ public class BatForsikring extends Forsikring {
             ", arsModell='" + arsModell + '\'' +
             ", motorType='" + motorType + '\'' +
             ", motorStyrke='" + motorStyrke + '\'' +
-            ", forsikringsType='" + forsikringsType + '\'' +
             "} " + super.toString();
   }
 }
