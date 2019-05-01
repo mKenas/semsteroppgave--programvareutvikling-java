@@ -9,6 +9,7 @@ import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.egenDefinertTyper.Handling;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 
 import java.util.ArrayList;
@@ -121,7 +122,7 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
 
     //Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_BAT_FORSIKRING_SCENE(),kunde,forsikring);
     System.out.println(forsikring.getForsikringsType());
-    Navigator.visOpprettForsikringSceneMedKundeInfo(borderPane, forsikring.getForsikringsType(),kunde);
+    Navigator.visSceneMedForsikringInfo(borderPane,Handling.REDIGER,forsikring, kunde);
 
   }
 }

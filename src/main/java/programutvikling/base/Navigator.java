@@ -180,6 +180,7 @@ public abstract class Navigator {
 
 
           case REDIGER: {
+            fxml = Navigator.getREDIGER_REISEFORSIKRING_SCENE();
 
             break;
           }
