@@ -32,12 +32,27 @@ public class SkademeldingListeKontroller {
   private Skademelding skademelding;
   private Forsikring forsikring;
   private BorderPane borderPane = hsk.getBorderPane();
-  //
-  private ObservableList<Skademelding> skademeldingListe, forsikringerListeFraFil;
+
+  private ObservableList<Skademelding> skademeldingListe;
   @FXML
   private TableView skademeldingTabell;
+  @FXML
+  TableColumn skademeldingNrKolonne;
+  @FXML
+  TableColumn skadeTypeKolonne;
+  @FXML
+  TableColumn takseringsbelopKolonne;
+  @FXML
+  TableColumn utbetaltBelopKolonne;
 
   public void initialize() {
+
+    skademeldingTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
+    skademeldingNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
+    skadeTypeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    takseringsbelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    utbetaltBelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    visSkademeldingKnapp.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
 
     skademeldingTabell.setPlaceholder(new Label("Ingen skademelding er registrert ennå!"));
 
@@ -50,7 +65,7 @@ public class SkademeldingListeKontroller {
 
       skademeldingTabell.getItems().setAll(skademeldingListe);
 
-      leggTilVisErstatningKnapp();
+      leggTilVisSkademeldingKnapp();
 
     }
 
@@ -72,15 +87,15 @@ public class SkademeldingListeKontroller {
 
     skademeldingTabell.getItems().setAll(skademeldingListe);
 
-    //leggTilRedigerKnapp();
+    leggTilVisSkademeldingKnapp();
 
 
   }
 
 
-  private void leggTilVisErstatningKnapp() {
+  private void leggTilVisSkademeldingKnapp() {
 
-    visSkademeldingKnapp.setCellFactory(TabellKnapp.<Skademelding>genererKnapp("\uf2c2", "vis-kunde-knapp", (s) -> {
+    visSkademeldingKnapp.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (s) -> {
       this.skademelding = s;
       kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(s);
 

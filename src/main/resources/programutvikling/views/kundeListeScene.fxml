@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.KunderSceneKontroller">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.KunderSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
 
-    <HBox prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+    <HBox maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
         <children>
-            <Label prefHeight="93.0" prefWidth="176.0" text="Kunder">
+            <Label text="Kunder">
                 <font>
                     <Font size="20.0" />
                 </font>
@@ -27,52 +27,66 @@
                     <Insets left="15.0" />
                 </HBox.margin>
             </Label>
-         <TextField fx:id="KunderFilterTesktfelt" prefHeight="58.0" prefWidth="239.0" promptText="Søk" />
         </children>
+      <VBox.margin>
+         <Insets bottom="5.0" />
+      </VBox.margin>
     </HBox>
-    <TableView fx:id="kunderTabell" prefHeight="383.0" prefWidth="930.0">
+   <HBox layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308">
+      <children>
+         <BorderPane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+            <right>
+               <TextField fx:id="KunderFilterTesktfelt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" promptText="Søk" BorderPane.alignment="CENTER" />
+            </right>
+         </BorderPane>
+      </children>
+      <VBox.margin>
+         <Insets bottom="5.0" />
+      </VBox.margin>
+   </HBox>
+    <TableView fx:id="kunderTabell" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn prefWidth="150.0" sortType="ASCENDING" text="PersonNr">
+            <TableColumn fx:id="personNrKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" sortType="ASCENDING" text="PersonNr">
                 <cellValueFactory>
                     <PropertyValueFactory property="PersonNr" />
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn prefWidth="200.0" text="Navn">
+                  <TableColumn fx:id="navnKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="Navn">
                 <cellValueFactory>
                     <PropertyValueFactory property="Navn" />
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn prefWidth="150.0" text="Etternavn">
+                  <TableColumn fx:id="etterNavnKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="Etternavn">
                 <cellValueFactory>
                     <PropertyValueFactory property="Etternavn" />
                 </cellValueFactory>
             </TableColumn>
 
-
-            <TableColumn prefWidth="220.0" text="Faktura Adresse">
+      
+                  <TableColumn fx:id="fakturaAdresseKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="Faktura Adresse">
                 <cellValueFactory>
                     <PropertyValueFactory property="FakturaAdresse" />
                 </cellValueFactory>
             </TableColumn>
 
-
-            <TableColumn fx:id="visKundeKolonne" prefWidth="60.0" text="">
+      
+                  <TableColumn fx:id="visKundeKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0">
 
             </TableColumn>
 
-
-
-        </columns>
-        <VBox.margin>
-            <Insets bottom="100.0" />
-        </VBox.margin>
+      
+      
+              </columns>
+      <VBox.margin>
+         <Insets bottom="20.0" />
+      </VBox.margin>
     </TableView>
 
-    <BorderPane prefHeight="128.0" prefWidth="930.0">
+    <BorderPane maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Registrer kunde" BorderPane.alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" prefHeight="40.0" styleClass="sub-scene-knapp" text="Registrer kunde" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0" />
                 </BorderPane.margin>

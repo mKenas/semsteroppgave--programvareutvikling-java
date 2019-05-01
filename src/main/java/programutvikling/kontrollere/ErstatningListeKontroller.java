@@ -72,7 +72,7 @@ public class ErstatningListeKontroller {
 
     erstatningTabell.getItems().setAll(erstatningListe);
 
-    //leggTilRedigerKnapp();
+    leggTilVisErstatningKnapp();
 
 
   }
@@ -80,7 +80,7 @@ public class ErstatningListeKontroller {
 
   private void leggTilVisErstatningKnapp() {
 
-    visErstatningKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp("\uf2c2", "vis-kunde-knapp", (s) -> {
+    visErstatningKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (s) -> {
       this.skademelding = s;
       kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(s);
 

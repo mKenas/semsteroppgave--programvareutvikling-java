@@ -18,24 +18,40 @@ import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
 
+
 public class ForsikringerSceneKontroller {
 
 
-  private static final String KUNDE_FIL_LOKASJON = "kunder.jobj";
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-  @FXML
-  TableColumn<Forsikring, Button> visForsikringKolonne;
   private Kunde kunde;
   private Forsikring forsikring;
   private BorderPane borderPane = hsk.getBorderPane();
-  //private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
-  private ObservableList<Forsikring> forsikringerListe, forsikringerListeFraFil;
+  private ObservableList<Forsikring> forsikringerListe;
   @FXML
   private TableView forsikringTabell;
+  @FXML
+  TableColumn forsikringNrKolonne;
+  @FXML
+  TableColumn typeKolonne;
+  @FXML
+  TableColumn belopKolonne;
+  @FXML
+  TableColumn premieKolonne;
+  @FXML
+  TableColumn<Forsikring, Button> visKnappKolonne;
+
+
 
   public void initialize() {
+
+    forsikringTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
+    forsikringNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
+    typeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    belopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    premieKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    visKnappKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
 
     forsikringTabell.setPlaceholder(new Label("Ingen forsikringer er registrert ennå!"));
 
@@ -70,7 +86,7 @@ public class ForsikringerSceneKontroller {
 
     forsikringTabell.getItems().setAll(forsikringerListe);
 
-    //leggTilRedigerKnapp();
+    leggTilVisForsikringKnapp();
 
 
   }
@@ -78,7 +94,7 @@ public class ForsikringerSceneKontroller {
 
   private void leggTilVisForsikringKnapp() {
 
-    visForsikringKolonne.setCellFactory(TabellKnapp.<Forsikring>genererKnapp("\uf2c2", "vis-kunde-knapp", (f) -> {
+    visKnappKolonne.setCellFactory(TabellKnapp.<Forsikring>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (f) -> {
       forsikring = f;
       kunde = dho.getKundeMedForsikringListeHandling().finnForsikringsEier(f);
 

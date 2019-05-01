@@ -5,6 +5,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
 import java.util.function.BiConsumer;
@@ -13,13 +14,17 @@ import java.util.function.Consumer;
 public class TabellKnapp<S> extends TableCell<S, Button> {
 
   private final Button knapp;
+  public static String VIS_KUNDE_IKONE_STI = "/programutvikling/ikoner/vis-kunde.png";
 
-  public TabellKnapp(String tittel, String stil, Consumer<S> funksjon) {
+  public TabellKnapp(String bildeSti, String stil, Consumer<S> funksjon) {
 
-
-    this.knapp = new Button(tittel);
+  ImageView bilde = new ImageView(getClass().getResource(bildeSti).toExternalForm());
+  bilde.setFitWidth(40);
+  bilde.setFitHeight(40);
+    this.knapp = new Button();
     this.knapp.getStyleClass().add(stil);
     this.knapp.setCursor(Cursor.HAND);
+    this.knapp.setGraphic(bilde);
 
     this.knapp.setOnAction((ActionEvent e) -> {
       funksjon.accept(getvalgtElement());
@@ -27,18 +32,20 @@ public class TabellKnapp<S> extends TableCell<S, Button> {
 
   }
 
-  public TabellKnapp(String tittel, String stil, BiConsumer<S, S> funksjon) {
+/*  public TabellKnapp(String tittel, String stil, BiConsumer<S, S> funksjon) {
 
-
+    ImageView bilde = new ImageView(getClass().getResource("/programutvikling/ikoner/vis-kunde.png").toExternalForm());
+    bilde.setFitWidth(20);
+    bilde.setFitHeight(20);
     this.knapp = new Button(tittel);
     this.knapp.getStyleClass().add(stil);
     this.knapp.setCursor(Cursor.HAND);
-
+    this.knapp.setGraphic(bilde);
     this.knapp.setOnAction((ActionEvent e) -> {
       funksjon.accept(getvalgtElement(), null);
     });
 
-  }
+  }*/
 
   public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, Consumer<S> funksjon) {
 
@@ -46,11 +53,11 @@ public class TabellKnapp<S> extends TableCell<S, Button> {
     return param -> new TabellKnapp<>(tittel, stil, funksjon);
   }
 
-  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, BiConsumer<S, S> funksjon) {
+/*  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, BiConsumer<S, S> funksjon) {
 
 
     return param -> new TabellKnapp<>(tittel, stil, funksjon);
-  }
+  }*/
 
   public S getvalgtElement() {
     return (S) getTableView().getItems().get(getIndex());

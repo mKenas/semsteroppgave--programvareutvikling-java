@@ -26,7 +26,14 @@ public class KunderSceneKontroller {
 
   @FXML
   TableColumn<Kunde, Button> visKundeKolonne;
-
+  @FXML
+  TableColumn personNrKolonne;
+  @FXML
+  TableColumn navnKolonne;
+  @FXML
+  TableColumn etterNavnKolonne;
+  @FXML
+  TableColumn fakturaAdresseKolonne;
 
   private Kunde kunde;
   private BorderPane borderPane = hsk.getBorderPane();
@@ -38,6 +45,15 @@ public class KunderSceneKontroller {
   private TextField KunderFilterTesktfelt;
 
   public void initialize() {
+
+
+    kunderTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
+    personNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    navnKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    etterNavnKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
+    fakturaAdresseKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
+    visKundeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
+
 
     kunderTabell.setPlaceholder(new Label("Ingen kunder er registrert ennå!"));
 
@@ -124,7 +140,7 @@ public class KunderSceneKontroller {
   private void leggTilVisKundeKnapp() {
 
 
-    visKundeKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp("\uf2c2", "vis-kunde-knapp", (Kunde k) -> {
+    visKundeKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (Kunde k) -> {
       //
       kunde = k;
       NavigeringTilVisKundeScene();

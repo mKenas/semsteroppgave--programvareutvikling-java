@@ -1,47 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0"
-      styleClass="mainbar" stylesheets="@../styles/styles.css"
-      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="programutvikling.kontrollere.ErstatningListeKontroller">
+
+<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.ErstatningListeKontroller">
     <BorderPane.margin>
-        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0"/>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
 
     <HBox prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
             <Label prefHeight="93.0" prefWidth="176.0" text="Erstatninger">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
                 <HBox.margin>
-                    <Insets left="15.0"/>
+                    <Insets left="15.0" />
                 </HBox.margin>
             </Label>
         </children>
     </HBox>
+   <HBox maxWidth="1.7976931348623157E308">
+      <children>
+         <BorderPane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+            <right>
+               <TextField fx:id="KunderFilterTesktfelt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" promptText="Søk" BorderPane.alignment="CENTER" />
+            </right>
+         </BorderPane>
+      </children>
+   </HBox>
 
     <TableView fx:id="erstatningTabell" prefHeight="383.0" prefWidth="930.0">
         <columns>
             <TableColumn prefWidth="150.0" text="Skade type">
                 <cellValueFactory>
-                    <PropertyValueFactory property="SkadeType"/>
+                    <PropertyValueFactory property="SkadeType" />
                 </cellValueFactory>
             </TableColumn>
 
             <TableColumn prefWidth="200.0" text="Takseringsbeløp">
                 <cellValueFactory>
-                    <PropertyValueFactory property="Takseringsbelop"/>
+                    <PropertyValueFactory property="Takseringsbelop" />
                 </cellValueFactory>
             </TableColumn>
 
             <TableColumn prefWidth="150.0" text="utbetalt beløp">
                 <cellValueFactory>
-                    <PropertyValueFactory property="UtbetaltErstatningsbelop"/>
+                    <PropertyValueFactory property="UtbetaltErstatningsbelop" />
                 </cellValueFactory>
             </TableColumn>
 
@@ -60,20 +73,8 @@
 
         </columns>
         <VBox.margin>
-            <Insets bottom="100.0"/>
+            <Insets bottom="100.0" />
         </VBox.margin>
     </TableView>
-
-    <BorderPane prefHeight="128.0" prefWidth="930.0">
-        <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="64.0"
-                    prefWidth="320.0" styleClass="sub-scene-knapp" text="Utbetal erstatning"
-                    BorderPane.alignment="CENTER">
-                <BorderPane.margin>
-                    <Insets right="15.0"/>
-                </BorderPane.margin>
-            </Button>
-        </right>
-    </BorderPane>
 
 </VBox>

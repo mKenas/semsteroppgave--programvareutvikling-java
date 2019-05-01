@@ -101,11 +101,13 @@
 /*tabell knapp*/
 .rediger-knapp, .vis-kunde-knapp {
 
-    -fx-background-color: #8DC0BC;
+   /* -fx-background-color: #8DC0BC;
     -fx-font-family: "Font Awesome 5 Free";
     -fx-text-fill: #FFF;
-    -fx-background-radius: 5;
+    -fx-background-radius: 5;*/
 }
+
+
 
 .slett-knapp {
 

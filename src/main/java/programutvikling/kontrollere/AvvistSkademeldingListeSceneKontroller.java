@@ -50,7 +50,7 @@ public class AvvistSkademeldingListeSceneKontroller {
 
       avvistSkademeldingTabell.getItems().setAll(avvistSkademeldingListe);
 
-      leggTilVisErstatningKnapp();
+      leggTilVisAvvistSkademelingKnapp();
 
     }
 
@@ -72,15 +72,15 @@ public class AvvistSkademeldingListeSceneKontroller {
 
     avvistSkademeldingTabell.getItems().setAll(avvistSkademeldingListe);
 
-    //leggTilRedigerKnapp();
+   leggTilVisAvvistSkademelingKnapp();
 
 
   }
 
 
-  private void leggTilVisErstatningKnapp() {
+  private void leggTilVisAvvistSkademelingKnapp() {
 
-    visAvvistSkademeldingKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp("\uf2c2", "vis-kunde-knapp", (s) -> {
+    visAvvistSkademeldingKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (s) -> {
       this.skademelding = s;
       kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(s);
 
