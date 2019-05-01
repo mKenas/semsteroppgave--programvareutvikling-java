@@ -3,6 +3,7 @@ package programutvikling.kontrollere;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.Forsikring;
@@ -88,7 +89,7 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
     System.out.println(forsikringspremie);
 
 
-    forsikring = new HusOgInnboForsikring(forsikringsbelop, forsikringspremie, "",
+    forsikring = new HusOgInnboForsikring(forsikringsbelop, forsikringspremie,
             boligensAdresse, byggeAr, boligType, byggeMateriale, standard, antallkvadratmeter, bygningForsikringsbelop, innboForsikringsbelop);
 
     //Forsikring<HusOgInnboForsikring> forsikring = new Forsikring<>(1.0,0.0,"");
@@ -140,4 +141,8 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
   }
 
 
+  @FXML
+  public void VisForsikringVillkar(ActionEvent actionEvent) {
+
+  }
 }

@@ -13,6 +13,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Hyperlink?>
 <VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.OpprettHusOgInnboForsikringSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
@@ -84,8 +85,7 @@
                      <Insets bottom="10.0" right="10.0" />
                   </VBox.margin>
                </JFXTextField>
-               <Label text="Forsikringsvillkår" />
-               <JFXComboBox prefHeight="27.0" prefWidth="400.0" />
+                    <Hyperlink text="Forsikringsvillkår" onAction="#VisForsikringVillkar"> </Hyperlink>
                 </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="420.0">
