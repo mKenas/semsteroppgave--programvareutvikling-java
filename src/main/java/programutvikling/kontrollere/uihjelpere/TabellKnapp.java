@@ -8,7 +8,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class TabellKnapp<S> extends TableCell<S, Button> {
