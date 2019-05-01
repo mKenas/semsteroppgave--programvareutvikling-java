@@ -34,10 +34,11 @@ public abstract class Navigator {
 
   private static final String OPPRETT_BAT_FORSIKRING_SCENE = "/programutvikling/views/opprettBaatForsikringScene.fxml";
   private static final String VIS_BAT_FORSIKRING_SCENE = "/programutvikling/views/visBatForsikringScene.fxml";
+  private static final String REDIGER_BAT_FORSIKRING_SCENE = "/programutvikling/views/redigerBatForsikringScene.fxml";
 
   private static final String OPPRETT_REISEFORSIKRING_SCENE = "/programutvikling/views/OpprettReiseforsikringScene.fxml";
   private static final String VIS_REISEFORSIKRING_SCENE = "/programutvikling/views/visReiseforsikringScene.fxml";
-  private static final String REDIGER_BAT_FORSIKRING_SCENE = "/programutvikling/views/redigerBatForsikringScene.fxml";
+  private static final String REDIGER_REISEFORSIKRING_SCENE = "/programutvikling/views/redigerReiseforsikringScene.fxml";
 
   private static final String REGISTRER_SKADE_MELDING_SCENE = "/programutvikling/views/registrerSkademeldingScene.fxml";
   private static final String VIS_SKADE_MELDING_SCENE = "/programutvikling/views/visSkademeldingScene.fxml";
@@ -306,13 +307,16 @@ public abstract class Navigator {
 
   public static String getVisBatForsikringScene() {return VIS_BAT_FORSIKRING_SCENE;}
 
+  public static String getREDIGER_BAT_FORSIKRING_SCENE() {return REDIGER_BAT_FORSIKRING_SCENE;}
 
 
   public static String getOPPRETT_REISEFORSIKRING_SCENE() {return OPPRETT_REISEFORSIKRING_SCENE;}
 
   public static String getVIS_REISEFORSIKRING_SCENE() {return VIS_REISEFORSIKRING_SCENE;}
 
-  public static String getREDIGER_BAT_FORSIKRING_SCENE() {return REDIGER_BAT_FORSIKRING_SCENE;}
+  public static String getREDIGER_REISEFORSIKRING_SCENE() {return REDIGER_REISEFORSIKRING_SCENE;}
+
+
 
 
 

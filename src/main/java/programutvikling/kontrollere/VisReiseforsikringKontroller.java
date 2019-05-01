@@ -16,7 +16,7 @@ import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
 
   @FXML
-  JFXTextField personNrTekstfelt;
+  Label personNrLabel;
   @FXML
   Label reiseForsikringssumLabel;
   @FXML
@@ -37,6 +37,13 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
   private Kunde kunde;
   private ReiseForsikring forsikring;
 
+  @Override
+  public void setKunde(Kunde kunde) {
+    this.kunde = kunde;
+    personNrLabel.setText(kunde.getPersonNr());
+
+  }
+
 
 
   public void setForsikring(Forsikring forsikring) {
@@ -48,8 +55,9 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
 
       reiseForsikringssumLabel.setText(String.valueOf(f.getForsikringsSum()));
       reiseForsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
-      reiseArligForsikringspremieLabel.setText(String.valueOf(f.getForsikringspremie()));
       reiseForsikringsomradeLabel.setText(f.getForsikringsOmrade());
+      reiseArligForsikringspremieLabel.setText(String.valueOf(f.getForsikringspremie()));
+
 
     }
   }
@@ -69,14 +77,12 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
 
   }
 
+  public void handleNavigerTilRedigerReiseforsikringKnapp() {
 
-  @Override
-  public void setKunde(Kunde kunde) {
-    this.kunde = kunde;
-    personNrTekstfelt.setText(kunde.getPersonNr());
+    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_REISEFORSIKRING_SCENE(), kunde, forsikring);
+
 
   }
-
 
 
   @FXML

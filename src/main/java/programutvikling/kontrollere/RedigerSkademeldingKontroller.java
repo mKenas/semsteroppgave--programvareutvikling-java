@@ -10,15 +10,20 @@ import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.base.Skademelding;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.validering.Validator;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingInfo, KontrollerMedKundeInfo {
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
 
   private Skademelding skademelding;
-
   private Kunde kunde;
 
 
@@ -38,11 +43,17 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
   private JFXTextArea ovrigSkadeInformasjonTekstfelt;
 
 
+
+  public void initialize() {
+
+    Validator.datoValidering(skadeDatoVelger,"","Skadedato feil");
+
+  }
+
   @Override
   public void setSkademelding(Skademelding skademelding) {
 
     this.skademelding = skademelding;
-
 
     forsikringsTypeKomboboks.getSelectionModel().select(skademelding.getForsikringsType());
     skadeDatoVelger.setValue(LocalDate.parse(skademelding.getSkadeDato()));
@@ -79,9 +90,26 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
       skademelding.setSkadeBeskrivelse(skadeBeskrivelse);
       skademelding.setOvrigSkadeInformasjon(ovrigSkadeInformasjon);
 
-      navigeringTilSkademeldingScene();
+      String dato = skademelding.getOpprettelsesDato();
 
-  }
+
+      String stringDato = (dato);
+
+    System.out.println(skadeDato);
+    System.out.println(dato);
+
+    System.out.println(stringDato);
+
+   /* try {
+      Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(stringDato);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }*/
+
+
+    navigeringTilSkademeldingScene();
+
+      }
 
 
   protected void navigeringTilSkademeldingScene() {

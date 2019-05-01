@@ -94,7 +94,6 @@ public class RedigerHusOgInnboForsikringSceneKontroller implements KontrollerMed
   public void handleTilbakeKnapp() {
 
     NavigeringTilKunderScene();
-
   }
 
   protected void NavigeringTilKunderScene() {
@@ -145,18 +144,6 @@ public class RedigerHusOgInnboForsikringSceneKontroller implements KontrollerMed
     Double forsikringspremie = Double.valueOf(forsikringspremieTekstfelt.getText());
 
 
-
-
-
-
-    //Forsikring<HusOgInnboForsikring> forsikring = new Forsikring<>(1.0,0.0,"");
-    //kunde.leggTilForsikring(forsikring);
-
-    // kunde må slettes fra liste hvis validering mislykkes!
-    // dlo.getKunderListe().slettKunde(kunde);
-
-
-
     if(boligensAdresseTekstfelt.validate() == true &&
             byggeArTekstfelt.validate() == true &&
             boligTypeTekstfelt.validate() == true &&
@@ -196,11 +183,7 @@ public class RedigerHusOgInnboForsikringSceneKontroller implements KontrollerMed
     Validator.valider(bygningForsikringsbelopTekstfelt,"([0-9]{4,14})$","Bygningensforsikringsbeløp tillater 4-14 tall");
     Validator.valider(innboForsikringsbelopTekstfelt,"([0-9]{4,14})$","Innboforsikringsbeløp tillater 4-14 tall");
     Validator.valider(forsikringsbelopTekstfelt,"([0-9]{4,14})$","Forsikringsbeløp tillater 4-14 tall");
-    Validator.valider(forsikringspremieTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
-
-  //TODO gå igjennom uednret versjon, finne hvilke felter som trenger validering og ikke, samt endre focusproperty slik at man ikke får feil med mindre man taster feil.
+    Validator.valider(forsikringspremieTekstfelt,"^([0-9]){2,12}((\\.[0-9]{1,2})?)$","Forsikringspremie tillater 4-14 tall");
 
   }
-
-
 }

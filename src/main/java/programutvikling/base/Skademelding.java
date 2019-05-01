@@ -156,6 +156,8 @@ public class Skademelding implements Serializable {
     this.opprettelsesDato = opprettelsesDato;
   }
 
+
+
   @Override
   public int hashCode() {
 
