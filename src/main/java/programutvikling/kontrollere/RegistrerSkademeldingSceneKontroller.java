@@ -15,7 +15,7 @@ import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 
-public class RegistrerSkadeSceneKontroller implements KontrollerMedKundeInfo {
+public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeInfo {
   @FXML
   JFXTextField personNrTekstfelt;
   @FXML

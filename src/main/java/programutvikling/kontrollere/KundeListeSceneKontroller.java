@@ -1,5 +1,6 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.SokeFelt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
+import programutvikling.status.InnlesingOgSkrivingStatus;
 
 import java.util.function.Predicate;
 
@@ -40,9 +42,12 @@ public class KundeListeSceneKontroller {
   @FXML
   private TextField kunderFilterTesktfelt;
 
+  @FXML
+  private JFXButton registrerKundeKnapp;
+
   public void initialize() {
 
-
+    registrerKundeKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
     kunderTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
     personNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
     navnKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );

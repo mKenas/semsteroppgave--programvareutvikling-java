@@ -2,6 +2,7 @@ package programutvikling.kontrollere;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -127,5 +128,9 @@ public class OpprettBaatForsikringSceneKontroller implements KontrollerMedKundeI
 
   }
 
+  @FXML
+  public void VisForsikringVillkar(ActionEvent actionEvent) {
+
+  }
 
 }

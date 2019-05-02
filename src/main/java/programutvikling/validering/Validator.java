@@ -22,10 +22,12 @@ public class Validator {
 
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                {
+
+                if (!newValue) {
                     tekstfelt.validate();
-                    System.out.println(tekstfelt.validate());
+
                 }
+
             }
         });
     }
