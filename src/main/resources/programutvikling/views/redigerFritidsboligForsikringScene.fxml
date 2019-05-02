@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RedigerFritidsboligForsikringSceneKontroller">
+<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RedigerFritidsboligForsikringSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
@@ -143,7 +143,7 @@
 
     <BorderPane prefHeight="200.0" prefWidth="200.0">
         <right>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRedigerFritidsboligForsikringKnapp" prefHeight="64.0" prefWidth="320.0" styleClass="sub-scene-knapp" text="Rediger forsikring" BorderPane.alignment="CENTER">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRedigerFritidsboligForsikringKnapp" prefHeight="64.0" prefWidth="320.0" styleClass="handling-scene-knapp" text="Rediger forsikring" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0" />
                 </BorderPane.margin>

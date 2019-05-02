@@ -155,7 +155,6 @@ public class RedigerHusOgInnboForsikringSceneKontroller implements KontrollerMed
             forsikringsbelopTekstfelt.validate() == true &&
             forsikringspremieTekstfelt.validate() == true) {
 
-
       forsikring.setBoligAdresse(boligensAdresse);
       forsikring.setByggeAr(byggeAr);
       forsikring.setBoligType(boligType);
@@ -169,6 +168,7 @@ public class RedigerHusOgInnboForsikringSceneKontroller implements KontrollerMed
 
       NavigeringTilVisKundeScene();
     }
+
 
   }
 

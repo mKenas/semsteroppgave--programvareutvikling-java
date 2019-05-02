@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
-import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.SokeFelt;
@@ -17,15 +16,16 @@ import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 import java.util.function.Predicate;
 
 
-public class KunderSceneKontroller {
+public class KundeListeSceneKontroller {
 
-  private static final String KUNDE_FIL_LOKASJON = "kunder.jobj";
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
-  DataHandlingObjekt dhl = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
 
+  private Kunde kunde;
+  private BorderPane borderPane = hsk.getBorderPane();
+  private ObservableList<Kunde> kunderliste;
   @FXML
-  TableColumn<Kunde, Button> visKundeKolonne;
+  private TableView kunderTabell;
   @FXML
   TableColumn personNrKolonne;
   @FXML
@@ -34,15 +34,11 @@ public class KunderSceneKontroller {
   TableColumn etterNavnKolonne;
   @FXML
   TableColumn fakturaAdresseKolonne;
-
-  private Kunde kunde;
-  private BorderPane borderPane = hsk.getBorderPane();
-  private ObservableList<Kunde> kunderliste, kunderlisteFraFil;
   @FXML
-  private TableView kunderTabell;
+  TableColumn<Kunde, Button> visKundeKolonne;
 
   @FXML
-  private TextField KunderFilterTesktfelt;
+  private TextField kunderFilterTesktfelt;
 
   public void initialize() {
 
@@ -83,7 +79,13 @@ public class KunderSceneKontroller {
     Predicate<Kunde> betingelse =   new Predicate<Kunde>() {
       @Override
       public boolean test(Kunde kunde) {
-        if (kunde.getPersonNr().contains(KunderFilterTesktfelt.getText()) || kunde.getNavn().contains(KunderFilterTesktfelt.getText())) {
+        String sokeTekst = kunderFilterTesktfelt.getText().toLowerCase().toLowerCase();
+        if (kunde.getPersonNr().toLowerCase().contains(sokeTekst)
+                || kunde.getNavn().toLowerCase().contains(sokeTekst)
+                || kunde.getEtternavn().toLowerCase().contains(sokeTekst)
+                || kunde.getFakturaAdresse().toLowerCase().contains(sokeTekst)
+
+                ) {
           return true;
         }
         return false;
@@ -91,43 +93,15 @@ public class KunderSceneKontroller {
 
     };
 
+    SokeFelt sokeFelt = new SokeFelt(kunderTabell, kunderFilterTesktfelt,kunderliste,SokeFelt.getKundeFilteringLogikk(kunderFilterTesktfelt));
 
-
-    SokeFelt sokeFelt = new SokeFelt(kunderTabell,KunderFilterTesktfelt,kunderliste,betingelse);
-   /*  FilteredList<Kunde> filtrertListe = new FilteredList<>(kunderliste);
-
-
-
-
-   KunderFilterTesktfelt.textProperty().addListener((observable, oldValue, newValue) -> {
-      filtrertListe.setPredicate(
-              new Predicate<Kunde>() {
-                @Override
-                public boolean test(Kunde kunde) {
-                  if (kunde.getPersonNr().contains(KunderFilterTesktfelt.getText()) || kunde.getNavn().contains(KunderFilterTesktfelt.getText())) {
-                    return true;
-                  }
-                  return false;
-                }
-
-              }
-
-      );
-
-      kunderliste = FXCollections.observableArrayList(filtrertListe);
-
-      kunderTabell.setItems(FXCollections.observableList(kunderliste));
-
-    });*/
 
   }
 
 
   private void kundeEndret() {
 
-
     kunderTabell.getItems().setAll(kunderliste);
-
 
     leggTilVisKundeKnapp();
 
@@ -135,13 +109,10 @@ public class KunderSceneKontroller {
 
 
 
-
-
   private void leggTilVisKundeKnapp() {
 
+    visKundeKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE, (Kunde k) -> {
 
-    visKundeKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (Kunde k) -> {
-      //
       kunde = k;
       NavigeringTilVisKundeScene();
     }));

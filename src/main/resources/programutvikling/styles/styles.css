@@ -9,7 +9,7 @@
 
 }
 
-.parent {
+.hoved-scene-kontainer {
     -fx-background-color: #F2F2F2;
 }
 
@@ -17,42 +17,49 @@
     -fx-background-color: #024253;
 
 }
+.hyperlink{
+    -fx-text-fill: #3f9fa8;
+    -fx-underline:true;
+}
 
-.sidebar {
+.hoved-scene-sub-kontainer {
 
     -fx-background-color: #FFF;
     -fx-background-radius: 12;
 }
 
-.mainbar {
 
-    -fx-background-color: #FFF;
-    -fx-background-radius: 12;
-}
 
-.button, .menu-button {
+.button, .menu-button  {
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 0;
     -fx-background-color: transparent;
 }
+.scroll-pane{
+    -fx-background-color: transparent;
 
-/*sidebar-button*/
+}
 
-.sidebar-button {
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+/*side-meny-knapp*/
+
+.side-meny-knapp {
 
     -fx-font-size: 20;
 
 }
 
-.sidebar-button:hover {
+.side-meny-knapp:hover {
 
     -fx-background-color: #F7F7F7;
     -fx-border-width: 0 0 0 3;
 
 }
 
-.sidebar-button:focused {
+.side-meny-knapp:focused {
 
     -fx-background-color: #F7F7F7;
     -fx-border-width: 0 0 0 3;
@@ -86,7 +93,7 @@
 
 /**/
 
-.sub-scene-knapp {
+.handling-scene-knapp {
     -fx-font-size: 13;
     -fx-text-fill: #FFF;
     -fx-background-color: #609691;
@@ -94,7 +101,7 @@
 
 }
 
-.sub-scene-knapp:hover {
+.handling-scene-knapp:hover {
 
     -fx-background-color: #8DC0BC;
 
@@ -111,16 +118,13 @@
 
 
 
-.slett-knapp {
+.slett-link {
 
-    -fx-background-color: #c02f3b;
-    -fx-font-family: "Font Awesome 5 Free";
-    -fx-text-fill: #FFF;
-    -fx-background-radius: 5;
+    -fx-text-fill: #c02f3b;
 
 }
 
-/*menu-button*/
+/*burger-meny-knapp*/
 
 .menu-button:pressed {
     -fx-background-color: #024253;
@@ -136,6 +140,7 @@
 }
 
 .menu-item {
+    -fx-padding: 15px;
 
 }
 
@@ -149,7 +154,12 @@
 }
 
 .context-menu {
-    -fx-pref-width: 100px;
+    /*-fx-pref-width: 100px;*/
+    -fx-background-radius: 5;
+
+
+
+
 
 }
 
@@ -203,7 +213,7 @@
 
 /**** */
 
-.vis-kunde-kontainer {
+.vis-elmenter-kontainer {
     -fx-background-radius: 15;
     -fx-background-color: #F7F7F7;
 }

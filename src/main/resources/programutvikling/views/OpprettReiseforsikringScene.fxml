@@ -5,13 +5,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisReiseforsikringKontroller">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.OpprettReiseforsikringKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Kunde &gt; Forsikringer &gt; Vis Reiseforsikring  " HBox.hgrow="ALWAYS">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Kunde &gt; Forsikringer &gt; Opprett reiseforsikring  " HBox.hgrow="ALWAYS">
                 <font>
                     <Font size="20.0" />
                 </font>
@@ -24,18 +24,18 @@
             <Insets bottom="10.0" />
         </VBox.margin>
     </HBox>
-    <HBox fillHeight="false" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+    <HBox maxWidth="1.7976931348623157E308">
         <children>
             <VBox maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                 <children>
-                    <Label maxWidth="1.7976931348623157E308" text="Kunde" VBox.vgrow="ALWAYS">
+                    <Label maxWidth="1.7976931348623157E308" text="Kunde">
                         <VBox.margin>
                             <Insets left="15.0" />
                         </VBox.margin>
                     </Label>
-                    <JFXTextField fx:id="personNrTekstfelt" disable="true" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                    <JFXTextField fx:id="personNrTekstfelt" disable="true" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="424.0">
                         <VBox.margin>
-                            <Insets left="15.0" />
+                            <Insets bottom="20.0" left="15.0" />
                         </VBox.margin>
                     </JFXTextField>
                 </children>
@@ -55,29 +55,31 @@
         <children>
             <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                 <items>
-                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                    <VBox>
                         <children>
-                            <Label maxWidth="1.7976931348623157E308" text="Forsikringssum" VBox.vgrow="ALWAYS">
+                            <Label maxWidth="1.7976931348623157E308" text="Forsikringssum">
                                 <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                 </VBox.margin>
                             </Label>
-                            <JFXTextField fx:id="reiseForsikringssumTekstfelt" maxWidth="1.7976931348623157E308" prefWidth="211.0" VBox.vgrow="ALWAYS">
+                            <JFXTextField fx:id="reiseForsikringssumTekstfelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                                 <VBox.margin>
-                                    <Insets bottom="15.0" />
+                                    <Insets bottom="20.0" left="15.0" right="20.0" />
                                 </VBox.margin>
                             </JFXTextField>
-                            <Label maxWidth="1.7976931348623157E308" text="Forsikringsbeløp" VBox.vgrow="ALWAYS">
-                                <VBox.margin>
-                                    <Insets left="15.0" right="15.0" />
-                                </VBox.margin></Label>
-                            <JFXTextField fx:id="reiseForsikringsBelopTekstfelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                     <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Forsikringbeløp">
                         <VBox.margin>
-                           <Insets bottom="15.0" />
-                        </VBox.margin></JFXTextField>
+                           <Insets left="15.0" right="15.0" top="10.0" />
+                        </VBox.margin>
+                     </Label>
+                     <JFXTextField fx:id="reiseForsikringsBelopTekstfelt" layoutX="10.0" layoutY="31.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                           <Insets bottom="15.0" left="15.0" right="20.0" />
+                        </VBox.margin>
+                     </JFXTextField>
                         </children>
                     </VBox>
-                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                    <VBox maxWidth="1.7976931348623157E308" prefWidth="227.0">
                         <children>
                             <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Forsikringsområde">
                                 <VBox.margin>
@@ -86,13 +88,16 @@
                             </Label>
                             <JFXTextField fx:id="reiseForsikringsomradeTekstfelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                                 <VBox.margin>
-                                    <Insets bottom="15.0" />
+                                    <Insets bottom="20.0" right="15.0" />
                                 </VBox.margin>
                             </JFXTextField>
-                            <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Årlig forsikringspremie" />
+                            <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Årlig forsikringspremie">
+                        <VBox.margin>
+                           <Insets top="10.0" />
+                        </VBox.margin></Label>
                             <JFXTextField fx:id="reiseArligForsikringspremieTekstfelt" layoutX="10.0" layoutY="31.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                         <VBox.margin>
-                           <Insets bottom="15.0" />
+                           <Insets bottom="15.0" right="15.0" />
                         </VBox.margin></JFXTextField>
                         </children>
                     </VBox>
@@ -104,9 +109,9 @@
         </children>
     </HBox>
 
-    <BorderPane maxWidth="1.7976931348623157E308">
+    <BorderPane>
         <right>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleTilbakeKnapp" prefHeight="50.0" prefWidth="98.0" styleClass="sub-scene-knapp" text="Tilbake" BorderPane.alignment="CENTER">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleOpprettKnapp" prefHeight="50.0" prefWidth="131.0" styleClass="handling-scene-knapp" text="Opprett forsikring" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0" />
                 </BorderPane.margin>

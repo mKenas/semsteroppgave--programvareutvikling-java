@@ -3,74 +3,75 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="parent" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.hovedSceneKontroller">
+<?import javafx.scene.text.Font?>
+<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.hovedSceneKontroller">
 
     <top>
 
         <!--<fx:include source="/programutvikling/views/header.fxml"/>-->
 
         <BorderPane prefHeight="70.0" styleClass="header" BorderPane.alignment="CENTER">
-
-            <left>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="197.0" text="Expert Forsikring" textFill="WHITE">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
-            </left>
          <right>
-                <MenuButton mnemonicParsing="false" prefHeight="70.0" prefWidth="104.0" textAlignment="RIGHT" textFill="WHITE" BorderPane.alignment="CENTER">
+                <MenuButton contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" textFill="WHITE" BorderPane.alignment="CENTER">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#handleApneKnapp" text="Åpne">
-                            <graphic>
-                                <Label text="">
-                                    <font>
-                                        <Font name="Font Awesome 5 Free Solid" size="13.0" />
-                                    </font>
-                                </Label>
-                            </graphic>
+                        <MenuItem onAction="#handleApneKnapp" text="Åpne  ctrl +">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#handleLagreKnapp" text="Lagre">
-                            <graphic>
-                                <Label text="">
-                                    <font>
-                                        <Font name="Font Awesome 5 Free Solid" size="13.0" />
-                                    </font>
-                                </Label>
-                            </graphic>
+                        <MenuItem onAction="#handleLagreKnapp" text="Lagre  ctrl +">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#handleAvsluttKnapp" text="Avslutt">
-                            <graphic>
-                                <Label text="">
-                                    <font>
-                                        <Font name="Font Awesome 5 Free Solid" size="13.0" />
-                                    </font>
-                                </Label>
-                            </graphic>
+                        <MenuItem onAction="#handleAvsluttKnapp" text="Avslutt  ctrl +">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Q" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
                         </MenuItem>
                     </items>
                     <font>
                         <Font name="Font Awesome 5 Free Solid" size="30.0" />
                     </font>
                <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="33.0" fitWidth="35.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../ikoner/menu.png" />
+                        <Image url="@../ikoner/burger-meny.png" />
                      </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
+               <BorderPane.margin>
+                  <Insets left="15.0" right="15.0" />
+               </BorderPane.margin>
                 </MenuButton>
          </right>
+         <left>
+                <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Expert Forsikring" textFill="WHITE" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+               <BorderPane.margin>
+                  <Insets left="15.0" />
+               </BorderPane.margin>
+                </Label>
+         </left>
         </BorderPane>
 
     </top>
 
     <left>
-        <VBox fx:id="vbox1" prefHeight="690.0" prefWidth="290.0" styleClass="sidebar">
+        <VBox fx:id="vbox1" prefHeight="690.0" prefWidth="290.0" styleClass="hoved-scene-sub-kontainer">
             <BorderPane.margin>
                 <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
             </BorderPane.margin>
@@ -83,29 +84,29 @@
                         <Insets bottom="30.0" left="15.0" top="15.0" />
                     </VBox.margin>
                 </Label>
-                <JFXButton fx:id="mainSceneKnapp" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleNavigeringTilDashbord" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Dashbord">
+                <JFXButton fx:id="mainSceneKnapp" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleNavigeringTilDashbord" prefHeight="80.0" prefWidth="290.0" styleClass="side-meny-knapp" text="Dashbord">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleNavigeringTilKunderScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Kunder">
+                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleNavigeringTilKunderScene" prefHeight="80.0" prefWidth="290.0" styleClass="side-meny-knapp" text="Kunder">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
                 </JFXButton>
-                <JFXButton fx:id="forsikringerSceneKnapp" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleNavigeringTilForsikringerScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Forsikringer">
+                <JFXButton fx:id="forsikringerSceneKnapp" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleNavigeringTilForsikringerScene" prefHeight="80.0" prefWidth="290.0" styleClass="side-meny-knapp" text="Forsikringer">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
                 </JFXButton>
 
-                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNavigeringTilSkademeldingScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Skademeldinger">
+                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNavigeringTilSkademeldingScene" prefHeight="80.0" prefWidth="290.0" styleClass="side-meny-knapp" text="Skademeldinger">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleNavigeringTilErstatningerScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Erstatninger" />
-            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleNavigeringTilAvvistSkademeldingListeScene" prefHeight="80.0" prefWidth="290.0" styleClass="sidebar-button" text="Avviste erstatningskrav" />
+                <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleNavigeringTilErstatningerScene" prefHeight="80.0" prefWidth="290.0" styleClass="side-meny-knapp" text="Erstatninger" />
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleNavigeringTilAvvistSkademeldingListeScene" prefHeight="80.0" prefWidth="290.0" styleClass="side-meny-knapp" text="Avviste erstatningskrav" />
             </children>
         </VBox>
 

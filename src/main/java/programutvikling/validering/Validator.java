@@ -1,6 +1,7 @@
 package programutvikling.validering;
 
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RegexValidator;
 import javafx.beans.value.ChangeListener;
@@ -31,29 +32,42 @@ public class Validator {
     }
 
 
-    public static void datoValidering(JFXDatePicker skadeDatoVelger, String regex, String melding) {
+    public static void validerTekstOmrade(JFXTextArea tekstOmrade, String regex, String melding) {
 
-        RegexValidator regexDato = new RegexValidator();
-        regexDato.setRegexPattern(regex);
-        regexDato.setMessage(melding);
-        skadeDatoVelger.getValidators().add(regexDato);
+        RegexValidator regexTekstOmrade = new RegexValidator();
+        regexTekstOmrade.setRegexPattern(regex);
+        regexTekstOmrade.setMessage(melding);
+        tekstOmrade.getValidators().add(regexTekstOmrade);
 
-        skadeDatoVelger.focusedProperty().addListener(new ChangeListener<Boolean>() {
+        tekstOmrade.focusedProperty().addListener(new ChangeListener<Boolean>() {
 
 
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 
-                skadeDatoVelger.validate();
-                System.out.println(skadeDatoVelger.validate());
-
-
+                tekstOmrade.validate();
+                System.out.println(tekstOmrade.validate());
             }
         });
+   }
+
+
+   public static void validerDato(JFXDatePicker datoVelger, String melding) {
+
+
+       RegexValidator validerDato = new RegexValidator();
+      // validerDato.setRegexPattern(regex);
+       validerDato.setMessage(melding);
+      // datoVelger = new JFXDatePicker();
 
 
 
-    }
+
+   }
+
+
+
+
 
 
 

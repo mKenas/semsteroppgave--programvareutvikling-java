@@ -18,8 +18,16 @@ public class LesingTradObjekt extends Task<HashMap<String,Object>> {
 
 
   public LesingTradObjekt(String filsti,Runnable handlingFullførtFuksjon) {
+    if (filsti ==null){
+      this.cancel();
+    }
+
+
     this.handlingFullfortfunksjon = handlingFullførtFuksjon;
-    this.filstil = filsti;
+
+      this.filstil = filsti;
+
+
   }
 
   @Override
@@ -32,8 +40,11 @@ public class LesingTradObjekt extends Task<HashMap<String,Object>> {
 
     if(filstil.endsWith(".jobj")){
     System.out.println("starter lesing fra jobj fil");
+
     FilLeser filLeser = new JOBJFormatLeser();
     this.dataliste = filLeser.lesFraFil(this.filstil);
+
+
     }
     else if (filstil.endsWith(".csv")){
       System.out.println("starter lesing fra fil csv fil");
@@ -64,6 +75,13 @@ public class LesingTradObjekt extends Task<HashMap<String,Object>> {
   @Override
   protected void failed() {
     System.out.println("Task failed");
+    InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
+
+  }
+
+  @Override
+  protected void cancelled() {
+    System.out.println("Task canceled");
     InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
 
   }

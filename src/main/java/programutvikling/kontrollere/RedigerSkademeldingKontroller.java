@@ -12,9 +12,7 @@ import programutvikling.base.Skademelding;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.validering.Validator;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingInfo, KontrollerMedKundeInfo {
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
@@ -40,9 +38,15 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
   private JFXTextArea ovrigSkadeInformasjonTekstfelt;
 
 
+
   public void initialize() {
 
-    Validator.datoValidering(skadeDatoVelger, "", "Skadedato feil");
+    //Validator.datoValidering(skadeDatoVelger,"","Skadedato feil");
+
+    Validator.valider(klokkeslettTekstfelt,"(^[0-9]{2}(:)[0-9]{2})?$","Klokkeslett må være i 'HH:MM' format");
+    Validator.valider(skadeTypeTekstfelt,"^([0-9a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$","Skadetypen må være mellom 2-20 skandinaviske bokstaver");
+    Validator.validerTekstOmrade(skadeBeskrivelseTekstfelt,"^([0-9a-zA-ZäöæøåøÄÖÆØÅ ]{2,140})?$","Beskrivelsen må være mellom 0-140 skandinaviske og tall");
+    Validator.validerTekstOmrade(ovrigSkadeInformasjonTekstfelt,"^([0-9a-zA-ZäöæøåøÄÖÆØÅ ]{2,140})?$","Øvrig informasjon må være mellom 0-140 skandinaviske og tall");
 
   }
 
@@ -69,7 +73,7 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
   }
 
   @FXML
-  public void handleRedigerSkademeldingKnapp() {
+    public void handleRedigerSkademeldingKnapp() {
 
     String forikringsType = forsikringsTypeKomboboks.getValue().toString();
     String skadeDato = skadeDatoVelger.getValue().toString();
@@ -78,60 +82,39 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
     String skadeBeskrivelse = skadeBeskrivelseTekstfelt.getText();
     String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
 
-    skademelding.setForsikringsType(forikringsType);
-    skademelding.setSkadeDato(skadeDato);
-    skademelding.setKlokkeSlett(klokkeslett);
-    skademelding.setSkadeType(skadeType);
-    skademelding.setSkadeBeskrivelse(skadeBeskrivelse);
-    skademelding.setOvrigSkadeInformasjon(ovrigSkadeInformasjon);
 
-    String opprettelsesDato = skademelding.getOpprettelsesDato();
-
-    System.out.println(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-
-/*    String dato = skademelding.getOpprettelsesDato();
-    String stringDato = (dato);
-
-    System.out.println(skadeDato); // 2019-04-01
-    System.out.println(dato); // 02.05.2019 11:39
-    System.out.println(stringDato); //02.05.2019 11:39
+    LocalDate sdato = skadeDatoVelger.getValue();
 
 
-    String skadeString = skadeDato;
+    System.out.println(sdato.isBefore(LocalDate.now().plusDays(1)));
 
-    SimpleDateFormat fraBruker = new SimpleDateFormat(skadeString);
-    SimpleDateFormat mittFormat = new SimpleDateFormat("dd/MM/yyyy");
+    boolean riktigDato = sdato.isBefore(LocalDate.now().plusDays(1));
 
 
-    try {
-      String nyttFormat = mittFormat.format(fraBruker.parse(skadeString));
-      System.out.println(nyttFormat);
-    } catch (ParseException e) {
-      e.printStackTrace();
-    }*/
-/*    String opprettelsesDatoNY = skademelding.getOpprettelsesDato();
-    DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-    Date NYOpprettelses = null;
-    try {
-      NYOpprettelses = (Date)formatter.parse(opprettelsesDatoNY);
-    } catch (ParseException e) {
-      e.printStackTrace();
+
+    if (sdato.isBefore(LocalDate.now().plusDays(1)) && klokkeslettTekstfelt.validate()  &&
+            skadeBeskrivelseTekstfelt.validate() && ovrigSkadeInformasjonTekstfelt.validate()) {
+
+
+      skademelding.setForsikringsType(forikringsType);
+      skademelding.setSkadeDato(skadeDato);
+      skademelding.setKlokkeSlett(klokkeslett);
+      skademelding.setSkadeType(skadeType);
+      skademelding.setSkadeBeskrivelse(skadeBeskrivelse);
+      skademelding.setOvrigSkadeInformasjon(ovrigSkadeInformasjon);
+
+      navigeringTilSkademeldingScene();
+
     }
 
-    SimpleDateFormat nyFormatter = new SimpleDateFormat("yyyy-MM-DD");
-    String resultat = nyFormatter.format(NYOpprettelses);
+ /*   else if (riktigDato == false) {
 
-    System.out.println(resultat);*/
+      System.out.println("Skademeldingsdatoen kan ikke være i fremtiden!!!");
+      skadeDatoVelger.getValidators().add(Validator.validerDato(skadeDatoVelger, "Skademeldingsdatoen kan ikke være i fremtiden!!!"));
 
+      skadeDatoVelger.validate()
 
-
-
-
-
-
-
-    navigeringTilSkademeldingScene();
-
+    }*/
   }
 
 

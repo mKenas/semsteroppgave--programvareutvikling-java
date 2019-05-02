@@ -9,6 +9,7 @@ public class JOBJFormatSkriver extends FilSkriver{
 
   public void skrivTilFil(HashMap<String,Object> dataliste, String filsti) throws IOException{
 
+
     try (
             FileOutputStream fos = new FileOutputStream(filsti);
             ObjectOutputStream out = new ObjectOutputStream(fos);
@@ -16,6 +17,8 @@ public class JOBJFormatSkriver extends FilSkriver{
       out.writeObject(dataliste);
     }
 
+    }
 
-  }
+
+
 }

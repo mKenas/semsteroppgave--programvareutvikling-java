@@ -4,18 +4,15 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.Forsikring;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.base.Skademelding;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.kontrollere.uihjelpere.SokeFelt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
 import java.util.ArrayList;
@@ -33,7 +30,6 @@ public class SkademeldingListeKontroller {
   TableColumn<Skademelding, Button> visSkademeldingKnapp;
   private Kunde kunde;
   private Skademelding skademelding;
-  private Forsikring forsikring;
   private BorderPane borderPane = hsk.getBorderPane();
 
   private ObservableList<Skademelding> skademeldingListe;
@@ -45,6 +41,9 @@ public class SkademeldingListeKontroller {
   TableColumn skadeTypeKolonne;
   @FXML
   TableColumn takseringsbelopKolonne;
+
+  @FXML
+  TextField skademeldingFilterTesktfelt;
 
   public void initialize() {
 
@@ -58,8 +57,8 @@ public class SkademeldingListeKontroller {
     skademeldingTabell.setPlaceholder(new Label("Ingen skademelding er registrert ennå!"));
 
 
-    //skademeldingListe = dho.getKundeMedSkademeldingListeHandling().getSkademeldingListe();
-    skademeldingListe = dlo.getSkademeldingListe();
+    skademeldingListe = dho.getKundeMedSkademeldingListeHandling().getSkademeldingListe();
+    //skademeldingListe = dlo.getSkademeldingListe();
 
 
     if (skademeldingListe.size() >= 1) {
@@ -80,6 +79,9 @@ public class SkademeldingListeKontroller {
       }
     });
 
+    SokeFelt sokeFelt = new SokeFelt(skademeldingTabell,skademeldingFilterTesktfelt,skademeldingListe,
+            SokeFelt.getSkademeldingFilteringLogikk(skademeldingFilterTesktfelt));
+
 
   }
 
@@ -97,7 +99,7 @@ public class SkademeldingListeKontroller {
 
   private void leggTilVisSkademeldingKnapp() {
 
-    visSkademeldingKnapp.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (s) -> {
+    visSkademeldingKnapp.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_SKADEMELDING_IKONE, (s) -> {
       HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = (HashMap<Kunde, ArrayList<Skademelding>>) dlo.getAllData().get("kundeMedSkadeMeldingListe");
 
       this.skademelding = s;
@@ -111,11 +113,7 @@ public class SkademeldingListeKontroller {
   }
 
 
-  @FXML
-  protected void navigeringTilOpprettForsikringScene() {
 
-    Navigator.visScene(borderPane, Navigator.getOPPRETT_FORSIKRING_SCENE());
-  }
 
   @FXML
   protected void navigerTilVisErstatningScene() {
