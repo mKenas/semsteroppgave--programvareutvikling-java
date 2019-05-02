@@ -4,10 +4,7 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.Forsikring;
 import programutvikling.base.Kunde;
@@ -16,11 +13,13 @@ import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.egenDefinertTyper.Handling;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.kontrollere.uihjelpere.SokeFelt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Predicate;
 
 
 public class ForsikringerSceneKontroller {
@@ -45,6 +44,8 @@ public class ForsikringerSceneKontroller {
   TableColumn premieKolonne;
   @FXML
   TableColumn<Forsikring, Button> visKnappKolonne;
+  @FXML
+  TextField forsikringFilterTesktfelt;
 
 
 
@@ -87,6 +88,10 @@ public class ForsikringerSceneKontroller {
     });
 
 
+
+    SokeFelt sokeFelt = new SokeFelt(forsikringTabell,forsikringFilterTesktfelt,forsikringerListe,
+            SokeFelt.getForsikringFilteringLogikk(forsikringFilterTesktfelt));
+
   }
 
 
@@ -110,7 +115,7 @@ public class ForsikringerSceneKontroller {
 
   private void leggTilVisForsikringKnapp() {
 
-    visKnappKolonne.setCellFactory(TabellKnapp.<Forsikring>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (f) -> {
+    visKnappKolonne.setCellFactory(TabellKnapp.<Forsikring>genererKnapp(TabellKnapp.VIS_FORSIKRING_IKONE, (f) -> {
 
 
     HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikring = (HashMap<Kunde, ArrayList<Forsikring>>) dlo.getAllData().get("kundeMedForsikringListe");

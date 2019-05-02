@@ -35,7 +35,7 @@
       <children>
          <BorderPane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
             <right>
-               <TextField fx:id="kunderFilterTesktfelt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" promptText="Søk" BorderPane.alignment="CENTER" />
+               <TextField fx:id="skademeldingFilterTesktfelt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" promptText="Søk" BorderPane.alignment="CENTER" />
             </right>
          </BorderPane>
       </children>

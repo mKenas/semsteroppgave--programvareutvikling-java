@@ -4,10 +4,7 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.Forsikring;
 import programutvikling.base.Kunde;
@@ -16,6 +13,7 @@ import programutvikling.base.Skademelding;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.kontrollere.uihjelpere.SokeFelt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
 import java.util.ArrayList;
@@ -48,6 +46,9 @@ public class ErstatningListeKontroller {
   TableColumn utbetaltBelopKolonne;
   @FXML
   TableColumn<Skademelding, Button> visErstatningKolonne;
+  @FXML
+  TextField erstatningFilterTesktfelt;
+
 
 
   public void initialize() {
@@ -85,6 +86,11 @@ public class ErstatningListeKontroller {
     });
 
 
+    SokeFelt sokeFelt = new SokeFelt(erstatningTabell,erstatningFilterTesktfelt,erstatningListe,
+            SokeFelt.getErstatningFilteringLogikk(erstatningFilterTesktfelt));
+
+
+
   }
 
 
@@ -101,7 +107,7 @@ public class ErstatningListeKontroller {
 
   private void leggTilVisErstatningKnapp() {
 
-    visErstatningKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (s) -> {
+    visErstatningKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_ERSTATNING_IKONE, (s) -> {
       HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = (HashMap<Kunde, ArrayList<Skademelding>>) dlo.getAllData().get("kundeMedSkadeMeldingListe");
 
       this.skademelding = s;

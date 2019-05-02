@@ -63,7 +63,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="44.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../ikoner/menu.png" />
+                        <Image url="@../ikoner/burger-meny.png" />
                      </image>
                   </ImageView>
                </graphic>

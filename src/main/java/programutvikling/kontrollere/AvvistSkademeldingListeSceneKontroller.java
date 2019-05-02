@@ -4,10 +4,7 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.Forsikring;
 import programutvikling.base.Kunde;
@@ -16,6 +13,7 @@ import programutvikling.base.Skademelding;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.kontrollere.uihjelpere.SokeFelt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
 import java.util.ArrayList;
@@ -46,6 +44,9 @@ public class AvvistSkademeldingListeSceneKontroller {
   TableColumn takseringsbelopKolonne;
   @FXML
   TableColumn<Skademelding, Button> visAvvistSkademeldingKolonne;
+  @FXML
+  TextField skademeldingFilterTesktfelt;
+
 
 
   public void initialize() {
@@ -81,6 +82,10 @@ public class AvvistSkademeldingListeSceneKontroller {
     });
 
 
+    SokeFelt sokeFelt = new SokeFelt(avvistSkademeldingTabell,skademeldingFilterTesktfelt,avvistSkademeldingListe,
+            SokeFelt.getSkademeldingFilteringLogikk(skademeldingFilterTesktfelt));
+
+
   }
 
 
@@ -97,7 +102,7 @@ public class AvvistSkademeldingListeSceneKontroller {
 
   private void leggTilVisAvvistSkademelingKnapp() {
 
-    visAvvistSkademeldingKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE_STI, "vis-kunde-knapp", (s) -> {
+    visAvvistSkademeldingKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_AVVIST_SKADEMELDING_IKONE, (s) -> {
       HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = (HashMap<Kunde, ArrayList<Skademelding>>) dlo.getAllData().get("kundeMedSkadeMeldingListe");
 
       this.skademelding = s;

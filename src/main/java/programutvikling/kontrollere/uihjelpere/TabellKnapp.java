@@ -13,15 +13,20 @@ import java.util.function.Consumer;
 public class TabellKnapp<S> extends TableCell<S, Button> {
 
   private final Button knapp;
-  public static String VIS_KUNDE_IKONE_STI = "/programutvikling/ikoner/vis-kunde.png";
+  public static String VIS_KUNDE_IKONE = "/programutvikling/ikoner/vis-kunde.png";
+  public static String VIS_FORSIKRING_IKONE = "/programutvikling/ikoner/forsikring.png";
+  public static String VIS_SKADEMELDING_IKONE = "/programutvikling/ikoner/skademelding.png";
+  public static String VIS_ERSTATNING_IKONE = "/programutvikling/ikoner/erstatning.png";
+  public static String VIS_AVVIST_SKADEMELDING_IKONE = "/programutvikling/ikoner/avvistSkademelding.png";
 
-  public TabellKnapp(String bildeSti, String stil, Consumer<S> funksjon) {
+
+
+  public TabellKnapp(String bildeSti, Consumer<S> funksjon) {
 
   ImageView bilde = new ImageView(getClass().getResource(bildeSti).toExternalForm());
   bilde.setFitWidth(40);
   bilde.setFitHeight(40);
     this.knapp = new Button();
-    this.knapp.getStyleClass().add(stil);
     this.knapp.setCursor(Cursor.HAND);
     this.knapp.setGraphic(bilde);
 
@@ -46,10 +51,10 @@ public class TabellKnapp<S> extends TableCell<S, Button> {
 
   }*/
 
-  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, Consumer<S> funksjon) {
+  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String bildeSti, Consumer<S> funksjon) {
 
 
-    return param -> new TabellKnapp<>(tittel, stil, funksjon);
+    return param -> new TabellKnapp<>(bildeSti, funksjon);
   }
 
 /*  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, BiConsumer<S, S> funksjon) {
