@@ -180,6 +180,7 @@ public abstract class Navigator {
 
 
           case REDIGER: {
+            fxml = Navigator.getREDIGER_REISEFORSIKRING_SCENE();
 
             break;
           }
@@ -223,6 +224,25 @@ public abstract class Navigator {
 
     borderPane.setCenter(root);
   }
+
+/*  public static void visSceneMedForsikringVillkar(Kunde kunde, Skademelding skademelding) {
+
+    Parent root = null;
+
+    try {
+      FXMLLoader loader = new FXMLLoader(Navigator.class.getResource(fxml));
+      root = loader.load();
+      KontrollerMedSkademeldingInfo kontroller = loader.getController();
+      kontroller.setSkademelding(skademelding);
+      KontrollerMedKundeInfo kundeKontroller = loader.getController();
+      kundeKontroller.setKunde(kunde);
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    borderPane.setCenter(root);
+  }*/
 
   public static String getDashbordScene() {
     return DASHBORD_SCENE;

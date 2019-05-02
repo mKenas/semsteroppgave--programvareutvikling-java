@@ -1,5 +1,7 @@
 package programutvikling.base;
 
+import programutvikling.egenDefinertTyper.ForsikringsVillkar;
+
 public class HusOgInnboForsikring extends Forsikring {
 
   private String boligAdresse;
@@ -10,10 +12,9 @@ public class HusOgInnboForsikring extends Forsikring {
   private String storrelse;
   private String bygningsForsikringsbelop;
   private String innboForsikringsbelop;
-  //private String forsikringsType;
 
   public HusOgInnboForsikring() {
-    super("Hus Og Innbo Forsikring", 0.0,0.0,"");
+    super("Hus Og Innbo Forsikring", 0.0,0.0, ForsikringsVillkar.husOgInnboVillkar);
     this.boligAdresse = "";
     this.byggeAr = "2";
     this.boligType = "";
@@ -25,11 +26,11 @@ public class HusOgInnboForsikring extends Forsikring {
 
   }
 
-  public HusOgInnboForsikring(Double forsikringsbelop, Double forsikringspremie, String forsikringsbetingelser,
+  public HusOgInnboForsikring(Double forsikringsbelop, Double forsikringspremie,
                               String boligAdresse, String byggeAr, String boligType, String byggeMateriale,
                               String standard, String storrelse, String bygningsForsikringsbelop,
                               String innboForsikringsbelop) {
-    super("Hus Og Innbo Forsikring",forsikringsbelop, forsikringspremie, forsikringsbetingelser);
+    super("Hus Og Innbo Forsikring",forsikringsbelop, forsikringspremie, ForsikringsVillkar.husOgInnboVillkar);
     this.boligAdresse = boligAdresse;
     this.byggeAr = byggeAr;
     this.boligType = boligType;

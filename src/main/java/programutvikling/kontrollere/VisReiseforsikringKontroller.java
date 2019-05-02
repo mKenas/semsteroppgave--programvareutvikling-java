@@ -1,6 +1,5 @@
 package programutvikling.kontrollere;
 
-import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,6 +10,7 @@ import programutvikling.base.Navigator;
 import programutvikling.base.ReiseForsikring;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
+import programutvikling.egenDefinertTyper.Handling;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 
 public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
@@ -79,7 +79,8 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
 
   public void handleNavigerTilRedigerReiseforsikringKnapp() {
 
-    Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_REISEFORSIKRING_SCENE(), kunde, forsikring);
+    Navigator.visSceneMedForsikringInfo(borderPane,Handling.REDIGER,forsikring, kunde);
+
 
 
   }

@@ -15,13 +15,11 @@ import programutvikling.base.Navigator;
 import programutvikling.base.Skademelding;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
-import programutvikling.egenDefinertTyper.SkademeldingStatus;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.function.Predicate;
 
 public class SkademeldingListeKontroller {
 

@@ -12,11 +12,8 @@ import programutvikling.base.Skademelding;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.validering.Validator;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingInfo, KontrollerMedKundeInfo {
@@ -43,10 +40,9 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
   private JFXTextArea ovrigSkadeInformasjonTekstfelt;
 
 
-
   public void initialize() {
 
-    Validator.datoValidering(skadeDatoVelger,"","Skadedato feil");
+    Validator.datoValidering(skadeDatoVelger, "", "Skadedato feil");
 
   }
 
@@ -73,43 +69,70 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
   }
 
   @FXML
-    public void handleRedigerSkademeldingKnapp() {
+  public void handleRedigerSkademeldingKnapp() {
 
-      String forikringsType = forsikringsTypeKomboboks.getValue().toString();
-      String skadeDato = skadeDatoVelger.getValue().toString();
-      String klokkeslett = klokkeslettTekstfelt.getText();
-      String skadeType = skadeTypeTekstfelt.getText();
-      String skadeBeskrivelse = skadeBeskrivelseTekstfelt.getText();
-      String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
+    String forikringsType = forsikringsTypeKomboboks.getValue().toString();
+    String skadeDato = skadeDatoVelger.getValue().toString();
+    String klokkeslett = klokkeslettTekstfelt.getText();
+    String skadeType = skadeTypeTekstfelt.getText();
+    String skadeBeskrivelse = skadeBeskrivelseTekstfelt.getText();
+    String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
+
+    skademelding.setForsikringsType(forikringsType);
+    skademelding.setSkadeDato(skadeDato);
+    skademelding.setKlokkeSlett(klokkeslett);
+    skademelding.setSkadeType(skadeType);
+    skademelding.setSkadeBeskrivelse(skadeBeskrivelse);
+    skademelding.setOvrigSkadeInformasjon(ovrigSkadeInformasjon);
+
+    String opprettelsesDato = skademelding.getOpprettelsesDato();
+
+    System.out.println(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+
+/*    String dato = skademelding.getOpprettelsesDato();
+    String stringDato = (dato);
+
+    System.out.println(skadeDato); // 2019-04-01
+    System.out.println(dato); // 02.05.2019 11:39
+    System.out.println(stringDato); //02.05.2019 11:39
 
 
-      skademelding.setForsikringsType(forikringsType);
-      skademelding.setSkadeDato(skadeDato);
-      skademelding.setKlokkeSlett(klokkeslett);
-      skademelding.setSkadeType(skadeType);
-      skademelding.setSkadeBeskrivelse(skadeBeskrivelse);
-      skademelding.setOvrigSkadeInformasjon(ovrigSkadeInformasjon);
+    String skadeString = skadeDato;
 
-      String dato = skademelding.getOpprettelsesDato();
+    SimpleDateFormat fraBruker = new SimpleDateFormat(skadeString);
+    SimpleDateFormat mittFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 
-      String stringDato = (dato);
-
-    System.out.println(skadeDato);
-    System.out.println(dato);
-
-    System.out.println(stringDato);
-
-   /* try {
-      Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(stringDato);
+    try {
+      String nyttFormat = mittFormat.format(fraBruker.parse(skadeString));
+      System.out.println(nyttFormat);
     } catch (ParseException e) {
       e.printStackTrace();
     }*/
+/*    String opprettelsesDatoNY = skademelding.getOpprettelsesDato();
+    DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+    Date NYOpprettelses = null;
+    try {
+      NYOpprettelses = (Date)formatter.parse(opprettelsesDatoNY);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+
+    SimpleDateFormat nyFormatter = new SimpleDateFormat("yyyy-MM-DD");
+    String resultat = nyFormatter.format(NYOpprettelses);
+
+    System.out.println(resultat);*/
+
+
+
+
+
+
 
 
     navigeringTilSkademeldingScene();
 
-      }
+  }
 
 
   protected void navigeringTilSkademeldingScene() {

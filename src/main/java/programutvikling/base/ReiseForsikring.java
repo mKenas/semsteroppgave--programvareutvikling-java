@@ -7,10 +7,8 @@ public class ReiseForsikring extends Forsikring {
 
 
   public ReiseForsikring() {
-    super("Reise Forsikring",0.0,0.0,"");
     this.forsikringsOmrade ="";
     this.forsikringsSum =0.0;
-
 
   }
 
