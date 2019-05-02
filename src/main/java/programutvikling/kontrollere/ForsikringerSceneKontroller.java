@@ -66,7 +66,6 @@ public class ForsikringerSceneKontroller {
 
 
     forsikringerListe = dlo.getForsikringListe();
-    System.out.println(forsikringerListe.size());
 
 
     if (forsikringerListe.size() >= 1) {
@@ -97,11 +96,7 @@ public class ForsikringerSceneKontroller {
 
   private void forsikringEndret() {
 
-    for (Map.Entry<Kunde, ArrayList<Forsikring>> liste : dlo.getKundeMedForsikringListe().entrySet()) {
-      System.out.println("Kunde");
-      System.out.println(liste.getKey());
-      System.out.println("forsikring");
-      System.out.println(liste.getValue());}
+
 
     forsikringTabell.getItems().setAll(forsikringerListe);
 
@@ -117,14 +112,11 @@ public class ForsikringerSceneKontroller {
 
     visKnappKolonne.setCellFactory(TabellKnapp.<Forsikring>genererKnapp(TabellKnapp.VIS_FORSIKRING_IKONE, (f) -> {
 
-
-    HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikring = (HashMap<Kunde, ArrayList<Forsikring>>) dlo.getAllData().get("kundeMedForsikringListe");
-
+      HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikring = dlo.getKundeMedForsikringListe();
 
       forsikring = f;
       kunde = dho.getKundeMedForsikringListeHandling().finnForsikringsEier(kundeMedForsikring,f);
 
-      System.out.println(kunde);
 
 
       navigerTilVisForsikringScene();
@@ -133,12 +125,6 @@ public class ForsikringerSceneKontroller {
 
   }
 
-
-  @FXML
-  protected void navigeringTilOpprettForsikringScene() {
-
-    Navigator.visScene(borderPane, Navigator.getOPPRETT_FORSIKRING_SCENE());
-  }
 
   @FXML
   protected void navigerTilVisForsikringScene() {

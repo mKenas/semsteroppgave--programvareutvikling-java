@@ -199,14 +199,7 @@ public void nullstilleAlleLister(){
 
 
   public String getForsikringNrListe() {
-   /* List<String > forsikringNr = new ArrayList<>();
 
-    for (Forsikring f: this.forsikringer)
-    {
-
-      forsikringNr.add(f.getForsikringsNr());
-    }
-    this.forsikringNrListe= String.join("|", forsikringNr);*/
     return forsikringNrListe;
   }
 

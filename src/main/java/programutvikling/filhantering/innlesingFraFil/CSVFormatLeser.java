@@ -50,8 +50,8 @@ public class CSVFormatLeser extends FilLeser {
     ArrayList<Forsikring> forsikringliste = new ArrayList<>();
     ArrayList<Skademelding> skademeldingListe = new ArrayList<>();
 
-    HashMap<Kunde,Forsikring> kundeMedForsikringListe = new HashMap<>();
-    HashMap<Kunde,Skademelding> kundeMedSkadeMeldingListe = new HashMap<>();
+    HashMap<Kunde,ArrayList<Forsikring>> kundeMedForsikringListe = new HashMap<>();
+    HashMap<Kunde,ArrayList<Skademelding>> kundeMedSkadeMeldingListe = new HashMap<>();
 
     kundeliste.addAll(mappingCSVTilKundeliste.getKundeliste());
     forsikringliste.addAll(mappingCSVTilHusOgInnboForsikring.getHusOgInnboForsikringsliste());
@@ -69,11 +69,11 @@ public class CSVFormatLeser extends FilLeser {
         if (k.getForsikringNrListe().contains(f.getForsikringsNr())) {
 
           k.leggTilForsikring(f);
-          kundeMedForsikringListe.put(k,f);
 
         }
       }
     }
+
 
     for (Skademelding s: skademeldingListe) {
 
@@ -81,10 +81,15 @@ public class CSVFormatLeser extends FilLeser {
         if (k.getSkadeMeldingNrListe().contains(s.getSkademeldingNr())) {
 
           k.leggTilSkadeMelding(s);
-          kundeMedSkadeMeldingListe.put(k,s);
+
 
         }
       }
+    }
+
+    for (Kunde k: kundeliste){
+      kundeMedForsikringListe.put(k,k.getForsikringer());
+      kundeMedSkadeMeldingListe.put(k,k.getSkadeMeldinger());
     }
 
 

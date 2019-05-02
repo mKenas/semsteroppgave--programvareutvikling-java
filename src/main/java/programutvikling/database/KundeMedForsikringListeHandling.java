@@ -59,7 +59,7 @@ public class KundeMedForsikringListeHandling {
   public void slettAlleForsikringTilKunde(Kunde kunde) {
     if (this.kundeMedForsikringListe.containsKey(kunde)) {
 
-      List<Forsikring> liste =kunde.getForsikringer();
+      ArrayList<Forsikring> liste =kunde.getForsikringer();
       for (Forsikring f: liste){
         this.forsikringListe.remove(f);
       }

@@ -174,7 +174,7 @@
 
     <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <right>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleOpprettHusOgInnboForsikringKnapp" styleClass="handling-scene-knapp" text="Opprett forsikring" BorderPane.alignment="CENTER">
+            <JFXButton fx:id="opprettForsikringKnapp" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleOpprettHusOgInnboForsikringKnapp" styleClass="handling-scene-knapp" text="Opprett forsikring" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                 </BorderPane.margin>

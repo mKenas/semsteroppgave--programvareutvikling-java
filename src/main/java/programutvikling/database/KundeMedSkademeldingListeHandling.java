@@ -50,7 +50,7 @@ public class KundeMedSkademeldingListeHandling {
   public void slettAlleSkademeldingTilKunde(Kunde kunde) {
     if (this.kundeMedSkademeldingListe.containsKey(kunde)) {
 
-      List<Skademelding> liste = kunde.getSkadeMeldinger();
+      ArrayList<Skademelding> liste = kunde.getSkadeMeldinger();
       for (Skademelding s: liste){
         this.skademeldingListe.remove(s);
       }

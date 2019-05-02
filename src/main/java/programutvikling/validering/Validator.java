@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RegexValidator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import programutvikling.status.InnlesingOgSkrivingStatus;
 
 public class Validator {
 
@@ -25,6 +26,7 @@ public class Validator {
 
                 if (!newValue) {
                     tekstfelt.validate();
+
 
                 }
 
