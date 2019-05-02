@@ -14,7 +14,9 @@ import programutvikling.validering.Validator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -46,7 +48,7 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
 
   public void initialize() {
 
-    Validator.datoValidering(skadeDatoVelger,"","Skadedato feil");
+    //Validator.datoValidering(skadeDatoVelger,"","Skadedato feil");
 
   }
 
@@ -83,6 +85,15 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
       String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
 
 
+    LocalDate sdato = skadeDatoVelger.getValue();
+
+
+
+    System.out.println(sdato.isBefore( LocalDate.now().plusDays(1) ));
+
+
+
+
       skademelding.setForsikringsType(forikringsType);
       skademelding.setSkadeDato(skadeDato);
       skademelding.setKlokkeSlett(klokkeslett);
@@ -90,15 +101,12 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
       skademelding.setSkadeBeskrivelse(skadeBeskrivelse);
       skademelding.setOvrigSkadeInformasjon(ovrigSkadeInformasjon);
 
-      String dato = skademelding.getOpprettelsesDato();
+    navigeringTilSkademeldingScene();
 
 
-      String stringDato = (dato);
 
-    System.out.println(skadeDato);
-    System.out.println(dato);
 
-    System.out.println(stringDato);
+
 
    /* try {
       Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(stringDato);
@@ -107,7 +115,7 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
     }*/
 
 
-    navigeringTilSkademeldingScene();
+
 
       }
 

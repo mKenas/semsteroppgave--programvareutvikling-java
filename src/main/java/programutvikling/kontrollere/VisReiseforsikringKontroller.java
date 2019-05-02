@@ -26,6 +26,8 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
   Label reiseForsikringsomradeLabel;
   @FXML
   Label reiseArligForsikringspremieLabel;
+  @FXML
+  Label opprettelsesdatoLabel;
 
 
 
@@ -57,6 +59,7 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
       reiseForsikringssumLabel.setText(String.valueOf(f.getForsikringsSum()));
       reiseForsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
       reiseForsikringsomradeLabel.setText(f.getForsikringsOmrade());
+      opprettelsesdatoLabel.setText(f.getOprettelsesDato());
       reiseArligForsikringspremieLabel.setText(String.valueOf(f.getForsikringspremie()));
 
 
@@ -93,5 +96,14 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
     Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
 
   }
+
+  @FXML
+  public void handleSlettForsikringKnapp() {
+
+    dho.getKundeMedForsikringListeHandling().slettForsikring(forsikring, kunde);
+    NavigeringTilVisKundeScene();
+
+  }
+
   }
 

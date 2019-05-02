@@ -16,7 +16,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisSkademeldingSceneKontroller">
+<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisSkademeldingSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
@@ -53,7 +53,7 @@
          </Label>
         </children>
     </HBox>
-    <VBox prefHeight="564.0" prefWidth="900.0" styleClass="vis-kunde-kontainer">
+    <VBox prefHeight="564.0" prefWidth="900.0" styleClass="vis-elmenter-kontainer">
         <children>
             <HBox alignment="CENTER" prefHeight="213.0" prefWidth="900.0">
                 <children>
@@ -151,7 +151,7 @@
             <Insets bottom="20.0" left="15.0" right="15.0" />
         </VBox.margin>
     </VBox>
-    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="vis-kunde-kontainer">
+    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="vis-elmenter-kontainer">
         <right>
             <HBox BorderPane.alignment="CENTER">
                 <BorderPane.margin>
@@ -264,12 +264,12 @@
         <right>
             <HBox prefHeight="100.0" BorderPane.alignment="CENTER">
                 <children>
-                    <JFXButton fx:id="skademeldingLagreKnapp" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleLagreKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="sub-scene-knapp" text="Lagre">
+                    <JFXButton fx:id="skademeldingLagreKnapp" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleLagreKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="handling-scene-knapp" text="Lagre">
                         <HBox.margin>
                             <Insets left="10.0" right="10.0" />
                         </HBox.margin>
                     </JFXButton>
-                    <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleTilbakeKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="sub-scene-knapp" text="Tilbake" />
+                    <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleTilbakeKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="handling-scene-knapp" text="Tilbake" />
                 </children>
                 <BorderPane.margin>
                     <Insets />

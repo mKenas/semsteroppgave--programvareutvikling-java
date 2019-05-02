@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="mainbar" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RedigerReiseforsikringKontroller">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RedigerReiseforsikringKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
@@ -105,7 +105,7 @@
 
     <BorderPane maxWidth="1.7976931348623157E308">
         <right>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleRedigerReiseforsikringKnapp" prefHeight="50.0" prefWidth="98.0" styleClass="sub-scene-knapp" text="Lagre" BorderPane.alignment="CENTER">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleRedigerReiseforsikringKnapp" prefHeight="50.0" prefWidth="98.0" styleClass="handling-scene-knapp" text="Lagre" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0" />
                 </BorderPane.margin>

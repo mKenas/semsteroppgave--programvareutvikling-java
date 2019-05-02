@@ -74,39 +74,32 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
     poststedLabel.setText(k.getPoststed());
     opprettelsesdatoLabel.setText(k.getOpprettelsesDato());
 
-   /* if(kunde.getForsikringer().size() >0) {
-      AtomicInteger teller = new AtomicInteger();
-      kunde.getForsikringer().forEach(forsikring -> {
-        Hyperlink hyperlink = new Hyperlink(((HusOgInnboForsikring) forsikring).getForsikringsType() + " " + teller.incrementAndGet());
-        hyperlink.setOnAction((ActionEvent event) -> {
-          this.forsikring = (HusOgInnboForsikring) forsikring;
 
-          navigeringTilVisHusOgInnboForsikringScene();
-        });
+    HyberlinkBygger kundesForsikringHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesForsikringerKontainer,
+            kunde.getForsikringer(), (Forsikring forsikring) -> {
 
-        kundesForsikringerKontainer.getChildren().add(hyperlink);
-
-      });
-
-    }*/
-
-    HyberlinkBygger kundesForsikringHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesForsikringerKontainer, kunde.getForsikringer(), "Forsikring", (Forsikring forsikring) -> {
       this.forsikring = forsikring;
       navigeringTilVisHusOgInnboForsikringScene();
     });
 
-    HyberlinkBygger kundeSkademeldingHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesSkademeldingerKontainer, dhl.getKundeMedSkademeldingListeHandling().getSkademeldingListeTilKunde(kunde), "Skademelding", (Skademelding skademelding) -> {
+    HyberlinkBygger kundeSkademeldingHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesSkademeldingerKontainer,
+            dhl.getKundeMedSkademeldingListeHandling().getSkademeldingListeTilKunde(kunde),
+            "Skademelding", (Skademelding skademelding) -> {
       this.skademelding = skademelding;
       navigeringTilSkademeldingScene();
     });
 
-    HyberlinkBygger kundesErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesErstatningerKontainer, dhl.getKundeMedSkademeldingListeHandling().getErstatningListeTilKunde(kunde), "Erstatning", (Skademelding erstatning) -> {
+    HyberlinkBygger kundesErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesErstatningerKontainer,
+            dhl.getKundeMedSkademeldingListeHandling().getErstatningListeTilKunde(kunde),
+            "Erstatning", (Skademelding erstatning) -> {
       this.skademelding = erstatning;
       navigeringTilSkademeldingScene();
     });
 
 
-    HyberlinkBygger kundesAvvisteErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesAvvisteErstatningerKontainer, dhl.getKundeMedSkademeldingListeHandling().getAvvistSkademeldingListeTilKunde(kunde), "Avviste erstatningskrav", (Skademelding avvisteErstatningskrav) -> {
+    HyberlinkBygger kundesAvvisteErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesAvvisteErstatningerKontainer,
+            dhl.getKundeMedSkademeldingListeHandling().getAvvistSkademeldingListeTilKunde(kunde),
+            "Avviste erstatningskrav", (Skademelding avvisteErstatningskrav) -> {
       this.skademelding = avvisteErstatningskrav;
       navigeringTilSkademeldingScene();
     });
