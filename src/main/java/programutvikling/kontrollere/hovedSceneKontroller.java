@@ -28,7 +28,7 @@ import java.util.concurrent.Executors;
 public class hovedSceneKontroller {
 
 
-  private static final long serialVersionUID = 5;
+
   @FXML
   protected JFXButton mainSceneKnapp;
   @FXML
@@ -100,7 +100,6 @@ public class hovedSceneKontroller {
 
     allData = dlo.getAllData();
 
-    System.out.println(allData);
 
     LagreFilVelger filVelger = new LagreFilVelger();
 
@@ -137,8 +136,7 @@ public class hovedSceneKontroller {
         });
 
     leseFilHandling.setOnFailed(evt -> {
-      System.err.println("The task failed with the following exception:");
-      //leseFilHandling.getException().printStackTrace(System.err);
+
 
       if (leseFilHandling.getException().getClass() == InvalidClassException.class){
         UtdatertFilAvvikHandler.genererUtdatertFilAvvikMelding((InvalidClassException) leseFilHandling.getException());
@@ -149,6 +147,7 @@ public class hovedSceneKontroller {
 
         CSVFormatAvvikHandler.generateCSVFormatExceptionMsg((CSVFormatAvvikHandler) leseFilHandling.getException());
       }
+
 
 
       leseFilHandling.cancel();
@@ -166,12 +165,8 @@ public class hovedSceneKontroller {
 
   private void oppdatereGuiMedDataLastetFraFil() {
     if (allDataFraFil !=null) {
-      System.out.println(allDataFraFil);
-//oppdatere GUIet etter at tråden er ferdig kjørt.
-      System.out.println("Ferdig med å laste fra fil");
 
       dlo.setAllData(allDataFraFil);
-      //mainSceneKnapp.setDisable(false);
     }
     InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
 
@@ -180,18 +175,9 @@ public class hovedSceneKontroller {
 
   @FXML
   protected void handleAvsluttKnapp() {
-    System.out.println(leseFilHandling.getState());
-    System.out.println(leseFilHandling.isRunning());
-    System.out.println(leseFilHandling.isDone());
-    //Platform.exit();
- /*   Kunde k = new Kunde("asd","asd","","","","","","");
-    dhl.getKundeListeHandling().leggTilKunde(k);
-    for (int i=0; i<10000; i++){
-      dhl.getKundeMedForsikringListeHandling().leggTilForsikring( new HusOgInnboForsikring(0.0,0.0,"a","a","a","a","","","","","")
-              ,k);
-      dhl.getKundeMedSkademeldingListeHandling().leggTilSkademelding(new Skademelding("a","s","ssss","sss",0.0,0.0,"",""),k);
-    }
-*/
+
+    Platform.exit();
+
   }
 
   @FXML

@@ -22,12 +22,10 @@ public class MappingCSVTilKunde extends InnlesingMappingStrategy<Kunde> {
 
         boolean erKunde = !"".equals(personNr);
         return erKunde;
-        //return true;
       }
     };
 
     this.kundeliste = this.objektTilCSV( filstil, Kunde.class, filter);
-    //System.out.println(list);
 
   }
 

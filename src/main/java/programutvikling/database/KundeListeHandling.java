@@ -28,13 +28,7 @@ public class KundeListeHandling {
 
 
 
- /* public void slettSkademelding(Skademelding skademelding) {
 
-
-    this.kundeListe.forEach(kunde -> kunde.getAlleSkadeMeldinger().remove(skademelding));
-
-
-  }*/
 
 
 

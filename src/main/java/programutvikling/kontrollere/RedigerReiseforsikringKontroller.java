@@ -1,13 +1,13 @@
 package programutvikling.kontrollere;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.*;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.validering.ReiseforsikringValidator;
 import programutvikling.validering.Validator;
 
 public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo{
@@ -26,12 +26,11 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
 
 
 
-
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private DataHandlingObjekt dho = new DataHandlingObjekt();
   private BorderPane borderPane = hsk.getBorderPane();
   private DataLagringObjekt dlo = DataLagringObjekt.getInstance();
-  private ObservableList kunderListe;
+
   private Kunde kunde;
   private ReiseForsikring forsikring;
 
@@ -45,18 +44,12 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
 
 
 
-
-
-
   public void initialize() {
 
-
-
-
-    Validator.valider(reiseForsikringssumTekstfelt,"^([0-9]){2,12}(\\.[0-9]+)$","Forsikringsbeløp tillater 4-14 tall");
-    Validator.valider(reiseForsikringsBelopTekstfelt,"^([0-9]){2,12}(\\.[0-9]+)$","Forsikringspremie tillater 4-14 tall");
-    Validator.valider(reiseForsikringsomradeTekstfelt,"^[a-zA-ZäöæøåøÄÖÆØÅ[0-9] ]{2,16}?$","Forsikringsområde må være mellom 2-16 skandinaviske bokstaver og eller tall");
-    Validator.valider(reiseArligForsikringspremieTekstfelt,"^([0-9]){2,12}(\\.[0-9]+)$","Forsikringspremie tillater 4-14 tall");
+    Validator.validerFraTekstfelt(reiseForsikringssumTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikringssumMelding());
+    Validator.validerFraTekstfelt(reiseForsikringsBelopTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
+    Validator.validerFraTekstfelt(reiseArligForsikringspremieTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
+    Validator.validerFraTekstfelt(reiseForsikringsomradeTekstfelt, ReiseforsikringValidator.getUgyldigForsikrinsOmradeRegex(), ReiseforsikringValidator.getUgyldigForsikrinsOmradeMelding());
 
 
   }
@@ -77,7 +70,7 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
       ReiseForsikring f = (ReiseForsikring) forsikring;
 
       this.forsikring = f;
-      //personNrLabel.setText(f);
+
       reiseForsikringssumTekstfelt.setText(String.valueOf(f.getForsikringsSum()));
       reiseForsikringsBelopTekstfelt.setText(String.valueOf(f.getForsikringsSum()));
       reiseForsikringsomradeTekstfelt.setText(f.getForsikringsOmrade());

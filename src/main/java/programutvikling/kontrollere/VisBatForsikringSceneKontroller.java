@@ -66,7 +66,7 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
 
       this.forsikring = f;
 
-      //personNrLabel.setText(f);
+
       batEierLabel.setText(f.getEier());
       batensRegistreringsNummerLabel.setText(f.getRegistreringsNr());
       batTypeLabel.setText(f.getBatType());
@@ -120,8 +120,6 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
   @FXML
   public void handleRedigerBatForsikringKnapp() {
 
-    //Navigator.visSceneMedForsikringInfo(borderPane, Navigator.getREDIGER_BAT_FORSIKRING_SCENE(),kunde,forsikring);
-    System.out.println(forsikring.getForsikringsType());
     Navigator.visSceneMedForsikringInfo(borderPane,Handling.REDIGER,forsikring, kunde);
 
   }

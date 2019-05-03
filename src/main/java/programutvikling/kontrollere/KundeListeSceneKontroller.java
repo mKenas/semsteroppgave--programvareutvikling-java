@@ -73,30 +73,10 @@ public class KundeListeSceneKontroller {
     kunderliste.addListener(new InvalidationListener() {
       @Override
       public void invalidated(Observable observable) {
-        System.out.println("Endret");
         kundeEndret();
       }
     });
 
-
-    /***Filtring***/
-
-    Predicate<Kunde> betingelse =   new Predicate<Kunde>() {
-      @Override
-      public boolean test(Kunde kunde) {
-        String sokeTekst = kunderFilterTesktfelt.getText().toLowerCase().toLowerCase();
-        if (kunde.getPersonNr().toLowerCase().contains(sokeTekst)
-                || kunde.getNavn().toLowerCase().contains(sokeTekst)
-                || kunde.getEtternavn().toLowerCase().contains(sokeTekst)
-                || kunde.getFakturaAdresse().toLowerCase().contains(sokeTekst)
-
-                ) {
-          return true;
-        }
-        return false;
-      }
-
-    };
 
     SokeFelt sokeFelt = new SokeFelt(kunderTabell, kunderFilterTesktfelt,kunderliste,SokeFelt.getKundeFilteringLogikk(kunderFilterTesktfelt));
 

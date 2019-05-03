@@ -27,12 +27,11 @@ public class SkrivingTradObjekt extends Task<Void> {
       return null;
     }
     if(filstil.endsWith(".jobj")){
-    System.out.println("starter skriving til jobj fil");
+
     FilSkriver filSkriver = new JOBJFormatSkriver();
     filSkriver.skrivTilFil(this.dataliste,this.filstil);
     }
     else if (filstil.endsWith(".csv")){
-      System.out.println("starter skriving til fil csv fil");
       FilSkriver filSkriver = new CSVFormatSkriver();
        filSkriver.skrivTilFil(this.dataliste,this.filstil);
 
@@ -44,7 +43,7 @@ public class SkrivingTradObjekt extends Task<Void> {
 
   @Override
   protected void running() {
-    System.out.println("running");
+
 
     InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(true);
 
@@ -52,7 +51,7 @@ public class SkrivingTradObjekt extends Task<Void> {
 
   @Override
   protected void failed() {
-    System.out.println("Task failed");
+
     InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
 
   }
@@ -60,14 +59,14 @@ public class SkrivingTradObjekt extends Task<Void> {
 
   @Override
   protected void cancelled() {
-    System.out.println("Task canceled");
+
     InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
 
   }
 
   @Override
   protected void succeeded() {
-    System.out.println("Done");
+
     InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
 
   }

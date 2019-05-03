@@ -31,12 +31,11 @@ public class MappingCSVTiFritidsboligForsikring extends InnlesingMappingStrategy
 
 
           return erFritidsboligForsikring;
-          //return true;
         }
       };
 
     this.fritidsboligForsikringsliste = this.objektTilCSV( filstil, FritidsboligForsikring.class, filter);
-    //System.out.println(list);
+
 
   }
 

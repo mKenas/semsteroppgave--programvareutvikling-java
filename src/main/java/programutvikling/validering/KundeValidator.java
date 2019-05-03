@@ -6,10 +6,10 @@ public class KundeValidator {
   private static String UGYLDIG_PERSONNUMMER_REGEX = "^[0-9]{11}$";
 
   private static String UGYLDIG_NAVN_FEILMELDING = "Navnet må være mellom 2-16 skandinaviske bokstaver";
-  private static String UGYLDIG_NAVN_REGEX = "^[a-zA-ZäöæøåøÄÖÆØÅ]{2,16}$";
+  private static String UGYLDIG_NAVN_REGEX = "^[a-zA-ZäöæøåøÄÖÆØÅ ]{2,16}$";
 
   private static String UGYLDIG_ETTERNAVN_FEILMELDING = "Etternavnet må være mellom 2-16 skandinaviske bokstaver";
-  private static String UGYLDIG_ETTERNAVN_REGEX = "^[a-zA-ZäöæøåøÄÖÆØÅ]{2,16}$";
+  private static String UGYLDIG_ETTERNAVN_REGEX = "^[a-zA-ZäöæøåøÄÖÆØÅ ]{2,16}$";
 
   private static String UGYLDIG_FAKTURA_ADRESSE_FEILMELDING = "Adressen må være mellom 2-36 skandinaviske bokstaver eller tall";
   private static String UGYLDIG_FAKTURA_ADRESSE_REGEX = "^[0-9a-zA-ZäöæøåøÄÖÆØÅ ]{2,36}$";

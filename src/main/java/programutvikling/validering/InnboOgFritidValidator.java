@@ -1,7 +1,5 @@
 package programutvikling.validering;
 
-import javafx.beans.property.SimpleBooleanProperty;
-
 public class InnboOgFritidValidator {
 
 
@@ -10,7 +8,7 @@ public class InnboOgFritidValidator {
   private static String UGYLDIG_BYGGE_AR_FEILMELDING ="Boligen må være bygget mellom 1800-tallet til dags dato";
   private static String UGYLDIG_BYGGE_AR_REGEX ="^(18[0-9]\\d|19[0-9]\\d|20[01]\\d)?$";
 
-  private static String UGYLDIG_StING_FELT_REGEX ="^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$";
+  private static String UGYLDIG_STRING_FELT_REGEX ="^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$";
 
   private static String UGYLDIG_BOLIGTYPE_FEILMELDING ="Boligtypen må være mellom 2 til 20 bosktaver";
   private static String UGYLDIG_BYGGEMATERIALE_FEILMELDING ="Byggemateriale må være mellom 2 til 20 bosktaver";
@@ -59,7 +57,7 @@ public class InnboOgFritidValidator {
   }
 
   public static String getUGyldigStringRegex() {
-    return UGYLDIG_StING_FELT_REGEX;
+    return UGYLDIG_STRING_FELT_REGEX;
   }
 
   public static String getUgyldigByggematerialeFeilmelding() {

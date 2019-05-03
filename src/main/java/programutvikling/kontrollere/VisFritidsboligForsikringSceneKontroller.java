@@ -64,7 +64,7 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
       FritidsboligForsikring f = (FritidsboligForsikring) forsikring;
 
       this.forsikring = f;
-      //personNrLabel.setText(f);
+
 
 
       boligensAdresseLabel.setText(f.getBoligAdresse());

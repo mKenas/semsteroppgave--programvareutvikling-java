@@ -79,8 +79,7 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
     Double forsikringspremie = Double.valueOf(forsikringspremieTekstfelt.getText());
 
 
-    System.out.println(forsikringsbelop);
-    System.out.println(forsikringspremie);
+
 
 
       forsikring = new HusOgInnboForsikring(forsikringsbelop, forsikringspremie,

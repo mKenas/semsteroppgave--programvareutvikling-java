@@ -33,12 +33,12 @@ public class InnlesingMappingStrategy<T> {
 
 
 
-    //CSVReader reader = new CSVReader(new StringReader(csvContent));
+
     BufferedReader leser = null;
-    //CSVReader reader = null;
+
     try {
       leser = Files.newBufferedReader(Paths.get(filsti));
-      //reader = new CSVReader(new FileReader(filsti));
+
 
 
 

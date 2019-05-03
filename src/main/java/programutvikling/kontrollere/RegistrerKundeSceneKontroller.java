@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
@@ -46,6 +47,8 @@ public class RegistrerKundeSceneKontroller {
   @FXML
   private JFXButton registrerKundeKnapp;
 
+  @FXML
+  private VBox kontianer;
   @FXML
   private void handleRegistrerKundeKnapp() {
 
@@ -132,7 +135,7 @@ public class RegistrerKundeSceneKontroller {
 
 
   protected void navigeringTilOpprettForsikringScene() {
-    System.out.println(forsikringsType);
+
     Navigator.visOpprettForsikringSceneMedKundeInfo(borderPane, forsikringsType, kunde);
 
   }

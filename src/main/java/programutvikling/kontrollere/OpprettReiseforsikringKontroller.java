@@ -12,6 +12,7 @@ import programutvikling.base.ReiseForsikring;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.validering.ReiseforsikringValidator;
 import programutvikling.validering.Validator;
 
 public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo {
@@ -51,6 +52,11 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
   @FXML
   public void handleOpprettKnapp() {
 
+    if(reiseForsikringssumTekstfelt.validate() == true &&
+            reiseForsikringsBelopTekstfelt.validate() == true &&
+            reiseForsikringsomradeTekstfelt.validate() == true &&
+            reiseArligForsikringspremieTekstfelt.validate() == true) {
+
     Double forsikringsbelop = Double.valueOf(reiseForsikringsBelopTekstfelt.getText());
     Double forsikringspremie = Double.valueOf(reiseArligForsikringspremieTekstfelt.getText());
     String forsikringsbetingelser = "";
@@ -59,10 +65,7 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
 
     forsikring = new ReiseForsikring(forsikringsbelop, forsikringspremie,"", forsikringsomrade, forsikringssum);
 
-    if(reiseForsikringssumTekstfelt.validate() == true &&
-            reiseForsikringsBelopTekstfelt.validate() == true &&
-            reiseForsikringsomradeTekstfelt.validate() == true &&
-            reiseArligForsikringspremieTekstfelt.validate() == true) {
+
 
       dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);
       NavigeringTilVisKundeScene();
@@ -75,68 +78,15 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
   public void initialize() {
 
 
-
-
-    Validator.valider(reiseForsikringssumTekstfelt,"([0-9]{4,14})$","Forsikringssum tillater 4-14 tall");
-    Validator.valider(reiseForsikringsBelopTekstfelt,"([0-9]{4,14})$","Forsikringsbeløp tillater 4-14 tall");
-    Validator.valider(reiseForsikringsomradeTekstfelt,"^[a-zA-ZäöæøåøÄÖÆØÅ[0-9] ]{2,16}?$","Forsikringsområde må være mellom 2-16 skandinaviske bokstaver og eller tall");
-    Validator.valider(reiseArligForsikringspremieTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
-
+    Validator.validerFraTekstfelt(reiseForsikringssumTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikringssumMelding());
+    Validator.validerFraTekstfelt(reiseForsikringsBelopTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
+    Validator.validerFraTekstfelt(reiseArligForsikringspremieTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
+    Validator.validerFraTekstfelt(reiseForsikringsomradeTekstfelt, ReiseforsikringValidator.getUgyldigForsikrinsOmradeRegex(), ReiseforsikringValidator.getUgyldigForsikrinsOmradeMelding());
 
   }
 
 
- /* private void validerReiseForsikringoFelt() {
 
-    nullstillValideringStatus();
-
-
-    validerFeltVedInnlastingAvScene();
-
-
-    validerFeltVedEndringAvInnputt();
-
-
-    bindeKanppAkriveringTilValideringStatus();
-
-  }
-
-  private void bindeKanppAkriveringTilValideringStatus() {
-    opprettForsikringKnapp.disableProperty().bind(
-            InnboOgfritidValideringStatus.erAdresseGyldig().not()
-                    .or(InnboOgfritidValideringStatus.erByggeArGyldig().not())
-                    .or(InnboOgfritidValideringStatus.erBoligTypeGyldig().not())
-                    .or(InnboOgfritidValideringStatus.erbyggeMaterialeGyldig().not())
-                    .or(InnboOgfritidValideringStatus.erBoligStanderGyldig().not())
-                    .or(InnboOgfritidValideringStatus.erAntallKvadratmeterGyldig().not())
-                    .or(InnboOgfritidValideringStatus.erByggningsbelopGyldig().not())
-                    .or(InnboOgfritidValideringStatus.erInnbobelopGyldig().not())
-                    .or(InnboOgfritidValideringStatus.erforsikringbelopGyldig().not())
-                    .or((InnboOgfritidValideringStatus.getForsikringspremieGyldig().not()))
-    );
-  }
-
-  private void validerFeltVedEndringAvInnputt() {
-
-  }
-
-  private void validerFeltVedInnlastingAvScene() {
-
-  }
-
-  private void nullstillValideringStatus() {
-
-    InnboOgfritidValideringStatus.erAdresseGyldig().set(false);
-    InnboOgfritidValideringStatus.erByggeArGyldig().set(false);
-    InnboOgfritidValideringStatus.erBoligTypeGyldig().set(false);
-    InnboOgfritidValideringStatus.erbyggeMaterialeGyldig().set(false);
-    InnboOgfritidValideringStatus.erBoligStanderGyldig().set(false);
-    InnboOgfritidValideringStatus.erAntallKvadratmeterGyldig().set(false);
-    InnboOgfritidValideringStatus.erByggningsbelopGyldig().set(false);
-    InnboOgfritidValideringStatus.erInnbobelopGyldig().set(false);
-    InnboOgfritidValideringStatus.erforsikringbelopGyldig().set(false);
-    InnboOgfritidValideringStatus.getForsikringspremieGyldig().set(false);
-  }*/
 
 
   @FXML

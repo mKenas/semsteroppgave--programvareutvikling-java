@@ -31,7 +31,7 @@ public class ErstatningListeKontroller {
   private Skademelding skademelding;
   private Forsikring forsikring;
   private BorderPane borderPane = hsk.getBorderPane();
-  //
+
   private ObservableList<Skademelding> erstatningListe, forsikringerListeFraFil;
   @FXML
   private TableView erstatningTabell;
@@ -64,7 +64,7 @@ public class ErstatningListeKontroller {
     erstatningTabell.setPlaceholder(new Label("Ingen erstatning er registrert ennå!"));
 
 
-    //erstatningListe = dho.getKundeMedSkademeldingListeHandling().getErstatningListe();
+
     erstatningListe = dlo.getErstatningListe();
 
 
@@ -81,7 +81,7 @@ public class ErstatningListeKontroller {
     erstatningListe.addListener(new InvalidationListener() {
       @Override
       public void invalidated(Observable observable) {
-        System.out.println("erstatning liste Endret");
+
         erstatningEndret();
       }
     });

@@ -62,8 +62,6 @@ public class ForsikringerSceneKontroller {
     premieKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
     visKnappKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
 
-    forsikringTabell.setPlaceholder(new Label("Ingen forsikringer er registrert ennå!"));
-
 
     forsikringerListe = dlo.getForsikringListe();
 
@@ -81,7 +79,6 @@ public class ForsikringerSceneKontroller {
     forsikringerListe.addListener(new InvalidationListener() {
       @Override
       public void invalidated(Observable observable) {
-        System.out.println("Forsikring liste Endret");
         forsikringEndret();
       }
     });

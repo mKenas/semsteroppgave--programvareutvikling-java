@@ -28,12 +28,11 @@ public class MappingCSVTilReiseForsikring extends InnlesingMappingStrategy {
 
 
         return erReiseForsikring;
-        //return true;
       }
     };
 
     this.reiseForsikringsliste = this.objektTilCSV( filstil, ReiseForsikring.class, filter);
-    //System.out.println(list);
+
 
   }
 

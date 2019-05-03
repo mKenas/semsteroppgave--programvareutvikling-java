@@ -14,6 +14,8 @@ import programutvikling.base.Skademelding;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.validering.SkademeldingValidator;
+import programutvikling.validering.Validator;
 
 public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeInfo {
   @FXML
@@ -37,12 +39,19 @@ public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeI
   private DataHandlingObjekt dho = new DataHandlingObjekt();
   private BorderPane borderPane = hsk.getBorderPane();
   private DataLagringObjekt dlo = DataLagringObjekt.getInstance();
-  private ObservableList kunderListe;
+
   private Kunde kunde;
   private Skademelding skademelding;
 
 
   public void initialize() {
+
+    Validator.validerFraTekstfelt(klokkeslettTekstfelt, SkademeldingValidator.getUgyldigKlokkeslettRegex(), SkademeldingValidator.getUgyldigKlokkeslettMelding());
+    Validator.validerFraTekstfelt(skadeTypeTekstfelt, SkademeldingValidator.getUgyldigSkadetypeRegex(), SkademeldingValidator.getUgyldigSkadetypeMelding());
+
+    Validator.validerFraTekstArea(skadeBeskrivelseTekstfelt, SkademeldingValidator.getUgyldigSkadebeskrivelseRegex(), SkademeldingValidator.getUgyldigSkadebeskrivelseMelding());
+    Validator.validerFraTekstArea(ovrigSkadeInformasjonTekstfelt, SkademeldingValidator.getUgyldigSkadeinformasjonRegex(), SkademeldingValidator.getUgyldigSkadeinformasjonMelding());
+
 
 
   }
@@ -65,55 +74,33 @@ public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeI
 
   public void handleRegistrerSkadeKnapp(ActionEvent actionEvent) {
 
-/*
 
-    Date current = new Date();
-    //create a date one day before current date
-    long prevDay = System.currentTimeMillis() - 1000*60*60*24;
-    //create date object
-    Date prev = new Date(prevDay);
-    //compare both dates
-    if(prev.before(current)){
-      System.out.println("The date is older than current day");
-    } else {
-      System.out.println("The date is future day");
+    if(klokkeslettTekstfelt.validate() == true &&
+            skadeTypeTekstfelt.validate() == true &&
+            skadeBeskrivelseTekstfelt.validate() == true &&
+            ovrigSkadeInformasjonTekstfelt.validate() == true ){
+
+      String klokkeslett = klokkeslettTekstfelt.getText();
+      String skadeDato = skadeDatoVelger.getValue().toString();
+
+      String forsikringsType = forsikringsTypeKomboboks.getSelectionModel().getSelectedItem().toString();
+      String skadeType = skadeTypeTekstfelt.getText();
+      String skadeBeskrivelse = skadeBeskrivelseTekstfelt.getText();
+      String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
+
+      skademelding = new Skademelding(skadeDato, klokkeslett, forsikringsType, skadeType, null, null, skadeBeskrivelse, ovrigSkadeInformasjon);
+
+
+      dho.getKundeMedSkademeldingListeHandling().leggTilSkademelding(skademelding, kunde);
+
+      NavigeringTilVisKundeScene();
+
+
     }
 
-    StringConverter<LocalDate> converter = new LocalDateStringConverter() {
-      @Override
-      public LocalDate fromString(String string) {
-        LocalDate date = super.fromString(string);
-        if (date.getDayOfWeek() == DayOfWeek.MONDAY) {
-
-          throw new IllegalStateException("I don't like Mondays");
-
-        } else {
-          return date ;
-        }
-      }
-    };
-
-    skadeDatoVelger.setConverter(converter);
-*/
 
 
-    String klokkeslett = klokkeslettTekstfelt.getText();
-    String skadeDato = skadeDatoVelger.getValue().toString();
 
-    String forsikringsType = forsikringsTypeKomboboks.getSelectionModel().getSelectedItem().toString();
-    String skadeType = skadeTypeTekstfelt.getText();
-    String skadeBeskrivelse = skadeBeskrivelseTekstfelt.getText();
-    String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
-
-    skademelding = new Skademelding(skadeDato, klokkeslett, forsikringsType, skadeType, null, null, skadeBeskrivelse, ovrigSkadeInformasjon);
-
-
-    dho.getKundeMedSkademeldingListeHandling().leggTilSkademelding(skademelding, kunde);
-
-    NavigeringTilVisKundeScene();
-
-
-    // NavigeringTilVisKundeScene();
 
   }
 }

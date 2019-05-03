@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class KundeMedSkademeldingListeHandling {
 
-  //private  ObservableMap<Kunde,ArrayList<Forsikring>> kundeMedForsikringListe = FXCollections.observableHashMap();
+
   private HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademeldingListe = new HashMap<>();
   private ObservableList<Skademelding> skademeldingListe = FXCollections.observableArrayList();
 
@@ -40,9 +40,9 @@ public class KundeMedSkademeldingListeHandling {
       kunde.getSkadeMeldinger().remove(skademelding);
       this.kundeMedSkademeldingListe.put(kunde, kunde.getSkadeMeldinger());
       this.skademeldingListe.remove(skademelding);
-      System.out.println("Skademelding slettet");
+
     } else {
-      System.out.println("Skademelding ikke finnes");
+
     }
   }
 
@@ -55,9 +55,9 @@ public class KundeMedSkademeldingListeHandling {
       }
       this.kundeMedSkademeldingListe.remove(kunde);
 
-      System.out.println("Skademelding slettet");
+
     } else {
-      System.out.println("Skademelding ikke finnes");
+
     }
   }
 
@@ -77,7 +77,7 @@ public class KundeMedSkademeldingListeHandling {
 
   public Kunde finnSkademeldingsKunde(HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding, Skademelding skademelding) {
 
-    //ArrayList<ArrayList<Skademelding>> listeAvForsikringListe = new ArrayList<>(kundeMedSkademeldingListe.values());
+
     Kunde kunde;
 
 

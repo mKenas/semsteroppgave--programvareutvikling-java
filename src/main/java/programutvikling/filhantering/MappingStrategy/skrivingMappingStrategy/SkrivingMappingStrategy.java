@@ -28,7 +28,7 @@ public class SkrivingMappingStrategy {
 
 
     ColumnPositionMappingStrategy<T> strategy = new  ColumnPositionMappingStrategy<T>();
-    //HeaderColumnNameTranslateMappingStrategy<T> strategy = new HeaderColumnNameTranslateMappingStrategy<T>();
+
 
     strategy.setType(klasse);
 

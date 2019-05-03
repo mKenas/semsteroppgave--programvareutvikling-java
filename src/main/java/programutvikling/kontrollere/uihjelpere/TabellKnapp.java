@@ -36,20 +36,7 @@ public class TabellKnapp<S> extends TableCell<S, Button> {
 
   }
 
-/*  public TabellKnapp(String tittel, String stil, BiConsumer<S, S> funksjon) {
 
-    ImageView bilde = new ImageView(getClass().getResource("/programutvikling/ikoner/vis-kunde.png").toExternalForm());
-    bilde.setFitWidth(20);
-    bilde.setFitHeight(20);
-    this.knapp = new Button(tittel);
-    this.knapp.getStyleClass().add(stil);
-    this.knapp.setCursor(Cursor.HAND);
-    this.knapp.setGraphic(bilde);
-    this.knapp.setOnAction((ActionEvent e) -> {
-      funksjon.accept(getvalgtElement(), null);
-    });
-
-  }*/
 
   public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String bildeSti, Consumer<S> funksjon) {
 
@@ -57,11 +44,7 @@ public class TabellKnapp<S> extends TableCell<S, Button> {
     return param -> new TabellKnapp<>(bildeSti, funksjon);
   }
 
-/*  public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String tittel, String stil, BiConsumer<S, S> funksjon) {
 
-
-    return param -> new TabellKnapp<>(tittel, stil, funksjon);
-  }*/
 
   public S getvalgtElement() {
     return (S) getTableView().getItems().get(getIndex());

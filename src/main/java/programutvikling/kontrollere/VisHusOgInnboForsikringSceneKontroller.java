@@ -69,7 +69,7 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
       HusOgInnboForsikring f = (HusOgInnboForsikring) forsikring;
 
       this.forsikring = f;
-      //personNrLabel.setText(f);
+
       adresseLabel.setText(f.getBoligAdresse());
       byggearLabel.setText(f.getByggeAr());
       boligTypeLabel.setText(f.getBoligType());

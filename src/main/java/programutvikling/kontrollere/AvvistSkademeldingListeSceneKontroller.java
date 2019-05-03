@@ -29,7 +29,7 @@ public class AvvistSkademeldingListeSceneKontroller {
   private Kunde kunde;
   private Skademelding skademelding;
   private BorderPane borderPane = hsk.getBorderPane();
-  //
+
   private ObservableList<Skademelding> avvistSkademeldingListe;
   @FXML
   private TableView avvistSkademeldingTabell;
@@ -74,7 +74,7 @@ public class AvvistSkademeldingListeSceneKontroller {
     avvistSkademeldingListe.addListener(new InvalidationListener() {
       @Override
       public void invalidated(Observable observable) {
-        System.out.println("Forsikring liste Endret");
+
         forsikringEndret();
       }
     });

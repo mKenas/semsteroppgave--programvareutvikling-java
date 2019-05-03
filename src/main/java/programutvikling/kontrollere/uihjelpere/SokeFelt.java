@@ -30,7 +30,7 @@ public class SokeFelt {
 
     this.tekstfelt.textProperty().addListener((observable, oldValue, newValue) -> {
 
-      System.out.println("søk endret");
+
       this.filtrertListe = new FilteredList<>(liste);
       filtrertListe.setPredicate(betingelse);
 

@@ -10,10 +10,10 @@ public class JOBJFormatLeser extends FilLeser {
   public HashMap<String, Object> lesFraFil(String filsti) throws IOException, ClassNotFoundException {
     FileInputStream fin = new FileInputStream(filsti);
     ObjectInputStream oin = new ObjectInputStream(fin);
-    //List<Kunde> list = (List<Kunde>) oin.readObject();
+
     HashMap<String,Object> dataliste = (HashMap<String,Object>) oin.readObject();
 
-    //return FXCollections.observableList(list);
+
 
 
     return dataliste;

@@ -16,6 +16,8 @@ import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.egenDefinertTyper.SkademeldingStatus;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.validering.SkademeldingValidator;
+import programutvikling.validering.Validator;
 
 public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedSkademeldingInfo {
 
@@ -63,8 +65,21 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
 
 
 
+
+  private boolean erValideringOk(){
+
+    if(takseringsbelopTekstfelt.validate() == true &&
+            utbetaltErstatningsbelopTekstfelt.validate() == true)
+      return true;
+
+
+    return  false;
+  }
+
   public void initialize() {
 
+    Validator.validerFraTekstfelt(takseringsbelopTekstfelt, SkademeldingValidator.getUgyldigBelopRegex(), SkademeldingValidator.getUgyldigForsikringbelopFeilmelding());
+    Validator.validerFraTekstfelt(utbetaltErstatningsbelopTekstfelt, SkademeldingValidator.getUgyldigBelopRegex(), SkademeldingValidator.getUgyldigForsikringbelopFeilmelding());
 
   }
 
@@ -77,10 +92,7 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
 
   }
 
-  protected void NavigeringTilKunderScene() {
-    Navigator.visScene(borderPane, Navigator.getKundeListeScene());
 
-  }
 
   public void NavigerTilVisKundeScene() {
 
@@ -122,49 +134,29 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
   }
 
 
-  public void godkjennSkadeMelding() {
 
 
-    Double takseringsbelop = Double.valueOf(takseringsbelopTekstfelt.getText());
-    Double utbetaltErstatningsbelop = Double.valueOf(utbetaltErstatningsbelopTekstfelt.getText());
-    this.skademelding.setTakseringsbelop(takseringsbelop);
-    this.skademelding.setUtbetaltErstatningsbelop(utbetaltErstatningsbelop);
-
-    dho.getKundeMedSkademeldingListeHandling().godkjennSkademelding(skademelding);
-    //kunde.godkjennSkademelding(skademelding);
-
-
-  }
-
-  public void avvisSkademelding() {
-
-    Double takseringsbelop = Double.valueOf(takseringsbelopTekstfelt.getText());
-    this.skademelding.setTakseringsbelop(takseringsbelop);
-    dho.getKundeMedSkademeldingListeHandling().avvisSkademelding(skademelding);
-    //kunde.avvisSkademelding(skademelding);
-
-  }
 
   public void handleLagreSkadeMelding() {
 
-    this.skademelding.setStatus(SkademeldingStatus.UNDER_BEHANDLING);
 
-    Double takseringsBelop = Double.valueOf(takseringsbelopTekstfelt.getText());
+    if (erValideringOk()) {
 
-    skademelding.setTakseringsbelop(takseringsBelop);
+      this.skademelding.setStatus(SkademeldingStatus.UNDER_BEHANDLING);
 
-    Double utbetaltErstatningsBelop = Double.valueOf(utbetaltErstatningsbelopTekstfelt.getText());
+      Double takseringsBelop = Double.valueOf(takseringsbelopTekstfelt.getText());
 
-    skademelding.setUtbetaltErstatningsbelop(utbetaltErstatningsBelop);
+      skademelding.setTakseringsbelop(takseringsBelop);
 
-  }
+      Double utbetaltErstatningsBelop = Double.valueOf(utbetaltErstatningsbelopTekstfelt.getText());
 
-
-  @FXML
-  public void handleAvslaSkademeldingKnapp() {
-
+      skademelding.setUtbetaltErstatningsbelop(utbetaltErstatningsBelop);
+    }
 
   }
+
+
+
 
   @FXML
   public void handleLagreKnapp() {
@@ -176,16 +168,38 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
   @FXML
   public void handleSkadeMeldingGodkjentKnapp() {
 
-    godkjennSkadeMelding();
-    NavigerTilVisKundeScene();
+    if (erValideringOk()) {
+      Double takseringsbelop = Double.valueOf(takseringsbelopTekstfelt.getText());
+      Double utbetaltErstatningsbelop = Double.valueOf(utbetaltErstatningsbelopTekstfelt.getText());
+
+
+      this.skademelding.setTakseringsbelop(takseringsbelop);
+      this.skademelding.setUtbetaltErstatningsbelop(utbetaltErstatningsbelop);
+
+      dho.getKundeMedSkademeldingListeHandling().godkjennSkademelding(skademelding);
+
+      NavigerTilVisKundeScene();
+    }
+
+
 
   }
 
   @FXML
   public void handleSkadeMeldingAvvistKnapp() {
 
-    avvisSkademelding();
-    NavigerTilVisKundeScene();
+    if (erValideringOk()) {
+      Double takseringsbelop = Double.valueOf(takseringsbelopTekstfelt.getText());
+
+      this.skademelding.setTakseringsbelop(takseringsbelop);
+      dho.getKundeMedSkademeldingListeHandling().avvisSkademelding(skademelding);
+
+      NavigerTilVisKundeScene();
+    }
+
+
+
+
   }
 
   public void skjulSkademeldingKnapper() {

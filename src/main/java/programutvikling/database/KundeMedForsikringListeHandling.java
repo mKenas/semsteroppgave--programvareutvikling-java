@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class KundeMedForsikringListeHandling {
 
-  //private  ObservableMap<Kunde,ArrayList<Forsikring>> kundeMedForsikringListe = FXCollections.observableHashMap();
+
   private HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikringListe = new HashMap<>();
   private ObservableList<Forsikring> forsikringListe = FXCollections.observableArrayList();
 
@@ -22,17 +22,7 @@ public class KundeMedForsikringListeHandling {
   }
 
 
-/*
-  public ObservableList<Forsikring> getForsikringListe() {
 
-
-    ArrayList<ArrayList<Forsikring>> listeAvForsikringListe = new ArrayList<>(kundeMedForsikringListe.values());
-    ArrayList<Forsikring> liste = new ArrayList<>();
-    listeAvForsikringListe.forEach(l -> l.forEach(forsikring -> liste.add(forsikring)));
-
-    forsikringListe = FXCollections.observableList(forsikringListe);
-    return forsikringListe;
-  }*/
 
   public void leggTilForsikring(Forsikring forsikring, Kunde kunde) {
 
@@ -50,9 +40,9 @@ public class KundeMedForsikringListeHandling {
       kunde.getForsikringer().remove(forsikring);
       this.kundeMedForsikringListe.put(kunde, kunde.getForsikringer());
       this.forsikringListe.remove(forsikring);
-      System.out.println("Forsikring slettet");
+
     } else {
-      System.out.println("Forsikring ikke finnes");
+
     }
   }
 
@@ -66,21 +56,17 @@ public class KundeMedForsikringListeHandling {
 
       this.kundeMedForsikringListe.remove(kunde);
 
-      //System.out.println("Forsikring slettet");
+
     } else {
-      //System.out.println("Forsikring ikke finnes");
+
     }
   }
 
   public Kunde finnForsikringsEier(HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikringListe ,Forsikring forsikring) {
 
-   // ArrayList<ArrayList<Forsikring>> listeAvForsikringListe = new ArrayList<>(kundeMedForsikringListe.values());
+
     Kunde kunde;
 
-
-   /* kundeMedForsikringListe.entrySet().stream()
-            .flatMap(m -> m.getValue().stream())
-            .forEach(System.out::println);*/
 
 
     for (Map.Entry<Kunde, ArrayList<Forsikring>> liste : kundeMedForsikringListe.entrySet()) {

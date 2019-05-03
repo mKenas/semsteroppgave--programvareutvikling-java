@@ -61,7 +61,7 @@ public class SkademeldingListeKontroller {
     skademeldingTabell.setPlaceholder(new Label("Ingen skademelding er registrert ennå!"));
 
 
-    //skademeldingListe = dho.getKundeMedSkademeldingListeHandling().getSkademeldingListe();
+
     skademeldingListe = dlo.getFiltrertSkademeldingListe();
 
 
@@ -78,7 +78,7 @@ public class SkademeldingListeKontroller {
     skademeldingListe.addListener(new InvalidationListener() {
       @Override
       public void invalidated(Observable observable) {
-        System.out.println("Skademelding liste Endret");
+
         forsikringEndret();
       }
     });

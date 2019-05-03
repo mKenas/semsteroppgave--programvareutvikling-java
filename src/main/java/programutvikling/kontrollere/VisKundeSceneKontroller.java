@@ -120,8 +120,6 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
       navigeringTilSkademeldingScene();
     });
 
-    /*if (dlo.getErstatningListeTilKunde(kunde,SkademeldingStatus.GODKJENT) != null)
-      System.out.println(dlo.getErstatningListeTilKunde(kunde,SkademeldingStatus.GODKJENT));*/
 
   }
 

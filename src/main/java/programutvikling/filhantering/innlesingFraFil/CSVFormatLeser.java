@@ -16,33 +16,21 @@ public class CSVFormatLeser extends FilLeser {
 
 
     MappingCSVTilKunde mappingCSVTilKundeliste = new MappingCSVTilKunde(filsti);
-    //System.out.println("Kundeliste");
-    //System.out.println(mappingCSVTilKundeliste.getKundeliste());
-
 
 
     MappingCSVTilReiseForsikring mappingCSVTilReiseForsikring  = new MappingCSVTilReiseForsikring(filsti);
-    //System.out.println("ReiseForsikringliste");
-    //System.out.println(mappingCSVTilReiseForsikring.getReiseForsikringsliste());
 
 
     MappingCSVTilHusOgInnboForsikring mappingCSVTilHusOgInnboForsikring  = new MappingCSVTilHusOgInnboForsikring(filsti);
-    //System.out.println("HusOgInnboForsikringliste");
-    //System.out.println(mappingCSVTilHusOgInnboForsikring.getHusOgInnboForsikringsliste());
+
 
     MappingCSVTiBatForsikring mappingCSVTiBatForsikring  = new MappingCSVTiBatForsikring(filsti);
-    //System.out.println("BatForsikringliste");
-    //System.out.println(mappingCSVTiBatForsikring.getBatForsikringsliste());
 
     MappingCSVTiFritidsboligForsikring mappingCSVTiFritidsboligForsikring = new MappingCSVTiFritidsboligForsikring(filsti);
-    //System.out.println("FritidsboligForsikringliste");
-    //System.out.println(mappingCSVTiFritidsboligForsikring.getFritidsboligForsikringsliste());
-
 
 
     MappingCSVTilSkademelding mappingCSVTilSkademelding  = new MappingCSVTilSkademelding(filsti);
-    //System.out.println("Skademelding");
-    //System.out.println(mappingCSVTilSkademelding.getSkademeldingListe());
+
 
 
     HashMap<String, Object> dataliste = new HashMap<>();

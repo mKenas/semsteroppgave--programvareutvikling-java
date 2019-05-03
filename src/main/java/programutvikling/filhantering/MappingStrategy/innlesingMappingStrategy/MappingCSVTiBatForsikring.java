@@ -29,12 +29,10 @@ public class MappingCSVTiBatForsikring extends InnlesingMappingStrategy {
 
 
           return erBatForsikring;
-          //return true;
         }
       };
 
     this.batForsikringsliste = this.objektTilCSV( filstil, BatForsikring.class, filter);
-    //System.out.println(list);
 
   }
 

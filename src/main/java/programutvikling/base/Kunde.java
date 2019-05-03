@@ -10,8 +10,8 @@ public class Kunde implements Serializable {
 
   private static final long serialVersionUID = 1;
 
-  //private ObservableHelper observersHandler = new ObservableHelper();
-//@NotEmpty(message = "kan ikke være tomt")
+
+
   private String personNr;
   private String navn;
   private String etternavn;
@@ -22,7 +22,7 @@ public class Kunde implements Serializable {
   private String poststed;
   private String opprettelsesDato;
 
-  //bytte til Arrarylist
+
 
   private ArrayList<Forsikring> forsikringer;
   private ArrayList<Skademelding> skadeMeldinger;
@@ -93,7 +93,7 @@ public class Kunde implements Serializable {
 
   public void setNavn(String navn) {
     this.navn = navn;
-    //observersHandler.update();
+
 
   }
 
@@ -175,7 +175,7 @@ public class Kunde implements Serializable {
 
   public void setFakturaAdresse(String fakturaAdresse) {
     this.fakturaAdresse = fakturaAdresse;
-    //observersHandler.update();
+
 
   }
 
@@ -186,9 +186,7 @@ public class Kunde implements Serializable {
 
 
 
-/*  public void setErstatninger(ArrayList<Skademelding> erstatninger) {
-    this.erstatninger = erstatninger;
-  }*/
+
 
 
 

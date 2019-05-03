@@ -9,12 +9,12 @@ public class GyldigCSVFil {
 
 
   public static boolean sjekkCSVFilErGyldig(String filsti){
-    //CSVReader reader = new CSVReader(new StringReader(csvContent));
+
     BufferedReader leser = null;
-    //CSVReader reader = null;
+
     try {
       leser = Files.newBufferedReader(Paths.get(filsti));
-      //reader = new CSVReader(new FileReader(filsti));
+
       String linje;
       while ((linje = leser.readLine()) != null) {
         String[] ordliste = linje.split(";");

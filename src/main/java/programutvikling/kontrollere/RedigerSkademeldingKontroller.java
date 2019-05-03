@@ -10,6 +10,7 @@ import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.base.Skademelding;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.validering.SkademeldingValidator;
 import programutvikling.validering.Validator;
 
 import java.text.ParseException;
@@ -48,7 +49,12 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
 
   public void initialize() {
 
-    //Validator.datoValidering(skadeDatoVelger,"","Skadedato feil");
+    Validator.validerFraTekstfelt(klokkeslettTekstfelt, SkademeldingValidator.getUgyldigKlokkeslettRegex(), SkademeldingValidator.getUgyldigKlokkeslettMelding());
+    Validator.validerFraTekstfelt(skadeTypeTekstfelt, SkademeldingValidator.getUgyldigSkadetypeRegex(), SkademeldingValidator.getUgyldigSkadetypeMelding());
+
+    Validator.validerFraTekstArea(skadeBeskrivelseTekstfelt, SkademeldingValidator.getUgyldigSkadebeskrivelseRegex(), SkademeldingValidator.getUgyldigSkadebeskrivelseMelding());
+    Validator.validerFraTekstArea(ovrigSkadeInformasjonTekstfelt, SkademeldingValidator.getUgyldigSkadeinformasjonRegex(), SkademeldingValidator.getUgyldigSkadeinformasjonMelding());
+
 
   }
 
@@ -72,10 +78,23 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
     this.kunde = kunde;
     personNrTekstfelt.setText(kunde.toString());
 
+
+    Validator.validerFraTekstfelt(klokkeslettTekstfelt, SkademeldingValidator.getUgyldigKlokkeslettRegex(), SkademeldingValidator.getUgyldigKlokkeslettMelding());
+    Validator.validerFraTekstfelt(skadeTypeTekstfelt, SkademeldingValidator.getUgyldigSkadetypeRegex(), SkademeldingValidator.getUgyldigSkadetypeMelding());
+
+    Validator.validerFraTekstArea(skadeBeskrivelseTekstfelt, SkademeldingValidator.getUgyldigSkadebeskrivelseRegex(), SkademeldingValidator.getUgyldigSkadebeskrivelseMelding());
+    Validator.validerFraTekstArea(ovrigSkadeInformasjonTekstfelt, SkademeldingValidator.getUgyldigSkadeinformasjonRegex(), SkademeldingValidator.getUgyldigSkadeinformasjonMelding());
+
+
   }
 
   @FXML
     public void handleRedigerSkademeldingKnapp() {
+
+    if(klokkeslettTekstfelt.validate() == true &&
+            skadeTypeTekstfelt.validate() == true &&
+            skadeBeskrivelseTekstfelt.validate() == true &&
+            ovrigSkadeInformasjonTekstfelt.validate() == true ) {
 
       String forikringsType = forsikringsTypeKomboboks.getValue().toString();
       String skadeDato = skadeDatoVelger.getValue().toString();
@@ -85,13 +104,7 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
       String ovrigSkadeInformasjon = ovrigSkadeInformasjonTekstfelt.getText();
 
 
-    LocalDate sdato = skadeDatoVelger.getValue();
-
-
-
-    System.out.println(sdato.isBefore( LocalDate.now().plusDays(1) ));
-
-
+      LocalDate sdato = skadeDatoVelger.getValue();
 
 
       skademelding.setForsikringsType(forikringsType);
@@ -101,19 +114,10 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
       skademelding.setSkadeBeskrivelse(skadeBeskrivelse);
       skademelding.setOvrigSkadeInformasjon(ovrigSkadeInformasjon);
 
-    navigeringTilSkademeldingScene();
+      navigeringTilSkademeldingScene();
 
 
-
-
-
-
-   /* try {
-      Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(stringDato);
-    } catch (ParseException e) {
-      e.printStackTrace();
-    }*/
-
+    }
 
 
 

@@ -17,7 +17,7 @@ public class MainApp extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    //Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
+
 
       Font.loadFont(MainApp.class.getResource("fonts/Font-Awesome-5-Free-Regular-400.otf").toExternalForm(), 10);
       Font.loadFont(MainApp.class.getResource("fonts/Font-Awesome-5-Free-Solid-900.otf").toExternalForm(), 10);
@@ -28,8 +28,8 @@ public class MainApp extends Application {
     scene.getStylesheets().add(getClass().getResource("styles/styles.css").toExternalForm());
 
 
-    //stage.setMinHeight(800);
-    //stage.setMinWidth(1150);
+
+
 
     stage.setTitle("Expert forsikring");
     stage.setScene(scene);

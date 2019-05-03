@@ -29,12 +29,11 @@ public class MappingCSVTilHusOgInnboForsikring extends InnlesingMappingStrategy 
 
 
           return erHusOgInnboForsikring;
-          //return true;
+
         }
       };
 
     this.husOgInnboForsikringsliste = this.objektTilCSV( filstil, HusOgInnboForsikring.class, filter);
-    //System.out.println(list);
 
   }
 
