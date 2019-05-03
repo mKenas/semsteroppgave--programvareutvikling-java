@@ -39,7 +39,7 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
   @Override
   public void setKunde(Kunde kunde) {
     this.kunde = kunde;
-    personNrTekstfelt.setText(kunde.getPersonNr());
+    personNrTekstfelt.setText(kunde.toString());
 
   }
 

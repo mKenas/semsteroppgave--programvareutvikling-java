@@ -80,7 +80,6 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
   public void setKunde(Kunde k) {
 
     this.kunde = k;
-    //this.forsikring = (HusOgInnboForsikring) kunde.getForsikringData().get(0);
     personNrLabel.setText(k.getPersonNr());
     navnLabel.setText(k.getNavn());
     etternavnLabel.setText(k.getEtternavn());

@@ -11,6 +11,8 @@ import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.status.InnlesingOgSkrivingStatus;
+import programutvikling.status.KundeValideringStatus;
+import programutvikling.validering.KundeValidator;
 import programutvikling.validering.Validator;
 
 
@@ -61,17 +63,9 @@ public class RegistrerKundeSceneKontroller {
     forsikringsType = forsikringsTypeKomboBoks.getSelectionModel().getSelectedItem().toString();
 
 
-
-    if (personNrTekstFelt.validate() == true /*&&
-            navnTekstFelt.validate() == true &&
-            etternavnTekstFelt.validate() == true &&
-            fakturaadresseTekstFelt.validate() == true &&
-            postnummerTekstFelt.validate() == true &&
-            epostTekstFelt.validate() == true &&
-            mobilTekstFelt.validate() == true*/     ) {
       dhl.getKundeListeHandling().leggTilKunde(kunde);
       navigeringTilOpprettForsikringScene();
-    }
+
   }
 
   public void initialize() {
@@ -79,18 +73,62 @@ public class RegistrerKundeSceneKontroller {
 
     registrerKundeKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
 
+    validerKundeFelt();
 
 
-    Validator.valider(personNrTekstFelt,"^[0-9]{11}$","Personnummer tillater kun 11 tall");
-/*  Validator.valider(navnTekstFelt,"^[a-zA-ZäöæøåøÄÖÆØÅ]{2,16}$","Navnet må være mellom 2-16 skandinaviske bokstaver");
-    Validator.valider(etternavnTekstFelt,"^[a-zA-ZäöæøåøÄÖÆØÅ]{2,16}$","Etternavnet må være mellom 2-16 skandinaviske bokstaver");
-    Validator.valider(fakturaadresseTekstFelt,"^[0-9a-zA-ZäöæøåøÄÖÆØÅ ]{2,36}$","Adressen må være mellom 2-36 skandinaviske bokstaver");
-    Validator.valider(postnummerTekstFelt,"^[0-9]{4}","Postnummeret må være på 4 tall");
-    Validator.valider(poststedTekstFelt,"^[a-zA-ZäöæøåøÄÖÆØÅ]{2,18}$","Poststedet må være på 2-18 bokstaver");
-    Validator.valider(epostTekstFelt,"^[a-zA-Z0-9]+@[a-zA-Z0-9]{0,42}$","Poststedet må være på 2-18 bokstaver");
-    Validator.valider(mobilTekstFelt,"^[0-9]{8}$","Telefonnummer må være på 8 tall");*/
 
   }
+
+
+  private void validerKundeFelt() {
+
+    nullstillValideringStatus();
+
+
+
+
+    validerFeltVedEndringAvInnputt();
+
+
+    bindeKanppAkriveringTilValideringStatus();
+
+  }
+
+  private void bindeKanppAkriveringTilValideringStatus() {
+    registrerKundeKnapp.disableProperty().bind(
+            KundeValideringStatus.erPersonNrGyldig().not()
+                    .or(KundeValideringStatus.erNavnGyldig().not())
+                    .or(KundeValideringStatus.erEtternavnGyldig().not())
+                    .or(KundeValideringStatus.erAdresseGyldig().not())
+                    .or(KundeValideringStatus.erPostNrGyldig().not())
+                    .or(KundeValideringStatus.erPoststedGyldig().not())
+                    .or(KundeValideringStatus.erEpostGyldig().not())
+                    .or(KundeValideringStatus.erMobilGyldig().not())
+
+    );
+  }
+
+  private void validerFeltVedEndringAvInnputt() {
+
+    Validator.valider(KundeValideringStatus.erPersonNrGyldig(),personNrTekstFelt,KundeValidator.getUgyldigPersonnummerRegex(),KundeValidator.getUgyldigPersonnummerFeilmelding());
+    Validator.valider(KundeValideringStatus.erNavnGyldig(),navnTekstFelt,KundeValidator.getUgyldigNavnRegex(),KundeValidator.getUgyldigNavnFeilmelding());
+    Validator.valider(KundeValideringStatus.erEtternavnGyldig(),etternavnTekstFelt,KundeValidator.getUgyldigEtternavnRegex(),KundeValidator.getUgyldigEtternavnFeilmelding());
+    Validator.valider(KundeValideringStatus.erAdresseGyldig(),fakturaadresseTekstFelt,KundeValidator.getUgyldigFakturaAdresseRegex(),KundeValidator.getUgyldigFakturaAdresseFeilmelding());
+    Validator.valider(KundeValideringStatus.erPostNrGyldig(),postnummerTekstFelt,KundeValidator.getUgyldigPostnummerRegex(),KundeValidator.getUgyldigPostnummerFeilmelding());
+    Validator.valider(KundeValideringStatus.erPoststedGyldig(),poststedTekstFelt,KundeValidator.getUgyldigPoststedRegex(),KundeValidator.getUgyldigPoststedFeilmelding());
+    Validator.valider(KundeValideringStatus.erEpostGyldig(),epostTekstFelt,KundeValidator.getUgyldigEpostRegex(),KundeValidator.getUgyldigEpostFeilmelding());
+    Validator.valider(KundeValideringStatus.erMobilGyldig(),mobilTekstFelt,KundeValidator.getUgyldigMobilRegex(),KundeValidator.getUgyldigMobilFeilmelding());
+
+  }
+
+
+  private void nullstillValideringStatus() {
+
+    KundeValideringStatus.nullstilValideringStatus();
+
+
+  }
+
 
 
   protected void navigeringTilOpprettForsikringScene() {

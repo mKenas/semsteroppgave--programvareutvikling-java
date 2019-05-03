@@ -57,7 +57,7 @@
         <children>
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                 <children>
-                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Boligens adresse">
+                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Boligens adresse *">
                   <VBox.margin>
                      <Insets />
                   </VBox.margin></Label>
@@ -93,11 +93,8 @@
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-               <Label maxWidth="1.7976931348623157E308" text="Forsikringsbeløp">
-                  <VBox.margin>
-                     <Insets />
-                  </VBox.margin></Label>
-               <JFXTextField fx:id="forsikringsbelopTekstfelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+               <Label maxWidth="1.7976931348623157E308" text="Standard" />
+               <JFXTextField fx:id="standardTekstfelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                   <VBox.margin>
                      <Insets bottom="30.0" />
                   </VBox.margin>
@@ -110,18 +107,7 @@
             </VBox>
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                 <children>
-                    <Label layoutX="20.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Standard">
-                        <VBox.margin>
-                            <Insets />
-                        </VBox.margin>
-                    </Label>
-
-                    <JFXTextField fx:id="standardTekstfelt" layoutX="20.0" layoutY="187.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                        <VBox.margin>
-                            <Insets bottom="30.0" />
-                        </VBox.margin>
-                    </JFXTextField>
-                    <Label maxWidth="1.7976931348623157E308" text="Antall kvadratmeter">
+                    <Label maxWidth="1.7976931348623157E308" text="Antall kvadratmeter *">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin>
@@ -131,7 +117,7 @@
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Bygning forsikringsbeløp">
+                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Bygning forsikringsbeløp *">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin>
@@ -141,7 +127,7 @@
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Innbo forsikringsbeløp">
+                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Innbo forsikringsbeløp *">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin>
@@ -151,7 +137,16 @@
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-               <Label maxWidth="1.7976931348623157E308" text="Forsikringspremie">
+               <Label maxWidth="1.7976931348623157E308" text="Forsikringsbeløp *">
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin></Label>
+               <JFXTextField fx:id="forsikringsbelopTekstfelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                  <VBox.margin>
+                     <Insets bottom="30.0" />
+                  </VBox.margin>
+               </JFXTextField>
+               <Label maxWidth="1.7976931348623157E308" text="Forsikringspremie *">
                   <VBox.margin>
                      <Insets />
                   </VBox.margin>
@@ -171,6 +166,11 @@
             <Insets bottom="15.0" left="15.0" right="15.0" />
         </VBox.margin>
     </HBox>
+   <Label text="Felt som er merket med * er påkrevert!">
+      <VBox.margin>
+         <Insets bottom="15.0" left="30.0" right="15.0" top="15.0" />
+      </VBox.margin>
+   </Label>
 
     <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <right>

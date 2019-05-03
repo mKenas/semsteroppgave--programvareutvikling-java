@@ -43,25 +43,25 @@
       <items>
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                 <children>
-                    <Label maxWidth="1.7976931348623157E308" text="PersonNr" VBox.vgrow="ALWAYS" />
+                    <Label maxWidth="1.7976931348623157E308" text="PersonNr *" VBox.vgrow="ALWAYS" />
                     <JFXTextField fx:id="personNrTekstFelt" layoutX="10.0" layoutY="71.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                         <VBox.margin>
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Navn" VBox.vgrow="ALWAYS" />
+                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Navn *" VBox.vgrow="ALWAYS" />
                     <JFXTextField fx:id="navnTekstFelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                         <VBox.margin>
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Etternavn" VBox.vgrow="ALWAYS" />
+                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Etternavn *" VBox.vgrow="ALWAYS" />
                     <JFXTextField fx:id="etternavnTekstFelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                         <VBox.margin>
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-                    <Label layoutX="10.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Epost" VBox.vgrow="ALWAYS" />
+                    <Label layoutX="10.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Epost *" VBox.vgrow="ALWAYS" />
                     <JFXTextField fx:id="epostTekstFelt" layoutX="10.0" layoutY="187.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                         <VBox.margin>
                             <Insets bottom="30.0" />
@@ -99,7 +99,7 @@
             </VBox>
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                 <children>
-                    <Label layoutX="20.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Mobil" VBox.vgrow="ALWAYS">
+                    <Label layoutX="20.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Mobil *" VBox.vgrow="ALWAYS">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin>
@@ -110,7 +110,7 @@
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-                    <Label maxWidth="1.7976931348623157E308" text="Fakturaadresse" VBox.vgrow="ALWAYS">
+                    <Label maxWidth="1.7976931348623157E308" text="Fakturaadresse *" VBox.vgrow="ALWAYS">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin>
@@ -120,7 +120,7 @@
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Postnummer" VBox.vgrow="ALWAYS">
+                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Postnummer *" VBox.vgrow="ALWAYS">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin>
@@ -130,7 +130,7 @@
                             <Insets bottom="30.0" />
                         </VBox.margin>
                     </JFXTextField>
-                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Poststed" VBox.vgrow="ALWAYS">
+                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Poststed *" VBox.vgrow="ALWAYS">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin>
@@ -146,10 +146,18 @@
             </padding>
             </VBox>
       </items>
+      <VBox.margin>
+         <Insets bottom="15.0" />
+      </VBox.margin>
    </SplitPane>
+   <Label text="Felt som er merket med * er påkrevert!">
+      <VBox.margin>
+         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+      </VBox.margin>
+   </Label>
     <BorderPane VBox.vgrow="ALWAYS">
         <right>
-            <JFXButton fx:id="registrerKundeKnapp" alignment="CENTER" contentDisplay="RIGHT"  mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" styleClass="handling-scene-knapp" text="Neste" BorderPane.alignment="CENTER">
+            <JFXButton fx:id="registrerKundeKnapp" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" styleClass="handling-scene-knapp" text="Neste" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                 </BorderPane.margin>

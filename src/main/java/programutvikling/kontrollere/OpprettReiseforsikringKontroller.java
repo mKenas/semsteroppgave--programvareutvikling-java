@@ -43,7 +43,7 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
   @Override
   public void setKunde(Kunde kunde) {
     this.kunde = kunde;
-    personNrTekstfelt.setText(kunde.getPersonNr());
+    personNrTekstfelt.setText(kunde.toString());
 
   }
 
@@ -84,6 +84,59 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
 
 
   }
+
+
+ /* private void validerReiseForsikringoFelt() {
+
+    nullstillValideringStatus();
+
+
+    validerFeltVedInnlastingAvScene();
+
+
+    validerFeltVedEndringAvInnputt();
+
+
+    bindeKanppAkriveringTilValideringStatus();
+
+  }
+
+  private void bindeKanppAkriveringTilValideringStatus() {
+    opprettForsikringKnapp.disableProperty().bind(
+            InnboOgfritidValideringStatus.erAdresseGyldig().not()
+                    .or(InnboOgfritidValideringStatus.erByggeArGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erBoligTypeGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erbyggeMaterialeGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erBoligStanderGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erAntallKvadratmeterGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erByggningsbelopGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erInnbobelopGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erforsikringbelopGyldig().not())
+                    .or((InnboOgfritidValideringStatus.getForsikringspremieGyldig().not()))
+    );
+  }
+
+  private void validerFeltVedEndringAvInnputt() {
+
+  }
+
+  private void validerFeltVedInnlastingAvScene() {
+
+  }
+
+  private void nullstillValideringStatus() {
+
+    InnboOgfritidValideringStatus.erAdresseGyldig().set(false);
+    InnboOgfritidValideringStatus.erByggeArGyldig().set(false);
+    InnboOgfritidValideringStatus.erBoligTypeGyldig().set(false);
+    InnboOgfritidValideringStatus.erbyggeMaterialeGyldig().set(false);
+    InnboOgfritidValideringStatus.erBoligStanderGyldig().set(false);
+    InnboOgfritidValideringStatus.erAntallKvadratmeterGyldig().set(false);
+    InnboOgfritidValideringStatus.erByggningsbelopGyldig().set(false);
+    InnboOgfritidValideringStatus.erInnbobelopGyldig().set(false);
+    InnboOgfritidValideringStatus.erforsikringbelopGyldig().set(false);
+    InnboOgfritidValideringStatus.getForsikringspremieGyldig().set(false);
+  }*/
 
 
   @FXML

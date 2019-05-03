@@ -21,7 +21,7 @@ public class KundeValidator {
   private static String UGYLDIG_POSTSTED_REGEX = "^[a-zA-ZäöæøåøÄÖÆØÅ]{2,18}$";
 
   private static String UGYLDIG_EPOST_FEILMELDING = "Eposten må inneholde tall eller bokstaver før og etter '@'";
-  private static String UGYLDIG_EPOST_REGEX = "^[a-zA-Z0-9]+@[a-zA-Z0-9]{0,42}$";
+  private static String UGYLDIG_EPOST_REGEX = "^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-_]{0,42}$";
 
   private static String UGYLDIG_MOBIL_FEILMELDING = "Telefonnummer må være på 8 tall";
   private static String UGYLDIG_MOBIL_REGEX = "^[0-9]{8}$";
@@ -90,5 +90,7 @@ public class KundeValidator {
   public static String getUgyldigMobilRegex() {
     return UGYLDIG_MOBIL_REGEX;
   }
+
+
 
 }

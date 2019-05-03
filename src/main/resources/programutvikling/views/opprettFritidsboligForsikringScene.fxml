@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <VBox layoutX="15.0" layoutY="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.OpprettFritidsboligSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
@@ -155,11 +156,11 @@
 
     <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleOpprettFritidsboligForsikringKnapp" styleClass="handling-scene-knapp" text="Opprett forsikring" BorderPane.alignment="CENTER">
+            <JFXButton fx:id="opprettForsikringKnapp" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleOpprettFritidsboligForsikringKnapp" styleClass="handling-scene-knapp" text="Opprett forsikring" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets right="15.0" />
                 </BorderPane.margin>
-            </Button>
+            </JFXButton>
         </right>
       <VBox.margin>
          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

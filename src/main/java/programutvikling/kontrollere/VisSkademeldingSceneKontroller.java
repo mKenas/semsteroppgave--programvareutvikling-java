@@ -61,13 +61,6 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
   private Hyperlink slettSkademeldingKnapp;
 
 
-/*  @FXML
-  private RadioButton godkjentRadioKnapp;
-  @FXML
-  private RadioButton avissRadioKnapp;
-
-  @FXML
-  private RadioButton underBehandlingRadioKnapp;*/
 
 
   public void initialize() {
@@ -99,7 +92,7 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
   @Override
   public void setKunde(Kunde kunde) {
     this.kunde = kunde;
-    personNrLabel.setText(kunde.getPersonNr());
+    personNrLabel.setText(kunde.toString());
 
   }
 

@@ -215,30 +215,13 @@ public void nullstilleAlleLister(){
     this.forsikringNrListe = forsikringNrListe;
   }
 
-/*
-  @Override
-  public String toString() {
-    return String.format("%s %s %s", personNr, navn, etternavn);
-  }*/
 
   @Override
   public String toString() {
-    return "Kunde{" +
-            "personNr='" + personNr + '\'' +
-            ", navn='" + navn + '\'' +
-            ", etternavn='" + etternavn + '\'' +
-            ", epost='" + epost + '\'' +
-            ", mobil='" + mobil + '\'' +
-            ", fakturaAdresse='" + fakturaAdresse + '\'' +
-            ", postNr='" + postNr + '\'' +
-            ", poststed='" + poststed + '\'' +
-            ", opprettelsesDato='" + opprettelsesDato + '\'' +
-            ", forsikringer=" + forsikringer +
-            ", skadeMeldinger=" + skadeMeldinger +
-            ", forsikringNrListe='" + forsikringNrListe + '\'' +
-            ", skadeMeldingNrListe='" + skadeMeldingNrListe + '\'' +
-            '}';
+    return String.format("%s, %s, %s", personNr, etternavn, navn);
   }
+
+
 
   @Override
   public boolean equals(Object o) {

@@ -97,7 +97,7 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   @Override
   public void setKunde(Kunde kunde) {
     this.kunde = kunde;
-    personNrLabel.setText(kunde.getPersonNr());
+    personNrLabel.setText(kunde.toString());
 
   }
 

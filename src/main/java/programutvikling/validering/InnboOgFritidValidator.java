@@ -2,61 +2,7 @@ package programutvikling.validering;
 
 import javafx.beans.property.SimpleBooleanProperty;
 
-public class HusOgInnboValidator {
-
-  private static SimpleBooleanProperty adresseStatus = new SimpleBooleanProperty(false);
-  private static SimpleBooleanProperty byggeArStatus = new SimpleBooleanProperty(false);
-  private static SimpleBooleanProperty boligTypeStatus = new SimpleBooleanProperty(false);
-  private static SimpleBooleanProperty byggeMaterialeStatus = new SimpleBooleanProperty(false);
-  private static SimpleBooleanProperty boligStanderStatus = new SimpleBooleanProperty(false);
-  private static SimpleBooleanProperty antallKvadratmeterStatus = new SimpleBooleanProperty(false);
-  private static SimpleBooleanProperty byggningsbelopStatus = new SimpleBooleanProperty(false);
-  private static SimpleBooleanProperty innbobelopStatus = new SimpleBooleanProperty(false);
-  private static SimpleBooleanProperty forsikringbelopStatus = new SimpleBooleanProperty(false);
-  private static SimpleBooleanProperty forsikringpremieStatus = new SimpleBooleanProperty(false);
-
-
-  public static SimpleBooleanProperty erAdresseGyldig() {
-    return adresseStatus;
-  }
-
-  public static SimpleBooleanProperty erByggeArGyldig() {
-    return byggeArStatus;
-  }
-
-  public static SimpleBooleanProperty erBoligTypeGyldig() {
-    return boligTypeStatus;
-  }
-
-  public static SimpleBooleanProperty erbyggeMaterialeGyldig() {
-    return byggeMaterialeStatus;
-  }
-
-  public static SimpleBooleanProperty erBoligStanderGyldig() {
-    return boligStanderStatus;
-  }
-
-    public static SimpleBooleanProperty erAntallKvadratmeterGyldig() {
-    return antallKvadratmeterStatus;
-  }
-      public static SimpleBooleanProperty erByggningsbelopGyldig() {
-    return byggningsbelopStatus;
-  }
-
-  public static SimpleBooleanProperty erInnbobelopGyldig() {
-    return innbobelopStatus;
-  }
-
-  public static SimpleBooleanProperty erforsikringbelopGyldig() {
-    return forsikringbelopStatus;
-  }
-
-
-
-
-  public static SimpleBooleanProperty getForsikringspremieGyldig() {
-    return forsikringpremieStatus;
-  }
+public class InnboOgFritidValidator {
 
 
   private static String UGYLDIG_ADDRESSE_FEILMELDING ="Adressen må være mellom 2-36 skandinaviske bokstaver eller tall";
@@ -74,7 +20,7 @@ public class HusOgInnboValidator {
   private static String UGYLDIG_ANTALL_KVADRATMETER_REGEX ="^([0-9]{2,4})$";
 
 
-  private static String UGYLDIG_BELOP_REGEX ="^([0-9]){2,12}|((\\.[0-9]{2,2}))$";
+  private static String UGYLDIG_BELOP_REGEX ="^([0-9]){2,12}((\\.[0-9]{1,2})?)$";
 
 
   private static String UGYLDIG_BYGGNINGSBELOP_FEILMELDING ="Bygningensforsikringsbeløp tillater 2-12 tall";
@@ -84,6 +30,12 @@ public class HusOgInnboValidator {
   private static String UGYLDIG_FORSIKRINGBELOP_FEILMELDING ="Forsikringsbeløp tillater 2-12 tall";
 
   private static String UGYLDIG_FORSIKRINGPREMIE_FEILMELDING ="Forsikringspremie tillater 2-12 tall";
+
+
+
+
+
+
 
 
   public static String getUgyldigAddresseFeilmelding() {
@@ -140,11 +92,9 @@ public class HusOgInnboValidator {
     return UGYLDIG_INNBOBELOP_FEILMELDING;
   }
 
-
   public static String getUgyldigForsikringbelopFeilmelding() {
     return UGYLDIG_FORSIKRINGBELOP_FEILMELDING;
   }
-
 
 
   public static String getUgyldigForsikringpremieFeilmelding() {

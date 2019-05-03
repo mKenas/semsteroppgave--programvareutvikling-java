@@ -55,5 +55,20 @@ public class InnboOgfritidValideringStatus {
   }
 
 
+  public static void nullstilValideringStatus(){
+
+    InnboOgfritidValideringStatus.erAdresseGyldig().set(false);
+    InnboOgfritidValideringStatus.erByggeArGyldig().set(false);
+    InnboOgfritidValideringStatus.erBoligTypeGyldig().set(false);
+    InnboOgfritidValideringStatus.erbyggeMaterialeGyldig().set(false);
+    InnboOgfritidValideringStatus.erBoligStanderGyldig().set(false);
+    InnboOgfritidValideringStatus.erAntallKvadratmeterGyldig().set(false);
+    InnboOgfritidValideringStatus.erByggningsbelopGyldig().set(false);
+    InnboOgfritidValideringStatus.erInnbobelopGyldig().set(false);
+    InnboOgfritidValideringStatus.erforsikringbelopGyldig().set(false);
+    InnboOgfritidValideringStatus.getForsikringspremieGyldig().set(false);
+  }
+
+
 
 }

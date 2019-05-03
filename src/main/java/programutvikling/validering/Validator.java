@@ -27,10 +27,11 @@ public class Validator {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 
 
-                tekstfelt.validate();
+                if (!newValue) {
+                    tekstfelt.validate();
                     validering.set(tekstfelt.validate());
                     System.out.println(validering);
-
+                }
 
 
             }
@@ -61,6 +62,20 @@ public class Validator {
         });
     }
 
+    public static void validerVedInnlasstingAvScene(SimpleBooleanProperty validering, JFXTextField tekstfelt, String regex, String melding){
+
+
+        RegexValidator regexSetter = new RegexValidator();
+        regexSetter.setRegexPattern(regex);
+        regexSetter.setMessage(melding);
+        tekstfelt.getValidators().add(regexSetter);
+        System.out.println(tekstfelt.getText());
+        tekstfelt.validate();
+        validering.set(tekstfelt.validate());
+
+
+
+    }
 
     public static void datoValidering(JFXDatePicker skadeDatoVelger, String regex, String melding) {
 
