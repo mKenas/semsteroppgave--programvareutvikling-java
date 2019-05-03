@@ -1,5 +1,6 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.SokeFelt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
+import programutvikling.status.InnlesingOgSkrivingStatus;
 
 import java.util.function.Predicate;
 
@@ -40,9 +42,12 @@ public class KundeListeSceneKontroller {
   @FXML
   private TextField kunderFilterTesktfelt;
 
+    @FXML
+    private JFXButton registrerKundeKnapp;
+
   public void initialize() {
 
-
+      registrerKundeKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
     kunderTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
     personNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
     navnKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
@@ -80,15 +85,10 @@ public class KundeListeSceneKontroller {
       @Override
       public boolean test(Kunde kunde) {
         String sokeTekst = kunderFilterTesktfelt.getText().toLowerCase().toLowerCase();
-        if (kunde.getPersonNr().toLowerCase().contains(sokeTekst)
+          return kunde.getPersonNr().toLowerCase().contains(sokeTekst)
                 || kunde.getNavn().toLowerCase().contains(sokeTekst)
                 || kunde.getEtternavn().toLowerCase().contains(sokeTekst)
-                || kunde.getFakturaAdresse().toLowerCase().contains(sokeTekst)
-
-                ) {
-          return true;
-        }
-        return false;
+                  || kunde.getFakturaAdresse().toLowerCase().contains(sokeTekst);
       }
 
     };
@@ -111,7 +111,7 @@ public class KundeListeSceneKontroller {
 
   private void leggTilVisKundeKnapp() {
 
-    visKundeKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE, (Kunde k) -> {
+      visKundeKolonne.setCellFactory(TabellKnapp.genererKnapp(TabellKnapp.VIS_KUNDE_IKONE, (Kunde k) -> {
 
       kunde = k;
       NavigeringTilVisKundeScene();

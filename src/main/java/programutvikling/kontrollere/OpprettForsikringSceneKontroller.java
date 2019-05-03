@@ -1,6 +1,7 @@
 package programutvikling.kontrollere;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.Kunde;
@@ -35,5 +36,9 @@ public class OpprettForsikringSceneKontroller implements KontrollerMedKundeInfo 
 
   }
 
+    @FXML
+    public void VisForsikringVillkar(ActionEvent actionEvent) {
+
+    }
 
 }

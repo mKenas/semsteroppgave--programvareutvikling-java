@@ -98,6 +98,8 @@
     -fx-text-fill: #FFF;
     -fx-background-color: #609691;
     -fx-background-radius: 5;
+    -fx-pref-height: 45;
+    -fx-min-width: 100;
 
 }
 
@@ -228,3 +230,7 @@
     -fx-padding: 0 0 0 0;
 }
 
+
+.error-label {
+    -fx-text-fill: #c02f3b;
+}

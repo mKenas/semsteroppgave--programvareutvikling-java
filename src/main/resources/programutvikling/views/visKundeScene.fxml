@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<?import java.lang.String?>
+<?import java.lang.*?>
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisKundeSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
 
-    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
+    <HBox fillHeight="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+          BorderPane.alignment="CENTER">
         <children>
             <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Kunde &gt; Vis kunde" HBox.hgrow="ALWAYS">
                 <font>
                     <Font size="20.0" />
                 </font>
                 <HBox.margin>
-                    <Insets />
+                    <Insets bottom="15.0" top="15.0"/>
                 </HBox.margin>
             </Label>
         </children>
       <VBox.margin>
-         <Insets bottom="10.0" left="15.0" right="15.0" />
+          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
       </VBox.margin>
 
     </HBox>
@@ -31,7 +33,8 @@
     
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="vis-elmenter-kontainer" VBox.vgrow="ALWAYS">
                 <children>
-         <SplitPane dividerPositions="0.3, 0.6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                    <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308"
+                               maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
             <items>
                           <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                               <children>
@@ -39,122 +42,155 @@
                                       <children>
                                           <Label maxHeight="1.7976931348623157E308" text="PersonNr: " HBox.hgrow="ALWAYS">
                                               <HBox.margin>
-                                                  <Insets left="10.0" />
+                                                  <Insets right="5.0"/>
                                               </HBox.margin>
                                           </Label>
                                           <Label fx:id="personNrLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                       </children>
+                                      <VBox.margin>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                                      </VBox.margin>
                                   </HBox>
                                   <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                                       <children>
                                           <Label maxHeight="1.7976931348623157E308" text="Navn: " HBox.hgrow="ALWAYS">
                                               <HBox.margin>
-                                                  <Insets left="10.0" />
+                                                  <Insets right="5.0"/>
                                               </HBox.margin>
                                           </Label>
                                           <Label fx:id="navnLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                       </children>
+                                      <VBox.margin>
+                                          <Insets bottom="15.0" left="15.0" right="15.0"/>
+                                      </VBox.margin>
                                   </HBox>
                                   <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                                       <children>
                                           <Label maxHeight="1.7976931348623157E308" text="Etternavn: " HBox.hgrow="ALWAYS">
                                               <HBox.margin>
-                                                  <Insets left="10.0" />
+                                                  <Insets right="5.0"/>
                                               </HBox.margin>
                                           </Label>
                                           <Label fx:id="etternavnLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                                       </children>
                         <VBox.margin>
-                           <Insets bottom="10.0" />
+                            <Insets bottom="15.0" left="15.0" right="15.0"/>
                         </VBox.margin>
-                                  </HBox>
-                              </children>
-                          </VBox>
-                          <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                              <children>
-                                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                                      <children>
-                                          <Label maxHeight="1.7976931348623157E308" text="Epost: " HBox.hgrow="ALWAYS">
-                                              <HBox.margin>
-                                                  <Insets />
-                                              </HBox.margin>
-                                          </Label>
-                                          <Label fx:id="epostLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                                      </children>
-                                  </HBox>
-                                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                                      <children>
-                                          <Label maxHeight="1.7976931348623157E308" text="Mobil:" HBox.hgrow="ALWAYS">
-                                              <HBox.margin>
-                                                  <Insets />
-                                              </HBox.margin>
-                                          </Label>
-                                          <Label fx:id="mobilLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                                      </children>
-                                  </HBox>
-                                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                                      <children>
-                                          <Label maxHeight="1.7976931348623157E308" text="Fakturaadresse:" HBox.hgrow="ALWAYS">
-                                              <HBox.margin>
-                                                  <Insets />
-                                              </HBox.margin>
-                                          </Label>
-                                          <Label fx:id="fakturaadresseLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                                      </children>
-                        <VBox.margin>
-                           <Insets bottom="10.0" />
-                        </VBox.margin>
-                       
-                                  </HBox>
-                              </children>
-                          </VBox>
-                          <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                              <children>
-                                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                                      <children>
-                                          <Label maxHeight="1.7976931348623157E308" text="Postnummer:" HBox.hgrow="ALWAYS">
-                                              <HBox.margin>
-                                                  <Insets />
-                                              </HBox.margin>
-                                          </Label>
-                                          <Label fx:id="postnummerLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                                      </children>
                                   </HBox>
                                   <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                       <children>
-                                          <Label maxHeight="1.7976931348623157E308" text="Poststed:" HBox.hgrow="ALWAYS">
+                                          <Label maxHeight="1.7976931348623157E308" text="Epost: " HBox.hgrow="ALWAYS">
                                               <HBox.margin>
-                                                  <Insets />
+                                                  <Insets right="5.0"/>
                                               </HBox.margin>
                                           </Label>
-                                          <Label fx:id="poststedLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="epostLabel" maxHeight="1.7976931348623157E308"
+                                                 maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
                                       </children>
+                                      <VBox.margin>
+                                          <Insets bottom="15.0" left="15.0" right="15.0"/>
+                                      </VBox.margin>
                                   </HBox>
-                                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                       <children>
-                                          <Label maxHeight="1.7976931348623157E308" text="Opprettelsesdato:" HBox.hgrow="ALWAYS">
+                                          <Label maxHeight="1.7976931348623157E308" text="Mobil:" HBox.hgrow="ALWAYS">
                                               <HBox.margin>
-                                                  <Insets />
+                                                  <Insets right="5.0"/>
                                               </HBox.margin>
                                           </Label>
-                                          <Label fx:id="opprettelsesdatoLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="mobilLabel" maxHeight="1.7976931348623157E308"
+                                                 maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
                                       </children>
-                        <VBox.margin>
-                           <Insets bottom="10.0" />
-                        </VBox.margin>
+                                      <VBox.margin>
+                                          <Insets bottom="15.0" left="15.0" right="15.0"/>
+                                      </VBox.margin>
                                   </HBox>
                               </children>
                           </VBox>
+                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                    <children>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label maxHeight="1.7976931348623157E308" text="Fakturaadresse:" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets/>
+                                    </HBox.margin>
+                                </Label>
+                                <Label fx:id="fakturaadresseLabel" maxHeight="1.7976931348623157E308"
+                                       maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" right="15.0" top="15.0"/>
+                            </VBox.margin>
+
+                        </HBox>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                            <children>
+                                <Label maxHeight="1.7976931348623157E308" text="Postnummer:" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets/>
+                                    </HBox.margin>
+                                </Label>
+                                <Label fx:id="postnummerLabel" maxHeight="1.7976931348623157E308"
+                                       maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" right="15.0"/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                            <children>
+                                <Label maxHeight="1.7976931348623157E308" text="Poststed:" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets/>
+                                    </HBox.margin>
+                                </Label>
+                                <Label fx:id="poststedLabel" maxHeight="1.7976931348623157E308"
+                                       maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" right="15.0"/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                            <children>
+                                <Label maxHeight="1.7976931348623157E308" text="Opprettelsesdato:" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets/>
+                                    </HBox.margin>
+                                </Label>
+                                <Label fx:id="opprettelsesdatoLabel" maxHeight="1.7976931348623157E308"
+                                       maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="15.0" right="15.0"/>
+                            </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="153.0" maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308">
+                            <children>
+                                <Label maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets/>
+                                    </HBox.margin>
+                                </Label>
+                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                       HBox.hgrow="ALWAYS"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
             </items>
          </SplitPane>
          <AnchorPane>
             <children>
-               <Button mnemonicParsing="false" onAction="#handleRedigerKundeInfoKnapp" text="Rediger" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                <JFXButton fx:id="redigerKundeKnapp" mnemonicParsing="false" onAction="#handleRedigerKundeInfoKnapp"
+                           text="Rediger" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
             </children>
          </AnchorPane>
                 </children>
                 <VBox.margin>
-                    <Insets bottom="10.0" left="15.0" right="15.0" />
+                    <Insets bottom="15.0" left="15.0" right="15.0"/>
                 </VBox.margin>
             </HBox>
 
@@ -162,10 +198,19 @@
       <children>
          <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
             <children>
-               <Label maxWidth="1.7976931348623157E308" text="Kundes forsikringer:" VBox.vgrow="ALWAYS" />
+                <Label maxWidth="1.7976931348623157E308" text="Kundes forsikringer:" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </VBox.margin>
+                </Label>
                <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                   <content>
-                     <VBox fx:id="kundesForsikringerKontainer" accessibleRole="PAGINATION" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                      <VBox fx:id="kundesForsikringerKontainer" accessibleRole="PAGINATION"
+                            maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                          <padding>
+                              <Insets left="15.0" right="15.0"/>
+                          </padding>
+                      </VBox>
                   </content>
                   <VBox.margin>
                      <Insets bottom="10.0" />
@@ -184,22 +229,44 @@
             <children>
                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                   <children>
-                     <Label maxWidth="1.7976931348623157E308" text="Legg til ny forsikring" VBox.vgrow="ALWAYS" />
-                     <ComboBox fx:id="forsikringsTypeKomboBoks" maxWidth="1.7976931348623157E308" value="Forsikrings type:" VBox.vgrow="ALWAYS">
-                        <items>
-                           <FXCollections fx:factory="observableArrayList">
-                               <String fx:value="Hus Og Innbo Forsikring" />
-                               <String fx:value="Fritidsbolig Forsikring" />
-                               <String fx:value="Båt Forsikring" />
-                               <String fx:value="Reise Forsikring" />
-                           </FXCollections>
-                        </items>
-                     </ComboBox>
-                     <AnchorPane maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                        <children>
-                           <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#leggTilNyForsikring" text="Legg til" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" />
+                      <Label maxWidth="1.7976931348623157E308" text="Legg til ny forsikring" VBox.vgrow="ALWAYS">
+                          <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                          </VBox.margin>
+                      </Label>
+                      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                          <children>
+                              <Label maxHeight="1.7976931348623157E308" text="Forsikringstype: " HBox.hgrow="ALWAYS"/>
+                              <ComboBox fx:id="forsikringsTypeKomboBoks" maxWidth="1.7976931348623157E308"
+                                        HBox.hgrow="ALWAYS">
+                                  <items>
+                                      <FXCollections fx:factory="observableArrayList">
+                                          <String fx:value="Hus Og Innbo Forsikring"/>
+                                          <String fx:value="Fritidsbolig Forsikring"/>
+                                          <String fx:value="Båt Forsikring"/>
+                                          <String fx:value="Reise Forsikring"/>
+
+                                      </FXCollections>
+                                  </items>
+                                  <value>
+                                      <String fx:value="Hus Og Innbo Forsikring"/>
+                                  </value>
+                                  <HBox.margin>
+                                      <Insets/>
+                                  </HBox.margin>
+                              </ComboBox>
                         </children>
-                     </AnchorPane>
+                          <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0"/>
+                          </VBox.margin>
+                      </HBox>
+                      <JFXButton fx:id="leggTilForsikringKnapp" maxWidth="1.7976931348623157E308"
+                                 mnemonicParsing="false" onAction="#leggTilNyForsikring"
+                                 styleClass="handling-scene-knapp" text="Legg til">
+                          <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                          </VBox.margin>
+                      </JFXButton>
                   </children>
                </VBox>
             </children>
@@ -213,26 +280,38 @@
          <Insets bottom="10.0" />
       </opaqueInsets>
       <VBox.margin>
-         <Insets bottom="10.0" left="15.0" right="15.0" />
+          <Insets bottom="15.0" left="15.0" right="15.0"/>
       </VBox.margin>
    </HBox>
     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <children>
          <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="vis-elmenter-kontainer" HBox.hgrow="ALWAYS">
             <children>
-               <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Skademelding overskit:" />
+                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                       text="Skademelding overskit:">
+                    <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </VBox.margin>
+                </Label>
                <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                   <content>
-                     <VBox fx:id="kundesSkademeldingerKontainer" accessibleRole="PAGINATION" />
+                      <VBox fx:id="kundesSkademeldingerKontainer" accessibleRole="PAGINATION">
+                          <padding>
+                              <Insets left="15.0"/>
+                          </padding>
+                      </VBox>
                   </content>
                   <VBox.margin>
                      <Insets bottom="10.0" />
                   </VBox.margin>
                </ScrollPane>
-               <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#leggTilSkadeMelding" text="Legg til ny skademelding" VBox.vgrow="ALWAYS">
+                <JFXButton fx:id="leggTilSkademeldingKnapp" maxHeight="1.7976931348623157E308"
+                           maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#leggTilSkadeMelding"
+                           styleClass="handling-scene-knapp" text="Legg til ny skademelding" VBox.vgrow="ALWAYS">
                   <VBox.margin>
-                     <Insets bottom="10.0" />
-                  </VBox.margin></Button>
+                      <Insets bottom="10.0" left="15.0" right="15.0" top="15.0"/>
+                  </VBox.margin>
+                </JFXButton>
             </children>
             <opaqueInsets>
                <Insets />
@@ -243,10 +322,19 @@
          </VBox>
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="vis-elmenter-kontainer" HBox.hgrow="ALWAYS">
                 <children>
-                      <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Utbetalte erstatningskrav:" />
+                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                           text="Utbetalte erstatningskrav:">
+                        <VBox.margin>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                        </VBox.margin>
+                    </Label>
                <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                   <content>
-                     <VBox fx:id="kundesErstatningerKontainer" accessibleRole="PAGINATION" />
+                      <VBox fx:id="kundesErstatningerKontainer" accessibleRole="PAGINATION">
+                          <padding>
+                              <Insets bottom="15.0" left="15.0"/>
+                          </padding>
+                      </VBox>
                   </content>
                   <VBox.margin>
                      <Insets bottom="10.0" />
@@ -262,10 +350,19 @@
             </VBox>
          <VBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="vis-elmenter-kontainer" HBox.hgrow="ALWAYS">
             <children>
-               <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Avviste erstatningskrav: " />
+                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                       text="Avviste erstatningskrav: ">
+                    <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </VBox.margin>
+                </Label>
                <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                   <content>
-                     <VBox fx:id="kundesAvvisteErstatningerKontainer" accessibleRole="PAGINATION" />
+                      <VBox fx:id="kundesAvvisteErstatningerKontainer" accessibleRole="PAGINATION">
+                          <padding>
+                              <Insets bottom="15.0" left="15.0"/>
+                          </padding>
+                      </VBox>
                   </content>
                   <VBox.margin>
                      <Insets bottom="10.0" />
@@ -284,7 +381,8 @@
     </HBox>
    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
       <children>
-         <Hyperlink onAction="#handleSlettKundeKnapp" styleClass="slett-link" text="Slett kunde" />
+          <Hyperlink fx:id="slettKundeLink" onAction="#handleSlettKundeKnapp" styleClass="slett-link"
+                     text="Slett kunde"/>
       </children>
       <VBox.margin>
          <Insets bottom="10.0" left="15.0" right="15.0" />
@@ -294,9 +392,11 @@
 
     <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
         <right>
-            <Button alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleTilbakeKnapp" prefHeight="50.0" prefWidth="102.0" styleClass="handling-scene-knapp" text="Tilbake" BorderPane.alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
+                    mnemonicParsing="false" onAction="#handleTilbakeKnapp" styleClass="handling-scene-knapp"
+                    text="Tilbake" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
-                    <Insets bottom="10.0" right="15.0" />
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
                 </BorderPane.margin>
             </Button>
         </right>

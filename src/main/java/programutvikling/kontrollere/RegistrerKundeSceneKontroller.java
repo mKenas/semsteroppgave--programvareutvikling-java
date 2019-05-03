@@ -1,5 +1,6 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.status.InnlesingOgSkrivingStatus;
 import programutvikling.validering.Validator;
 
 
@@ -39,10 +41,14 @@ public class RegistrerKundeSceneKontroller {
   private JFXTextField mobilTekstFelt;
   @FXML
   private JFXComboBox forsikringsTypeKomboBoks;
+    @FXML
+    private JFXButton registrerKundeKnapp;
 
   @FXML
   private void handleRegistrerKundeKnapp() {
-    String personNr = personNrTekstFelt.getText();
+
+
+      String personNr = personNrTekstFelt.getText();
     String navn = navnTekstFelt.getText();
     String etternavn = etternavnTekstFelt.getText();
     String fakturaadresse = fakturaadresseTekstFelt.getText();
@@ -71,6 +77,7 @@ public class RegistrerKundeSceneKontroller {
   public void initialize() {
 
 
+      registrerKundeKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
 
 
 

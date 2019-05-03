@@ -5,194 +5,246 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisSkademeldingSceneKontroller">
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+      styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1"
+      fx:controller="programutvikling.kontrollere.VisSkademeldingSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
 
-    <HBox prefHeight="148.0" prefWidth="930.0" BorderPane.alignment="CENTER">
+    <HBox fillHeight="false" BorderPane.alignment="CENTER">
         <children>
-            <Label prefHeight="76.0" prefWidth="479.0" text="Kunde &gt; Skademeldiger &gt; Vis skademelding">
+            <Label text="Kunde &gt; Skademeldiger &gt; Vis skademelding">
                 <font>
                     <Font size="20.0" />
                 </font>
                 <HBox.margin>
-                    <Insets left="15.0" />
+                    <Insets bottom="15.0" top="15.0"/>
                 </HBox.margin>
             </Label>
         </children>
         <VBox.margin>
-            <Insets bottom="10.0" />
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
         </VBox.margin>
     </HBox>
-    <HBox layoutX="10.0" layoutY="588.0" prefHeight="144.0" prefWidth="930.0">
+    <HBox layoutX="10.0" layoutY="588.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
         <children>
             <Label prefHeight="26.0" prefWidth="85.0" text="Status:">
                 <font>
                     <Font size="20.0" />
                 </font>
                 <HBox.margin>
-                    <Insets left="15.0" />
+                    <Insets/>
                 </HBox.margin>
             </Label>
-         <Label fx:id="statusLabel" layoutX="25.0" layoutY="10.0" prefHeight="26.0" prefWidth="159.0">
+            <Label fx:id="statusLabel" layoutX="25.0" layoutY="10.0" HBox.hgrow="ALWAYS">
             <font>
                <Font size="20.0" />
             </font>
          </Label>
         </children>
+        <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0"/>
+        </VBox.margin>
     </HBox>
-    <VBox prefHeight="564.0" prefWidth="900.0" styleClass="vis-elmenter-kontainer">
+    <HBox styleClass="vis-elmenter-kontainer">
         <children>
-            <HBox alignment="CENTER" prefHeight="213.0" prefWidth="900.0">
+            <VBox maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                 <children>
-                    <VBox prefHeight="142.0" prefWidth="420.0">
+                    <Label maxWidth="1.7976931348623157E308" text="Kunde" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <Label fx:id="personNrLabel" disable="true" layoutX="10.0" layoutY="27.0"
+                           maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="15.0" left="15.0" right="15.0"/>
+                        </VBox.margin>
+                    </Label>
+                </children>
+            </VBox>
+        </children>
+        <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0"/>
+        </VBox.margin>
+    </HBox>
+    <VBox maxWidth="1.7976931348623157E308" styleClass="vis-elmenter-kontainer" VBox.vgrow="ALWAYS">
+        <children>
+            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                <children>
+                    <VBox maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                         <children>
-                            <HBox prefHeight="47.0" prefWidth="420.0">
+                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                  VBox.vgrow="ALWAYS">
                                 <children>
-                                    <Label prefHeight="47.0" prefWidth="66.0" text="PersonNr:">
+                                    <Label maxHeight="1.7976931348623157E308" text="Skade dato:">
                                         <HBox.margin>
-                                            <Insets left="5.0" />
+                                            <Insets/>
                                         </HBox.margin>
                                     </Label>
-                                    <Label fx:id="personNrLabel" prefHeight="48.0" prefWidth="206.0" />
+                                    <Label fx:id="skadeDatoLabel" maxWidth="1.7976931348623157E308"
+                                           HBox.hgrow="ALWAYS"/>
                                 </children>
+                                <VBox.margin>
+                                    <Insets bottom="15.0" right="15.0" top="15.0"/>
+                                </VBox.margin>
                             </HBox>
-                            <HBox prefHeight="47.0" prefWidth="420.0">
+                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                 <children>
-                                    <Label prefHeight="47.0" prefWidth="87.0" text="Skade dato:">
+                                    <Label maxHeight="1.7976931348623157E308" text="Klokkeslett:">
                                         <HBox.margin>
-                                            <Insets left="5.0" />
+                                            <Insets/>
                                         </HBox.margin>
                                     </Label>
-                                    <Label fx:id="skadeDatoLabel" prefHeight="47.0" prefWidth="169.0" />
+                                    <Label fx:id="klokkeslettLabel" maxWidth="1.7976931348623157E308"
+                                           HBox.hgrow="ALWAYS"/>
                                 </children>
+                                <VBox.margin>
+                                    <Insets bottom="15.0" right="15.0"/>
+                                </VBox.margin>
                             </HBox>
-                            <HBox prefHeight="47.0" prefWidth="420.0">
+                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                 <children>
-                                    <Label prefHeight="47.0" prefWidth="235.0" text="Klokkeslett:">
+                                    <Label maxHeight="1.7976931348623157E308" text="Skade type:">
                                         <HBox.margin>
-                                            <Insets left="5.0" />
+                                            <Insets/>
                                         </HBox.margin>
                                     </Label>
-                                    <Label fx:id="klokkeslettLabel" prefHeight="50.0" prefWidth="381.0" />
+                                    <Label fx:id="skadeTypeLabel" maxHeight="1.7976931348623157E308"
+                                           maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                        <HBox.margin>
+                                            <Insets/>
+                                        </HBox.margin>
+                                    </Label>
                                 </children>
+                                <VBox.margin>
+                                    <Insets bottom="15.0" right="15.0"/>
+                                </VBox.margin>
+                            </HBox>
+                        </children>
+                        <HBox.margin>
+                            <Insets left="15.0"/>
+                        </HBox.margin>
+                    </VBox>
+                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                        <children>
+                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                  VBox.vgrow="ALWAYS">
+                                <children>
+                                    <Label maxHeight="1.7976931348623157E308" text="Forsikrings type:"
+                                           HBox.hgrow="ALWAYS">
+                                        <HBox.margin>
+                                            <Insets/>
+                                        </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="forsikringsTypeLabel" maxHeight="1.7976931348623157E308"
+                                           maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+                                </children>
+                                <VBox.margin>
+                                    <Insets bottom="15.0" top="15.0"/>
+                                </VBox.margin>
+                            </HBox>
+                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                  VBox.vgrow="ALWAYS">
+                                <children>
+                                    <Label maxHeight="1.7976931348623157E308" text="Opprettelsesdato:"
+                                           HBox.hgrow="ALWAYS">
+                                        <HBox.margin>
+                                            <Insets/>
+                                        </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="opprettelsesdatoLabel" maxHeight="1.7976931348623157E308"
+                                           maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS"/>
+                                </children>
+                                <VBox.margin>
+                                    <Insets bottom="15.0"/>
+                                </VBox.margin>
                             </HBox>
                         </children>
                     </VBox>
-                    <VBox prefHeight="100.0">
-                        <children>
-                            <HBox prefHeight="47.0" prefWidth="420.0">
-                                <children>
-                                    <Label prefHeight="47.0" prefWidth="331.0" text="Forsikrings type:">
-                                        <HBox.margin>
-                                            <Insets left="5.0" />
-                                        </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="forsikringsTypeLabel" prefHeight="48.0" prefWidth="400.0" />
-                                </children>
-                            </HBox>
-                            <HBox prefHeight="47.0" prefWidth="420.0">
-                                <children>
-                                    <Label prefHeight="42.0" prefWidth="255.0" text="Skade type:">
-                                        <HBox.margin>
-                                            <Insets left="5.0" />
-                                        </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="skadeTypeLabel" prefHeight="50.0" prefWidth="393.0" />
-                                </children>
-                            </HBox>
-                            <HBox prefHeight="47.0" prefWidth="420.0">
-                                <children>
-                                    <Label prefHeight="46.0" prefWidth="366.0" text="Opprettelsesdato:">
-                                        <HBox.margin>
-                                            <Insets left="5.0" />
-                                        </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="opprettelsesdatoLabel" prefHeight="48.0" prefWidth="400.0" />
-                                </children>
-                            </HBox>
-                        </children>
-                    </VBox>
-               <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <AnchorPane>
                   <children>
                      <JFXButton fx:id="redigerSkadeMeldingKnapp" mnemonicParsing="false" onAction="#handleRedigerSkademeldingKnapp" text="Rediger" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                   </children>
+                        <HBox.margin>
+                            <Insets right="15.0"/>
+                        </HBox.margin>
                </AnchorPane>
                 </children>
                 <VBox.margin>
-                    <Insets bottom="20.0" />
+                    <Insets/>
                 </VBox.margin>
             </HBox>
-            <VBox prefHeight="275.0" prefWidth="900.0">
+            <VBox maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                 <children>
-                    <Label prefHeight="47.0" prefWidth="395.0" text="Skadebeskrivelse:" />
-                    <JFXTextArea fx:id="skadebeskrivelseTekstfelt" disable="true" prefHeight="168.0" prefWidth="900.0" />
-                    <Label prefHeight="47.0" prefWidth="395.0" text="Øvrig informasjon:" />
-                    <JFXTextArea fx:id="ovrigInformasjonTekstfelt" disable="true" prefHeight="200.0" prefWidth="200.0" />
+                    <Label maxWidth="1.7976931348623157E308" text="Skadebeskrivelse:" VBox.vgrow="ALWAYS"/>
+                    <TextArea fx:id="skadebeskrivelseTekstfelt" editable="false" maxWidth="1.7976931348623157E308"
+                              prefRowCount="3" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="15.0"/>
+                        </VBox.margin>
+                    </TextArea>
+                    <Label text="Øvrig informasjon:"/>
+                    <TextArea fx:id="ovrigInformasjonTekstfelt" editable="false" maxWidth="1.7976931348623157E308"
+                              prefRowCount="3" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="15.0"/>
+                        </VBox.margin>
+                    </TextArea>
                 </children>
+                <VBox.margin>
+                    <Insets bottom="15.0" left="15.0" right="15.0"/>
+                </VBox.margin>
             </VBox>
         </children>
         <opaqueInsets>
             <Insets />
         </opaqueInsets>
         <VBox.margin>
-            <Insets bottom="20.0" left="15.0" right="15.0" />
+            <Insets bottom="15.0" left="15.0" right="15.0"/>
         </VBox.margin>
     </VBox>
-    <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="vis-elmenter-kontainer">
-        <right>
-            <HBox BorderPane.alignment="CENTER">
-                <BorderPane.margin>
-                    <Insets />
-                </BorderPane.margin>
-            </HBox>
-        </right>
-        <center>
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="172.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+    <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+        <items>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                 <children>
-                    <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                        <items>
-                            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                                <children>
-                                    <Label layoutX="10.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Takseringsbeløp">
-                                        <VBox.margin>
-                                            <Insets left="15.0" right="15.0" />
-                                        </VBox.margin>
-                                    </Label>
-                                    <JFXTextField fx:id="takseringsbelopTekstfelt" layoutX="10.0" layoutY="187.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
-                                        <VBox.margin>
-                                            <Insets bottom="10.0" left="15.0" right="15.0" />
-                                        </VBox.margin>
-                                    </JFXTextField>
-                                </children>
-                            </VBox>
-                            <VBox maxWidth="1.7976931348623157E308">
-                                <children>
-                                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Utbetalt erstatningsbeløp">
-                                        <VBox.margin>
-                                            <Insets />
-                                        </VBox.margin>
-                                    </Label>
-                                    <JFXTextField fx:id="utbetaltErstatningsbelopTekstfelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
-                                        <VBox.margin>
-                                            <Insets bottom="10.0" right="15.0" />
-                                        </VBox.margin>
-                                    </JFXTextField>
-                                </children>
-                            </VBox>
-                        </items>
-                        <HBox.margin>
-                            <Insets bottom="10.0" />
-                        </HBox.margin>
-                    </SplitPane>
+                    <Label layoutX="10.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Takseringsbeløp">
+                        <VBox.margin>
+                            <Insets left="15.0" right="15.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="takseringsbelopTekstfelt" layoutX="10.0" layoutY="187.0"
+                                  maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                  VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="10.0" left="15.0" right="15.0"/>
+                        </VBox.margin>
+                    </JFXTextField>
                 </children>
-            </HBox>
-        </center>
+            </VBox>
+            <VBox maxWidth="1.7976931348623157E308">
+                <children>
+                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308"
+                           text="Utbetalt erstatningsbeløp">
+                        <VBox.margin>
+                            <Insets/>
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="utbetaltErstatningsbelopTekstfelt" layoutX="10.0" layoutY="27.0"
+                                  maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                  VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="10.0" right="15.0"/>
+                        </VBox.margin>
+                    </JFXTextField>
+                </children>
+            </VBox>
+        </items>
         <VBox.margin>
-            <Insets bottom="10.0" />
+            <Insets bottom="15.0" left="15.0" right="15.0"/>
         </VBox.margin>
-    </BorderPane>
+    </SplitPane>
    <!-- <HBox prefHeight="144.0" prefWidth="930.0">
         <children>
             <Label prefHeight="28.0" prefWidth="170.0" text="Endre status">
@@ -240,28 +292,35 @@
         </VBox.margin>
     </HBox>-->
 
-    <HBox fx:id="godkjentAvvistKontainer">
+    <HBox fx:id="godkjentAvvistKontainer" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
       <children>
-         <Hyperlink layoutX="81.0" layoutY="10.0" onAction="#slettSkademeldingKnapp" text="Slett" />
+          <Hyperlink layoutX="81.0" layoutY="10.0" onAction="#slettSkademeldingKnapp" styleClass="slett-link"
+                     text="Slett"/>
          <Hyperlink onAction="#handleSkadeMeldingGodkjentKnapp" text="Godkjent" />
          <Hyperlink layoutX="10.0" layoutY="10.0" onAction="#handleSkadeMeldingAvvistKnapp" text="Avvist" />
       </children>
+        <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+        </VBox.margin>
     </HBox>
 
 
-    <BorderPane prefHeight="200.0" prefWidth="200.0">
+    <BorderPane VBox.vgrow="ALWAYS">
         <right>
-            <HBox prefHeight="100.0" BorderPane.alignment="CENTER">
+            <HBox BorderPane.alignment="CENTER">
                 <children>
-                    <JFXButton fx:id="skademeldingLagreKnapp" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleLagreKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="handling-scene-knapp" text="Lagre">
+                    <JFXButton fx:id="skademeldingLagreKnapp" alignment="CENTER" contentDisplay="RIGHT"
+                               mnemonicParsing="false" onAction="#handleLagreKnapp" styleClass="handling-scene-knapp"
+                               text="Lagre">
                         <HBox.margin>
                             <Insets left="10.0" right="10.0" />
                         </HBox.margin>
                     </JFXButton>
-                    <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleTilbakeKnapp" prefHeight="60.0" prefWidth="150.0" styleClass="handling-scene-knapp" text="Tilbake" />
+                    <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false"
+                               onAction="#handleTilbakeKnapp" styleClass="handling-scene-knapp" text="Tilbake"/>
                 </children>
                 <BorderPane.margin>
-                    <Insets />
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
                 </BorderPane.margin>
             </HBox>
         </right>

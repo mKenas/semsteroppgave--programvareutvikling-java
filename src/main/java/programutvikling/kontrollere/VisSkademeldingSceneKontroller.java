@@ -1,11 +1,11 @@
 package programutvikling.kontrollere;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import programutvikling.base.Kunde;
@@ -47,9 +47,9 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
   @FXML
   private Label opprettelsesdatoLabel;
   @FXML
-  private JFXTextArea skadebeskrivelseTekstfelt;
+  private TextArea skadebeskrivelseTekstfelt;
   @FXML
-  private JFXTextArea ovrigInformasjonTekstfelt;
+  private TextArea ovrigInformasjonTekstfelt;
   @FXML
   private HBox godkjentAvvistKontainer;
   @FXML

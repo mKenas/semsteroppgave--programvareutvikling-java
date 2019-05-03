@@ -1,7 +1,9 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -14,6 +16,7 @@ import programutvikling.database.DataLagringObjekt;
 import programutvikling.egenDefinertTyper.Handling;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.kontrollere.uihjelpere.HyberlinkBygger;
+import programutvikling.status.InnlesingOgSkrivingStatus;
 
 public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
 
@@ -53,6 +56,16 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
   private VBox kundesErstatningerKontainer;
   @FXML
   private VBox kundesAvvisteErstatningerKontainer;
+    @FXML
+    private JFXButton leggTilForsikringKnapp;
+    @FXML
+    private JFXButton leggTilSkademeldingKnapp;
+    @FXML
+    private JFXButton redigerKundeKnapp;
+    @FXML
+    private Hyperlink slettKundeLink;
+
+
 
 
   private Forsikring forsikring;
@@ -60,12 +73,16 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
 
   public void initialize() {
 
-
+      leggTilForsikringKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
+      leggTilSkademeldingKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
+      redigerKundeKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
+      slettKundeLink.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
 
   }
 
   public void setKunde(Kunde k) {
-    this.kunde = k;
+
+      this.kunde = k;
     //this.forsikring = (HusOgInnboForsikring) kunde.getForsikringData().get(0);
     personNrLabel.setText(k.getPersonNr());
     navnLabel.setText(k.getNavn());

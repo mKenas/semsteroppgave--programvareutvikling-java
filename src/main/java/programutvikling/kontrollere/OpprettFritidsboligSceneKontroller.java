@@ -3,6 +3,7 @@ package programutvikling.kontrollere;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.Forsikring;
@@ -137,6 +138,11 @@ public class OpprettFritidsboligSceneKontroller implements KontrollerMedKundeInf
     Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
 
   }
+
+    @FXML
+    public void VisForsikringVillkar(ActionEvent actionEvent) {
+
+    }
 
 
 }
