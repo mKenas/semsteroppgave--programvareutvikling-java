@@ -60,6 +60,9 @@ public class OpprettFritidsboligSceneKontroller implements KontrollerMedKundeInf
     //kunderListeKomboboks.setEditable(true);
     //new AutoCompleteComboBoxListener<>(kunderListeKomboboks);
 
+    //  Validator.valider(boligensAdresseTekstfelt, FritidforsikringValidator"Adressen må være mellom 2-36 skandinaviske bokstaver");
+
+
 
     Validator.valider(boligensAdresseTekstfelt,"^[0-9a-zA-ZäöæøåøÄÖÆØÅ ]{2,36}$","Adressen må være mellom 2-36 skandinaviske bokstaver");
     Validator.valider(byggeArTekstfelt,"^(18[0-9]\\d|19[0-9]\\d|20[01]\\d)?$","Boligen må være bygget mellom 1800-tallet til dags dato");
@@ -112,9 +115,7 @@ public class OpprettFritidsboligSceneKontroller implements KontrollerMedKundeInf
     // dlo.getKunderListe().slettKunde(kunde);
 
 
-
-
-    if(boligensAdresseTekstfelt.validate() == true &&
+    if (boligensAdresseTekstfelt.validate() == true &&
             byggeArTekstfelt.validate() == true &&
             boligTypeTekstfelt.validate() == true &&
             byggeMaterialeTekstfelt.validate() == true &&

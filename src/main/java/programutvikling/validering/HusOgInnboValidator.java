@@ -16,6 +16,7 @@ public class HusOgInnboValidator {
     private static String UGYLDIG_BOLIGSTANDER_FEILMELDING = "Boligstander må være mellom 2 til 20 bosktaver";
     private static String UGYLDIG_BOLIGSTANDER_REGEX = "^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,20})?$";
 
+
     private static String UGYLDIG_ANTALL_KVADRATMETER_FEILMELDING = "Antall kvadratmeter tillater kun 2-4 tall";
     private static String UGYLDIG_ANTALL_KVADRATMETER_REGEX = "^([0-9]{2,4})$";
 

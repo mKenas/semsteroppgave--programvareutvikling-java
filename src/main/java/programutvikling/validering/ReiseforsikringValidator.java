@@ -2,7 +2,7 @@ package programutvikling.validering;
 
 public class ReiseforsikringValidator {
 
-    private static String UGYLDIG_BELOP_REGEX = "^([0-9]){2,12}|((\\.[0-9]{2,2}))$";
+    private static String UGYLDIG_BELOP_REGEX = "^([0-9]){2,12}|((\\.[0-9]{1,2}))$";
 
     private static String UGYLDIG_FORSIKRINGSSUM_MELDING = "Forsikringssum tillater 2-12 tall";
 

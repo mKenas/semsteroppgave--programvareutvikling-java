@@ -11,6 +11,7 @@ import programutvikling.base.ReiseForsikring;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.validering.ReiseforsikringValidator;
 import programutvikling.validering.Validator;
 
 public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo {
@@ -74,12 +75,16 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
   public void initialize() {
 
 
+    Validator.valider(reiseForsikringssumTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikringssumMelding());
+    Validator.valider(reiseForsikringsBelopTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
+    Validator.valider(reiseArligForsikringspremieTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
+    Validator.valider(reiseForsikringsomradeTekstfelt, ReiseforsikringValidator.getUgyldigForsikrinsOmradeRegex(), ReiseforsikringValidator.getUgyldigForsikrinsOmradeMelding());
 
 
-    Validator.valider(reiseForsikringssumTekstfelt,"([0-9]{4,14})$","Forsikringssum tillater 4-14 tall");
+    /*Validator.valider(reiseForsikringssumTekstfelt,"([0-9]{4,14})$","Forsikringssum tillater 4-14 tall");
     Validator.valider(reiseForsikringsBelopTekstfelt,"([0-9]{4,14})$","Forsikringsbeløp tillater 4-14 tall");
     Validator.valider(reiseForsikringsomradeTekstfelt,"^[a-zA-ZäöæøåøÄÖÆØÅ[0-9] ]{2,16}?$","Forsikringsområde må være mellom 2-16 skandinaviske bokstaver og eller tall");
-    Validator.valider(reiseArligForsikringspremieTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
+    Validator.valider(reiseArligForsikringspremieTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");*/
 
 
   }

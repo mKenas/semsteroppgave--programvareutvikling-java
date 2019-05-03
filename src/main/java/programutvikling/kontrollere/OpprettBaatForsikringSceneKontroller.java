@@ -13,6 +13,8 @@ import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.validering.BatforsikringValidator;
+import programutvikling.validering.ReiseforsikringValidator;
 import programutvikling.validering.Validator;
 
 public class OpprettBaatForsikringSceneKontroller implements KontrollerMedKundeInfo {
@@ -61,7 +63,20 @@ public class OpprettBaatForsikringSceneKontroller implements KontrollerMedKundeI
     //kunderListeKomboboks.setEditable(true);
     //new AutoCompleteComboBoxListener<>(kunderListeKomboboks);
 
-    Validator.valider(forsikringsBelopTekstfelt,"([0-9]{4,14})$","Forsikringsbeløp tillater 4-14 tall");
+
+    Validator.valider(forsikringsBelopTekstfelt, BatforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
+    Validator.valider(forsikringsPremieTekstfelt, BatforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
+    Validator.valider(batensEierTekstfelt, BatforsikringValidator.getUgyldigEierRegex(), BatforsikringValidator.getUgyldigEierFeilmelding());
+    Validator.valider(batensRegistreringsNummerTekstfelt, BatforsikringValidator.getUgyldigRegistreringsnummerRegex(), BatforsikringValidator.getUgyldigRegistreringsnummerFeilmelding());
+    Validator.valider(batTypeTekstfelt, BatforsikringValidator.getUgyldigBattypeRegex(), BatforsikringValidator.getUgyldigBattypeFeilmelding());
+    Validator.valider(batModellTekstfelt, BatforsikringValidator.getUgyldigBatmodellRegex(), BatforsikringValidator.getUgyldigBatmodellFeilmelding());
+    Validator.valider(batLengdeTekstfelt, BatforsikringValidator.getUgyldigBatlengdeRegex(), BatforsikringValidator.getUgyldigBatlengdeFeilmelding());
+    Validator.valider(batensAarsModellTekstfelt, BatforsikringValidator.getUgyldigArsmodellRegex(), BatforsikringValidator.getUgyldigArsmodellFeilmelding());
+    Validator.valider(batensMotortypeTekstfelt, BatforsikringValidator.getUgyldigMotorTypeRegex(), BatforsikringValidator.getUgyldigMotorTypeFeilmelding());
+    Validator.valider(batensMotorstyrkeTekstfelt, BatforsikringValidator.getUgyldigMotorStyrkeRegex(), BatforsikringValidator.getUgyldigMotorStyrkeFeilmelding());
+
+
+/*    Validator.valider(forsikringsBelopTekstfelt,"([0-9]{4,14})$","Forsikringsbeløp tillater 4-14 tall");
     Validator.valider(forsikringsPremieTekstfelt,"([0-9]{4,14})$","Forsikringspremie tillater 4-14 tall");
     Validator.valider(batensEierTekstfelt,"^[a-zA-ZäöæøåøÄÖÆØÅ ]{2,16}?$","Navnet må være mellom 2-16 skandinaviske bokstaver");
     Validator.valider(batensRegistreringsNummerTekstfelt,"^([A-Za-z]{3})([0-9]{3})$","Registreringsnummeret må være på 'ABC123' format ");
@@ -70,7 +85,7 @@ public class OpprettBaatForsikringSceneKontroller implements KontrollerMedKundeI
     Validator.valider(batLengdeTekstfelt,"^([0-9]{1,8})$","Båtlengde i fot tillater kun 1-8 tall");
     Validator.valider(batensAarsModellTekstfelt,"^(18[0-9]\\d|19[0-9]\\d|20[01]\\d)?$","Årsmodellen må være fra 1800-tallet til dags dato");
     Validator.valider(batensMotortypeTekstfelt,"^([a-zA-ZäöæøåøÄÖÆØÅ ]{2,16})?$","Motortypen må være mellom 2-16 bokstaver");
-    Validator.valider(batensMotorstyrkeTekstfelt,"^([0-9]{1,3})?$","Motorstyrken 1-3 tall oppgitt i HK");
+    Validator.valider(batensMotorstyrkeTekstfelt,"^([0-9]{1,3})?$","Motorstyrken 1-3 tall oppgitt i HK");*/
 
 
   }
