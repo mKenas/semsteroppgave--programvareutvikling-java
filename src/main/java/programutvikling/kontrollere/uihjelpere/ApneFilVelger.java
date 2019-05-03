@@ -1,17 +1,15 @@
 package programutvikling.kontrollere.uihjelpere;
 
-import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 
 public class ApneFilVelger {
 
-  private  static FileChooser filvelger;
+  private static FileChooser filvelger;
 
   private String valgtFilEndelse;
   private String filsti;
-
 
 
   public ApneFilVelger() {
@@ -23,12 +21,11 @@ public class ApneFilVelger {
     FileChooser.ExtensionFilter filEndelse2 = new FileChooser.ExtensionFilter("CSV filer (*.csv)", "*.csv");
     filvelger.getExtensionFilters().addAll(filEndelse, filEndelse2);
 
-     File fil = filvelger.showOpenDialog(null);
+    File fil = filvelger.showOpenDialog(null);
     {
       if (filvelger.getSelectedExtensionFilter() != null)
         this.valgtFilEndelse = filvelger.getSelectedExtensionFilter().getExtensions().get(0);
     }
-
 
 
     if (fil != null) {
@@ -40,15 +37,15 @@ public class ApneFilVelger {
 
   }
 
+  public static FileChooser getFilvelger() {
+    return filvelger;
+  }
+
   public String getValgtFilEndelse() {
     return valgtFilEndelse;
   }
 
   public String getFilsti() {
     return filsti;
-  }
-
-  public  static FileChooser getFilvelger() {
-    return filvelger;
   }
 }

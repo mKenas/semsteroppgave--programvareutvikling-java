@@ -13,21 +13,18 @@ import java.util.List;
 public class SkrivingMappingStrategy {
 
 
-
   public static String[] HEADER = {"personNr", "navn", "etternavn", "epost", "mobil", "fakturaAdresse", "postNr",
-          "poststed", "opprettelsesDato", "forsikringNrListe","skadeMeldingNrListe","forsikringsNr","forsikringsbelop",
-          "forsikringspremie","forsikringsbetingelser","forsikringsType","boligAdresse","byggeAr","boligType"
-          ,"byggeMateriale","standard","storrelse","bygningsForsikringsbelop","innboForsikringsbelop",
-          "forsikringsOmrade","forsikringsSum","eier","registreringsNr","batType","batModell","batLengde","arsModell",
-          "motorType", "motorStyrke","skademeldingNr","skadeDato","klokkeSlett","skadeType","skadeBeskrivelse",
-          "ovrigSkadeInformasjon","takseringsbelop","utbetaltErstatningsbelop","opprettelsesDato","status"};
+          "poststed", "opprettelsesDato", "forsikringNrListe", "skadeMeldingNrListe", "forsikringsNr", "forsikringsbelop",
+          "forsikringspremie", "forsikringsbetingelser", "forsikringsType", "boligAdresse", "byggeAr", "boligType"
+          , "byggeMateriale", "standard", "storrelse", "bygningsForsikringsbelop", "innboForsikringsbelop",
+          "forsikringsOmrade", "forsikringsSum", "eier", "registreringsNr", "batType", "batModell", "batLengde", "arsModell",
+          "motorType", "motorStyrke", "skademeldingNr", "skadeDato", "klokkeSlett", "skadeType", "skadeBeskrivelse",
+          "ovrigSkadeInformasjon", "takseringsbelop", "utbetaltErstatningsbelop", "opprettelsesDato", "status"};
 
-  public static  <T> void objektTilCSV(Class<T> klasse, Writer skriver, List<T> liste)  {
-
-
+  public static <T> void objektTilCSV(Class<T> klasse, Writer skriver, List<T> liste) {
 
 
-    ColumnPositionMappingStrategy<T> strategy = new  ColumnPositionMappingStrategy<T>();
+    ColumnPositionMappingStrategy<T> strategy = new ColumnPositionMappingStrategy<T>();
 
 
     strategy.setType(klasse);
@@ -35,22 +32,19 @@ public class SkrivingMappingStrategy {
     strategy.setColumnMapping(SkrivingMappingStrategy.HEADER);
 
 
+    StatefulBeanToCsv<T> objektTilCSV = new StatefulBeanToCsvBuilder(skriver)
+            .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+            .withMappingStrategy(strategy)
+            .withSeparator(';')
+            .build();
 
-        StatefulBeanToCsv<T> objektTilCSV = new StatefulBeanToCsvBuilder(skriver)
-                .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-                .withMappingStrategy(strategy)
-                .withSeparator(';')
-                .build();
-
-        try {
-          objektTilCSV.write(liste);
-        } catch (CsvDataTypeMismatchException e) {
-          e.printStackTrace();
-        } catch (CsvRequiredFieldEmptyException e) {
-          e.printStackTrace();
-        }
-
-
+    try {
+      objektTilCSV.write(liste);
+    } catch (CsvDataTypeMismatchException e) {
+      e.printStackTrace();
+    } catch (CsvRequiredFieldEmptyException e) {
+      e.printStackTrace();
+    }
 
 
   }

@@ -6,11 +6,10 @@ import java.io.File;
 
 public class LagreFilVelger {
 
-  private  static FileChooser filvelger;
+  private static FileChooser filvelger;
 
   private String valgtFilEndelse;
   private String filsti;
-
 
 
   public LagreFilVelger() {
@@ -22,7 +21,7 @@ public class LagreFilVelger {
     FileChooser.ExtensionFilter filEndelse2 = new FileChooser.ExtensionFilter("CSV filer (*.csv)", "*.csv");
     filvelger.getExtensionFilters().addAll(filEndelse, filEndelse2);
 
-     File fil = filvelger.showSaveDialog(null);
+    File fil = filvelger.showSaveDialog(null);
     {
       if (filvelger.getSelectedExtensionFilter() != null)
         this.valgtFilEndelse = filvelger.getSelectedExtensionFilter().getExtensions().get(0);
@@ -33,7 +32,10 @@ public class LagreFilVelger {
     }
 
 
+  }
 
+  public static FileChooser getFilvelger() {
+    return filvelger;
   }
 
   public String getValgtFilEndelse() {
@@ -42,9 +44,5 @@ public class LagreFilVelger {
 
   public String getFilsti() {
     return filsti;
-  }
-
-  public  static FileChooser getFilvelger() {
-    return filvelger;
   }
 }

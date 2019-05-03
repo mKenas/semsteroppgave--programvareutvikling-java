@@ -1,6 +1,5 @@
 package programutvikling.kontrollere;
 
-import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -30,8 +29,6 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
   Label opprettelsesdatoLabel;
 
 
-
-
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private DataHandlingObjekt dho = new DataHandlingObjekt();
   private BorderPane borderPane = hsk.getBorderPane();
@@ -46,7 +43,6 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
     personNrLabel.setText(kunde.toString());
 
   }
-
 
 
   public void setForsikring(Forsikring forsikring) {
@@ -75,7 +71,6 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
   }
 
 
-
   public void initialize() {
 
 
@@ -83,8 +78,7 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
 
   public void handleNavigerTilRedigerReiseforsikringKnapp() {
 
-    Navigator.visSceneMedForsikringInfo(borderPane,Handling.REDIGER,forsikring, kunde);
-
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.REDIGER, forsikring, kunde);
 
 
   }
@@ -105,5 +99,5 @@ public class VisReiseforsikringKontroller implements KontrollerMedKundeInfo, Kon
 
   }
 
-  }
+}
 

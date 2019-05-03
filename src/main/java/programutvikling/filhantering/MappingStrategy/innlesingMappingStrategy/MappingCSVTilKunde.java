@@ -25,7 +25,7 @@ public class MappingCSVTilKunde extends InnlesingMappingStrategy<Kunde> {
       }
     };
 
-    this.kundeliste = this.objektTilCSV( filstil, Kunde.class, filter);
+    this.kundeliste = objektTilCSV(filstil, Kunde.class, filter);
 
   }
 

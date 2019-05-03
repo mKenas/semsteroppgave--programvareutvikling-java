@@ -7,13 +7,13 @@ public class ReiseForsikring extends Forsikring {
 
 
   public ReiseForsikring() {
-    this.forsikringsOmrade ="";
-    this.forsikringsSum =0.0;
+    this.forsikringsOmrade = "";
+    this.forsikringsSum = 0.0;
 
   }
 
   public ReiseForsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser, String forsikringsOmrade, Double forsikringssum) {
-    super("Reise Forsikring",forsikringsbeløp, forsikringspremie, forsikringsbetingelser);
+    super("Reise Forsikring", forsikringsbeløp, forsikringspremie, forsikringsbetingelser);
     this.forsikringsOmrade = forsikringsOmrade;
     this.forsikringsSum = forsikringssum;
 
@@ -23,19 +23,17 @@ public class ReiseForsikring extends Forsikring {
     return forsikringsOmrade;
   }
 
-  public Double getForsikringsSum() {
-    return forsikringsSum;
-  }
-
-
   public void setForsikringsOmrade(String forsikringsOmrade) {
     this.forsikringsOmrade = forsikringsOmrade;
+  }
+
+  public Double getForsikringsSum() {
+    return forsikringsSum;
   }
 
   public void setForsikringsSum(Double forsikringsSum) {
     this.forsikringsSum = forsikringsSum;
   }
-
 
 
   @Override

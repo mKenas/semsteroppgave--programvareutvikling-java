@@ -18,8 +18,6 @@ import programutvikling.validering.Validator;
 public class OpprettBaatForsikringSceneKontroller implements KontrollerMedKundeInfo {
 
   @FXML
-  private TextField personNrTekstfelt;
-  @FXML
   JFXTextField forsikringsBelopTekstfelt;
   @FXML
   JFXTextField forsikringsPremieTekstfelt;
@@ -39,19 +37,15 @@ public class OpprettBaatForsikringSceneKontroller implements KontrollerMedKundeI
   JFXTextField batensMotortypeTekstfelt;
   @FXML
   JFXTextField batensMotorstyrkeTekstfelt;
-
-
-
-
-
   DataHandlingObjekt dho = new DataHandlingObjekt();
+  @FXML
+  private TextField personNrTekstfelt;
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
 
 
   private Kunde kunde;
   private Forsikring forsikring;
-
 
 
   public void initialize() {
@@ -81,7 +75,7 @@ public class OpprettBaatForsikringSceneKontroller implements KontrollerMedKundeI
   public void handleOpprettBatForsikringKnapp() {
 
 
-    if(forsikringsBelopTekstfelt.validate() == true &&
+    if (forsikringsBelopTekstfelt.validate() == true &&
             forsikringsPremieTekstfelt.validate() == true &&
             batensEierTekstfelt.validate() == true &&
             batensRegistreringsNummerTekstfelt.validate() == true &&
@@ -92,22 +86,20 @@ public class OpprettBaatForsikringSceneKontroller implements KontrollerMedKundeI
             batensMotortypeTekstfelt.validate() == true &&
             batensMotorstyrkeTekstfelt.validate() == true) {
 
-    Double forsikringsBelop = Double.valueOf(forsikringsBelopTekstfelt.getText());
-    Double forsikringsPremie = Double.valueOf(forsikringsPremieTekstfelt.getText());
-    String forsikringsBetingelser = "";
-    String batensEier = batensEierTekstfelt.getText();
-    String batensRegistreringsnummer = batensRegistreringsNummerTekstfelt.getText();
-    String batType = batTypeTekstfelt.getText();
-    String batModell = batModellTekstfelt.getText();
-    String batensLengde = batLengdeTekstfelt.getText();
-    String batensAarsModell = batensAarsModellTekstfelt.getText();
-    String batensMotortype = batensMotortypeTekstfelt.getText();
-    String batensMotorstyrke = batensMotorstyrkeTekstfelt.getText();
+      Double forsikringsBelop = Double.valueOf(forsikringsBelopTekstfelt.getText());
+      Double forsikringsPremie = Double.valueOf(forsikringsPremieTekstfelt.getText());
+      String forsikringsBetingelser = "";
+      String batensEier = batensEierTekstfelt.getText();
+      String batensRegistreringsnummer = batensRegistreringsNummerTekstfelt.getText();
+      String batType = batTypeTekstfelt.getText();
+      String batModell = batModellTekstfelt.getText();
+      String batensLengde = batLengdeTekstfelt.getText();
+      String batensAarsModell = batensAarsModellTekstfelt.getText();
+      String batensMotortype = batensMotortypeTekstfelt.getText();
+      String batensMotorstyrke = batensMotorstyrkeTekstfelt.getText();
 
 
-    forsikring = new BatForsikring(forsikringsBelop, forsikringsPremie, "", batensEier, batensRegistreringsnummer, batType, batModell, batensLengde, batensAarsModell, batensMotortype, batensMotorstyrke);
-
-
+      forsikring = new BatForsikring(forsikringsBelop, forsikringsPremie, "", batensEier, batensRegistreringsnummer, batType, batModell, batensLengde, batensAarsModell, batensMotortype, batensMotorstyrke);
 
 
       dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);

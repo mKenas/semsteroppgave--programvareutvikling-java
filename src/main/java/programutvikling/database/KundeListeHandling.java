@@ -27,11 +27,6 @@ public class KundeListeHandling {
   }
 
 
-
-
-
-
-
   public void nullstillKundeListe() {
     this.kundeListe.clear();
 

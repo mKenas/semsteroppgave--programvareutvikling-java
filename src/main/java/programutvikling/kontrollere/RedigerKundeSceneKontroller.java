@@ -73,8 +73,6 @@ public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
     nullstillValideringStatus();
 
 
-
-
     validerFeltVedEndringAvInnputt();
 
 
@@ -94,15 +92,15 @@ public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
 
   }
 
-  private void validerFeltVedInnlastingAvScene(){
-    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erPersonNrGyldig(),personNrTekstFelt,KundeValidator.getUgyldigPersonnummerRegex(),KundeValidator.getUgyldigPersonnummerFeilmelding());
-    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erNavnGyldig(),navnTekstFelt,KundeValidator.getUgyldigNavnRegex(),KundeValidator.getUgyldigNavnFeilmelding());
-    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erEtternavnGyldig(),etternavnTekstFelt,KundeValidator.getUgyldigEtternavnRegex(),KundeValidator.getUgyldigEtternavnFeilmelding());
-    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erAdresseGyldig(),fakturaadresseTekstFelt,KundeValidator.getUgyldigFakturaAdresseRegex(),KundeValidator.getUgyldigFakturaAdresseFeilmelding());
-    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erPostNrGyldig(),postnummerTekstFelt,KundeValidator.getUgyldigPostnummerRegex(),KundeValidator.getUgyldigPostnummerFeilmelding());
-    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erPoststedGyldig(),poststedTekstFelt,KundeValidator.getUgyldigPoststedRegex(),KundeValidator.getUgyldigPoststedFeilmelding());
-    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erEpostGyldig(),epostTekstFelt,KundeValidator.getUgyldigEpostRegex(),KundeValidator.getUgyldigEpostFeilmelding());
-    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erMobilGyldig(),mobilTekstFelt,KundeValidator.getUgyldigMobilRegex(),KundeValidator.getUgyldigMobilFeilmelding());
+  private void validerFeltVedInnlastingAvScene() {
+    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erPersonNrGyldig(), personNrTekstFelt, KundeValidator.getUgyldigPersonnummerRegex(), KundeValidator.getUgyldigPersonnummerFeilmelding());
+    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erNavnGyldig(), navnTekstFelt, KundeValidator.getUgyldigNavnRegex(), KundeValidator.getUgyldigNavnFeilmelding());
+    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erEtternavnGyldig(), etternavnTekstFelt, KundeValidator.getUgyldigEtternavnRegex(), KundeValidator.getUgyldigEtternavnFeilmelding());
+    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erAdresseGyldig(), fakturaadresseTekstFelt, KundeValidator.getUgyldigFakturaAdresseRegex(), KundeValidator.getUgyldigFakturaAdresseFeilmelding());
+    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erPostNrGyldig(), postnummerTekstFelt, KundeValidator.getUgyldigPostnummerRegex(), KundeValidator.getUgyldigPostnummerFeilmelding());
+    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erPoststedGyldig(), poststedTekstFelt, KundeValidator.getUgyldigPoststedRegex(), KundeValidator.getUgyldigPoststedFeilmelding());
+    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erEpostGyldig(), epostTekstFelt, KundeValidator.getUgyldigEpostRegex(), KundeValidator.getUgyldigEpostFeilmelding());
+    Validator.validerVedInnlasstingAvScene(KundeValideringStatus.erMobilGyldig(), mobilTekstFelt, KundeValidator.getUgyldigMobilRegex(), KundeValidator.getUgyldigMobilFeilmelding());
 
 
   }
@@ -123,14 +121,14 @@ public class RedigerKundeSceneKontroller implements KontrollerMedKundeInfo {
 
   private void validerFeltVedEndringAvInnputt() {
 
-    Validator.valider(KundeValideringStatus.erPersonNrGyldig(),personNrTekstFelt,KundeValidator.getUgyldigPersonnummerRegex(),KundeValidator.getUgyldigPersonnummerFeilmelding());
-    Validator.valider(KundeValideringStatus.erNavnGyldig(),navnTekstFelt,KundeValidator.getUgyldigNavnRegex(),KundeValidator.getUgyldigNavnFeilmelding());
-    Validator.valider(KundeValideringStatus.erEtternavnGyldig(),etternavnTekstFelt,KundeValidator.getUgyldigEtternavnRegex(),KundeValidator.getUgyldigEtternavnFeilmelding());
-    Validator.valider(KundeValideringStatus.erAdresseGyldig(),fakturaadresseTekstFelt,KundeValidator.getUgyldigFakturaAdresseRegex(),KundeValidator.getUgyldigFakturaAdresseFeilmelding());
-    Validator.valider(KundeValideringStatus.erPostNrGyldig(),postnummerTekstFelt,KundeValidator.getUgyldigPostnummerRegex(),KundeValidator.getUgyldigPostnummerFeilmelding());
-    Validator.valider(KundeValideringStatus.erPoststedGyldig(),poststedTekstFelt,KundeValidator.getUgyldigPoststedRegex(),KundeValidator.getUgyldigPoststedFeilmelding());
-    Validator.valider(KundeValideringStatus.erEpostGyldig(),epostTekstFelt,KundeValidator.getUgyldigEpostRegex(),KundeValidator.getUgyldigEpostFeilmelding());
-    Validator.valider(KundeValideringStatus.erMobilGyldig(),mobilTekstFelt,KundeValidator.getUgyldigMobilRegex(),KundeValidator.getUgyldigMobilFeilmelding());
+    Validator.valider(KundeValideringStatus.erPersonNrGyldig(), personNrTekstFelt, KundeValidator.getUgyldigPersonnummerRegex(), KundeValidator.getUgyldigPersonnummerFeilmelding());
+    Validator.valider(KundeValideringStatus.erNavnGyldig(), navnTekstFelt, KundeValidator.getUgyldigNavnRegex(), KundeValidator.getUgyldigNavnFeilmelding());
+    Validator.valider(KundeValideringStatus.erEtternavnGyldig(), etternavnTekstFelt, KundeValidator.getUgyldigEtternavnRegex(), KundeValidator.getUgyldigEtternavnFeilmelding());
+    Validator.valider(KundeValideringStatus.erAdresseGyldig(), fakturaadresseTekstFelt, KundeValidator.getUgyldigFakturaAdresseRegex(), KundeValidator.getUgyldigFakturaAdresseFeilmelding());
+    Validator.valider(KundeValideringStatus.erPostNrGyldig(), postnummerTekstFelt, KundeValidator.getUgyldigPostnummerRegex(), KundeValidator.getUgyldigPostnummerFeilmelding());
+    Validator.valider(KundeValideringStatus.erPoststedGyldig(), poststedTekstFelt, KundeValidator.getUgyldigPoststedRegex(), KundeValidator.getUgyldigPoststedFeilmelding());
+    Validator.valider(KundeValideringStatus.erEpostGyldig(), epostTekstFelt, KundeValidator.getUgyldigEpostRegex(), KundeValidator.getUgyldigEpostFeilmelding());
+    Validator.valider(KundeValideringStatus.erMobilGyldig(), mobilTekstFelt, KundeValidator.getUgyldigMobilRegex(), KundeValidator.getUgyldigMobilFeilmelding());
 
   }
 

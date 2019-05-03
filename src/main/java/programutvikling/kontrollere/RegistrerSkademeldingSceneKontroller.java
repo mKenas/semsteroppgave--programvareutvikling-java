@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
@@ -53,7 +52,6 @@ public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeI
     Validator.validerFraTekstArea(ovrigSkadeInformasjonTekstfelt, SkademeldingValidator.getUgyldigSkadeinformasjonRegex(), SkademeldingValidator.getUgyldigSkadeinformasjonMelding());
 
 
-
   }
 
   public void setKunde(Kunde k) {
@@ -75,10 +73,10 @@ public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeI
   public void handleRegistrerSkadeKnapp(ActionEvent actionEvent) {
 
 
-    if(klokkeslettTekstfelt.validate() == true &&
+    if (klokkeslettTekstfelt.validate() == true &&
             skadeTypeTekstfelt.validate() == true &&
             skadeBeskrivelseTekstfelt.validate() == true &&
-            ovrigSkadeInformasjonTekstfelt.validate() == true ){
+            ovrigSkadeInformasjonTekstfelt.validate() == true) {
 
       String klokkeslett = klokkeslettTekstfelt.getText();
       String skadeDato = skadeDatoVelger.getValue().toString();
@@ -97,9 +95,6 @@ public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeI
 
 
     }
-
-
-
 
 
   }

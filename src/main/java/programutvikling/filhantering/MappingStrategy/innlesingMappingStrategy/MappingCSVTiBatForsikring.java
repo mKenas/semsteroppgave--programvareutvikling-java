@@ -14,25 +14,25 @@ public class MappingCSVTiBatForsikring extends InnlesingMappingStrategy {
 
     CsvToBeanFilter filter = new CsvToBeanFilter() {
 
-        @Override
-        public boolean allowLine(String[] strings) {
+      @Override
+      public boolean allowLine(String[] strings) {
 
-          boolean erBatForsikring = false;
-          if (strings.length >= 12) {
-            String forsikringsNr = strings[11];
-            String forsikringsType = strings[15];
-
-
-            erBatForsikring = !"".equals(forsikringsNr) && forsikringsType.equals("Båt Forsikring");
-
-          }
+        boolean erBatForsikring = false;
+        if (strings.length >= 12) {
+          String forsikringsNr = strings[11];
+          String forsikringsType = strings[15];
 
 
-          return erBatForsikring;
+          erBatForsikring = !"".equals(forsikringsNr) && forsikringsType.equals("Båt Forsikring");
+
         }
-      };
 
-    this.batForsikringsliste = this.objektTilCSV( filstil, BatForsikring.class, filter);
+
+        return erBatForsikring;
+      }
+    };
+
+    this.batForsikringsliste = objektTilCSV(filstil, BatForsikring.class, filter);
 
   }
 

@@ -23,15 +23,12 @@ public class MappingCSVTilSkademelding extends InnlesingMappingStrategy<Kunde> {
           String skadesNr = strings[34];
 
 
-
-
-
           erSkademelding = !"".equals(skadesNr);
 
-          if (erSkademelding){
+          if (erSkademelding) {
 
 
-            if (strings[40].equals("") )
+            if (strings[40].equals(""))
               strings[40] = "0.0";
 
             if (strings[41].equals(""))
@@ -46,7 +43,7 @@ public class MappingCSVTilSkademelding extends InnlesingMappingStrategy<Kunde> {
       }
     };
 
-    this.skademeldingListe = this.objektTilCSV( filstil, Skademelding.class, filter);
+    this.skademeldingListe = objektTilCSV(filstil, Skademelding.class, filter);
 
 
   }

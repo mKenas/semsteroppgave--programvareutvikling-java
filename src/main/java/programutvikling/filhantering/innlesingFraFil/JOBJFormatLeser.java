@@ -11,9 +11,7 @@ public class JOBJFormatLeser extends FilLeser {
     FileInputStream fin = new FileInputStream(filsti);
     ObjectInputStream oin = new ObjectInputStream(fin);
 
-    HashMap<String,Object> dataliste = (HashMap<String,Object>) oin.readObject();
-
-
+    HashMap<String, Object> dataliste = (HashMap<String, Object>) oin.readObject();
 
 
     return dataliste;

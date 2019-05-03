@@ -13,14 +13,7 @@ import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.validering.SkademeldingValidator;
 import programutvikling.validering.Validator;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingInfo, KontrollerMedKundeInfo {
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
@@ -44,7 +37,6 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
   private JFXTextArea skadeBeskrivelseTekstfelt;
   @FXML
   private JFXTextArea ovrigSkadeInformasjonTekstfelt;
-
 
 
   public void initialize() {
@@ -89,12 +81,12 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
   }
 
   @FXML
-    public void handleRedigerSkademeldingKnapp() {
+  public void handleRedigerSkademeldingKnapp() {
 
-    if(klokkeslettTekstfelt.validate() == true &&
+    if (klokkeslettTekstfelt.validate() == true &&
             skadeTypeTekstfelt.validate() == true &&
             skadeBeskrivelseTekstfelt.validate() == true &&
-            ovrigSkadeInformasjonTekstfelt.validate() == true ) {
+            ovrigSkadeInformasjonTekstfelt.validate() == true) {
 
       String forikringsType = forsikringsTypeKomboboks.getValue().toString();
       String skadeDato = skadeDatoVelger.getValue().toString();
@@ -120,8 +112,7 @@ public class RedigerSkademeldingKontroller implements KontrollerMedSkademeldingI
     }
 
 
-
-      }
+  }
 
 
   protected void navigeringTilSkademeldingScene() {

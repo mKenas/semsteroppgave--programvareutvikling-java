@@ -19,15 +19,6 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-  private BorderPane borderPane = hsk.getBorderPane();
-
-  private ArrayList<Forsikring> forsikringer;
-  private BatForsikring forsikring;
-  private Kunde kunde;
-
-
-  @FXML
-  private Label personNrLabel;
   @FXML
   Label batForsikringsBelopLabel;
   @FXML
@@ -50,8 +41,12 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
   Label batMotorStyrkeLabel;
   @FXML
   Label opprettelsesdatoLabel;
-
-
+  private BorderPane borderPane = hsk.getBorderPane();
+  private ArrayList<Forsikring> forsikringer;
+  private BatForsikring forsikring;
+  private Kunde kunde;
+  @FXML
+  private Label personNrLabel;
 
   public void initialize() {
 
@@ -81,7 +76,6 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
 
       batForsikringsBelopLabel.setText(String.valueOf(f.getForsikringsbelop()));
       batForsikringsPremieLabel.setText(String.valueOf(f.getForsikringspremie()));
-
 
 
     }
@@ -120,7 +114,7 @@ public class VisBatForsikringSceneKontroller implements KontrollerMedKundeInfo, 
   @FXML
   public void handleRedigerBatForsikringKnapp() {
 
-    Navigator.visSceneMedForsikringInfo(borderPane,Handling.REDIGER,forsikring, kunde);
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.REDIGER, forsikring, kunde);
 
   }
 }

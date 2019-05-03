@@ -3,29 +3,29 @@ package programutvikling.kontrollere;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.*;
+import programutvikling.base.Forsikring;
+import programutvikling.base.Kunde;
+import programutvikling.base.Navigator;
+import programutvikling.base.ReiseForsikring;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
 import programutvikling.validering.ReiseforsikringValidator;
 import programutvikling.validering.Validator;
 
-public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo{
+public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
   @FXML
   JFXTextField personNrTekstfelt;
   @FXML
   JFXTextField reiseForsikringssumTekstfelt;
+  @FXML
+  JFXTextField reiseArligForsikringspremieTekstfelt;
   @FXML
   private
   JFXTextField reiseForsikringsBelopTekstfelt;
   @FXML
   private
   JFXTextField reiseForsikringsomradeTekstfelt;
-  @FXML
-  JFXTextField reiseArligForsikringspremieTekstfelt;
-
-
-
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private DataHandlingObjekt dho = new DataHandlingObjekt();
   private BorderPane borderPane = hsk.getBorderPane();
@@ -43,7 +43,6 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
   }
 
 
-
   public void initialize() {
 
     Validator.validerFraTekstfelt(reiseForsikringssumTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikringssumMelding());
@@ -53,8 +52,6 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
 
 
   }
-
-
 
 
   @FXML
@@ -77,31 +74,32 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
       reiseArligForsikringspremieTekstfelt.setText(String.valueOf(f.getForsikringspremie()));
 
     }
-}
-    public void handleRedigerReiseforsikringKnapp() {
-
-      Double forsikringssum = Double.valueOf(reiseForsikringssumTekstfelt.getText());
-      String forsikringsomrade = reiseForsikringsomradeTekstfelt.getText();
-      Double forsikringsbelop = Double.valueOf(reiseForsikringsBelopTekstfelt.getText());
-      Double forsikringspremie = Double.valueOf(reiseArligForsikringspremieTekstfelt.getText());
-
-
-      if(reiseForsikringssumTekstfelt.validate() == true &&
-              reiseForsikringsBelopTekstfelt.validate() == true &&
-              reiseForsikringsomradeTekstfelt.validate() == true &&
-              reiseArligForsikringspremieTekstfelt.validate() == true) {
-
-        NavigeringTilVisKundeScene();
-
-        forsikring.setForsikringsSum(forsikringssum);
-        forsikring.setForsikringsOmrade(forsikringsomrade);
-        forsikring.setForsikringsbelop(forsikringsbelop);
-        forsikring.setForsikringspremie(forsikringspremie);
-
-        NavigeringTilVisKundeScene();
-      }
-
-    }
   }
+
+  public void handleRedigerReiseforsikringKnapp() {
+
+    Double forsikringssum = Double.valueOf(reiseForsikringssumTekstfelt.getText());
+    String forsikringsomrade = reiseForsikringsomradeTekstfelt.getText();
+    Double forsikringsbelop = Double.valueOf(reiseForsikringsBelopTekstfelt.getText());
+    Double forsikringspremie = Double.valueOf(reiseArligForsikringspremieTekstfelt.getText());
+
+
+    if (reiseForsikringssumTekstfelt.validate() == true &&
+            reiseForsikringsBelopTekstfelt.validate() == true &&
+            reiseForsikringsomradeTekstfelt.validate() == true &&
+            reiseArligForsikringspremieTekstfelt.validate() == true) {
+
+      NavigeringTilVisKundeScene();
+
+      forsikring.setForsikringsSum(forsikringssum);
+      forsikring.setForsikringsOmrade(forsikringsomrade);
+      forsikring.setForsikringsbelop(forsikringsbelop);
+      forsikring.setForsikringspremie(forsikringspremie);
+
+      NavigeringTilVisKundeScene();
+    }
+
+  }
+}
 
 

@@ -14,10 +14,8 @@ import programutvikling.validering.BatforsikringValidator;
 import programutvikling.validering.ReiseforsikringValidator;
 import programutvikling.validering.Validator;
 
-public class RedigerBatForsikringSceneKontroller implements KontrollerMedKundeInfo,KontrollerMedForsikringInfo {
+public class RedigerBatForsikringSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
 
-  @FXML
-  private TextField personNrTekstfelt;
   @FXML
   JFXTextField forsikringsBelopTekstfelt;
   @FXML
@@ -38,19 +36,14 @@ public class RedigerBatForsikringSceneKontroller implements KontrollerMedKundeIn
   JFXTextField batensMotortypeTekstfelt;
   @FXML
   JFXTextField batensMotorstyrkeTekstfelt;
-
-
-
-
-
   DataHandlingObjekt dho = new DataHandlingObjekt();
+  @FXML
+  private TextField personNrTekstfelt;
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
 
   private Kunde kunde;
   private BatForsikring forsikring;
-
-
 
 
   public void setForsikring(Forsikring forsikring) {
@@ -114,8 +107,7 @@ public class RedigerBatForsikringSceneKontroller implements KontrollerMedKundeIn
     String batensMotorstyrke = batensMotorstyrkeTekstfelt.getText();
 
 
-
-    if(forsikringsBelopTekstfelt.validate() == true &&
+    if (forsikringsBelopTekstfelt.validate() == true &&
             forsikringsPremieTekstfelt.validate() == true &&
             batensEierTekstfelt.validate() == true &&
             batensRegistreringsNummerTekstfelt.validate() == true &&
@@ -148,8 +140,6 @@ public class RedigerBatForsikringSceneKontroller implements KontrollerMedKundeIn
     Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
 
   }
-
-
 
 
 }

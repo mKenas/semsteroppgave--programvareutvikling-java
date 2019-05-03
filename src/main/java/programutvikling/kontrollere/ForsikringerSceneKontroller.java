@@ -4,7 +4,10 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import programutvikling.base.Forsikring;
 import programutvikling.base.Kunde;
@@ -18,8 +21,6 @@ import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Predicate;
 
 
 public class ForsikringerSceneKontroller {
@@ -28,12 +29,6 @@ public class ForsikringerSceneKontroller {
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-  private Kunde kunde;
-  private Forsikring forsikring;
-  private BorderPane borderPane = hsk.getBorderPane();
-  private ObservableList<Forsikring> forsikringerListe;
-  @FXML
-  private TableView forsikringTabell;
   @FXML
   TableColumn forsikringNrKolonne;
   @FXML
@@ -46,21 +41,22 @@ public class ForsikringerSceneKontroller {
   TableColumn<Forsikring, Button> visKnappKolonne;
   @FXML
   TextField forsikringFilterTesktfelt;
-
-
+  private Kunde kunde;
+  private Forsikring forsikring;
+  private BorderPane borderPane = hsk.getBorderPane();
+  private ObservableList<Forsikring> forsikringerListe;
+  @FXML
+  private TableView forsikringTabell;
 
   public void initialize() {
 
 
-
-
-
-    forsikringTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
-    forsikringNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
-    typeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    belopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    premieKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    visKnappKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
+    forsikringTabell.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    forsikringNrKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 30);
+    typeKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    belopKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    premieKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    visKnappKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 10);
 
 
     forsikringerListe = dlo.getForsikringListe();
@@ -84,8 +80,7 @@ public class ForsikringerSceneKontroller {
     });
 
 
-
-    SokeFelt sokeFelt = new SokeFelt(forsikringTabell,forsikringFilterTesktfelt,forsikringerListe,
+    SokeFelt sokeFelt = new SokeFelt(forsikringTabell, forsikringFilterTesktfelt, forsikringerListe,
             SokeFelt.getForsikringFilteringLogikk(forsikringFilterTesktfelt));
 
   }
@@ -94,12 +89,9 @@ public class ForsikringerSceneKontroller {
   private void forsikringEndret() {
 
 
-
     forsikringTabell.getItems().setAll(forsikringerListe);
 
     leggTilVisForsikringKnapp();
-
-
 
 
   }
@@ -107,13 +99,12 @@ public class ForsikringerSceneKontroller {
 
   private void leggTilVisForsikringKnapp() {
 
-    visKnappKolonne.setCellFactory(TabellKnapp.<Forsikring>genererKnapp(TabellKnapp.VIS_FORSIKRING_IKONE, (f) -> {
+    visKnappKolonne.setCellFactory(TabellKnapp.genererKnapp(TabellKnapp.VIS_FORSIKRING_IKONE, (f) -> {
 
       HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikring = dlo.getKundeMedForsikringListe();
 
       forsikring = f;
-      kunde = dho.getKundeMedForsikringListeHandling().finnForsikringsEier(kundeMedForsikring,f);
-
+      kunde = dho.getKundeMedForsikringListeHandling().finnForsikringsEier(kundeMedForsikring, f);
 
 
       navigerTilVisForsikringScene();
@@ -127,8 +118,7 @@ public class ForsikringerSceneKontroller {
   protected void navigerTilVisForsikringScene() {
 
 
-
-    Navigator.visSceneMedForsikringInfo(borderPane, Handling.VIS,forsikring, kunde );
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.VIS, forsikring, kunde);
   }
 
 

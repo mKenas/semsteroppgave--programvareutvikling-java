@@ -14,26 +14,26 @@ public class MappingCSVTilHusOgInnboForsikring extends InnlesingMappingStrategy 
 
     CsvToBeanFilter filter = new CsvToBeanFilter() {
 
-        @Override
-        public boolean allowLine(String[] strings) {
+      @Override
+      public boolean allowLine(String[] strings) {
 
-          boolean erHusOgInnboForsikring = false;
-          if (strings.length >= 12) {
-            String forsikringsNr = strings[11];
-            String forsikringsType = strings[15];
-
-
-            erHusOgInnboForsikring = !"".equals(forsikringsNr) && forsikringsType.equals("Hus Og Innbo Forsikring");
-
-          }
+        boolean erHusOgInnboForsikring = false;
+        if (strings.length >= 12) {
+          String forsikringsNr = strings[11];
+          String forsikringsType = strings[15];
 
 
-          return erHusOgInnboForsikring;
+          erHusOgInnboForsikring = !"".equals(forsikringsNr) && forsikringsType.equals("Hus Og Innbo Forsikring");
 
         }
-      };
 
-    this.husOgInnboForsikringsliste = this.objektTilCSV( filstil, HusOgInnboForsikring.class, filter);
+
+        return erHusOgInnboForsikring;
+
+      }
+    };
+
+    this.husOgInnboForsikringsliste = objektTilCSV(filstil, HusOgInnboForsikring.class, filter);
 
   }
 

@@ -12,10 +12,9 @@ import programutvikling.status.InnlesingOgSkrivingStatus;
 public class DashbordKontroller {
 
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-  private BorderPane borderPane = hsk.getBorderPane();
   @FXML
   JFXButton registrerKundeKnapp;
-
+  private BorderPane borderPane = hsk.getBorderPane();
 
   public void initialize() {
 

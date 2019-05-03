@@ -71,6 +71,9 @@ public class Skademelding implements Serializable {
     return skademeldingNr;
   }
 
+  public void setSkademeldingNr(String skademeldingNr) {
+    this.skademeldingNr = skademeldingNr;
+  }
 
   public String getForsikringsType() {
     return forsikringsType;
@@ -132,6 +135,10 @@ public class Skademelding implements Serializable {
     return opprettelsesDato;
   }
 
+  public void setOpprettelsesDato(String opprettelsesDato) {
+    this.opprettelsesDato = opprettelsesDato;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -147,16 +154,6 @@ public class Skademelding implements Serializable {
   public void setKlokkeSlett(String klokkeSlett) {
     this.klokkeSlett = klokkeSlett;
   }
-
-  public void setSkademeldingNr(String skademeldingNr) {
-    this.skademeldingNr = skademeldingNr;
-  }
-
-  public void setOpprettelsesDato(String opprettelsesDato) {
-    this.opprettelsesDato = opprettelsesDato;
-  }
-
-
 
   @Override
   public int hashCode() {

@@ -14,7 +14,7 @@ public class FritidsboligForsikring extends Forsikring {
 
   public FritidsboligForsikring() {
 
-    super("Fritidsbolig Forsikring",0.0,0.0,"");
+    super("Fritidsbolig Forsikring", 0.0, 0.0, "");
     this.boligAdresse = "";
     this.byggeAr = "";
     this.boligType = "";
@@ -30,7 +30,7 @@ public class FritidsboligForsikring extends Forsikring {
                                 String boligAdresse, String byggeaar, String boligType, String byggeMateriale,
                                 String standard, String storrelse, Double bygningsForsikringsbelop,
                                 Double innboForsikringsbelop) {
-    super("Fritidsbolig Forsikring",forsikringsbelop, forsikringspremie, forsikringsbetingelser);
+    super("Fritidsbolig Forsikring", forsikringsbelop, forsikringspremie, forsikringsbetingelser);
     this.boligAdresse = boligAdresse;
     this.byggeAr = byggeaar;
     this.boligType = boligType;
@@ -105,7 +105,6 @@ public class FritidsboligForsikring extends Forsikring {
   public void setInnboForsikringsbelop(Double innboForsikringsbelop) {
     this.innboForsikringsbelop = innboForsikringsbelop;
   }
-
 
 
   @Override

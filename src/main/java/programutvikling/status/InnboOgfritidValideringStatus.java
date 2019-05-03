@@ -39,6 +39,7 @@ public class InnboOgfritidValideringStatus {
   public static SimpleBooleanProperty erAntallKvadratmeterGyldig() {
     return antallKvadratmeterStatus;
   }
+
   public static SimpleBooleanProperty erByggningsbelopGyldig() {
     return byggningsbelopStatus;
   }
@@ -50,12 +51,13 @@ public class InnboOgfritidValideringStatus {
   public static SimpleBooleanProperty erforsikringbelopGyldig() {
     return forsikringbelopStatus;
   }
+
   public static SimpleBooleanProperty getForsikringspremieGyldig() {
     return forsikringpremieStatus;
   }
 
 
-  public static void nullstilValideringStatus(){
+  public static void nullstilValideringStatus() {
 
     InnboOgfritidValideringStatus.erAdresseGyldig().set(false);
     InnboOgfritidValideringStatus.erByggeArGyldig().set(false);
@@ -68,7 +70,6 @@ public class InnboOgfritidValideringStatus {
     InnboOgfritidValideringStatus.erforsikringbelopGyldig().set(false);
     InnboOgfritidValideringStatus.getForsikringspremieGyldig().set(false);
   }
-
 
 
 }

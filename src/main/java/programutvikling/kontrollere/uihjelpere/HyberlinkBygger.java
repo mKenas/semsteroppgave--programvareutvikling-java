@@ -25,7 +25,7 @@ public class HyberlinkBygger<S> {
 
       liste.forEach(f -> {
 
-        Hyperlink hyperlink = new Hyperlink(teller.incrementAndGet() + ". "  + tittel );
+        Hyperlink hyperlink = new Hyperlink(teller.incrementAndGet() + ". " + tittel);
         hyperlink.setOnAction((ActionEvent event) -> {
           funksjon.accept(f);
 
@@ -38,7 +38,7 @@ public class HyberlinkBygger<S> {
     }
   }
 
-  public HyberlinkBygger(VBox kontainer, ArrayList<Forsikring> liste , Consumer<Forsikring> funksjon) {
+  public HyberlinkBygger(VBox kontainer, ArrayList<Forsikring> liste, Consumer<Forsikring> funksjon) {
 
 
     if (liste.size() > 0) {

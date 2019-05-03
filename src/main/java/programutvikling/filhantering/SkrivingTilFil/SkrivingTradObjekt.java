@@ -12,8 +12,8 @@ public class SkrivingTradObjekt extends Task<Void> {
   private HashMap<String, Object> dataliste;
 
 
-  public SkrivingTradObjekt(HashMap<String, Object> dataliste ,String filsti) {
-    if (filsti ==null){
+  public SkrivingTradObjekt(HashMap<String, Object> dataliste, String filsti) {
+    if (filsti == null) {
       this.cancel();
     }
     this.filstil = filsti;
@@ -26,14 +26,13 @@ public class SkrivingTradObjekt extends Task<Void> {
 
       return null;
     }
-    if(filstil.endsWith(".jobj")){
+    if (filstil.endsWith(".jobj")) {
 
-    FilSkriver filSkriver = new JOBJFormatSkriver();
-    filSkriver.skrivTilFil(this.dataliste,this.filstil);
-    }
-    else if (filstil.endsWith(".csv")){
+      FilSkriver filSkriver = new JOBJFormatSkriver();
+      filSkriver.skrivTilFil(this.dataliste, this.filstil);
+    } else if (filstil.endsWith(".csv")) {
       FilSkriver filSkriver = new CSVFormatSkriver();
-       filSkriver.skrivTilFil(this.dataliste,this.filstil);
+      filSkriver.skrivTilFil(this.dataliste, this.filstil);
 
     }
 
@@ -70,8 +69,6 @@ public class SkrivingTradObjekt extends Task<Void> {
     InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv().set(false);
 
   }
-
-
 
 
 }

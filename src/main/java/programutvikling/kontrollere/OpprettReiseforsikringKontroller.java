@@ -21,17 +21,13 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
   @FXML
   JFXTextField reiseForsikringssumTekstfelt;
   @FXML
+  JFXTextField reiseArligForsikringspremieTekstfelt;
+  @FXML
   private
   JFXTextField reiseForsikringsBelopTekstfelt;
   @FXML
   private
   JFXTextField reiseForsikringsomradeTekstfelt;
-  @FXML
-  JFXTextField reiseArligForsikringspremieTekstfelt;
-
-
-
-
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private DataHandlingObjekt dho = new DataHandlingObjekt();
   private BorderPane borderPane = hsk.getBorderPane();
@@ -52,27 +48,24 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
   @FXML
   public void handleOpprettKnapp() {
 
-    if(reiseForsikringssumTekstfelt.validate() == true &&
+    if (reiseForsikringssumTekstfelt.validate() == true &&
             reiseForsikringsBelopTekstfelt.validate() == true &&
             reiseForsikringsomradeTekstfelt.validate() == true &&
             reiseArligForsikringspremieTekstfelt.validate() == true) {
 
-    Double forsikringsbelop = Double.valueOf(reiseForsikringsBelopTekstfelt.getText());
-    Double forsikringspremie = Double.valueOf(reiseArligForsikringspremieTekstfelt.getText());
-    String forsikringsbetingelser = "";
-    Double forsikringssum = Double.valueOf(reiseForsikringssumTekstfelt.getText());
-    String forsikringsomrade = reiseForsikringsomradeTekstfelt.getText();
+      Double forsikringsbelop = Double.valueOf(reiseForsikringsBelopTekstfelt.getText());
+      Double forsikringspremie = Double.valueOf(reiseArligForsikringspremieTekstfelt.getText());
+      String forsikringsbetingelser = "";
+      Double forsikringssum = Double.valueOf(reiseForsikringssumTekstfelt.getText());
+      String forsikringsomrade = reiseForsikringsomradeTekstfelt.getText();
 
-    forsikring = new ReiseForsikring(forsikringsbelop, forsikringspremie,"", forsikringsomrade, forsikringssum);
-
+      forsikring = new ReiseForsikring(forsikringsbelop, forsikringspremie, "", forsikringsomrade, forsikringssum);
 
 
       dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);
       NavigeringTilVisKundeScene();
     }
   }
-
-
 
 
   public void initialize() {
@@ -86,9 +79,6 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
   }
 
 
-
-
-
   @FXML
   public void NavigeringTilVisKundeScene() {
 
@@ -100,5 +90,5 @@ public class OpprettReiseforsikringKontroller implements KontrollerMedKundeInfo 
   public void VisForsikringVillkar(ActionEvent actionEvent) {
 
   }
-  }
+}
 

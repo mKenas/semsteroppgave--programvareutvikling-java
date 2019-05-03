@@ -14,24 +14,21 @@ import java.util.List;
 public class InnlesingMappingStrategy<T> {
 
 
+  protected static <T> List<T> objektTilCSV(String filsti, Class<T> klasse, CsvToBeanFilter filter) {
 
-  protected static  <T> List<T> objektTilCSV(String filsti, Class<T> klasse, CsvToBeanFilter filter)  {
 
-
-    ColumnPositionMappingStrategy<T> strategy = new  ColumnPositionMappingStrategy<T>();
+    ColumnPositionMappingStrategy<T> strategy = new ColumnPositionMappingStrategy<T>();
 
     strategy.setType(klasse);
     String[] datafelt = {"personNr", "navn", "etternavn", "epost", "mobil", "fakturaAdresse", "postNr",
-            "poststed", "opprettelsesDato", "forsikringNrListe","skadeMeldingNrListe","forsikringsNr","forsikringsbelop",
-            "forsikringspremie","forsikringsbetingelser","forsikringsType","boligAdresse","byggeAr","boligType"
-            ,"byggeMateriale","standard","storrelse","bygningsForsikringsbelop","innboForsikringsbelop",
-            "forsikringsOmrade","forsikringsSum","eier","registreringsNr","batType","batModell","batLengde","arsModell",
-            "motorType", "motorStyrke","skademeldingNr","skadeDato","klokkeSlett","skadeType","skadeBeskrivelse",
-            "ovrigSkadeInformasjon","takseringsbelop","utbetaltErstatningsbelop","opprettelsesDato","status"};
+            "poststed", "opprettelsesDato", "forsikringNrListe", "skadeMeldingNrListe", "forsikringsNr", "forsikringsbelop",
+            "forsikringspremie", "forsikringsbetingelser", "forsikringsType", "boligAdresse", "byggeAr", "boligType"
+            , "byggeMateriale", "standard", "storrelse", "bygningsForsikringsbelop", "innboForsikringsbelop",
+            "forsikringsOmrade", "forsikringsSum", "eier", "registreringsNr", "batType", "batModell", "batLengde", "arsModell",
+            "motorType", "motorStyrke", "skademeldingNr", "skadeDato", "klokkeSlett", "skadeType", "skadeBeskrivelse",
+            "ovrigSkadeInformasjon", "takseringsbelop", "utbetaltErstatningsbelop", "opprettelsesDato", "status"};
 
     strategy.setColumnMapping(datafelt);
-
-
 
 
     BufferedReader leser = null;
@@ -40,12 +37,9 @@ public class InnlesingMappingStrategy<T> {
       leser = Files.newBufferedReader(Paths.get(filsti));
 
 
-
-
     } catch (IOException e) {
       e.printStackTrace();
     }
-
 
 
     CsvToBean<T> CSVTilObjekt = new CsvToBeanBuilder(leser)
@@ -58,9 +52,6 @@ public class InnlesingMappingStrategy<T> {
 
     return CSVTilObjekt.parse();
   }
-
-
-
 
 
 }

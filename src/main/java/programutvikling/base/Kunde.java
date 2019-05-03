@@ -11,7 +11,6 @@ public class Kunde implements Serializable {
   private static final long serialVersionUID = 1;
 
 
-
   private String personNr;
   private String navn;
   private String etternavn;
@@ -23,13 +22,12 @@ public class Kunde implements Serializable {
   private String opprettelsesDato;
 
 
-
   private ArrayList<Forsikring> forsikringer;
   private ArrayList<Skademelding> skadeMeldinger;
 
 
-  private String  forsikringNrListe;
-  private String  skadeMeldingNrListe;
+  private String forsikringNrListe;
+  private String skadeMeldingNrListe;
 
   public Kunde() {
 
@@ -51,7 +49,7 @@ public class Kunde implements Serializable {
     this.skadeMeldinger = new ArrayList<>();
 
     this.forsikringNrListe = "";
-    this.skadeMeldingNrListe="";
+    this.skadeMeldingNrListe = "";
 
   }
 
@@ -81,7 +79,7 @@ public class Kunde implements Serializable {
     this.skadeMeldinger = new ArrayList<>();
 
     this.forsikringNrListe = "";
-    this.skadeMeldingNrListe="";
+    this.skadeMeldingNrListe = "";
 
 
   }
@@ -149,19 +147,22 @@ public class Kunde implements Serializable {
     return this.opprettelsesDato;
   }
 
+  public void setOpprettelsesDato(String opprettelsesDato) {
+    this.opprettelsesDato = opprettelsesDato;
+  }
+
   public void leggTilForsikring(Forsikring forsikring) {
 
     this.forsikringer.add(forsikring);
-    this.setForsikringNrListe(this.getForsikringNrListe() + "|" +forsikring.getForsikringsNr());
+    this.setForsikringNrListe(this.getForsikringNrListe() + "|" + forsikring.getForsikringsNr());
 
 
   }
 
-
   public void leggTilSkadeMelding(Skademelding skademelding) {
 
     this.skadeMeldinger.add(skademelding);
-    this.setSkadeMeldingNrListe(this.getSkadeMeldingNrListe() + "|" +skademelding.getSkademeldingNr());
+    this.setSkadeMeldingNrListe(this.getSkadeMeldingNrListe() + "|" + skademelding.getSkademeldingNr());
 
   }
 
@@ -183,22 +184,18 @@ public class Kunde implements Serializable {
     return skadeMeldinger;
   }
 
-
-
-
-
-
-
-
-public void nullstilleAlleLister(){
-  this.forsikringer.clear();
-  this.skadeMeldinger.clear();
-}
-
+  public void nullstilleAlleLister() {
+    this.forsikringer.clear();
+    this.skadeMeldinger.clear();
+  }
 
   public String getForsikringNrListe() {
 
     return forsikringNrListe;
+  }
+
+  public void setForsikringNrListe(String forsikringNrListe) {
+    this.forsikringNrListe = forsikringNrListe;
   }
 
   public String getSkadeMeldingNrListe() {
@@ -209,17 +206,10 @@ public void nullstilleAlleLister(){
     this.skadeMeldingNrListe = skadeMeldingNrListe;
   }
 
-  public void setForsikringNrListe(String forsikringNrListe) {
-    this.forsikringNrListe = forsikringNrListe;
-  }
-
-
   @Override
   public String toString() {
     return String.format("%s, %s, %s", personNr, etternavn, navn);
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -233,10 +223,6 @@ public void nullstilleAlleLister(){
   public int hashCode() {
 
     return Objects.hash(personNr);
-  }
-
-  public void setOpprettelsesDato(String opprettelsesDato) {
-    this.opprettelsesDato = opprettelsesDato;
   }
 }
 

@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 public class GyldigCSVFil {
 
 
-  public static boolean sjekkCSVFilErGyldig(String filsti){
+  public static boolean sjekkCSVFilErGyldig(String filsti) {
 
     BufferedReader leser = null;
 
@@ -18,7 +18,7 @@ public class GyldigCSVFil {
       String linje;
       while ((linje = leser.readLine()) != null) {
         String[] ordliste = linje.split(";");
-        if (linje.contains(";") && ordliste.length >1)
+        if (linje.contains(";") && ordliste.length > 1)
           return true;
 
       }
@@ -31,7 +31,6 @@ public class GyldigCSVFil {
 
     return false;
   }
-
 
 
 }

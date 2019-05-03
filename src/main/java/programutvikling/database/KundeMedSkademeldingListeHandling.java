@@ -50,7 +50,7 @@ public class KundeMedSkademeldingListeHandling {
     if (this.kundeMedSkademeldingListe.containsKey(kunde)) {
 
       ArrayList<Skademelding> liste = kunde.getSkadeMeldinger();
-      for (Skademelding s: liste){
+      for (Skademelding s : liste) {
         this.skademeldingListe.remove(s);
       }
       this.kundeMedSkademeldingListe.remove(kunde);
@@ -81,7 +81,6 @@ public class KundeMedSkademeldingListeHandling {
     Kunde kunde;
 
 
-
     for (Map.Entry<Kunde, ArrayList<Skademelding>> liste : kundeMedSkademelding.entrySet()) {
       if (liste.getValue().contains(skademelding)) {
         kunde = liste.getKey();
@@ -93,14 +92,11 @@ public class KundeMedSkademeldingListeHandling {
     return null;
   }
 
-  public ObservableList<Skademelding> filterSkademeldingListe(ObservableList<Skademelding> skademeldingListe ,SkademeldingStatus status) {
+  public ObservableList<Skademelding> filterSkademeldingListe(ObservableList<Skademelding> skademeldingListe, SkademeldingStatus status) {
     Predicate<Skademelding> filter = new Predicate<Skademelding>() {
       @Override
       public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() == status) {
-          return true;
-        }
-        return false;
+        return skademelding.getStatus() == status;
       }
     };
 
@@ -115,10 +111,7 @@ public class KundeMedSkademeldingListeHandling {
     Predicate<Skademelding> filter = new Predicate<Skademelding>() {
       @Override
       public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() == status || skademelding.getStatus() == status2) {
-          return true;
-        }
-        return false;
+        return skademelding.getStatus() == status || skademelding.getStatus() == status2;
       }
     };
 
@@ -128,69 +121,65 @@ public class KundeMedSkademeldingListeHandling {
 
 
   }
-  public ObservableList<Skademelding>  getSkademeldingListe() {
+
+  public ObservableList<Skademelding> getSkademeldingListe() {
     return filterSkademeldingListe(SkademeldingStatus.UBEHANDLET, SkademeldingStatus.UNDER_BEHANDLING);
 
   }
-  public ObservableList<Skademelding>  getErstatningListe() {
-    return filterSkademeldingListe(this.skademeldingListe,SkademeldingStatus.GODKJENT);
+
+  public ObservableList<Skademelding> getErstatningListe() {
+    return filterSkademeldingListe(this.skademeldingListe, SkademeldingStatus.GODKJENT);
 
   }
 
   public ObservableList<Skademelding> getAvvistSkademeldingListe() {
-    return filterSkademeldingListe(this.skademeldingListe,SkademeldingStatus.AVVIST);
+    return filterSkademeldingListe(this.skademeldingListe, SkademeldingStatus.AVVIST);
 
   }
 
-  public ArrayList<Skademelding>  filterSkademeldingListeTilKunde(Kunde kunde, SkademeldingStatus status) {
+  public ArrayList<Skademelding> filterSkademeldingListeTilKunde(Kunde kunde, SkademeldingStatus status) {
 
     Predicate<Skademelding> filter = new Predicate<Skademelding>() {
       @Override
       public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() == status ) {
-          return true;
-        }
-        return false;
+        return skademelding.getStatus() == status;
       }
     };
 
     return kunde.getSkadeMeldinger().stream()
-            .filter(filter).collect(Collectors.toCollection( ArrayList<Skademelding>::new));
+            .filter(filter).collect(Collectors.toCollection(ArrayList::new));
 
 
   }
 
-  public ArrayList<Skademelding>  filterSkademeldingListeTilKunde(Kunde kunde, SkademeldingStatus status,SkademeldingStatus status2) {
+  public ArrayList<Skademelding> filterSkademeldingListeTilKunde(Kunde kunde, SkademeldingStatus status, SkademeldingStatus status2) {
 
     Predicate<Skademelding> filter = new Predicate<Skademelding>() {
       @Override
       public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() == status || skademelding.getStatus() == status2) {
-          return true;
-        }
-        return false;
+        return skademelding.getStatus() == status || skademelding.getStatus() == status2;
       }
     };
 
     return kunde.getSkadeMeldinger().stream()
-            .filter(filter).collect(Collectors.toCollection( ArrayList<Skademelding>::new));
+            .filter(filter).collect(Collectors.toCollection(ArrayList::new));
 
 
   }
 
-   public ArrayList<Skademelding> getErstatningListeTilKunde(Kunde kunde){
+  public ArrayList<Skademelding> getErstatningListeTilKunde(Kunde kunde) {
 
-     return filterSkademeldingListeTilKunde(kunde,SkademeldingStatus.GODKJENT);
+    return filterSkademeldingListeTilKunde(kunde, SkademeldingStatus.GODKJENT);
   }
 
-  public ArrayList<Skademelding> getAvvistSkademeldingListeTilKunde(Kunde kunde){
+  public ArrayList<Skademelding> getAvvistSkademeldingListeTilKunde(Kunde kunde) {
 
-    return filterSkademeldingListeTilKunde(kunde,SkademeldingStatus.AVVIST);
+    return filterSkademeldingListeTilKunde(kunde, SkademeldingStatus.AVVIST);
   }
 
-  public ArrayList<Skademelding> getSkademeldingListeTilKunde(Kunde kunde){
+  public ArrayList<Skademelding> getSkademeldingListeTilKunde(Kunde kunde) {
 
-    return filterSkademeldingListeTilKunde(kunde,SkademeldingStatus.UBEHANDLET,SkademeldingStatus.UNDER_BEHANDLING);
+    return filterSkademeldingListeTilKunde(kunde, SkademeldingStatus.UBEHANDLET, SkademeldingStatus.UNDER_BEHANDLING);
   }
 
 }

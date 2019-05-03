@@ -22,20 +22,9 @@ import java.util.HashMap;
 public class ErstatningListeKontroller {
 
 
-
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-
-  private Kunde kunde;
-  private Skademelding skademelding;
-  private Forsikring forsikring;
-  private BorderPane borderPane = hsk.getBorderPane();
-
-  private ObservableList<Skademelding> erstatningListe, forsikringerListeFraFil;
-  @FXML
-  private TableView erstatningTabell;
-
   @FXML
   TableColumn skademeldingNrKolonne;
   @FXML
@@ -48,21 +37,25 @@ public class ErstatningListeKontroller {
   TableColumn<Skademelding, Button> visErstatningKolonne;
   @FXML
   TextField erstatningFilterTesktfelt;
-
-
+  private Kunde kunde;
+  private Skademelding skademelding;
+  private Forsikring forsikring;
+  private BorderPane borderPane = hsk.getBorderPane();
+  private ObservableList<Skademelding> erstatningListe, forsikringerListeFraFil;
+  @FXML
+  private TableView erstatningTabell;
 
   public void initialize() {
 
 
-    erstatningTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
-    skademeldingNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
-    skadeTypeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    takseringsbelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    utbetaltBelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    visErstatningKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
+    erstatningTabell.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    skademeldingNrKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 30);
+    skadeTypeKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    takseringsbelopKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    utbetaltBelopKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    visErstatningKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 10);
 
     erstatningTabell.setPlaceholder(new Label("Ingen erstatning er registrert ennå!"));
-
 
 
     erstatningListe = dlo.getErstatningListe();
@@ -87,9 +80,8 @@ public class ErstatningListeKontroller {
     });
 
 
-    SokeFelt sokeFelt = new SokeFelt(erstatningTabell,erstatningFilterTesktfelt,erstatningListe,
+    SokeFelt sokeFelt = new SokeFelt(erstatningTabell, erstatningFilterTesktfelt, erstatningListe,
             SokeFelt.getErstatningFilteringLogikk(erstatningFilterTesktfelt));
-
 
 
   }
@@ -108,11 +100,11 @@ public class ErstatningListeKontroller {
 
   private void leggTilVisErstatningKnapp() {
 
-    visErstatningKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_ERSTATNING_IKONE, (s) -> {
+    visErstatningKolonne.setCellFactory(TabellKnapp.genererKnapp(TabellKnapp.VIS_ERSTATNING_IKONE, (s) -> {
       HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = dlo.getKundeMedSkadeMeldingListe();
 
       this.skademelding = s;
-      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(kundeMedSkademelding,s);
+      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(kundeMedSkademelding, s);
 
 
       navigerTilVisErstatningScene();

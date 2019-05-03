@@ -12,20 +12,19 @@ import java.util.function.Consumer;
 
 public class TabellKnapp<S> extends TableCell<S, Button> {
 
-  private final Button knapp;
   public static String VIS_KUNDE_IKONE = "/programutvikling/ikoner/vis-kunde.png";
   public static String VIS_FORSIKRING_IKONE = "/programutvikling/ikoner/forsikring.png";
   public static String VIS_SKADEMELDING_IKONE = "/programutvikling/ikoner/skademelding.png";
   public static String VIS_ERSTATNING_IKONE = "/programutvikling/ikoner/erstatning.png";
   public static String VIS_AVVIST_SKADEMELDING_IKONE = "/programutvikling/ikoner/avvistSkademelding.png";
-
+  private final Button knapp;
 
 
   public TabellKnapp(String bildeSti, Consumer<S> funksjon) {
 
-  ImageView bilde = new ImageView(getClass().getResource(bildeSti).toExternalForm());
-  bilde.setFitWidth(40);
-  bilde.setFitHeight(40);
+    ImageView bilde = new ImageView(getClass().getResource(bildeSti).toExternalForm());
+    bilde.setFitWidth(40);
+    bilde.setFitHeight(40);
     this.knapp = new Button();
     this.knapp.setCursor(Cursor.HAND);
     this.knapp.setGraphic(bilde);
@@ -37,7 +36,6 @@ public class TabellKnapp<S> extends TableCell<S, Button> {
   }
 
 
-
   public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> genererKnapp(String bildeSti, Consumer<S> funksjon) {
 
 
@@ -45,9 +43,8 @@ public class TabellKnapp<S> extends TableCell<S, Button> {
   }
 
 
-
   public S getvalgtElement() {
-    return (S) getTableView().getItems().get(getIndex());
+    return getTableView().getItems().get(getIndex());
   }
 
   @Override

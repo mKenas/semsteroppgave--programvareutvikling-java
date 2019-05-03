@@ -36,24 +36,17 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
   JFXTextField forsikringsbelopTekstfelt;
   @FXML
   JFXTextField forsikringspremieTekstfelt;
+  DataHandlingObjekt dho = new DataHandlingObjekt();
   @FXML
   private JFXTextField personNrTekstfelt;
-
   @FXML
   private JFXButton opprettForsikringKnapp;
-
-
-
-
-  DataHandlingObjekt dho = new DataHandlingObjekt();
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
 
 
   private Kunde kunde;
   private Forsikring forsikring;
-
-
 
 
   public void setKunde(Kunde k) {
@@ -64,7 +57,6 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
 
 
   public void handleOpprettHusOgInnboForsikringKnapp() {
-
 
 
     String boligensAdresse = boligensAdresseTekstfelt.getText();
@@ -79,17 +71,11 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
     Double forsikringspremie = Double.valueOf(forsikringspremieTekstfelt.getText());
 
 
+    forsikring = new HusOgInnboForsikring(forsikringsbelop, forsikringspremie,
+            boligensAdresse, byggeAr, boligType, byggeMateriale, standard, antallkvadratmeter, bygningForsikringsbelop, innboForsikringsbelop);
 
-
-
-      forsikring = new HusOgInnboForsikring(forsikringsbelop, forsikringspremie,
-              boligensAdresse, byggeAr, boligType, byggeMateriale, standard, antallkvadratmeter, bygningForsikringsbelop, innboForsikringsbelop);
-
-      dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);
-      NavigeringTilVisKundeScene();
-
-
-
+    dho.getKundeMedForsikringListeHandling().leggTilForsikring(forsikring, kunde);
+    NavigeringTilVisKundeScene();
 
 
   }
@@ -120,39 +106,39 @@ public class OpprettHusOgInnboForsikringSceneKontroller implements KontrollerMed
   private void bindeKanppAkriveringTilValideringStatus() {
     opprettForsikringKnapp.disableProperty().bind(
             InnboOgfritidValideringStatus.erAdresseGyldig().not()
-            .or(InnboOgfritidValideringStatus.erByggeArGyldig().not())
-            .or(InnboOgfritidValideringStatus.erBoligTypeGyldig().not())
-            .or(InnboOgfritidValideringStatus.erbyggeMaterialeGyldig().not())
-            .or(InnboOgfritidValideringStatus.erBoligStanderGyldig().not())
-            .or(InnboOgfritidValideringStatus.erAntallKvadratmeterGyldig().not())
-            .or(InnboOgfritidValideringStatus.erByggningsbelopGyldig().not())
-            .or(InnboOgfritidValideringStatus.erInnbobelopGyldig().not())
-            .or(InnboOgfritidValideringStatus.erforsikringbelopGyldig().not())
-            .or((InnboOgfritidValideringStatus.getForsikringspremieGyldig().not()))
-            );
+                    .or(InnboOgfritidValideringStatus.erByggeArGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erBoligTypeGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erbyggeMaterialeGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erBoligStanderGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erAntallKvadratmeterGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erByggningsbelopGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erInnbobelopGyldig().not())
+                    .or(InnboOgfritidValideringStatus.erforsikringbelopGyldig().not())
+                    .or((InnboOgfritidValideringStatus.getForsikringspremieGyldig().not()))
+    );
   }
 
   private void validerFeltVedEndringAvInnputt() {
-    Validator.valider(InnboOgfritidValideringStatus.erAdresseGyldig(),boligensAdresseTekstfelt,InnboOgFritidValidator.getUgyldigAddresseRegex(),InnboOgFritidValidator.getUgyldigAddresseFeilmelding());
-    Validator.valider(InnboOgfritidValideringStatus.erByggeArGyldig(),byggeArTekstfelt,InnboOgFritidValidator.getUgyldigByggeArRegex(),InnboOgFritidValidator.getUgyldigByggeArFeilmelding());
-    Validator.valider(InnboOgfritidValideringStatus.erBoligTypeGyldig(),boligTypeTekstfelt,InnboOgFritidValidator.getUGyldigStringRegex(),InnboOgFritidValidator.getUgyldigBoligtypeFeilmelding());
-    Validator.valider(InnboOgfritidValideringStatus.erbyggeMaterialeGyldig(),byggeMaterialeTekstfelt,InnboOgFritidValidator.getUGyldigStringRegex(),InnboOgFritidValidator.getUgyldigByggematerialeFeilmelding());
-    Validator.valider(InnboOgfritidValideringStatus.erBoligStanderGyldig(),standardTekstfelt,InnboOgFritidValidator.getUGyldigStringRegex(),InnboOgFritidValidator.getUgyldigBoligstanderFeilmelding());
-    Validator.valider(InnboOgfritidValideringStatus.erAntallKvadratmeterGyldig(),antallkvadratmeterTekstfelt,InnboOgFritidValidator.getUgyldigAntallKvadratmeterRegex(),InnboOgFritidValidator.getUgyldigAntallKvadratmeterFeilmelding());
-    Validator.valider(InnboOgfritidValideringStatus.erByggningsbelopGyldig(),bygningForsikringsbelopTekstfelt,InnboOgFritidValidator.getUgyldigBelopRegex(),InnboOgFritidValidator.getUgyldigByggningsbelopFeilmelding());
-    Validator.valider(InnboOgfritidValideringStatus.erInnbobelopGyldig(),innboForsikringsbelopTekstfelt,InnboOgFritidValidator.getUgyldigBelopRegex(),InnboOgFritidValidator.getUgyldigInnbobelopFeilmelding());
-    Validator.valider(InnboOgfritidValideringStatus.erforsikringbelopGyldig(),forsikringsbelopTekstfelt,InnboOgFritidValidator.getUgyldigBelopRegex(),InnboOgFritidValidator.getUgyldigForsikringbelopFeilmelding());
-    Validator.valider(InnboOgfritidValideringStatus.getForsikringspremieGyldig(),forsikringspremieTekstfelt,InnboOgFritidValidator.getUgyldigBelopRegex(),InnboOgFritidValidator.getUgyldigForsikringpremieFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.erAdresseGyldig(), boligensAdresseTekstfelt, InnboOgFritidValidator.getUgyldigAddresseRegex(), InnboOgFritidValidator.getUgyldigAddresseFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.erByggeArGyldig(), byggeArTekstfelt, InnboOgFritidValidator.getUgyldigByggeArRegex(), InnboOgFritidValidator.getUgyldigByggeArFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.erBoligTypeGyldig(), boligTypeTekstfelt, InnboOgFritidValidator.getUGyldigStringRegex(), InnboOgFritidValidator.getUgyldigBoligtypeFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.erbyggeMaterialeGyldig(), byggeMaterialeTekstfelt, InnboOgFritidValidator.getUGyldigStringRegex(), InnboOgFritidValidator.getUgyldigByggematerialeFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.erBoligStanderGyldig(), standardTekstfelt, InnboOgFritidValidator.getUGyldigStringRegex(), InnboOgFritidValidator.getUgyldigBoligstanderFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.erAntallKvadratmeterGyldig(), antallkvadratmeterTekstfelt, InnboOgFritidValidator.getUgyldigAntallKvadratmeterRegex(), InnboOgFritidValidator.getUgyldigAntallKvadratmeterFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.erByggningsbelopGyldig(), bygningForsikringsbelopTekstfelt, InnboOgFritidValidator.getUgyldigBelopRegex(), InnboOgFritidValidator.getUgyldigByggningsbelopFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.erInnbobelopGyldig(), innboForsikringsbelopTekstfelt, InnboOgFritidValidator.getUgyldigBelopRegex(), InnboOgFritidValidator.getUgyldigInnbobelopFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.erforsikringbelopGyldig(), forsikringsbelopTekstfelt, InnboOgFritidValidator.getUgyldigBelopRegex(), InnboOgFritidValidator.getUgyldigForsikringbelopFeilmelding());
+    Validator.valider(InnboOgfritidValideringStatus.getForsikringspremieGyldig(), forsikringspremieTekstfelt, InnboOgFritidValidator.getUgyldigBelopRegex(), InnboOgFritidValidator.getUgyldigForsikringpremieFeilmelding());
   }
 
   private void validerFeltVedInnlastingAvScene() {
-    Validator.validerVedInnlasstingAvScene(InnboOgfritidValideringStatus.erByggeArGyldig(),byggeArTekstfelt,InnboOgFritidValidator.getUgyldigByggeArRegex(),InnboOgFritidValidator.getUgyldigByggeArFeilmelding());
+    Validator.validerVedInnlasstingAvScene(InnboOgfritidValideringStatus.erByggeArGyldig(), byggeArTekstfelt, InnboOgFritidValidator.getUgyldigByggeArRegex(), InnboOgFritidValidator.getUgyldigByggeArFeilmelding());
 
-    Validator.validerVedInnlasstingAvScene(InnboOgfritidValideringStatus.erBoligTypeGyldig(),boligTypeTekstfelt,InnboOgFritidValidator.getUGyldigStringRegex(),InnboOgFritidValidator.getUgyldigBoligtypeFeilmelding());
+    Validator.validerVedInnlasstingAvScene(InnboOgfritidValideringStatus.erBoligTypeGyldig(), boligTypeTekstfelt, InnboOgFritidValidator.getUGyldigStringRegex(), InnboOgFritidValidator.getUgyldigBoligtypeFeilmelding());
 
-    Validator.validerVedInnlasstingAvScene(InnboOgfritidValideringStatus.erbyggeMaterialeGyldig(),byggeMaterialeTekstfelt,InnboOgFritidValidator.getUGyldigStringRegex(),InnboOgFritidValidator.getUgyldigByggematerialeFeilmelding());
+    Validator.validerVedInnlasstingAvScene(InnboOgfritidValideringStatus.erbyggeMaterialeGyldig(), byggeMaterialeTekstfelt, InnboOgFritidValidator.getUGyldigStringRegex(), InnboOgFritidValidator.getUgyldigByggematerialeFeilmelding());
 
-    Validator.validerVedInnlasstingAvScene(InnboOgfritidValideringStatus.erBoligStanderGyldig(),standardTekstfelt,InnboOgFritidValidator.getUGyldigStringRegex(),InnboOgFritidValidator.getUgyldigBoligstanderFeilmelding());
+    Validator.validerVedInnlasstingAvScene(InnboOgfritidValideringStatus.erBoligStanderGyldig(), standardTekstfelt, InnboOgFritidValidator.getUGyldigStringRegex(), InnboOgFritidValidator.getUgyldigBoligstanderFeilmelding());
   }
 
   private void nullstillValideringStatus() {

@@ -31,7 +31,7 @@ public class MappingCSVTilReiseForsikring extends InnlesingMappingStrategy {
       }
     };
 
-    this.reiseForsikringsliste = this.objektTilCSV( filstil, ReiseForsikring.class, filter);
+    this.reiseForsikringsliste = objektTilCSV(filstil, ReiseForsikring.class, filter);
 
 
   }

@@ -16,15 +16,15 @@ import java.util.ArrayList;
 
 public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKundeInfo, KontrollerMedForsikringInfo {
 
+  @FXML
+  public Label forsikringsBelopLabel;
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private BorderPane borderPane = hsk.getBorderPane();
-
   private ArrayList<Forsikring> forsikringer;
   private FritidsboligForsikring forsikring;
   private Kunde kunde;
-
   @FXML
   private Label personNrLabel;
   @FXML
@@ -35,8 +35,6 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
   private Label boligTypeLabel;
   @FXML
   private Label byggeMaterialeLabel;
-  @FXML
-  public Label forsikringsBelopLabel;
   @FXML
   private Label standardLabel;
   @FXML
@@ -51,7 +49,6 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
   private Label opprettelsesdatoLabel;
 
 
-
   public void initialize() {
 
 
@@ -64,7 +61,6 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
       FritidsboligForsikring f = (FritidsboligForsikring) forsikring;
 
       this.forsikring = f;
-
 
 
       boligensAdresseLabel.setText(f.getBoligAdresse());
@@ -115,7 +111,7 @@ public class VisFritidsboligForsikringSceneKontroller implements KontrollerMedKu
   @FXML
   public void handleNavigerTilRedigerFritidsboligKnapp() {
 
-    Navigator.visSceneMedForsikringInfo(borderPane, Handling.REDIGER,forsikring, kunde );
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.REDIGER, forsikring, kunde);
 
   }
 

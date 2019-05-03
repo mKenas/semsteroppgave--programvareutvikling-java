@@ -28,7 +28,6 @@ import java.util.concurrent.Executors;
 public class hovedSceneKontroller {
 
 
-
   @FXML
   protected JFXButton mainSceneKnapp;
   @FXML
@@ -40,7 +39,7 @@ public class hovedSceneKontroller {
   Task<Void> skriveTilFilHandling;
 
 
-  private HashMap<String,Object> allData,allDataFraFil;
+  private HashMap<String, Object> allData, allDataFraFil;
 
 
   public void initialize() {
@@ -79,7 +78,6 @@ public class hovedSceneKontroller {
   }
 
 
-
   @FXML
   protected void handleNavigeringTilErstatningerScene() {
 
@@ -87,6 +85,7 @@ public class hovedSceneKontroller {
     Navigator.visScene(borderPane, Navigator.getERSTATNINGER_SCENE());
 
   }
+
   @FXML
   protected void handleNavigeringTilAvvistSkademeldingListeScene() {
 
@@ -105,11 +104,10 @@ public class hovedSceneKontroller {
 
     ExecutorService service = Executors.newSingleThreadExecutor();
 
-     skriveTilFilHandling = new SkrivingTradObjekt( allData, filVelger.getFilsti());
+    skriveTilFilHandling = new SkrivingTradObjekt(allData, filVelger.getFilsti());
 
 
     service.execute(skriveTilFilHandling);
-
 
 
   }
@@ -120,51 +118,44 @@ public class hovedSceneKontroller {
 
     ApneFilVelger filVelger = new ApneFilVelger();
 
-      ExecutorService service = Executors.newSingleThreadExecutor();
+    ExecutorService service = Executors.newSingleThreadExecutor();
 
 
+    leseFilHandling = new LesingTradObjekt(filVelger.getFilsti(), this::oppdatereGuiMedDataLastetFraFil);
+    leseFilHandling.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+      @Override
+      public void handle(WorkerStateEvent t) {
 
-        leseFilHandling = new LesingTradObjekt( filVelger.getFilsti(),this::oppdatereGuiMedDataLastetFraFil);
-        leseFilHandling.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-          @Override
-          public void handle(WorkerStateEvent t) {
+        if (leseFilHandling.getValue() != null)
+          allDataFraFil = leseFilHandling.getValue();
 
-            if (leseFilHandling.getValue() != null)
-              allDataFraFil = leseFilHandling.getValue();
-
-          }
-        });
+      }
+    });
 
     leseFilHandling.setOnFailed(evt -> {
 
 
-      if (leseFilHandling.getException().getClass() == InvalidClassException.class){
+      if (leseFilHandling.getException().getClass() == InvalidClassException.class) {
         UtdatertFilAvvikHandler.genererUtdatertFilAvvikMelding((InvalidClassException) leseFilHandling.getException());
-      }
-
-      else if (leseFilHandling.getException().getClass() == CSVFormatAvvikHandler.class){
+      } else if (leseFilHandling.getException().getClass() == CSVFormatAvvikHandler.class) {
 
 
         CSVFormatAvvikHandler.generateCSVFormatExceptionMsg((CSVFormatAvvikHandler) leseFilHandling.getException());
       }
 
 
-
       leseFilHandling.cancel();
 
 
     });
-        service.execute(leseFilHandling);
-
+    service.execute(leseFilHandling);
 
 
   }
 
 
-
-
   private void oppdatereGuiMedDataLastetFraFil() {
-    if (allDataFraFil !=null) {
+    if (allDataFraFil != null) {
 
       dlo.setAllData(allDataFraFil);
     }

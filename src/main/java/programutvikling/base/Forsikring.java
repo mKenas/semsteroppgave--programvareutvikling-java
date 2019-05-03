@@ -33,7 +33,7 @@ public abstract class Forsikring implements Serializable {
 
   }
 
-  public Forsikring(String forsikringsType ,String forsikringsNr, Double forsikringsbelop, Double forsikringspremie, String forsikringsbetingelser) {
+  public Forsikring(String forsikringsType, String forsikringsNr, Double forsikringsbelop, Double forsikringspremie, String forsikringsbetingelser) {
     this.forsikringsNr = forsikringsNr;
     this.forsikringsType = forsikringsType;
     this.forsikringsbelop = forsikringsbelop;
@@ -48,6 +48,9 @@ public abstract class Forsikring implements Serializable {
     return oprettelsesDato;
   }
 
+  public void setOprettelsesDato(String oprettelsesDato) {
+    this.oprettelsesDato = oprettelsesDato;
+  }
 
   public Double getForsikringsbelop() {
     return forsikringsbelop;
@@ -57,18 +60,13 @@ public abstract class Forsikring implements Serializable {
     this.forsikringsbelop = forsikringsbelop;
   }
 
-
-
   public Double getForsikringspremie() {
     return forsikringspremie;
   }
 
-
   public void setForsikringspremie(Double forsikringspremie) {
     this.forsikringspremie = forsikringspremie;
   }
-
-
 
   public String getForsikringsbetingelser() {
     return forsikringsbetingelser;
@@ -76,14 +74,6 @@ public abstract class Forsikring implements Serializable {
 
   public void setForsikringsbetingelser(String forsikringsbetingelser) {
     this.forsikringsbetingelser = forsikringsbetingelser;
-  }
-
-  public void setForsikringsNr(String forsikringsNr) {
-    this.forsikringsNr = forsikringsNr;
-  }
-
-  public void setOprettelsesDato(String oprettelsesDato) {
-    this.oprettelsesDato = oprettelsesDato;
   }
 
   public String getForsikringsType() {
@@ -96,6 +86,10 @@ public abstract class Forsikring implements Serializable {
 
   public String getForsikringsNr() {
     return forsikringsNr;
+  }
+
+  public void setForsikringsNr(String forsikringsNr) {
+    this.forsikringsNr = forsikringsNr;
   }
 
   @Override

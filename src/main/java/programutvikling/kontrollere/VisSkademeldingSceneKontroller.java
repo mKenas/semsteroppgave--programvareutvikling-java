@@ -1,7 +1,6 @@
 package programutvikling.kontrollere;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
@@ -63,17 +62,12 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
   private Hyperlink slettSkademeldingKnapp;
 
 
+  private boolean erValideringOk() {
+
+    return takseringsbelopTekstfelt.validate() == true &&
+            utbetaltErstatningsbelopTekstfelt.validate() == true;
 
 
-
-  private boolean erValideringOk(){
-
-    if(takseringsbelopTekstfelt.validate() == true &&
-            utbetaltErstatningsbelopTekstfelt.validate() == true)
-      return true;
-
-
-    return  false;
   }
 
   public void initialize() {
@@ -91,7 +85,6 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
 
 
   }
-
 
 
   public void NavigerTilVisKundeScene() {
@@ -134,9 +127,6 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
   }
 
 
-
-
-
   public void handleLagreSkadeMelding() {
 
 
@@ -154,8 +144,6 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
     }
 
   }
-
-
 
 
   @FXML
@@ -182,7 +170,6 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
     }
 
 
-
   }
 
   @FXML
@@ -196,8 +183,6 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
 
       NavigerTilVisKundeScene();
     }
-
-
 
 
   }
@@ -228,7 +213,6 @@ public class VisSkademeldingSceneKontroller implements KontrollerMedKundeInfo, K
     NavigerTilVisKundeScene();
 
   }
-
 
 
 }

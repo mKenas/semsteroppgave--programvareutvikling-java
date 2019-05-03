@@ -14,27 +14,26 @@ public class MappingCSVTiFritidsboligForsikring extends InnlesingMappingStrategy
 
     CsvToBeanFilter filter = new CsvToBeanFilter() {
 
-        @Override
-        public boolean allowLine(String[] strings) {
+      @Override
+      public boolean allowLine(String[] strings) {
 
-          boolean erFritidsboligForsikring = false;
-          if (strings.length >= 12) {
-            String forsikringsNr = strings[11];
-            String forsikringsType = strings[15];
-
-
-
-            erFritidsboligForsikring = !"".equals(forsikringsNr) && forsikringsType.equals("Fritidsbolig Forsikring");
+        boolean erFritidsboligForsikring = false;
+        if (strings.length >= 12) {
+          String forsikringsNr = strings[11];
+          String forsikringsType = strings[15];
 
 
-          }
+          erFritidsboligForsikring = !"".equals(forsikringsNr) && forsikringsType.equals("Fritidsbolig Forsikring");
 
 
-          return erFritidsboligForsikring;
         }
-      };
 
-    this.fritidsboligForsikringsliste = this.objektTilCSV( filstil, FritidsboligForsikring.class, filter);
+
+        return erFritidsboligForsikring;
+      }
+    };
+
+    this.fritidsboligForsikringsliste = objektTilCSV(filstil, FritidsboligForsikring.class, filter);
 
 
   }

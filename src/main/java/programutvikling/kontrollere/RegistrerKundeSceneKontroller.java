@@ -49,6 +49,7 @@ public class RegistrerKundeSceneKontroller {
 
   @FXML
   private VBox kontianer;
+
   @FXML
   private void handleRegistrerKundeKnapp() {
 
@@ -66,8 +67,8 @@ public class RegistrerKundeSceneKontroller {
     forsikringsType = forsikringsTypeKomboBoks.getSelectionModel().getSelectedItem().toString();
 
 
-      dhl.getKundeListeHandling().leggTilKunde(kunde);
-      navigeringTilOpprettForsikringScene();
+    dhl.getKundeListeHandling().leggTilKunde(kunde);
+    navigeringTilOpprettForsikringScene();
 
   }
 
@@ -79,15 +80,12 @@ public class RegistrerKundeSceneKontroller {
     validerKundeFelt();
 
 
-
   }
 
 
   private void validerKundeFelt() {
 
     nullstillValideringStatus();
-
-
 
 
     validerFeltVedEndringAvInnputt();
@@ -113,14 +111,14 @@ public class RegistrerKundeSceneKontroller {
 
   private void validerFeltVedEndringAvInnputt() {
 
-    Validator.valider(KundeValideringStatus.erPersonNrGyldig(),personNrTekstFelt,KundeValidator.getUgyldigPersonnummerRegex(),KundeValidator.getUgyldigPersonnummerFeilmelding());
-    Validator.valider(KundeValideringStatus.erNavnGyldig(),navnTekstFelt,KundeValidator.getUgyldigNavnRegex(),KundeValidator.getUgyldigNavnFeilmelding());
-    Validator.valider(KundeValideringStatus.erEtternavnGyldig(),etternavnTekstFelt,KundeValidator.getUgyldigEtternavnRegex(),KundeValidator.getUgyldigEtternavnFeilmelding());
-    Validator.valider(KundeValideringStatus.erAdresseGyldig(),fakturaadresseTekstFelt,KundeValidator.getUgyldigFakturaAdresseRegex(),KundeValidator.getUgyldigFakturaAdresseFeilmelding());
-    Validator.valider(KundeValideringStatus.erPostNrGyldig(),postnummerTekstFelt,KundeValidator.getUgyldigPostnummerRegex(),KundeValidator.getUgyldigPostnummerFeilmelding());
-    Validator.valider(KundeValideringStatus.erPoststedGyldig(),poststedTekstFelt,KundeValidator.getUgyldigPoststedRegex(),KundeValidator.getUgyldigPoststedFeilmelding());
-    Validator.valider(KundeValideringStatus.erEpostGyldig(),epostTekstFelt,KundeValidator.getUgyldigEpostRegex(),KundeValidator.getUgyldigEpostFeilmelding());
-    Validator.valider(KundeValideringStatus.erMobilGyldig(),mobilTekstFelt,KundeValidator.getUgyldigMobilRegex(),KundeValidator.getUgyldigMobilFeilmelding());
+    Validator.valider(KundeValideringStatus.erPersonNrGyldig(), personNrTekstFelt, KundeValidator.getUgyldigPersonnummerRegex(), KundeValidator.getUgyldigPersonnummerFeilmelding());
+    Validator.valider(KundeValideringStatus.erNavnGyldig(), navnTekstFelt, KundeValidator.getUgyldigNavnRegex(), KundeValidator.getUgyldigNavnFeilmelding());
+    Validator.valider(KundeValideringStatus.erEtternavnGyldig(), etternavnTekstFelt, KundeValidator.getUgyldigEtternavnRegex(), KundeValidator.getUgyldigEtternavnFeilmelding());
+    Validator.valider(KundeValideringStatus.erAdresseGyldig(), fakturaadresseTekstFelt, KundeValidator.getUgyldigFakturaAdresseRegex(), KundeValidator.getUgyldigFakturaAdresseFeilmelding());
+    Validator.valider(KundeValideringStatus.erPostNrGyldig(), postnummerTekstFelt, KundeValidator.getUgyldigPostnummerRegex(), KundeValidator.getUgyldigPostnummerFeilmelding());
+    Validator.valider(KundeValideringStatus.erPoststedGyldig(), poststedTekstFelt, KundeValidator.getUgyldigPoststedRegex(), KundeValidator.getUgyldigPoststedFeilmelding());
+    Validator.valider(KundeValideringStatus.erEpostGyldig(), epostTekstFelt, KundeValidator.getUgyldigEpostRegex(), KundeValidator.getUgyldigEpostFeilmelding());
+    Validator.valider(KundeValideringStatus.erMobilGyldig(), mobilTekstFelt, KundeValidator.getUgyldigMobilRegex(), KundeValidator.getUgyldigMobilFeilmelding());
 
   }
 
@@ -131,7 +129,6 @@ public class RegistrerKundeSceneKontroller {
 
 
   }
-
 
 
   protected void navigeringTilOpprettForsikringScene() {

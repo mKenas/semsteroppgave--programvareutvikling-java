@@ -2,7 +2,7 @@ package programutvikling.feilmeldinger;
 
 import javafx.scene.control.Alert;
 
-public class CSVFormatAvvikHandler extends Exception{
+public class CSVFormatAvvikHandler extends Exception {
 
 
   public CSVFormatAvvikHandler(String message) {
@@ -17,7 +17,6 @@ public class CSVFormatAvvikHandler extends Exception{
 
     alert.showAndWait();
   }
-
 
 
 }

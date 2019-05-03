@@ -17,7 +17,7 @@ public class CSVFormatSkriver extends FilSkriver {
 
 
   @Override
-  public void skrivTilFil(HashMap<String, Object> dataliste, String filsti) throws IOException {
+  public void skrivTilFil(HashMap<String, Object> dataliste, String filsti) {
 
 
     final char SEPERATOR = ';';
@@ -36,7 +36,7 @@ public class CSVFormatSkriver extends FilSkriver {
                       SEPERATOR,
                       CSVWriter.NO_QUOTE_CHARACTER,
                       CSVWriter.DEFAULT_ESCAPE_CHARACTER,
-                      CSVWriter.DEFAULT_LINE_END);
+                      CSVWriter.DEFAULT_LINE_END)
       ) {
         csvSkriver.writeNext(SkrivingMappingStrategy.HEADER);
         SkrivingMappingStrategy.objektTilCSV(Kunde.class, skriver, kundeListe);
@@ -55,7 +55,6 @@ public class CSVFormatSkriver extends FilSkriver {
 
 
   }
-
 
 
 }

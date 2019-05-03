@@ -26,7 +26,7 @@ public abstract class Navigator {
 
   private static final String OPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE = "/programutvikling/views/opprettHusOgInnboForsikringScene.fxml";
   private static final String VIS_HUS_OG_INNBO_FORSIKRING_SCENE = "/programutvikling/views/visHusOgInnboForsikringScene.fxml";
-  private static final String REDIGER_HUS_OG_INNBO_FORSIKRING_SCENE ="/programutvikling/views/redigerHusOgInnboForsikringScene.fxml";
+  private static final String REDIGER_HUS_OG_INNBO_FORSIKRING_SCENE = "/programutvikling/views/redigerHusOgInnboForsikringScene.fxml";
 
   private static final String OPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE = "/programutvikling/views/opprettFritidsboligForsikringScene.fxml";
   private static final String VIS_FRITIDSBOLIG_FORSIKRING_SCENE = "/programutvikling/views/visFritidsBoligScene.fxml";
@@ -43,7 +43,6 @@ public abstract class Navigator {
   private static final String REGISTRER_SKADE_MELDING_SCENE = "/programutvikling/views/registrerSkademeldingScene.fxml";
   private static final String VIS_SKADE_MELDING_SCENE = "/programutvikling/views/visSkademeldingScene.fxml";
   private static final String REDIGER_SKADE_MELDING_SCENE = "/programutvikling/views/redigerSkademeldingScene.fxml";
-
 
 
   public static void visScene(BorderPane borderPane, String fxml) {
@@ -89,10 +88,10 @@ public abstract class Navigator {
         fxml = Navigator.getOPPRETT_HUS_OG_INNBO_FORSIKRING_SCENE();
         break;
       }
-        case "Fritidsbolig Forsikring": {
-          fxml = Navigator.getOPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE();
-          break;
-        }
+      case "Fritidsbolig Forsikring": {
+        fxml = Navigator.getOPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE();
+        break;
+      }
       case "Båt Forsikring": {
         fxml = Navigator.getOPPRETT_BAT_FORSIKRING_SCENE();
         break;
@@ -116,15 +115,15 @@ public abstract class Navigator {
     borderPane.setCenter(root);
   }
 
-  public static void visSceneMedForsikringInfo(BorderPane borderPane, Handling handling,Forsikring forsikring, Kunde kunde) {
+  public static void visSceneMedForsikringInfo(BorderPane borderPane, Handling handling, Forsikring forsikring, Kunde kunde) {
 
     Parent root = null;
 
     String fxml = "";
     switch (forsikring.getForsikringsType()) {
       case "Hus Og Innbo Forsikring": {
-        switch (handling){
-          case VIS:{
+        switch (handling) {
+          case VIS: {
             fxml = Navigator.getVIS_HUS_OG_INNBO_FORSIKRING_SCENE();
             break;
           }
@@ -138,8 +137,8 @@ public abstract class Navigator {
         break;
       }
       case "Fritidsbolig Forsikring": {
-        switch (handling){
-          case VIS:{
+        switch (handling) {
+          case VIS: {
             fxml = Navigator.getVIS_FRITIDSBOLIG_FORSIKRING_SCENE();
             break;
           }
@@ -154,12 +153,11 @@ public abstract class Navigator {
         break;
       }
       case "Båt Forsikring": {
-        switch (handling){
-          case VIS:{
+        switch (handling) {
+          case VIS: {
             fxml = Navigator.getVisBatForsikringScene();
             break;
           }
-
 
 
           case REDIGER: {
@@ -171,12 +169,11 @@ public abstract class Navigator {
         break;
       }
       case "Reise Forsikring": {
-        switch (handling){
-          case VIS:{
+        switch (handling) {
+          case VIS: {
             fxml = Navigator.getVIS_REISEFORSIKRING_SCENE();
             break;
           }
-
 
 
           case REDIGER: {
@@ -226,7 +223,6 @@ public abstract class Navigator {
   }
 
 
-
   public static String getDashbordScene() {
     return DASHBORD_SCENE;
   }
@@ -272,37 +268,48 @@ public abstract class Navigator {
     return VIS_HUS_OG_INNBO_FORSIKRING_SCENE;
   }
 
-  public static String getREDIGER_HUS_OG_INNBO_FORSIKRING_SCENE() {return REDIGER_HUS_OG_INNBO_FORSIKRING_SCENE;}
+  public static String getREDIGER_HUS_OG_INNBO_FORSIKRING_SCENE() {
+    return REDIGER_HUS_OG_INNBO_FORSIKRING_SCENE;
+  }
 
 
   public static String getOPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE() {
     return OPPRETT_FRITIDSBOLIG_FORSIKRING_SCENE;
   }
 
-  public static String getVIS_FRITIDSBOLIG_FORSIKRING_SCENE() {return VIS_FRITIDSBOLIG_FORSIKRING_SCENE;}
+  public static String getVIS_FRITIDSBOLIG_FORSIKRING_SCENE() {
+    return VIS_FRITIDSBOLIG_FORSIKRING_SCENE;
+  }
 
-  public static String getREDIGER_FRITIDSBOLIG_FORSIKRING_SCENE() {return REDIGER_FRITIDSBOLIG_FORSIKRING_SCENE; }
-
+  public static String getREDIGER_FRITIDSBOLIG_FORSIKRING_SCENE() {
+    return REDIGER_FRITIDSBOLIG_FORSIKRING_SCENE;
+  }
 
 
   public static String getOPPRETT_BAT_FORSIKRING_SCENE() {
     return OPPRETT_BAT_FORSIKRING_SCENE;
   }
 
-  public static String getVisBatForsikringScene() {return VIS_BAT_FORSIKRING_SCENE;}
+  public static String getVisBatForsikringScene() {
+    return VIS_BAT_FORSIKRING_SCENE;
+  }
 
-  public static String getREDIGER_BAT_FORSIKRING_SCENE() {return REDIGER_BAT_FORSIKRING_SCENE;}
-
-
-  public static String getOPPRETT_REISEFORSIKRING_SCENE() {return OPPRETT_REISEFORSIKRING_SCENE;}
-
-  public static String getVIS_REISEFORSIKRING_SCENE() {return VIS_REISEFORSIKRING_SCENE;}
-
-  public static String getREDIGER_REISEFORSIKRING_SCENE() {return REDIGER_REISEFORSIKRING_SCENE;}
+  public static String getREDIGER_BAT_FORSIKRING_SCENE() {
+    return REDIGER_BAT_FORSIKRING_SCENE;
+  }
 
 
+  public static String getOPPRETT_REISEFORSIKRING_SCENE() {
+    return OPPRETT_REISEFORSIKRING_SCENE;
+  }
 
+  public static String getVIS_REISEFORSIKRING_SCENE() {
+    return VIS_REISEFORSIKRING_SCENE;
+  }
 
+  public static String getREDIGER_REISEFORSIKRING_SCENE() {
+    return REDIGER_REISEFORSIKRING_SCENE;
+  }
 
 
   public static String getRegistrerSkadeMeldingScene() {

@@ -55,8 +55,6 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   private Label innboForsikringsbelopLabel;
 
 
-
-
   public void initialize() {
 
 
@@ -112,8 +110,7 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
   @FXML
   public void handleNavigerTilRedigerHusOgInnboKnapp() {
 
-    Navigator.visSceneMedForsikringInfo(borderPane, Handling.REDIGER,forsikring, kunde );
-
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.REDIGER, forsikring, kunde);
 
 
   }
@@ -125,7 +122,6 @@ public class VisHusOgInnboForsikringSceneKontroller implements KontrollerMedKund
     Navigator.visSceneMedKundeInfo(borderPane, Navigator.getVIS_KUNDE_SCENE(), kunde);
 
   }
-
 
 
 }

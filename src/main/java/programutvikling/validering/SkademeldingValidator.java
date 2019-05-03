@@ -15,8 +15,8 @@ public class SkademeldingValidator {
   private static String UGYLDIG_SKADEINFORMASJON_MELDING = "Øvrig informasjon må være mellom 0-140 skandinaviske og tall";
   private static String UGYLDIG_SKADEINFORMASJON_REGEX = "^([0-9a-zA-ZäöæøåøÄÖÆØÅ ]{2,140})?$";
 
-  private static String UGYLDIG_BELOP_REGEX ="^([0-9]){2,12}((\\.[0-9]{1,2})?)$";
-  private static String UGYLDIG_FORSIKRINGBELOP_FEILMELDING ="Beløp tillater 2-12 tall";
+  private static String UGYLDIG_BELOP_REGEX = "^([0-9]){2,12}((\\.[0-9]{1,2})?)$";
+  private static String UGYLDIG_FORSIKRINGBELOP_FEILMELDING = "Beløp tillater 2-12 tall";
 
   public static String getUgyldigForsikringbelopFeilmelding() {
     return UGYLDIG_FORSIKRINGBELOP_FEILMELDING;

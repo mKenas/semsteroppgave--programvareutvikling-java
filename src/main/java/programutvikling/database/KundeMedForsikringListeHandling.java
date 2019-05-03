@@ -7,7 +7,6 @@ import programutvikling.base.Kunde;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class KundeMedForsikringListeHandling {
@@ -20,8 +19,6 @@ public class KundeMedForsikringListeHandling {
     this.kundeMedForsikringListe = kundeMedForsikringListe;
     this.forsikringListe = forsikringListe;
   }
-
-
 
 
   public void leggTilForsikring(Forsikring forsikring, Kunde kunde) {
@@ -49,8 +46,8 @@ public class KundeMedForsikringListeHandling {
   public void slettAlleForsikringTilKunde(Kunde kunde) {
     if (this.kundeMedForsikringListe.containsKey(kunde)) {
 
-      ArrayList<Forsikring> liste =kunde.getForsikringer();
-      for (Forsikring f: liste){
+      ArrayList<Forsikring> liste = kunde.getForsikringer();
+      for (Forsikring f : liste) {
         this.forsikringListe.remove(f);
       }
 
@@ -62,11 +59,10 @@ public class KundeMedForsikringListeHandling {
     }
   }
 
-  public Kunde finnForsikringsEier(HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikringListe ,Forsikring forsikring) {
+  public Kunde finnForsikringsEier(HashMap<Kunde, ArrayList<Forsikring>> kundeMedForsikringListe, Forsikring forsikring) {
 
 
     Kunde kunde;
-
 
 
     for (Map.Entry<Kunde, ArrayList<Forsikring>> liste : kundeMedForsikringListe.entrySet()) {

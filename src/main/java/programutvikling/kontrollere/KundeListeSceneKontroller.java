@@ -15,19 +15,11 @@ import programutvikling.kontrollere.uihjelpere.SokeFelt;
 import programutvikling.kontrollere.uihjelpere.TabellKnapp;
 import programutvikling.status.InnlesingOgSkrivingStatus;
 
-import java.util.function.Predicate;
-
 
 public class KundeListeSceneKontroller {
 
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-
-  private Kunde kunde;
-  private BorderPane borderPane = hsk.getBorderPane();
-  private ObservableList<Kunde> kunderliste;
-  @FXML
-  private TableView kunderTabell;
   @FXML
   TableColumn personNrKolonne;
   @FXML
@@ -38,7 +30,11 @@ public class KundeListeSceneKontroller {
   TableColumn fakturaAdresseKolonne;
   @FXML
   TableColumn<Kunde, Button> visKundeKolonne;
-
+  private Kunde kunde;
+  private BorderPane borderPane = hsk.getBorderPane();
+  private ObservableList<Kunde> kunderliste;
+  @FXML
+  private TableView kunderTabell;
   @FXML
   private TextField kunderFilterTesktfelt;
 
@@ -48,12 +44,12 @@ public class KundeListeSceneKontroller {
   public void initialize() {
 
     registrerKundeKnapp.disableProperty().bind(InnlesingOgSkrivingStatus.erInnlesingEllerSkrivingAktiv());
-    kunderTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
-    personNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    navnKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    etterNavnKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    fakturaAdresseKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
-    visKundeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
+    kunderTabell.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    personNrKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    navnKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    etterNavnKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    fakturaAdresseKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 30);
+    visKundeKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 10);
 
 
     kunderTabell.setPlaceholder(new Label("Ingen kunder er registrert ennå!"));
@@ -78,7 +74,7 @@ public class KundeListeSceneKontroller {
     });
 
 
-    SokeFelt sokeFelt = new SokeFelt(kunderTabell, kunderFilterTesktfelt,kunderliste,SokeFelt.getKundeFilteringLogikk(kunderFilterTesktfelt));
+    SokeFelt sokeFelt = new SokeFelt(kunderTabell, kunderFilterTesktfelt, kunderliste, SokeFelt.getKundeFilteringLogikk(kunderFilterTesktfelt));
 
 
   }
@@ -93,10 +89,9 @@ public class KundeListeSceneKontroller {
   }
 
 
-
   private void leggTilVisKundeKnapp() {
 
-    visKundeKolonne.setCellFactory(TabellKnapp.<Kunde>genererKnapp(TabellKnapp.VIS_KUNDE_IKONE, (Kunde k) -> {
+    visKundeKolonne.setCellFactory(TabellKnapp.genererKnapp(TabellKnapp.VIS_KUNDE_IKONE, (Kunde k) -> {
 
       kunde = k;
       NavigeringTilVisKundeScene();

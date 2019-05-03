@@ -21,19 +21,9 @@ import java.util.HashMap;
 public class AvvistSkademeldingListeSceneKontroller {
 
 
-
   DataLagringObjekt dlo = DataLagringObjekt.getInstance();
   DataHandlingObjekt dho = new DataHandlingObjekt();
   HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
-
-  private Kunde kunde;
-  private Skademelding skademelding;
-  private BorderPane borderPane = hsk.getBorderPane();
-
-  private ObservableList<Skademelding> avvistSkademeldingListe;
-  @FXML
-  private TableView avvistSkademeldingTabell;
-
   @FXML
   TableColumn skademeldingNrKolonne;
   @FXML
@@ -44,16 +34,20 @@ public class AvvistSkademeldingListeSceneKontroller {
   TableColumn<Skademelding, Button> visAvvistSkademeldingKolonne;
   @FXML
   TextField skademeldingFilterTesktfelt;
-
-
+  private Kunde kunde;
+  private Skademelding skademelding;
+  private BorderPane borderPane = hsk.getBorderPane();
+  private ObservableList<Skademelding> avvistSkademeldingListe;
+  @FXML
+  private TableView avvistSkademeldingTabell;
 
   public void initialize() {
 
-    avvistSkademeldingTabell.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
-    skademeldingNrKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 30 );
-    skadeTypeKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    takseringsbelopKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 20 );
-    visAvvistSkademeldingKolonne.setMaxWidth( 1f * Integer.MAX_VALUE * 10 );
+    avvistSkademeldingTabell.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    skademeldingNrKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 30);
+    skadeTypeKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    takseringsbelopKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 20);
+    visAvvistSkademeldingKolonne.setMaxWidth(1f * Integer.MAX_VALUE * 10);
 
     avvistSkademeldingTabell.setPlaceholder(new Label("Ingen avviste skademeldinger er registrert ennå!"));
 
@@ -80,7 +74,7 @@ public class AvvistSkademeldingListeSceneKontroller {
     });
 
 
-    SokeFelt sokeFelt = new SokeFelt(avvistSkademeldingTabell,skademeldingFilterTesktfelt,avvistSkademeldingListe,
+    SokeFelt sokeFelt = new SokeFelt(avvistSkademeldingTabell, skademeldingFilterTesktfelt, avvistSkademeldingListe,
             SokeFelt.getSkademeldingFilteringLogikk(skademeldingFilterTesktfelt));
 
 
@@ -92,7 +86,7 @@ public class AvvistSkademeldingListeSceneKontroller {
 
     avvistSkademeldingTabell.getItems().setAll(avvistSkademeldingListe);
 
-   leggTilVisAvvistSkademelingKnapp();
+    leggTilVisAvvistSkademelingKnapp();
 
 
   }
@@ -100,11 +94,11 @@ public class AvvistSkademeldingListeSceneKontroller {
 
   private void leggTilVisAvvistSkademelingKnapp() {
 
-    visAvvistSkademeldingKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_AVVIST_SKADEMELDING_IKONE, (s) -> {
+    visAvvistSkademeldingKolonne.setCellFactory(TabellKnapp.genererKnapp(TabellKnapp.VIS_AVVIST_SKADEMELDING_IKONE, (s) -> {
       HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = dlo.getKundeMedSkadeMeldingListe();
 
       this.skademelding = s;
-      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(kundeMedSkademelding,s);
+      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(kundeMedSkademelding, s);
 
 
       navigerTilVisErstatningScene();

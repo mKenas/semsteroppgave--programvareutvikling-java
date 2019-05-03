@@ -7,7 +7,10 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import programutvikling.base.*;
+import programutvikling.base.Forsikring;
+import programutvikling.base.Kunde;
+import programutvikling.base.Navigator;
+import programutvikling.base.Skademelding;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.egenDefinertTyper.Handling;
@@ -63,8 +66,6 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
   private Hyperlink slettKundeLink;
 
 
-
-
   private Forsikring forsikring;
   private Skademelding skademelding;
 
@@ -94,31 +95,31 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
     HyberlinkBygger kundesForsikringHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesForsikringerKontainer,
             kunde.getForsikringer(), (Forsikring forsikring) -> {
 
-      this.forsikring = forsikring;
-      navigeringTilVisHusOgInnboForsikringScene();
-    });
+              this.forsikring = forsikring;
+              navigeringTilVisHusOgInnboForsikringScene();
+            });
 
     HyberlinkBygger kundeSkademeldingHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesSkademeldingerKontainer,
             dhl.getKundeMedSkademeldingListeHandling().getSkademeldingListeTilKunde(kunde),
             "Skademelding", (Skademelding skademelding) -> {
-      this.skademelding = skademelding;
-      navigeringTilSkademeldingScene();
-    });
+              this.skademelding = skademelding;
+              navigeringTilSkademeldingScene();
+            });
 
     HyberlinkBygger kundesErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesErstatningerKontainer,
             dhl.getKundeMedSkademeldingListeHandling().getErstatningListeTilKunde(kunde),
             "Erstatning", (Skademelding erstatning) -> {
-      this.skademelding = erstatning;
-      navigeringTilSkademeldingScene();
-    });
+              this.skademelding = erstatning;
+              navigeringTilSkademeldingScene();
+            });
 
 
     HyberlinkBygger kundesAvvisteErstatningerHyberlinkBygger = HyberlinkBygger.genererHyberlink(kundesAvvisteErstatningerKontainer,
             dhl.getKundeMedSkademeldingListeHandling().getAvvistSkademeldingListeTilKunde(kunde),
             "Avviste erstatningskrav", (Skademelding avvisteErstatningskrav) -> {
-      this.skademelding = avvisteErstatningskrav;
-      navigeringTilSkademeldingScene();
-    });
+              this.skademelding = avvisteErstatningskrav;
+              navigeringTilSkademeldingScene();
+            });
 
 
   }
@@ -138,7 +139,7 @@ public class VisKundeSceneKontroller implements KontrollerMedKundeInfo {
   protected void navigeringTilVisHusOgInnboForsikringScene() {
 
 
-    Navigator.visSceneMedForsikringInfo(borderPane, Handling.VIS, forsikring,kunde);
+    Navigator.visSceneMedForsikringInfo(borderPane, Handling.VIS, forsikring, kunde);
   }
 
   protected void navigeringTilSkademeldingScene() {

@@ -45,11 +45,9 @@ public final class DataLagringObjekt implements Serializable {
     return skademeldingListe.filtered(new Predicate<Skademelding>() {
       @Override
       public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() ==SkademeldingStatus.UBEHANDLET
-                ||skademelding.getStatus() ==SkademeldingStatus.UNDER_BEHANDLING){
-          return true;}
+        return skademelding.getStatus() == SkademeldingStatus.UBEHANDLET
+                || skademelding.getStatus() == SkademeldingStatus.UNDER_BEHANDLING;
 
-        return false;
       }
     });
 
@@ -60,10 +58,8 @@ public final class DataLagringObjekt implements Serializable {
     return skademeldingListe.filtered(new Predicate<Skademelding>() {
       @Override
       public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() ==SkademeldingStatus.GODKJENT) {
-          return true;}
+        return skademelding.getStatus() == SkademeldingStatus.GODKJENT;
 
-        return false;
       }
     });
 
@@ -73,10 +69,8 @@ public final class DataLagringObjekt implements Serializable {
     return skademeldingListe.filtered(new Predicate<Skademelding>() {
       @Override
       public boolean test(Skademelding skademelding) {
-        if (skademelding.getStatus() ==SkademeldingStatus.AVVIST) {
-          return true;}
+        return skademelding.getStatus() == SkademeldingStatus.AVVIST;
 
-        return false;
       }
     });
 
@@ -109,19 +103,18 @@ public final class DataLagringObjekt implements Serializable {
 
   public List<HusOgInnboForsikring> getHusOgInnboForsikringListe() {
 
-  return  this.forsikringListe
+    return this.forsikringListe
             .stream()
             .filter(f -> f instanceof HusOgInnboForsikring)
             .map(f -> (HusOgInnboForsikring) f)
-          .collect(Collectors.toList());
-
+            .collect(Collectors.toList());
 
 
   }
 
   public List<ReiseForsikring> getReiseForsikringListe() {
 
-    return  this.forsikringListe
+    return this.forsikringListe
             .stream()
             .filter(f -> f instanceof ReiseForsikring)
             .map(f -> (ReiseForsikring) f)
@@ -130,7 +123,7 @@ public final class DataLagringObjekt implements Serializable {
   }
 
   public List<FritidsboligForsikring> getFritidsboligForsikringListe() {
-    return  this.forsikringListe
+    return this.forsikringListe
             .stream()
             .filter(f -> f instanceof FritidsboligForsikring)
             .map(f -> (FritidsboligForsikring) f)
@@ -139,7 +132,7 @@ public final class DataLagringObjekt implements Serializable {
   }
 
   public List<BatForsikring> getBatorsikringListe() {
-    return  this.forsikringListe
+    return this.forsikringListe
             .stream()
             .filter(f -> f instanceof BatForsikring)
             .map(f -> (BatForsikring) f)
@@ -147,45 +140,40 @@ public final class DataLagringObjekt implements Serializable {
 
   }
 
-  public HashMap<String,Object> getAllData(){
+  public HashMap<String, Object> getAllData() {
 
 
+    HashMap<String, Object> dataliste = new HashMap<>();
+    dataliste.put("kundeListe", new ArrayList(this.kundeListe));
+    dataliste.put("forsikringListe", new ArrayList(this.forsikringListe));
+    dataliste.put("husOgInnboForsikringListe", new ArrayList(this.getHusOgInnboForsikringListe()));
+    dataliste.put("fritidsboligForsikringListe", this.getFritidsboligForsikringListe());
+    dataliste.put("reiseForsikringListe", this.getReiseForsikringListe());
+    dataliste.put("batorsikringListe", this.getBatorsikringListe());
 
-    HashMap<String,Object> dataliste = new HashMap<>();
-    dataliste.put("kundeListe",new ArrayList(this.kundeListe));
-    dataliste.put("forsikringListe",new ArrayList(this.forsikringListe));
-    dataliste.put("husOgInnboForsikringListe",new ArrayList(this.getHusOgInnboForsikringListe()));
-    dataliste.put("fritidsboligForsikringListe",this.getFritidsboligForsikringListe());
-    dataliste.put("reiseForsikringListe",this.getReiseForsikringListe());
-    dataliste.put("batorsikringListe",this.getBatorsikringListe());
-
-    dataliste.put("skademeldingListe",new ArrayList(this.skademeldingListe));
-
+    dataliste.put("skademeldingListe", new ArrayList(this.skademeldingListe));
 
 
-    dataliste.put("kundeMedForsikringListe",this.kundeMedForsikringListe);
-    dataliste.put("kundeMedSkadeMeldingListe",this.kundeMedSkadeMeldingListe);
+    dataliste.put("kundeMedForsikringListe", this.kundeMedForsikringListe);
+    dataliste.put("kundeMedSkadeMeldingListe", this.kundeMedSkadeMeldingListe);
 
-   return dataliste;
+    return dataliste;
   }
 
 
-  public void setAllData(HashMap<String,Object> dataliste){
+  public void setAllData(HashMap<String, Object> dataliste) {
 
 
+    this.kundeListe.setAll(FXCollections.observableList((ArrayList<Kunde>) dataliste.get("kundeListe")));
 
-    this.kundeListe.setAll(FXCollections.observableList((ArrayList<Kunde>)dataliste.get("kundeListe")));
+    this.forsikringListe.setAll(FXCollections.observableList((ArrayList<Forsikring>) dataliste.get("forsikringListe")));
 
-    this.forsikringListe.setAll(FXCollections.observableList((ArrayList<Forsikring>)dataliste.get("forsikringListe")));
-
-    this.skademeldingListe.setAll(FXCollections.observableList((ArrayList<Skademelding>)dataliste.get("skademeldingListe")));
-
-
-    this.kundeMedForsikringListe = (HashMap<Kunde,ArrayList<Forsikring>>)dataliste.get("kundeMedForsikringListe");
-
-    this.kundeMedSkadeMeldingListe = (HashMap<Kunde,ArrayList<Skademelding>>)dataliste.get("kundeMedSkadeMeldingListe");
+    this.skademeldingListe.setAll(FXCollections.observableList((ArrayList<Skademelding>) dataliste.get("skademeldingListe")));
 
 
+    this.kundeMedForsikringListe = (HashMap<Kunde, ArrayList<Forsikring>>) dataliste.get("kundeMedForsikringListe");
+
+    this.kundeMedSkadeMeldingListe = (HashMap<Kunde, ArrayList<Skademelding>>) dataliste.get("kundeMedSkadeMeldingListe");
 
 
   }

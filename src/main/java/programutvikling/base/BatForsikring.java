@@ -13,7 +13,7 @@ public class BatForsikring extends Forsikring {
 
 
   public BatForsikring() {
-    super("Båt Forsikring",0.0,0.0,"");
+    super("Båt Forsikring", 0.0, 0.0, "");
     this.eier = "";
     this.registreringsNr = "";
     this.batType = "";
@@ -26,7 +26,7 @@ public class BatForsikring extends Forsikring {
   }
 
   public BatForsikring(Double forsikringsbeløp, Double forsikringspremie, String forsikringsbetingelser, String eier, String registreringsnummer, String baatType, String baatModell, String batLengde, String aarsmodell, String motortype, String motorstyrke) {
-    super("Båt Forsikring",forsikringsbeløp, forsikringspremie, forsikringsbetingelser);
+    super("Båt Forsikring", forsikringsbeløp, forsikringspremie, forsikringsbetingelser);
     this.eier = eier;
     this.registreringsNr = registreringsnummer;
     this.batType = baatType;
@@ -101,7 +101,6 @@ public class BatForsikring extends Forsikring {
   public void setMotorStyrke(String motorStyrke) {
     this.motorStyrke = motorStyrke;
   }
-
 
 
   @Override
