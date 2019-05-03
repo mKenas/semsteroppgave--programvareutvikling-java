@@ -8,7 +8,6 @@ import programutvikling.egenDefinertTyper.SkademeldingStatus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -76,17 +75,14 @@ public class KundeMedSkademeldingListeHandling {
   }
 
 
-  public Kunde finnSkademeldingsKunde(Skademelding skademelding) {
+  public Kunde finnSkademeldingsKunde(HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding, Skademelding skademelding) {
 
-    ArrayList<ArrayList<Skademelding>> listeAvForsikringListe = new ArrayList<>(kundeMedSkademeldingListe.values());
+    //ArrayList<ArrayList<Skademelding>> listeAvForsikringListe = new ArrayList<>(kundeMedSkademeldingListe.values());
     Kunde kunde;
 
-   /* kundeMedForsikringListe.entrySet().stream()
-            .flatMap(m -> m.getValue().stream())
-            .forEach(System.out::println);*/
 
 
-    for (Map.Entry<Kunde, ArrayList<Skademelding>> liste : this.kundeMedSkademeldingListe.entrySet()) {
+    for (Map.Entry<Kunde, ArrayList<Skademelding>> liste : kundeMedSkademelding.entrySet()) {
       if (liste.getValue().contains(skademelding)) {
         kunde = liste.getKey();
         return kunde;

@@ -15,7 +15,7 @@
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </BorderPane.margin>
-    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+    <HBox maxWidth="1.7976931348623157E308">
         <children>
             <Label maxWidth="1.7976931348623157E308" text="Forsikringer &gt; Opprette ny forsikring&gt; Reiseforsikring  " HBox.hgrow="ALWAYS">
                 <font>
@@ -73,7 +73,7 @@
                                     <Insets bottom="30.0" />
                                 </VBox.margin>
                             </JFXTextField>
-                     <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Forsikringbeløp" VBox.vgrow="ALWAYS">
+                     <Label maxWidth="1.7976931348623157E308" text="Forsikringbeløp" VBox.vgrow="ALWAYS">
                         <VBox.margin>
                            <Insets />
                         </VBox.margin>

@@ -61,8 +61,8 @@ public class SkademeldingListeKontroller {
     skademeldingTabell.setPlaceholder(new Label("Ingen skademelding er registrert ennå!"));
 
 
-    skademeldingListe = dho.getKundeMedSkademeldingListeHandling().getSkademeldingListe();
-    //skademeldingListe = dlo.getSkademeldingListe();
+    //skademeldingListe = dho.getKundeMedSkademeldingListeHandling().getSkademeldingListe();
+    skademeldingListe = dlo.getFiltrertSkademeldingListe();
 
 
     if (skademeldingListe.size() >= 1) {
@@ -104,10 +104,10 @@ public class SkademeldingListeKontroller {
   private void leggTilVisSkademeldingKnapp() {
 
     visSkademeldingKnapp.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_SKADEMELDING_IKONE, (s) -> {
-      HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = (HashMap<Kunde, ArrayList<Skademelding>>) dlo.getAllData().get("kundeMedSkadeMeldingListe");
+      HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = dlo.getKundeMedSkadeMeldingListe();
 
       this.skademelding = s;
-      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(s);
+      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(kundeMedSkademelding,s);
 
 
       navigerTilVisErstatningScene();

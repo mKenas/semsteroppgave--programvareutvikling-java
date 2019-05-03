@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -15,7 +16,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisKundeSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
@@ -28,7 +28,7 @@
                     <Font size="20.0" />
                 </font>
                 <HBox.margin>
-                    <Insets bottom="15.0" top="15.0" />
+                    <Insets />
                 </HBox.margin>
             </Label>
         </children>
@@ -284,7 +284,7 @@
                   </VBox.margin></Label>
                <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                   <content>
-                     <VBox fx:id="kundesSkademeldingerKontainer" accessibleRole="PAGINATION">
+                     <VBox fx:id="kundesSkademeldingerKontainer" accessibleRole="PAGINATION" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                         <padding>
                            <Insets left="15.0" />
                         </padding></VBox>
@@ -295,7 +295,7 @@
                </ScrollPane>
                <JFXButton fx:id="leggTilSkademeldingKnapp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#leggTilSkadeMelding" styleClass="handling-scene-knapp" text="Legg til ny skademelding" VBox.vgrow="ALWAYS">
                   <VBox.margin>
-                     <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+                     <Insets bottom="10.0" left="15.0" right="15.0" />
                   </VBox.margin>
                </JFXButton>
             </children>
@@ -369,7 +369,7 @@
    </HBox>
 
 
-    <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+    <BorderPane maxWidth="1.7976931348623157E308">
         <right>
             <Button alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleTilbakeKnapp" styleClass="handling-scene-knapp" text="Tilbake" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
@@ -377,6 +377,9 @@
                 </BorderPane.margin>
             </Button>
         </right>
+      <VBox.margin>
+         <Insets bottom="15.0" />
+      </VBox.margin>
     </BorderPane>
 
 </VBox>

@@ -64,7 +64,8 @@ public class ErstatningListeKontroller {
     erstatningTabell.setPlaceholder(new Label("Ingen erstatning er registrert ennå!"));
 
 
-    erstatningListe = dho.getKundeMedSkademeldingListeHandling().getErstatningListe();
+    //erstatningListe = dho.getKundeMedSkademeldingListeHandling().getErstatningListe();
+    erstatningListe = dlo.getErstatningListe();
 
 
     if (erstatningListe.size() >= 1) {
@@ -108,10 +109,10 @@ public class ErstatningListeKontroller {
   private void leggTilVisErstatningKnapp() {
 
     visErstatningKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_ERSTATNING_IKONE, (s) -> {
-      HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = (HashMap<Kunde, ArrayList<Skademelding>>) dlo.getAllData().get("kundeMedSkadeMeldingListe");
+      HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = dlo.getKundeMedSkadeMeldingListe();
 
       this.skademelding = s;
-      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(s);
+      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(kundeMedSkademelding,s);
 
 
       navigerTilVisErstatningScene();

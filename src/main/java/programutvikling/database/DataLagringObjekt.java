@@ -3,11 +3,13 @@ package programutvikling.database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import programutvikling.base.*;
+import programutvikling.egenDefinertTyper.SkademeldingStatus;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public final class DataLagringObjekt implements Serializable {
@@ -39,6 +41,46 @@ public final class DataLagringObjekt implements Serializable {
     return skademeldingListe;
   }
 
+  public ObservableList<Skademelding> getFiltrertSkademeldingListe() {
+    return skademeldingListe.filtered(new Predicate<Skademelding>() {
+      @Override
+      public boolean test(Skademelding skademelding) {
+        if (skademelding.getStatus() ==SkademeldingStatus.UBEHANDLET
+                ||skademelding.getStatus() ==SkademeldingStatus.UNDER_BEHANDLING){
+          return true;}
+
+        return false;
+      }
+    });
+
+  }
+
+
+  public ObservableList<Skademelding> getErstatningListe() {
+    return skademeldingListe.filtered(new Predicate<Skademelding>() {
+      @Override
+      public boolean test(Skademelding skademelding) {
+        if (skademelding.getStatus() ==SkademeldingStatus.GODKJENT) {
+          return true;}
+
+        return false;
+      }
+    });
+
+  }
+
+  public ObservableList<Skademelding> getAvvisteSkademeldingListe() {
+    return skademeldingListe.filtered(new Predicate<Skademelding>() {
+      @Override
+      public boolean test(Skademelding skademelding) {
+        if (skademelding.getStatus() ==SkademeldingStatus.AVVIST) {
+          return true;}
+
+        return false;
+      }
+    });
+
+  }
 
 
   public ObservableList<Kunde> getKundeListe() {

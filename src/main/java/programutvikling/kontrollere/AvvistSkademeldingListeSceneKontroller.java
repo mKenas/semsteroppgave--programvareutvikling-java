@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import programutvikling.base.Forsikring;
 import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.base.Skademelding;
@@ -29,10 +28,9 @@ public class AvvistSkademeldingListeSceneKontroller {
 
   private Kunde kunde;
   private Skademelding skademelding;
-  private Forsikring forsikring;
   private BorderPane borderPane = hsk.getBorderPane();
   //
-  private ObservableList<Skademelding> avvistSkademeldingListe, forsikringerListeFraFil;
+  private ObservableList<Skademelding> avvistSkademeldingListe;
   @FXML
   private TableView avvistSkademeldingTabell;
 
@@ -60,7 +58,7 @@ public class AvvistSkademeldingListeSceneKontroller {
     avvistSkademeldingTabell.setPlaceholder(new Label("Ingen avviste skademeldinger er registrert ennå!"));
 
 
-    avvistSkademeldingListe = dho.getKundeMedSkademeldingListeHandling().getAvvistSkademeldingListe();
+    avvistSkademeldingListe = dlo.getAvvisteSkademeldingListe();
 
 
     if (avvistSkademeldingListe.size() >= 1) {
@@ -103,10 +101,10 @@ public class AvvistSkademeldingListeSceneKontroller {
   private void leggTilVisAvvistSkademelingKnapp() {
 
     visAvvistSkademeldingKolonne.setCellFactory(TabellKnapp.<Skademelding>genererKnapp(TabellKnapp.VIS_AVVIST_SKADEMELDING_IKONE, (s) -> {
-      HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = (HashMap<Kunde, ArrayList<Skademelding>>) dlo.getAllData().get("kundeMedSkadeMeldingListe");
+      HashMap<Kunde, ArrayList<Skademelding>> kundeMedSkademelding = dlo.getKundeMedSkadeMeldingListe();
 
       this.skademelding = s;
-      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(s);
+      kunde = dho.getKundeMedSkademeldingListeHandling().finnSkademeldingsKunde(kundeMedSkademelding,s);
 
 
       navigerTilVisErstatningScene();
