@@ -1,5 +1,6 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
@@ -10,6 +11,7 @@ import programutvikling.base.ReiseForsikring;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.status.ResieValideringStatus;
 import programutvikling.validering.ReiseforsikringValidator;
 import programutvikling.validering.Validator;
 
@@ -26,6 +28,8 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
   @FXML
   private
   JFXTextField reiseForsikringsomradeTekstfelt;
+  @FXML
+  private JFXButton lagreForsikringKnapp;
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private DataHandlingObjekt dho = new DataHandlingObjekt();
   private BorderPane borderPane = hsk.getBorderPane();
@@ -45,13 +49,10 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
 
   public void initialize() {
 
-    Validator.validerFraTekstfelt(reiseForsikringssumTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikringssumMelding());
-    Validator.validerFraTekstfelt(reiseForsikringsBelopTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
-    Validator.validerFraTekstfelt(reiseArligForsikringspremieTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
-    Validator.validerFraTekstfelt(reiseForsikringsomradeTekstfelt, ReiseforsikringValidator.getUgyldigForsikrinsOmradeRegex(), ReiseforsikringValidator.getUgyldigForsikrinsOmradeMelding());
-
-
+    valideReiseForsikringFelt();
   }
+
+
 
 
   @FXML
@@ -73,6 +74,9 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
       reiseForsikringsomradeTekstfelt.setText(f.getForsikringsOmrade());
       reiseArligForsikringspremieTekstfelt.setText(String.valueOf(f.getForsikringspremie()));
 
+
+      validerFeltVedInnlastingAvScene();
+
     }
   }
 
@@ -84,12 +88,7 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
     Double forsikringspremie = Double.valueOf(reiseArligForsikringspremieTekstfelt.getText());
 
 
-    if (reiseForsikringssumTekstfelt.validate() == true &&
-            reiseForsikringsBelopTekstfelt.validate() == true &&
-            reiseForsikringsomradeTekstfelt.validate() == true &&
-            reiseArligForsikringspremieTekstfelt.validate() == true) {
 
-      NavigeringTilVisKundeScene();
 
       forsikring.setForsikringsSum(forsikringssum);
       forsikring.setForsikringsOmrade(forsikringsomrade);
@@ -97,9 +96,57 @@ public class RedigerReiseforsikringKontroller implements KontrollerMedKundeInfo,
       forsikring.setForsikringspremie(forsikringspremie);
 
       NavigeringTilVisKundeScene();
-    }
+
 
   }
+
+
+  private void valideReiseForsikringFelt() {
+
+    nullstillValideringStatus();
+
+
+    validerFeltVedEndringAvInnputt();
+
+
+    bindeKanppAkriveringTilValideringStatus();
+
+  }
+
+  private void bindeKanppAkriveringTilValideringStatus() {
+    lagreForsikringKnapp.disableProperty().bind(
+            ResieValideringStatus.erForsikringbelopGyldig().not()
+                    .or(ResieValideringStatus.erForsikringspremieGyldig().not())
+                    .or(ResieValideringStatus.erForsikringSumGyldig().not())
+                    .or(ResieValideringStatus.erOmrodGyldig().not())
+
+    );
+  }
+
+  private void validerFeltVedEndringAvInnputt() {
+
+
+    Validator.valider(ResieValideringStatus.erForsikringSumGyldig(), reiseForsikringssumTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikringssumMelding());
+    Validator.valider(ResieValideringStatus.erForsikringbelopGyldig(), reiseForsikringsBelopTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
+    Validator.valider(ResieValideringStatus.erForsikringspremieGyldig(), reiseArligForsikringspremieTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
+    Validator.valider(ResieValideringStatus.erOmrodGyldig(), reiseForsikringsomradeTekstfelt, ReiseforsikringValidator.getUgyldigForsikrinsOmradeRegex(), ReiseforsikringValidator.getUgyldigForsikrinsOmradeMelding());
+
+  }
+
+  private void validerFeltVedInnlastingAvScene() {
+
+    Validator.validerVedInnlasstingAvScene(ResieValideringStatus.erForsikringSumGyldig(), reiseForsikringssumTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikringssumMelding());
+    Validator.validerVedInnlasstingAvScene(ResieValideringStatus.erForsikringbelopGyldig(), reiseForsikringsBelopTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
+    Validator.validerVedInnlasstingAvScene(ResieValideringStatus.erForsikringspremieGyldig(), reiseArligForsikringspremieTekstfelt, ReiseforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
+    Validator.validerVedInnlasstingAvScene(ResieValideringStatus.erOmrodGyldig(), reiseForsikringsomradeTekstfelt, ReiseforsikringValidator.getUgyldigForsikrinsOmradeRegex(), ReiseforsikringValidator.getUgyldigForsikrinsOmradeMelding());
+
+  }
+
+  private void nullstillValideringStatus() {
+
+    ResieValideringStatus.nullstillValideringStatus();
+  }
+
 }
 
 

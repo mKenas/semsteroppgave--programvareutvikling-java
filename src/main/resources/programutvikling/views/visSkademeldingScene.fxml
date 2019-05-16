@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.VisSkademeldingSceneKontroller">
     <BorderPane.margin>
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
@@ -181,7 +173,7 @@
                     <Label text="Øvrig informasjon:" />
                <TextArea fx:id="ovrigInformasjonTekstfelt" editable="false" maxWidth="1.7976931348623157E308" prefRowCount="3" VBox.vgrow="ALWAYS">
                   <VBox.margin>
-                     <Insets bottom="15.0" />
+                      <Insets bottom="5.0"/>
                   </VBox.margin>
                </TextArea>
                 </children>
@@ -206,7 +198,8 @@
                                 <Insets left="15.0" right="15.0" />
                             </VBox.margin>
                         </Label>
-                        <JFXTextField fx:id="takseringsbelopTekstfelt" layoutX="10.0" layoutY="187.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="takseringsbelopTekstfelt" layoutX="10.0" layoutY="187.0"
+                                      maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="30.0" left="15.0" right="15.0" />
                             </VBox.margin>
@@ -220,7 +213,8 @@
                                 <Insets />
                             </VBox.margin>
                         </Label>
-                        <JFXTextField fx:id="utbetaltErstatningsbelopTekstfelt" layoutX="10.0" layoutY="27.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <JFXTextField fx:id="utbetaltErstatningsbelopTekstfelt" layoutX="10.0" layoutY="27.0"
+                                      maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="30.0" right="15.0" />
                             </VBox.margin>
@@ -300,7 +294,12 @@
                             <Insets left="10.0" right="10.0" />
                         </HBox.margin>
                     </JFXButton>
-                    <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleTilbakeKnapp" styleClass="handling-scene-knapp" text="Tilbake" />
+                    <JFXButton alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false"
+                               onAction="#handleTilbakeKnapp" styleClass="handling-scene-knapp" text="Tilbake">
+                        <HBox.margin>
+                            <Insets/>
+                        </HBox.margin>
+                    </JFXButton>
                 </children>
                 <BorderPane.margin>
                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

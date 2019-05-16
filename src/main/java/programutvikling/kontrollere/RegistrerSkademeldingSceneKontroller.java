@@ -1,9 +1,6 @@
 package programutvikling.kontrollere;
 
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
@@ -13,6 +10,7 @@ import programutvikling.base.Skademelding;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.database.DataLagringObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.status.SkademeldingValideringStatus;
 import programutvikling.validering.SkademeldingValidator;
 import programutvikling.validering.Validator;
 
@@ -32,7 +30,7 @@ public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeI
   @FXML
   JFXTextArea ovrigSkadeInformasjonTekstfelt;
   @FXML
-
+  private JFXButton registrerSkademeldingKnapp;
 
   private HovedSceneKontainer hsk = HovedSceneKontainer.getInstance();
   private DataHandlingObjekt dho = new DataHandlingObjekt();
@@ -44,12 +42,7 @@ public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeI
 
 
   public void initialize() {
-
-    Validator.validerFraTekstfelt(klokkeslettTekstfelt, SkademeldingValidator.getUgyldigKlokkeslettRegex(), SkademeldingValidator.getUgyldigKlokkeslettMelding());
-    Validator.validerFraTekstfelt(skadeTypeTekstfelt, SkademeldingValidator.getUgyldigSkadetypeRegex(), SkademeldingValidator.getUgyldigSkadetypeMelding());
-
-    Validator.validerFraTekstArea(skadeBeskrivelseTekstfelt, SkademeldingValidator.getUgyldigSkadebeskrivelseRegex(), SkademeldingValidator.getUgyldigSkadebeskrivelseMelding());
-    Validator.validerFraTekstArea(ovrigSkadeInformasjonTekstfelt, SkademeldingValidator.getUgyldigSkadeinformasjonRegex(), SkademeldingValidator.getUgyldigSkadeinformasjonMelding());
+    validerSkademeldingFelt();
 
 
   }
@@ -73,10 +66,7 @@ public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeI
   public void handleRegistrerSkadeKnapp(ActionEvent actionEvent) {
 
 
-    if (klokkeslettTekstfelt.validate() == true &&
-            skadeTypeTekstfelt.validate() == true &&
-            skadeBeskrivelseTekstfelt.validate() == true &&
-            ovrigSkadeInformasjonTekstfelt.validate() == true) {
+
 
       String klokkeslett = klokkeslettTekstfelt.getText();
       String skadeDato = skadeDatoVelger.getValue().toString();
@@ -96,6 +86,47 @@ public class RegistrerSkademeldingSceneKontroller implements KontrollerMedKundeI
 
     }
 
+  private void validerSkademeldingFelt() {
+
+    nullstillValideringStatus();
+
+
+    validerFeltVedEndringAvInnputt();
+
+
+    bindeKanppAkriveringTilValideringStatus();
 
   }
+
+  private void bindeKanppAkriveringTilValideringStatus() {
+    registrerSkademeldingKnapp.disableProperty().bind(
+            SkademeldingValideringStatus.erKlokkeslettGyldig().not()
+                    .or(SkademeldingValideringStatus.erSkadetypeGyldig().not())
+                    .or(SkademeldingValideringStatus.erSkadebeskrivelseGyldig().not())
+                    .or(SkademeldingValideringStatus.erSkadeinformasjonGyldig().not())
+
+    );
+  }
+
+  private void validerFeltVedEndringAvInnputt() {
+
+    Validator.valider(SkademeldingValideringStatus.erKlokkeslettGyldig(), klokkeslettTekstfelt, SkademeldingValidator.getUgyldigKlokkeslettRegex(), SkademeldingValidator.getUgyldigKlokkeslettMelding());
+    Validator.valider(SkademeldingValideringStatus.erSkadetypeGyldig(), skadeTypeTekstfelt, SkademeldingValidator.getUgyldigSkadetypeRegex(), SkademeldingValidator.getUgyldigSkadetypeMelding());
+
+    Validator.valider(SkademeldingValideringStatus.erSkadebeskrivelseGyldig(), skadeBeskrivelseTekstfelt, SkademeldingValidator.getUgyldigSkadebeskrivelseRegex(), SkademeldingValidator.getUgyldigSkadebeskrivelseMelding());
+    Validator.valider(SkademeldingValideringStatus.erSkadeinformasjonGyldig(), ovrigSkadeInformasjonTekstfelt, SkademeldingValidator.getUgyldigSkadeinformasjonRegex(), SkademeldingValidator.getUgyldigSkadeinformasjonMelding());
+
+
+  }
+
+  private void validerFeltVedInnlastingAvScene() {
+
+  }
+
+  private void nullstillValideringStatus() {
+
+    SkademeldingValideringStatus.nullstillValideringStatus();
+  }
+
+
 }

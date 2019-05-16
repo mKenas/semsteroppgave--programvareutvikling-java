@@ -1,5 +1,6 @@
 package programutvikling.kontrollere;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -10,6 +11,7 @@ import programutvikling.base.Kunde;
 import programutvikling.base.Navigator;
 import programutvikling.database.DataHandlingObjekt;
 import programutvikling.kontrollere.uihjelpere.HovedSceneKontainer;
+import programutvikling.status.BatValideringStatus;
 import programutvikling.validering.BatforsikringValidator;
 import programutvikling.validering.ReiseforsikringValidator;
 import programutvikling.validering.Validator;
@@ -44,6 +46,8 @@ public class RedigerBatForsikringSceneKontroller implements KontrollerMedKundeIn
 
   private Kunde kunde;
   private BatForsikring forsikring;
+  @FXML
+  private JFXButton lagreForsikringKnapp;
 
 
   public void setForsikring(Forsikring forsikring) {
@@ -64,26 +68,12 @@ public class RedigerBatForsikringSceneKontroller implements KontrollerMedKundeIn
       batensMotortypeTekstfelt.setText(f.getMotorType());
       batensMotorstyrkeTekstfelt.setText(f.getMotorStyrke());
 
+
+      validerFeltVedInnlastingAvScene();
     }
   }
 
 
-  public void initialize() {
-
-
-    Validator.validerFraTekstfelt(forsikringsBelopTekstfelt, BatforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
-    Validator.validerFraTekstfelt(forsikringsPremieTekstfelt, BatforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
-    Validator.validerFraTekstfelt(batensEierTekstfelt, BatforsikringValidator.getUgyldigEierRegex(), BatforsikringValidator.getUgyldigEierFeilmelding());
-    Validator.validerFraTekstfelt(batensRegistreringsNummerTekstfelt, BatforsikringValidator.getUgyldigRegistreringsnummerRegex(), BatforsikringValidator.getUgyldigRegistreringsnummerFeilmelding());
-    Validator.validerFraTekstfelt(batTypeTekstfelt, BatforsikringValidator.getUgyldigBattypeRegex(), BatforsikringValidator.getUgyldigBattypeFeilmelding());
-    Validator.validerFraTekstfelt(batModellTekstfelt, BatforsikringValidator.getUgyldigBatmodellRegex(), BatforsikringValidator.getUgyldigBatmodellFeilmelding());
-    Validator.validerFraTekstfelt(batLengdeTekstfelt, BatforsikringValidator.getUgyldigBatlengdeRegex(), BatforsikringValidator.getUgyldigBatlengdeFeilmelding());
-    Validator.validerFraTekstfelt(batensAarsModellTekstfelt, BatforsikringValidator.getUgyldigArsmodellRegex(), BatforsikringValidator.getUgyldigArsmodellFeilmelding());
-    Validator.validerFraTekstfelt(batensMotortypeTekstfelt, BatforsikringValidator.getUgyldigMotorTypeRegex(), BatforsikringValidator.getUgyldigMotorTypeFeilmelding());
-    Validator.validerFraTekstfelt(batensMotorstyrkeTekstfelt, BatforsikringValidator.getUgyldigMotorStyrkeRegex(), BatforsikringValidator.getUgyldigMotorStyrkeFeilmelding());
-
-
-  }
 
   public void setKunde(Kunde k) {
     this.kunde = k;
@@ -107,16 +97,7 @@ public class RedigerBatForsikringSceneKontroller implements KontrollerMedKundeIn
     String batensMotorstyrke = batensMotorstyrkeTekstfelt.getText();
 
 
-    if (forsikringsBelopTekstfelt.validate() == true &&
-            forsikringsPremieTekstfelt.validate() == true &&
-            batensEierTekstfelt.validate() == true &&
-            batensRegistreringsNummerTekstfelt.validate() == true &&
-            batTypeTekstfelt.validate() == true &&
-            batModellTekstfelt.validate() == true &&
-            batLengdeTekstfelt.validate() == true &&
-            batensAarsModellTekstfelt.validate() == true &&
-            batensMotortypeTekstfelt.validate() == true &&
-            batensMotorstyrkeTekstfelt.validate() == true) {
+
 
       forsikring.setForsikringsbelop(forsikringsBelop);
       forsikring.setForsikringspremie(forsikringsPremie);
@@ -130,8 +111,81 @@ public class RedigerBatForsikringSceneKontroller implements KontrollerMedKundeIn
       forsikring.setMotorStyrke(batensMotorstyrke);
 
       NavigeringTilVisKundeScene();
-    }
+
   }
+
+
+  public void initialize() {
+
+    valideBatForsikringFelt();
+  }
+
+
+  private void valideBatForsikringFelt() {
+
+    nullstillValideringStatus();
+
+
+    validerFeltVedEndringAvInnputt();
+
+
+    bindeKanppAkriveringTilValideringStatus();
+
+  }
+
+  private void bindeKanppAkriveringTilValideringStatus() {
+    lagreForsikringKnapp.disableProperty().bind(
+            BatValideringStatus.erForsikrinsBelopGyldig().not()
+                    .or(BatValideringStatus.erForsikrinspremieGyldig().not())
+                    .or(BatValideringStatus.erEierGyldig().not())
+                    .or(BatValideringStatus.erRegistreringsNrGyldig().not())
+                    .or(BatValideringStatus.erBattypeGyldig().not())
+                    .or(BatValideringStatus.erBatmodellGyldig().not())
+                    .or(BatValideringStatus.erBatlengdeGyldig().not())
+                    .or(BatValideringStatus.erArsmodellGyldig().not())
+                    .or(BatValideringStatus.erMotorTypeGyldig().not())
+                    .or(BatValideringStatus.erMotorStyrkeGyldig().not())
+
+    );
+  }
+
+  private void validerFeltVedEndringAvInnputt() {
+    Validator.valider(BatValideringStatus.erForsikrinsBelopGyldig(), forsikringsBelopTekstfelt, BatforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
+    Validator.valider(BatValideringStatus.erForsikrinspremieGyldig(), forsikringsPremieTekstfelt, BatforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
+    Validator.valider(BatValideringStatus.erEierGyldig(), batensEierTekstfelt, BatforsikringValidator.getUgyldigEierRegex(), BatforsikringValidator.getUgyldigEierFeilmelding());
+    Validator.valider(BatValideringStatus.erRegistreringsNrGyldig(), batensRegistreringsNummerTekstfelt, BatforsikringValidator.getUgyldigRegistreringsnummerRegex(), BatforsikringValidator.getUgyldigRegistreringsnummerFeilmelding());
+    Validator.valider(BatValideringStatus.erBattypeGyldig(), batTypeTekstfelt, BatforsikringValidator.getUgyldigBattypeRegex(), BatforsikringValidator.getUgyldigBattypeFeilmelding());
+    Validator.valider(BatValideringStatus.erBatmodellGyldig(), batModellTekstfelt, BatforsikringValidator.getUgyldigBatmodellRegex(), BatforsikringValidator.getUgyldigBatmodellFeilmelding());
+    Validator.valider(BatValideringStatus.erBatlengdeGyldig(), batLengdeTekstfelt, BatforsikringValidator.getUgyldigBatlengdeRegex(), BatforsikringValidator.getUgyldigBatlengdeFeilmelding());
+    Validator.valider(BatValideringStatus.erArsmodellGyldig(), batensAarsModellTekstfelt, BatforsikringValidator.getUgyldigArsmodellRegex(), BatforsikringValidator.getUgyldigArsmodellFeilmelding());
+    Validator.valider(BatValideringStatus.erMotorTypeGyldig(), batensMotortypeTekstfelt, BatforsikringValidator.getUgyldigMotorTypeRegex(), BatforsikringValidator.getUgyldigMotorTypeFeilmelding());
+    Validator.valider(BatValideringStatus.erMotorStyrkeGyldig(), batensMotorstyrkeTekstfelt, BatforsikringValidator.getUgyldigMotorStyrkeRegex(), BatforsikringValidator.getUgyldigMotorStyrkeFeilmelding());
+
+
+  }
+
+  private void validerFeltVedInnlastingAvScene() {
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erForsikrinsBelopGyldig(), forsikringsBelopTekstfelt, BatforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinsBelopMelding());
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erForsikrinspremieGyldig(), forsikringsPremieTekstfelt, BatforsikringValidator.getUgyldigBelopRegex(), ReiseforsikringValidator.getUgyldigForsikrinspremieMelding());
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erEierGyldig(), batensEierTekstfelt, BatforsikringValidator.getUgyldigEierRegex(), BatforsikringValidator.getUgyldigEierFeilmelding());
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erRegistreringsNrGyldig(), batensRegistreringsNummerTekstfelt, BatforsikringValidator.getUgyldigRegistreringsnummerRegex(), BatforsikringValidator.getUgyldigRegistreringsnummerFeilmelding());
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erBattypeGyldig(), batTypeTekstfelt, BatforsikringValidator.getUgyldigBattypeRegex(), BatforsikringValidator.getUgyldigBattypeFeilmelding());
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erBatmodellGyldig(), batModellTekstfelt, BatforsikringValidator.getUgyldigBatmodellRegex(), BatforsikringValidator.getUgyldigBatmodellFeilmelding());
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erBatlengdeGyldig(), batLengdeTekstfelt, BatforsikringValidator.getUgyldigBatlengdeRegex(), BatforsikringValidator.getUgyldigBatlengdeFeilmelding());
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erArsmodellGyldig(), batensAarsModellTekstfelt, BatforsikringValidator.getUgyldigArsmodellRegex(), BatforsikringValidator.getUgyldigArsmodellFeilmelding());
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erMotorTypeGyldig(), batensMotortypeTekstfelt, BatforsikringValidator.getUgyldigMotorTypeRegex(), BatforsikringValidator.getUgyldigMotorTypeFeilmelding());
+    Validator.validerVedInnlasstingAvScene(BatValideringStatus.erMotorStyrkeGyldig(), batensMotorstyrkeTekstfelt, BatforsikringValidator.getUgyldigMotorStyrkeRegex(), BatforsikringValidator.getUgyldigMotorStyrkeFeilmelding());
+
+
+  }
+
+
+  private void nullstillValideringStatus() {
+
+    BatValideringStatus.nullstillValideringStatus();
+  }
+
+
 
 
   @FXML
