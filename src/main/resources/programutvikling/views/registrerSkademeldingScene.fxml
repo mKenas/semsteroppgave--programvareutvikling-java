@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RegistrerSkademeldingSceneKontroller">
+    <BorderPane.margin>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+    </BorderPane.margin>
+    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+        <children>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Kunde &gt; Registrer skade" HBox.hgrow="ALWAYS">
+                <font>
+                    <Font size="20.0" />
+                </font>
+                <HBox.margin>
+                    <Insets left="15.0" />
+                </HBox.margin>
+            </Label>
+        </children>
+        <VBox.margin>
+            <Insets bottom="10.0" />
+        </VBox.margin>
+    </HBox>
+    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+        <children>
+            <VBox maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                <children>
+                    <Label maxWidth="1.7976931348623157E308" text="Kunde">
+                        <VBox.margin>
+                            <Insets left="15.0" />
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="personNrTekstfelt" disable="true" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
+                        <VBox.margin>
+                            <Insets left="15.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                </children>
+            <HBox.margin>
+               <Insets right="15.0" />
+            </HBox.margin>
+            </VBox>
+        </children>
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin>
+    </HBox>
+    <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+        <VBox.margin>
+            <Insets />
+        </VBox.margin>
+      <children>
+         <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+            <items>
+               <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <children>
+                     <Label layoutX="20.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Skade dato">
+                        <VBox.margin>
+                           <Insets left="15.0" right="15.0" />
+                        </VBox.margin>
+                     </Label>
+                     <JFXDatePicker fx:id="skadeDatoVelger" maxWidth="1.7976931348623157E308" prefHeight="48.0">
+                        <VBox.margin>
+                           <Insets bottom="30.0" left="15.0" right="15.0" />
+                        </VBox.margin>
+                     </JFXDatePicker>
+                     <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Forsikrings type">
+                        <VBox.margin>
+                           <Insets left="15.0" right="15.0" />
+                        </VBox.margin>
+                     </Label>
+                     <JFXComboBox fx:id="forsikringsTypeKomboboks" maxWidth="1.7976931348623157E308" prefHeight="48.0" value="Hus og innboforsikring">
+                        <items>
+                           <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Hus og innboforsikring" />
+                              <String fx:value="Fritidsboligforsikring" />
+                              <String fx:value="Båtforsikring" />
+                              <String fx:value="Reiseforsikring" />
+                           </FXCollections>
+                        </items>
+                        <VBox.margin>
+                           <Insets bottom="10.0" left="15.0" right="15.0" />
+                        </VBox.margin>
+                     </JFXComboBox>
+                  </children>
+               </VBox>
+               <VBox maxWidth="1.7976931348623157E308">
+                  <children>
+                     <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Klokkeslett">
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin>
+                     </Label>
+                     <JFXTextField fx:id="klokkeslettTekstfelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" prefHeight="48.0">
+                        <VBox.margin>
+                           <Insets bottom="30.0" right="15.0" />
+                        </VBox.margin>
+                     </JFXTextField>
+                     <Label maxWidth="1.7976931348623157E308" text="Skade type ">
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin>
+                     </Label>
+                     <JFXTextField fx:id="skadeTypeTekstfelt" maxWidth="1.7976931348623157E308" prefHeight="48.0">
+                        <VBox.margin>
+                           <Insets bottom="30.0" right="15.0" />
+                        </VBox.margin>
+                     </JFXTextField>
+                  </children>
+               </VBox>
+            </items>
+            <HBox.margin>
+               <Insets bottom="10.0" />
+            </HBox.margin>
+         </SplitPane>
+      </children>
+    </HBox>
+   <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+      <children>
+         <VBox maxWidth="1.7976931348623157E308" prefHeight="158.0" HBox.hgrow="ALWAYS">
+            <children>
+               <Label maxWidth="1.7976931348623157E308" text="Skade beskrivelse">
+                  <VBox.margin>
+                     <Insets left="15.0" right="15.0" />
+                  </VBox.margin></Label>
+               <JFXTextArea fx:id="skadeBeskrivelseTekstfelt" maxWidth="1.7976931348623157E308">
+                  <VBox.margin>
+                     <Insets bottom="30.0" left="15.0" right="15.0" />
+                  </VBox.margin>
+               </JFXTextArea>
+               <Label maxWidth="1.7976931348623157E308" text="Øvrig informasjon (Vitner kontat info)">
+                  <VBox.margin>
+                     <Insets left="15.0" right="15.0" />
+                  </VBox.margin></Label>
+               <JFXTextArea fx:id="ovrigSkadeInformasjonTekstfelt" maxWidth="1.7976931348623157E308">
+                  <VBox.margin>
+                     <Insets bottom="30.0" left="15.0" right="15.0" />
+                  </VBox.margin></JFXTextArea>
+            </children>
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </VBox>
+      </children>
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin>
+   </HBox>
+
+    <BorderPane maxWidth="1.7976931348623157E308">
+        <right>
+            <JFXButton fx:id="registrerSkademeldingKnapp" alignment="CENTER" contentDisplay="RIGHT"
+                       maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                       onAction="#handleRegistrerSkadeKnapp" prefHeight="50.0" styleClass="handling-scene-knapp"
+                       text="Opprett skademelding" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets right="15.0" />
+                </BorderPane.margin>
+            </JFXButton>
+        </right>
+      <VBox.margin>
+         <Insets bottom="10.0" />
+      </VBox.margin>
+    </BorderPane>
+
+
+</VBox>

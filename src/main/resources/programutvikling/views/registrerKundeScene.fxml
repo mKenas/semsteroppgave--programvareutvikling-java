@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="kontianer" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RegistrerKundeSceneKontroller">
+    <BorderPane.margin>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+    </BorderPane.margin>
+
+    <HBox BorderPane.alignment="CENTER">
+        <children>
+            <Label maxWidth="1.7976931348623157E308" text="Kunde &gt; Registrer ny kunde" HBox.hgrow="ALWAYS">
+                <font>
+                    <Font size="20.0" />
+                </font>
+                <HBox.margin>
+                    <Insets bottom="15.0" top="15.0" />
+                </HBox.margin>
+            </Label>
+        </children>
+      <VBox.margin>
+         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+      </VBox.margin>
+    </HBox>
+   <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+      <items>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                <children>
+                    <Label maxWidth="1.7976931348623157E308" text="PersonNr *" VBox.vgrow="ALWAYS" />
+                    <JFXTextField fx:id="personNrTekstFelt" layoutX="10.0" layoutY="71.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Navn *" VBox.vgrow="ALWAYS" />
+                    <JFXTextField fx:id="navnTekstFelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Etternavn *" VBox.vgrow="ALWAYS" />
+                    <JFXTextField fx:id="etternavnTekstFelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label layoutX="10.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Epost *" VBox.vgrow="ALWAYS" />
+                    <JFXTextField fx:id="epostTekstFelt" layoutX="10.0" layoutY="187.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+               <VBox maxWidth="1.7976931348623157E308">
+                  <children>
+                     <Label maxWidth="1.7976931348623157E308" text="Forsikrings type" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin>
+                     </Label>
+                     <JFXComboBox fx:id="forsikringsTypeKomboBoks" maxWidth="1.7976931348623157E308" value="Hus Og Innbo Forsikring" VBox.vgrow="ALWAYS">
+                        <items>
+                           <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Hus Og Innbo Forsikring" />
+                              <String fx:value="Fritidsbolig Forsikring" />
+                              <String fx:value="Båt Forsikring" />
+                              <String fx:value="Reise Forsikring" />
+                           </FXCollections>
+                        </items>
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin>
+                     </JFXComboBox>
+                  </children>
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </VBox>
+                </children>
+            <padding>
+               <Insets left="15.0" right="15.0" />
+            </padding>
+            </VBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                <children>
+                    <Label layoutX="20.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Mobil *" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                    </Label>
+
+                    <JFXTextField fx:id="mobilTekstFelt" layoutX="20.0" layoutY="187.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label maxWidth="1.7976931348623157E308" text="Fakturaadresse *" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="fakturaadresseTekstFelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Postnummer *" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="postnummerTekstFelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Poststed *" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="poststedTekstFelt" layoutX="10.0" layoutY="71.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                </children>
+            <padding>
+               <Insets right="15.0" />
+            </padding>
+            </VBox>
+      </items>
+      <VBox.margin>
+         <Insets bottom="15.0" />
+      </VBox.margin>
+   </SplitPane>
+   <Label text="Felt som er merket med * er påkrevert!">
+      <VBox.margin>
+         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+      </VBox.margin>
+   </Label>
+    <BorderPane VBox.vgrow="ALWAYS">
+        <right>
+            <JFXButton fx:id="registrerKundeKnapp" alignment="CENTER" contentDisplay="RIGHT" defaultButton="true" mnemonicParsing="false" onAction="#handleRegistrerKundeKnapp" styleClass="handling-scene-knapp" text="Neste" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                </BorderPane.margin>
+            </JFXButton>
+        </right>
+      <VBox.margin>
+         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+      </VBox.margin>
+    </BorderPane>
+
+
+</VBox>

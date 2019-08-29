@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.DashbordKontroller">
+    <BorderPane.margin>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+    </BorderPane.margin>
+
+    <HBox prefHeight="60.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <children>
+            <Label prefHeight="93.0" prefWidth="176.0">
+                <font>
+                    <Font size="20.0" />
+                </font>
+                <HBox.margin>
+                    <Insets left="15.0" />
+                </HBox.margin>
+            </Label>
+        </children>
+    </HBox>
+    <HBox alignment="CENTER" prefHeight="504.0" prefWidth="930.0">
+        <children>
+            <VBox prefHeight="230.0" prefWidth="420.0">
+                <children>
+                    <JFXButton fx:id="registrerKundeKnapp" mnemonicParsing="false" onAction="#handlNavigeringTilRegistrerKundeScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Registrer ny kunde">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="10.0" top="10.0" />
+                        </VBox.margin>
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                    </JFXButton>
+                    <JFXButton mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Finn Forsikring" onAction="#handleNavigeringTilForsikringerScene">
+                        <VBox.margin>
+                            <Insets bottom="10.0" left="10.0" top="5.0" />
+                        </VBox.margin>
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                    </JFXButton>
+                </children>
+            </VBox>
+            <VBox prefHeight="504.0" prefWidth="420.0">
+                <children>
+                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" onAction="#handlNavigeringTilKunderScene" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Finn kunde">
+                        <VBox.margin>
+                            <Insets bottom="5.0" left="10.0" top="10.0" />
+                        </VBox.margin>
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                    </JFXButton>
+                    <JFXButton id="dashbord-knapp" mnemonicParsing="false" prefHeight="200.0" prefWidth="420.0" styleClass="dashbord-knapp" text="Finn Skademelding" onAction="#handleNavigeringTilSkademeldingerScene">
+                        <VBox.margin>
+                            <Insets bottom="10.0" left="10.0" top="5.0" />
+                        </VBox.margin>
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                    </JFXButton>
+                </children>
+            </VBox>
+        </children>
+        <VBox.margin>
+            <Insets top="15.0" />
+        </VBox.margin>
+    </HBox>
+
+
+</VBox>

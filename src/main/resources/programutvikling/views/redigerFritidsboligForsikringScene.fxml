@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox layoutX="15.0" layoutY="15.0" prefHeight="690.0" prefWidth="930.0" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.RedigerFritidsboligForsikringSceneKontroller">
+    <BorderPane.margin>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+    </BorderPane.margin>
+    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+        <children>
+            <Label text="Forsikringer &gt; Opprette ny forsikring &gt; Fritidsbolig forsikring">
+                <font>
+                    <Font size="20.0" />
+                </font>
+                <HBox.margin>
+                    <Insets bottom="15.0" top="15.0" />
+                </HBox.margin>
+            </Label>
+        </children>
+        <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+        </VBox.margin>
+    </HBox>
+    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+        <children>
+            <VBox maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                <children>
+                    <Label maxWidth="1.7976931348623157E308" text="Kunde">
+                        <VBox.margin>
+                            <Insets left="15.0" right="15.0" />
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="personNrTekstfelt" disable="true" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308">
+                        <VBox.margin>
+                            <Insets bottom="15.0" left="15.0" right="15.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                </children>
+            </VBox>
+        </children>
+        <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" />
+        </VBox.margin>
+    </HBox>
+    <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+        <children>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                <children>
+                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Boligens adresse" VBox.vgrow="ALWAYS" />
+                    <JFXTextField fx:id="boligensAdresseTekstfelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Byggeår" VBox.vgrow="ALWAYS" />
+                    <JFXTextField fx:id="byggeArTekstfelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label layoutX="10.0" layoutY="170.0" maxWidth="1.7976931348623157E308" text="Bolig type" VBox.vgrow="ALWAYS" />
+                    <JFXTextField fx:id="boligTypeTekstfelt" layoutX="10.0" layoutY="187.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label maxWidth="1.7976931348623157E308" text="Bygge materiale" VBox.vgrow="ALWAYS" />
+                    <JFXTextField fx:id="byggeMaterialeTekstfelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label maxWidth="1.7976931348623157E308" text="Standard" />
+                    <JFXTextField fx:id="standardTekstfelt" maxWidth="1.7976931348623157E308">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+
+                </children>
+                <HBox.margin>
+                    <Insets left="15.0" right="15.0" />
+                </HBox.margin>
+            </VBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                <children>
+                    <Label maxWidth="1.7976931348623157E308" text="Antall kvadratmeter" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="antallkvadratmeterTekstfelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Bygning forsikringsbeløp" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="bygningForsikringsbelopTekstfelt" layoutX="10.0" layoutY="27.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label layoutX="10.0" layoutY="54.0" maxWidth="1.7976931348623157E308" text="Innbo forsikringsbeløp" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="innboForsikringsbelopTekstfelt" layoutX="10.0" layoutY="71.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label maxWidth="1.7976931348623157E308" text="Forsikringsbeløp" VBox.vgrow="ALWAYS" />
+                    <JFXTextField fx:id="forsikringsbelopTekstfelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                    <Label maxWidth="1.7976931348623157E308" text="Forsikringspremie" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets />
+                        </VBox.margin>
+                    </Label>
+                    <JFXTextField fx:id="forsikringspremieTekstfelt" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                            <Insets bottom="30.0" />
+                        </VBox.margin>
+                    </JFXTextField>
+                </children>
+                <HBox.margin>
+                    <Insets right="15.0" />
+                </HBox.margin>
+            </VBox>
+        </children>
+        <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+        </VBox.margin>
+    </HBox>
+
+    <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+        <right>
+            <JFXButton fx:id="lagretForsikringKnapp" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleRedigerFritidsboligForsikringKnapp" styleClass="handling-scene-knapp" text="Lagre" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets right="15.0" />
+                </BorderPane.margin>
+            </JFXButton>
+        </right>
+        <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+        </VBox.margin>
+    </BorderPane>
+
+</VBox>

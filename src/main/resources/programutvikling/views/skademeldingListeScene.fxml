@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.SkademeldingListeKontroller">
+    <BorderPane.margin>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+    </BorderPane.margin>
+
+    <HBox maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+        <children>
+            <Label maxWidth="1.7976931348623157E308" text="Skademeldinger" HBox.hgrow="ALWAYS">
+                <font>
+                    <Font size="20.0" />
+                </font>
+                <HBox.margin>
+                    <Insets left="15.0" />
+                </HBox.margin>
+            </Label>
+        </children>
+      <VBox.margin>
+         <Insets left="15.0" right="15.0" top="15.0" />
+      </VBox.margin>
+    </HBox>
+   <HBox maxWidth="1.7976931348623157E308">
+      <children>
+         <BorderPane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+            <right>
+               <TextField fx:id="skademeldingFilterTesktfelt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" promptText="Søk" BorderPane.alignment="CENTER" />
+            </right>
+         </BorderPane>
+      </children>
+      <VBox.margin>
+         <Insets bottom="15.0" right="15.0" />
+      </VBox.margin>
+   </HBox>
+
+    <TableView fx:id="skademeldingTabell" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+        <columns>
+
+
+            <TableColumn fx:id="skademeldingNrKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="SkademeldingNr">
+                <cellValueFactory>
+                    <PropertyValueFactory property="SkademeldingNr" />
+                </cellValueFactory>
+
+            </TableColumn>
+            <TableColumn fx:id="skadeTypeKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="Skade type">
+                <cellValueFactory>
+                    <PropertyValueFactory property="SkadeType" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="takseringsbelopKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="Takseringsbeløp">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Takseringsbelop" />
+                </cellValueFactory>
+            </TableColumn>
+
+
+            <TableColumn fx:id="visSkademeldingKnapp" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="">
+
+            </TableColumn>
+
+
+
+        </columns>
+        <VBox.margin>
+            <Insets bottom="15.0" />
+        </VBox.margin>
+    </TableView>
+
+
+
+
+</VBox>

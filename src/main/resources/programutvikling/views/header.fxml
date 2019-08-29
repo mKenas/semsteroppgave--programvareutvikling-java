@@ -6,8 +6,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<BorderPane prefHeight="70.0" styleClass="header" BorderPane.alignment="CENTER" stylesheets="@../styles.css"
-            xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="70.0" styleClass="header" BorderPane.alignment="CENTER"
+            stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea">
     <left>
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="197.0" text="Expert Forsikring"
                textFill="WHITE">

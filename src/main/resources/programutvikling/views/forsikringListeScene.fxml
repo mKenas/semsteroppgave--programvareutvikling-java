@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hoved-scene-sub-kontainer" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programutvikling.kontrollere.ForsikringerSceneKontroller">
+    <BorderPane.margin>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+    </BorderPane.margin>
+
+    <HBox maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+        <children>
+            <Label maxWidth="1.7976931348623157E308" text="Forsikringer" HBox.hgrow="ALWAYS">
+                <font>
+                    <Font size="20.0" />
+                </font>
+                <HBox.margin>
+                    <Insets />
+                </HBox.margin>
+            </Label>
+        </children>
+      <VBox.margin>
+         <Insets left="15.0" right="15.0" top="15.0" />
+      </VBox.margin>
+    </HBox>
+   <HBox maxWidth="1.7976931348623157E308">
+      <children>
+         <BorderPane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+            <right>
+               <TextField fx:id="forsikringFilterTesktfelt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" promptText="Søk" BorderPane.alignment="CENTER" />
+            </right>
+         </BorderPane>
+      </children>
+      <VBox.margin>
+         <Insets bottom="15.0" right="15.0" />
+      </VBox.margin>
+   </HBox>
+
+    <TableView fx:id="forsikringTabell" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="forsikringNrKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="ForsikringNr">
+                <cellValueFactory>
+                    <PropertyValueFactory property="ForsikringsNr" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="typeKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="Type">
+                <cellValueFactory>
+                    <PropertyValueFactory property="ForsikringsType" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="belopKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="Forsikringsbeløp">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Forsikringsbelop" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="premieKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="Forsikringspremie">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Forsikringspremie" />
+                </cellValueFactory>
+            </TableColumn>
+
+
+
+
+            <TableColumn fx:id="visKnappKolonne" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="-1.0" text="">
+
+            </TableColumn>
+
+
+
+        </columns>
+        <VBox.margin>
+            <Insets bottom="15.0" />
+        </VBox.margin>
+    </TableView>
+</VBox>
